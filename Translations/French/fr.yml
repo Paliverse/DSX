@@ -102,8 +102,8 @@ dsx.Initialization.Error.ServerFailure.Detail: Impossible de communiquer avec le
 dsx.Initialization.Error.SteamApiServerFailure.Title: Échec du serveur de l'API Steam
 dsx.Initialization.Error.SteamApiServerFailure.Detail: Impossible de communiquer avec les serveurs de l'API Steam, veuillez vérifier l'état des serveurs Steam en ligne pour voir s'ils sont hors service. Si leurs serveurs sont hors service, veuillez réessayer ultérieurement.
 
-dsx.Initialization.Error.VirtualPadLicense.Title: Échec du serveur de licence VirtualPad Driver par Nefarius
-dsx.Initialization.Error.VirtualPadLicense.Detail: Impossible de communiquer avec le serveur de licence du pilote VirtualPad, si ce problème persiste, veuillez nous contacter sur le serveur Discord DSX ou les forums Steam.
+dsx.Initialization.Error.VirtualPadError.Title: VirtualPad Driver by Nefarius Server Failure
+dsx.Initialization.Error.VirtualPadError.Detail: Unable to communicate with the VirtualPad Driver server, if this issue persists, please contact us in the DSX Discord server, or the steam fourms.
 
 dsx.Initialization.Error.InternetConnection.Title: Connexion Internet requise
 dsx.Initialization.Error.InternetConnection.Detail: Pour lancer DSX, une connexion Internet est requise lors de l'initialisation, assurez-vous que DSX est autorisé dans votre pare-feu Windows et réessayez.
