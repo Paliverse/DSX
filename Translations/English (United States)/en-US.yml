@@ -1682,3 +1682,30 @@ ctPage.TouchpadToMouse.ScrollInvert.Title: Invert Scroll
 ctPage.TouchpadToMouse.ScrollInvert.SubTitle: When enabled, scrolling will be inverted.
 
 # --------------------
+
+settingsPage.Display.WindowBackgroundEffect.Title: Window Background Effect
+settingsPage.Display.WindowBackgroundEffect.SubTitle: Choose the desired background effect.
+
+settingsPage.Display.WindowBackgroundEffect.Mode.None.Title: None
+settingsPage.Display.WindowBackgroundEffect.Mode.None.Subtitle: No Backdrop effect.
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Acrylic.Title: Acrylic
+settingsPage.Display.WindowBackgroundEffect.Mode.Acrylic.Subtitle: Windows Acrylic effect.
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Title: Mica
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Subtitle: Windows 11 Mica effect.
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Warning.Title: ⚠️ Available for Windows 11 (Build 22000) or newer
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Title: Tabbed
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Subtitle: Windows 11 wallpaper blur effect.
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Warning.Title: ⚠️ Available for Windows 11 Insider 10 (Build 22523) or newer
+
+settingsPage.Display.FullDarkModeCard.Title: Full Dark Mode
+settingsPage.Display.FullDarkModeCard.SubTitle: Makes the background black and for those dark mode lovers.
+
+
+
+
+
+
+
