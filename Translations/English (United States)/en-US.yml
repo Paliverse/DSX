@@ -55,7 +55,7 @@ houseExample.plural: '%i houses'
 # programmatically: var textPlural = Translator.Instance.GetTranslation("houseExample.single", "houseExample.plural", $"{Number} houses.", 1234);
 # ----Takes in (single key, plural key, fallback text, number)
 
-# The number reflects wheather to use House or Houses.
+# The number reflects whether to use House or Houses.
 # The number can be binded itself: Number={Binding ViewModel.Number}
 
 # ------------------------------------------------------------------------------------------------
@@ -103,10 +103,10 @@ dsx.Initialization.Error.ServerFailure.Title: Unknown Server Failure
 dsx.Initialization.Error.ServerFailure.Detail: Unable to communicate with DSX servers to verify ownership, please make sure DSX is allowed in your windows firewall and try again.
 
 dsx.Initialization.Error.SteamApiServerFailure.Title: Steam API Server Failure
-dsx.Initialization.Error.SteamApiServerFailure.Detail: Unable to communicate with Steam API servers, please cheack steam's server status online to verify if it's down, if their servers are down, please try again at a later time.
+dsx.Initialization.Error.SteamApiServerFailure.Detail: Unable to communicate with Steam API servers, please check steam's server status online to verify if it's down, if their servers are down, please try again at a later time.
 
 dsx.Initialization.Error.VirtualPadError.Title: VirtualPad Driver by Nefarius Server Failure
-dsx.Initialization.Error.VirtualPadError.Detail: Unable to communicate with the VirtualPad Driver server, if this issue persists, please contact us in the DSX Discord server, or the steam fourms.
+dsx.Initialization.Error.VirtualPadError.Detail: Unable to communicate with the VirtualPad Driver server, if this issue persists, please contact us in the DSX Discord server, or the steam forums.
 
 dsx.Initialization.Error.InternetConnection.Title: Internet Connection required
 dsx.Initialization.Error.InternetConnection.Detail: To launch DSX, an internet connection is required during initialization, please make sure DSX is allowed in your windows firewall and try again.
@@ -288,21 +288,10 @@ homePage.VirtualDevice.Detail: The Virtual Device is what the computer will thin
 
 homePage.VirtualDevice.Mode.Native.Title: Native Mode
 homePage.VirtualDevice.Mode.Native.Configuration.Title: Native Mode Configuration
-homePage.VirtualDevice.Mode.Native.Configuration.Detail: When Native Mode is selected, you can choose what gets sent to the controller as well as adjusting the takeover percentage to make it more compatible with natively supported games.
-homePage.VirtualDevice.Mode.Native.Configuration.TakeoverControl: To combat DSX fully taking over the controller when no virtual controller is active, takeover control was made to give other programs or games a chance to send out data like rumble to this device. Choose how oftern DSX should update the controller, the lower the number, the more frequent DSX will send data to this device to update it, the higher the number, the more likely another application or game is able to update this device with data.
-homePage.VirtualDevice.Mode.Native.Configuration.TakeoverControl.Title: Takeover Control
-homePage.VirtualDevice.Mode.Native.Configuration.HowOftenToUpdate: How often to update this device
-homePage.VirtualDevice.Mode.Native.Configuration.1msExample: 1 ms = DSX updates this device every 1 ms which is very frequent.
-homePage.VirtualDevice.Mode.Native.Configuration.2000msExample: 2000 ms = DSX updates this device every 2 seconds.
+homePage.VirtualDevice.Mode.Native.Configuration.Detail: When Native Mode is selected, no virtual device is created, you can choose whether to enable Send Data or disable to make it more compatible with natively supported games.
 
-homePage.VirtualDevice.Mode.Native.Configuration.RumbleToggle.Title: Rumble
-homePage.VirtualDevice.Mode.Native.Configuration.RumbleToggle.Detail: Let a game with native support control rumble, disable to let DSX control rumble.
-
-homePage.VirtualDevice.Mode.Native.Configuration.AdaptiveTriggersToggle.Title: Adaptive Triggers
-homePage.VirtualDevice.Mode.Native.Configuration.AdaptiveTriggersToggle.Detail: Let a game with native support control the Adaptive Triggers, disable to let DSX control the Adaptive Triggers.
-
-homePage.VirtualDevice.Mode.Native.Configuration.LEDToggle.Title: LED
-homePage.VirtualDevice.Mode.Native.Configuration.LEDToggle.Detail: Let a game with native support control the LED options, disable to let DSX control the LED options.
+homePage.VirtualDevice.Mode.Native.Configuration.SendData.Title: Send Data to Device
+homePage.VirtualDevice.Mode.Native.Configuration.SendData.Detail: When enabled, DSX will control things like Adaptive Triggers, LED, Rumble, Haptics etc... Disable to let native games or other programs control this device.
 
 homePage.VirtualDevice.Mode.X360.Configuration.Title: Xbox Mode Configuration
 homePage.VirtualDevice.Mode.X360.Configuration.Detail: When Xbox 360 Emulation is active, you can adjust the passthrough options below. 
@@ -567,7 +556,8 @@ ctPage.LeftJoystick: Left Joystick
 ctPage.RightJoystick: Right Joystick
 ctPage.ControllerSkins.Title: Controller Skins
 ctPage.To: To
-ctPage.PhysicalAndVirtualDeviceOptions.Title: Phsyical and Virtual Device Options
+ctPage.From: From
+ctPage.PhysicalAndVirtualDeviceOptions.Title: Physical and Virtual Device Options
 ctPage.RawTouchpadData.Title: Raw Touchpad Data
 ctPage.RawTouchpadData.Description: Various touchpad info like finger 1 and 2 X/Y positions, and swipe gestures.
 ctPage.TouchpadShowGrid: Show Touchpad Grid
@@ -691,11 +681,20 @@ ctPage.GridPosition: Grid Position
 ctPage.TouchpadInfo: Various touchpad info like finger 1 and 2 X/Y positions, and swipe gestures
 ctPage.GreenScreenEffect: Green Screen Effect (For Streamers)
 
+ctPage.GeneralSettings.InvertLeftX: Invert Left X
+ctPage.GeneralSettings.InvertLeftX.Description: When activated, DSX will invert the X axis of the left joystick such that going left will act as going right, and vice-versa.
+ctPage.GeneralSettings.InvertLeftY: Invert Left Y
+ctPage.GeneralSettings.InvertLeftY.Description: When activated, DSX will invert the Y axis of the left joystick such that going up will act as going down, and vice-versa.
+ctPage.GeneralSettings.InvertRightX: Invert Right X
+ctPage.GeneralSettings.InvertRightX.Description: When activated, DSX will invert the X axis of the right joystick such that going left will act as going right, and vice-versa.
+ctPage.GeneralSettings.InvertRightY: Invert Right Y
+ctPage.GeneralSettings.InvertRightY.Description: When activated, DSX will invert the Y axis of the right joystick such that going up will act as going down, and vice-versa.
 
-btn.DpadUp: DPAD UP
-btn.DpadDown: DPAD DOWN
-btn.DpadLeft: DPAD LEFT
-btn.DpadRight: DPAD RIGHT
+
+btn.DpadUp: D-PAD UP
+btn.DpadDown: D-PAD DOWN
+btn.DpadLeft: D-PAD LEFT
+btn.DpadRight: D-PAD RIGHT
 btn.Triangle: TRIANGLE
 btn.Square: SQUARE
 btn.Circle: CIRCLE
@@ -986,7 +985,7 @@ hapticsPage.RumbleIntensityCard.Title: Rumble Intensity
 hapticsPage.RumbleIntensityCard.SubTitle: Choose how strong the overall motor strength should be.
 
 hapticsPage.MaxRumbleStrengthCard.Title: Max Rumble Strength
-hapticsPage.MaxRumbleStrengthCard.SubTitle: Rumble will not be sent to the controller higher than the specifed number on the right.
+hapticsPage.MaxRumbleStrengthCard.SubTitle: Rumble will not be sent to the controller higher than the specified number on the right.
 hapticsPage.MaxRumbleStrengthCard.SubTitle2: Example - If 200 is set, anything above 200 will be ignored and will only send 200 to the controller.
 
 hapticsPage.HapticMode.Disabled: Disabled
@@ -997,7 +996,7 @@ hapticsPage.HapticMode.TriggerHaptics: Trigger To Haptics
 hapticsPage.HapticMode.JoystickHaptics: Joystick To Haptics
 
 hapticsPage.Disabled.Title: Haptic Feedback Disabled
-hapticsPage.Disabled.SubTitle: When this is selected, Haptic Feedback will not be in effect, consider using Rumble Mode insted.
+hapticsPage.Disabled.SubTitle: When this is selected, Haptic Feedback will not be in effect, consider using Rumble Mode instead.
 
 hapticsPage.AudioHapticsConfig.Title: Audio To Haptics Configuration
 hapticsPage.AudioHapticsConfig.SubTitle: Sends your system wide audio to the controller and turns it into Haptics.
@@ -1279,6 +1278,9 @@ settingsPage.Display.LanguageCard.SearchBar.PlaceHolder: Search by language name
 settingsPage.Display.LightThemeCard.Title: Light Theme
 settingsPage.Display.LightThemeCard.SubTitle: Commit unholy atrocities by enabling this toggle.
 
+settingsPage.Display.FullDarkModeCard.Title: Full Dark Mode
+settingsPage.Display.FullDarkModeCard.SubTitle: Makes the background black and for those dark mode lovers.
+
 settingsPage.Display.AccentColorCard.Title: Application Accent Color
 settingsPage.Display.AccentColorCard.SubTitle: Choose the accent color used throughout DSX.
 settingsPage.Display.AccentColorCard.Reset.Button: Reset to System Default
@@ -1315,6 +1317,10 @@ settingsPage.Display.TaskbarPreferences.ShowConnectedControllers: Show Connected
 settingsPage.Behavior.StartUpWithWindowCard.Title: Launch with Windows
 settingsPage.Behavior.StartUpWithWindowCard.SubTitle: "Sets DSX to start automatically with Windows."
 settingsPage.Behavior.StartUpWithWindowCard.Note: "Steam will also launch on startup."
+
+settingsPage.Behavior.Launchv2Automatically.Title: Launch DSX v2 Automatically
+settingsPage.Behavior.Launchv2Automatically.SubTitle: When enabled, DSX v2 will launch and v3 will shutdown.
+settingsPage.Behavior.Launchv2Automatically.Note: Note: Easily return to v3 by holding the ESCAPE (esc) Key upon DSX startup. Once in v3, you can disable this option here.
 
 settingsPage.Behavior.StartUpMinimizedCard.Title: Initial Window State
 settingsPage.Behavior.StartUpMinimizedCard.SubTitle: "Choose how DSX appears when starting: Normal, Minimized, or Maximized."
@@ -1381,7 +1387,7 @@ settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: Add Incomi
 settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Add Outgoing UDP Port to Windows Firewall.
 
 # -------------------------------
-settingsPage.Driver.VirtualPadDriverCard.SubTitle: VirtualPad Driver enables the use of a virtual device that mimicks the original as if it were physically connected.
+settingsPage.Driver.VirtualPadDriverCard.SubTitle: VirtualPad Driver enables the use of a virtual device that mimics the original as if it were physically connected.
 settingsPage.Driver.HidHideCard.SubTitle: HidHide allows the App to hide the physical controller when emulating a virtual device. It's used to avoid double inputs from the virtual and physical controller and lets a game or program only see the virtual controller.
 settingsPage.Driver.NefariusCard.SubTitle: Nefarius is the Developer of the VirtualPad Driver and HidHide Driver, without his tools, this app would not be possible! Please support the author below.
 settingsPage.Driver.NefariusCard.GetInTouch: Get in touch
@@ -1475,6 +1481,7 @@ p.HidHide.HidHideIsNotInstalled: HidHide Driver not installed
 p.VPad.VPadIsInstalled: VirtualPad Driver by Nefarius is installed
 p.VPad.VPadIsNotInstalled: VirtualPad Driver by Nefarius not installed
 
+p.Controllers.AccessController: Access™ Controller
 p.Controllers.PSVR2SenseL: PS VR 2 Sense™ Controller (L)
 p.Controllers.PSVR2SenseR: PS VR 2 Sense™ Controller (R)
 p.Controllers.DualSense: DualSense™️ Wireless Controller
@@ -1634,3 +1641,44 @@ p.Shortcuts.OpenShoulderTapsWin10: Open shoulder taps (Windows 10)
 p.Shortcuts.WakePCFromBlankOrBlackScreen: Wake PC from blank or black screen
 p.Shortcuts.SaveScreenshotOfGameWindowToFile: Save screenshot of game window in focus to file (using Xbox Game Bar)
 p.Shortcuts.OpenTaskbarSettingsOnTaskbarFocus: Open taskbar settings (on taskbar focus)
+
+
+# Controller Page -> Touchpad Section
+
+ctPage.Touchpad.Mode.Title: Touchpad Mode
+ctPage.Touchpad.Mode.SubTitle: Choose between Passthrough, Touchpad To Mouse, or Touchpad+ to fully utilize the touchpad.
+
+ctPage.TouchpadToMouse.Mode.Passthrough.Title: Passthrough
+ctPage.TouchpadToMouse.Mode.Passthrough.SubTitle: Touchpad data will get passed through DualShock 4 or DualSense Emulation.
+
+ctPage.TouchpadToMouse.Mode.Mouse.Title: Touchpad To Mouse
+ctPage.TouchpadToMouse.Mode.Mouse.SubTitle: Touchpad will control the mouse of this PC.
+
+ctPage.TouchpadToMouse.Mode.Plus.Title: Touchpad+
+ctPage.TouchpadToMouse.Mode.Plus.SubTitle: Touchpad input can be used for remapping, and other various tasks.
+
+ctPage.TouchpadToMouse.PressToLeftClick.Title: Press to Left Click
+ctPage.TouchpadToMouse.PressToLeftClick.SubTitle: When enabled, pressing on the touchpad will result in a Left Mouse Click
+
+ctPage.TouchpadToMouse.TapToLeftClick.Title: Tap to Left Click
+ctPage.TouchpadToMouse.TapToLeftClick.SubTitle: When enabled, tapping on the touchpad will result in a Left Mouse Click
+
+ctPage.TouchpadToMouse.TapToRightClick.Title: Tap to Right Click
+ctPage.TouchpadToMouse.TapToRightClick.SubTitle: When enabled, tapping on the touchpad with two fingers will result in a Right Mouse Click
+
+ctPage.TouchpadToMouse.NormalSensi.Title: Normal Sensitivity Speed
+ctPage.TouchpadToMouse.NormalSensi.SubTitle: The Sensitivity speed for the mouse to move at.
+
+ctPage.TouchpadToMouse.PreciseSensi.Title: Precise Sensitivity Speed
+ctPage.TouchpadToMouse.PreciseSensi.SubTitle: While this button is held, the mouse will enter a precise state where it is slowed down to what is set here.
+
+ctPage.TouchpadToMouse.FastSensi.Title: Fast Sensitivity Speed
+ctPage.TouchpadToMouse.FastSensi.SubTitle: While this button is held, the mouse will enter a fast state where it speeds up to what is set here.
+
+ctPage.TouchpadToMouse.ScrollSensi.Title: Scroll Sensitivity Speed
+ctPage.TouchpadToMouse.ScrollSensi.SubTitle: Tap with 2 fingers then drag in any direction to start scrolling like pressing the Middle Mouse Button and moving Mouse.
+
+ctPage.TouchpadToMouse.ScrollInvert.Title: Invert Scroll
+ctPage.TouchpadToMouse.ScrollInvert.SubTitle: When enabled, scrolling will be inverted.
+
+# --------------------
