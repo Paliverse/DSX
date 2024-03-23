@@ -1278,9 +1278,6 @@ settingsPage.Display.LanguageCard.SearchBar.PlaceHolder: Search by language name
 settingsPage.Display.LightThemeCard.Title: Light Theme
 settingsPage.Display.LightThemeCard.SubTitle: Commit unholy atrocities by enabling this toggle.
 
-settingsPage.Display.FullDarkModeCard.Title: Full Dark Mode
-settingsPage.Display.FullDarkModeCard.SubTitle: Makes the background black and for those dark mode lovers.
-
 settingsPage.Display.AccentColorCard.Title: Application Accent Color
 settingsPage.Display.AccentColorCard.SubTitle: Choose the accent color used throughout DSX.
 settingsPage.Display.AccentColorCard.Reset.Button: Reset to System Default
