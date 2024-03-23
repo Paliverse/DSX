@@ -1700,6 +1700,22 @@ settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Title: Tabbed
 settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Subtitle: Windows 11 wallpaper blur effect.
 settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Warning.Title: ⚠️ Available for Windows 11 Insider 10 (Build 22523) or newer
 
+BatteryPowerState.Discharging: Discharging
+BatteryPowerState.Charging: Charging
+BatteryPowerState.Complete: Complete
+BatteryPowerState.AbnormalVoltage: Abnormal Voltage
+BatteryPowerState.AbnormalTemperture: Abnormal Temperature
+BatteryPowerState.ChargingError: Charging Error
+
+ToastNotifications.BatteryInfo: Battery Info
+ToastNotifications.BatteryLevelLow: 🪫⚠️ Battery Level Low ⚠️🪫
+ToastNotifications.DeviceConnected: ℹ️ Device Connected
+ToastNotifications.DeviceDisconnected: ⚠️ Device Disconnected
+ToastNotifications.EmulationActivated: activated
+ToastNotifications.ActiveProfile: Active
+ToastNotifications.IsActiveProfile: is active
+ToastNotifications.Activated: activated
+
 
 
 
