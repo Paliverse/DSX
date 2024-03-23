@@ -1278,6 +1278,9 @@ settingsPage.Display.LanguageCard.SearchBar.PlaceHolder: Search by language name
 settingsPage.Display.LightThemeCard.Title: Light Theme
 settingsPage.Display.LightThemeCard.SubTitle: Commit unholy atrocities by enabling this toggle.
 
+settingsPage.Display.FullDarkModeCard.Title: Full Dark Mode
+settingsPage.Display.FullDarkModeCard.SubTitle: Makes the background black and for those dark mode lovers.
+
 settingsPage.Display.AccentColorCard.Title: Application Accent Color
 settingsPage.Display.AccentColorCard.SubTitle: Choose the accent color used throughout DSX.
 settingsPage.Display.AccentColorCard.Reset.Button: Reset to System Default
@@ -1317,7 +1320,7 @@ settingsPage.Behavior.StartUpWithWindowCard.Note: "Steam will also launch on sta
 
 settingsPage.Behavior.Launchv2Automatically.Title: Launch DSX v2 Automatically
 settingsPage.Behavior.Launchv2Automatically.SubTitle: When enabled, DSX v2 will launch and v3 will shutdown.
-settingsPage.Behavior.Launchv2Automatically.Note: Note: Easily return to v3 by holding the ESCAPE (esc) Key upon DSX startup. Once in v3, you can disable this option here.
+settingsPage.Behavior.Launchv2Automatically.Note: Easily return to v3 by holding the ESCAPE (esc) Key upon DSX startup. Once in v3, you can disable this option here.
 
 settingsPage.Behavior.StartUpMinimizedCard.Title: Initial Window State
 settingsPage.Behavior.StartUpMinimizedCard.SubTitle: "Choose how DSX appears when starting: Normal, Minimized, or Maximized."
@@ -1697,8 +1700,6 @@ settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Title: Tabbed
 settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Subtitle: Windows 11 wallpaper blur effect.
 settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Warning.Title: ⚠️ Available for Windows 11 Insider 10 (Build 22523) or newer
 
-settingsPage.Display.FullDarkModeCard.Title: Full Dark Mode
-settingsPage.Display.FullDarkModeCard.SubTitle: Makes the background black and for those dark mode lovers.
 
 
 
