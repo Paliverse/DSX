@@ -1716,10 +1716,11 @@ ToastNotifications.ActiveProfile: Active
 ToastNotifications.IsActiveProfile: is active
 ToastNotifications.Activated: activated
 
+aboutPage.DSX.Libraries.Title: Libraries Used In DSX
+aboutPage.DSX.Libraries.Subtitle: The list of public libraries used to power DSX.
 
-
-
-
+ctPage.JoystickDeadzone.InnerDeadzone.Title: Inner Deadzone
+ctPage.JoystickDeadzone.InnerDeadzone.SubTitle: The inner joystick deadzone is a zone around the center position of the joystick that filters out minor fluctuations or noise in input readings to prevent unintended actions, ensuring greater precision and stability in joystick control.
 
 
 
