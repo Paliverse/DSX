@@ -1719,9 +1719,6 @@ ToastNotifications.Activated: activated
 aboutPage.DSX.Libraries.Title: Libraries Used In DSX
 aboutPage.DSX.Libraries.Subtitle: The list of public libraries used to power DSX.
 
-ctPage.JoystickDeadzone.InnerDeadzone.Title: Inner Deadzone
-ctPage.JoystickDeadzone.InnerDeadzone.SubTitle: The inner joystick deadzone is a zone around the center position of the joystick that filters out minor fluctuations or noise in input readings to prevent unintended actions, ensuring greater precision and stability in joystick control.
-
 ctPage.JoystickDeadzone.Left.Mode.Title: Left Joystick Mode
 ctPage.JoystickDeadzone.Right.Mode.Title: Right Joystick Mode
 ctPage.JoystickDeadzone.Mode.SubTitle: Choose between Passthrough, Simple Deadzone, or Advanced Deadzone for a more precise adjustment.
