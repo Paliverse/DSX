@@ -1722,5 +1722,39 @@ aboutPage.DSX.Libraries.Subtitle: The list of public libraries used to power DSX
 ctPage.JoystickDeadzone.InnerDeadzone.Title: Inner Deadzone
 ctPage.JoystickDeadzone.InnerDeadzone.SubTitle: The inner joystick deadzone is a zone around the center position of the joystick that filters out minor fluctuations or noise in input readings to prevent unintended actions, ensuring greater precision and stability in joystick control.
 
+ctPage.JoystickDeadzone.Left.Mode.Title: Left Joystick Mode
+ctPage.JoystickDeadzone.Right.Mode.Title: Right Joystick Mode
+ctPage.JoystickDeadzone.Mode.SubTitle: Choose between Passthrough, Simple Deadzone, or Advanced Deadzone for a more precise adjustment.
+
+ctPage.JoystickDeadzone.Mode.Passthrough.SubTitle: Joystick data seamlessly passes through Xbox 360, DualShock 4, or DualSense Emulation. No adjustments or deadzone modifications are applied.
+
+ctPage.JoystickDeadzone.Mode.Simple.Title: Simple Deadzone
+ctPage.JoystickDeadzone.Mode.Simple.SubTitle: Choosing between axial and radial deadzone modes determines your controllers response. Axial prioritizes precise control per direction, ideal for platformers or shooters, while radial ensures uniform response, great for racing or flight sims.
+
+ctPage.JoystickDeadzone.Mode.Advanced.Title: Advanced Deadzone
+ctPage.JoystickDeadzone.Mode.Advanced.SubTitle: Fine-tune your joystick experience with our Advanced Deadzone Mode. Adjust sensitivity, deadzone, and range settings to craft a control scheme that fits you perfectly.
+
+ctPage.JoystickDeadzone.Simple.Mode.Title: Deadzone Mode
+ctPage.JoystickDeadzone.Simple.Mode.Subtitle: Choosing between axial and radial deadzone modes determines how your controller reacts to small movements. Axial deadzones prioritize precise control in individual directions, great for platformers or shooters. Radial deadzones ensure uniform response across all directions, reducing unintentional movements, ideal for racing or flight simulations.
+
+ctPage.JoystickDeadzone.SimpleMode.Axial.Title: Axial
+ctPage.JoystickDeadzone.SimpleMode.Radial.Title: Radial
+
+ctPage.JoystickDeadzone.Deadzone.Title: Deadzone
+ctPage.JoystickDeadzone.Deadzone.SubTitle: Represents the deadzone value for the joystick. It is the area around the center where input is ignored.
+
+ctPage.JoystickDeadzone.Saturation.Title: Saturation
+ctPage.JoystickDeadzone.Saturation.SubTitle: Controls how sensitive your joystick is. Setting it below 1 makes the joystick more responsive, so even small movements have a big effect on your game or application. Setting it to 1 keeps the joystick at its normal sensitivity. Adjusting saturation lets you tailor how much your movements affect your screen.
+
+ctPage.JoystickDeadzone.Range.Title: Range
+ctPage.JoystickDeadzone.Range.SubTitle: Adjusts how far the stick can travel, determining the maximum extent of joystick movement that affects on-screen actions.
+
+ctPage.JoystickDeadzone.Sensitivity.Title: Sensitivity
+ctPage.JoystickDeadzone.Sensitivity.SubTitle: Increasing sensitivity makes the joystick more responsive, so even small movements have a big effect on the screen. Decreasing sensitivity does the opposite, needing bigger joystick movements to make the same changes on the screen.
+
+
+
+
+
 
 
