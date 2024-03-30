@@ -350,28 +350,28 @@ homePage.ControllerOptions: Controller Options
 # Profiles Page
 # ------------------------------------------------------------------------------------------------
 
-profilesPage.DeviceName.Title : Device Name
-profilesPage.DeviceName.SubTitle : The Alias name to use for this device.
+profilesPage.DeviceName.Title: Device Name
+profilesPage.DeviceName.SubTitle: The Alias name to use for this device.
 
-profilesPage.ProfilesDirectory.Title : Profiles Directory
-profilesPage.ProfilesDirectory.SubTitle : View the location of where profiles are saved for this controller.
+profilesPage.ProfilesDirectory.Title: Profiles Directory
+profilesPage.ProfilesDirectory.SubTitle: View the location of where profiles are saved for this controller.
 
-profilesPage.ResetController.Title : Reset Controller Profile System
-profilesPage.ResetController.SubTitle : Deletes all the associated profiles for this device like Actions, LED, Adaptive Triggers, etc..
-profilesPage.ResetController.Popup.LineOne : THIS CANNOT BE UNDONE!
-profilesPage.ResetController.Popup.LineTwo : All the associated profiles for this device like Actions, LED, Adaptive Triggers, etc.. will be deleted.
-profilesPage.ResetController.Popup.LineThree : Are you sure you want to proceed?
+profilesPage.ResetController.Title: Reset Controller Profile System
+profilesPage.ResetController.SubTitle: Deletes all the associated profiles for this device like Actions, LED, Adaptive Triggers, etc..
+profilesPage.ResetController.Popup.LineOne: THIS CANNOT BE UNDONE!
+profilesPage.ResetController.Popup.LineTwo: All the associated profiles for this device like Actions, LED, Adaptive Triggers, etc.. will be deleted.
+profilesPage.ResetController.Popup.LineThree: Are you sure you want to proceed?
 
-profilesPage.ProfileList.SubTitle : The currently active profile for the various profile systems.
+profilesPage.ProfileList.SubTitle: The currently active profile for the various profile systems.
 
-profilesPage.Action : Action Profile
-profilesPage.AdaptiveTriggers : Adaptive Triggers Profile
-profilesPage.Deadzone : Deadzone Profile
-profilesPage.HapticsRumble : Haptics/Rumble Profile
-profilesPage.LED : LED Profile
-profilesPage.Motion : Motion Profile
-profilesPage.Notification : Notification Profile
-profilesPage.Touchpad : Touchpad Profile
+profilesPage.Action: Action Profile
+profilesPage.AdaptiveTriggers: Adaptive Triggers Profile
+profilesPage.Deadzone: Deadzone Profile
+profilesPage.HapticsRumble: Haptics/Rumble Profile
+profilesPage.LED: LED Profile
+profilesPage.Motion: Motion Profile
+profilesPage.Notification: Notification Profile
+profilesPage.Touchpad: Touchpad Profile
 
 
 # ------------------------------------------------------------------------------------------------
@@ -1013,7 +1013,7 @@ hapticsPage.TriggerHapticsConfig.SubTitle: Lets you translate L2/R2 pressure pre
 hapticsPage.JoystickHapticsConfig.Title: Trigger To Haptics Configuration
 hapticsPage.JoystickHapticsConfig.SubTitle: Lets you translate Left and Right Stick movements into haptics with the desired Sound Wave. Left stick controls Left motor, right stick controls right motor.
 
-hapticsPage.RestartButton.Title : Restart
+hapticsPage.RestartButton.Title: Restart
 
 hapticsPage.RumblePassthrough.Title: Rumble Passthrough
 hapticsPage.RumblePassthrough.AudioHaptics.SubTitle: If enabled, Rumble that is sent to the virtual controller will be applied to this physical controller. If no rumble is sent, Audio Haptics will resume as normal.
@@ -1051,14 +1051,14 @@ hapticsPage.SoundWave.Gain.SubTitle: The amount of amplification applied to a si
 hapticsPage.SoundWave.Frequency.Title: Frequency
 hapticsPage.SoundWave.Frequency.SubTitle: The number of times per second that a sound pressure wave repeats itself. Around 60 Hz is the strongest.
 
-hapticsPage.SoundWave.Sweep.StartEndFreq.Title : Start and End Frequencies
-hapticsPage.SoundWave.Sweep.StartEndFreq.SubTitle : Determine the start and end for the desired frequencies.
-hapticsPage.SoundWave.Sweep.StartFreq.Title : Start Frequency
-hapticsPage.SoundWave.Sweep.EndFreq.Title : End Frequency
+hapticsPage.SoundWave.Sweep.StartEndFreq.Title: Start and End Frequencies
+hapticsPage.SoundWave.Sweep.StartEndFreq.SubTitle: Determine the start and end for the desired frequencies.
+hapticsPage.SoundWave.Sweep.StartFreq.Title: Start Frequency
+hapticsPage.SoundWave.Sweep.EndFreq.Title: End Frequency
 
-hapticsPage.SoundWave.Sweep.Duration.Title : Duration
-hapticsPage.SoundWave.Sweep.Duration.Title2 : Duration (seconds)
-hapticsPage.SoundWave.Sweep.Duration.SubTitle : How long it takes to go from Start Frequency to End Frequency in seconds.
+hapticsPage.SoundWave.Sweep.Duration.Title: Duration
+hapticsPage.SoundWave.Sweep.Duration.Title2: Duration (seconds)
+hapticsPage.SoundWave.Sweep.Duration.SubTitle: How long it takes to go from Start Frequency to End Frequency in seconds.
 
 # ------------------------------------------------------------------------------------------------
 # Installed Games Page
@@ -1257,15 +1257,15 @@ settingsPage.Tabs.DangerZone: Danger Zone
 settingsPage.Tabs.DangerZone.Warning: This Action cannot be undone, App Settings, Profiles, and everything will be reset to their default state. 
 settingsPage.Tabs.DangerZone.ResetAppSettings: Reset App Settings
 
-settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineOne : Save Folder Location
-settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineTwo : THIS CANNOT BE UNDONE!
-settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineThree : Are you sure you want to proceed?
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineOne: Save Folder Location
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineTwo: THIS CANNOT BE UNDONE!
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineThree: Are you sure you want to proceed?
 
-settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Title : App Reset Success
-settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Detail : DSX will now restart.
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Title: App Reset Success
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Detail: DSX will now restart.
 
-settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Title : Error
-settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Detail : Failed to reset app settings.
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Title: Error
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Detail: Failed to reset app settings.
 
 settingsPage.EnableDiagnostictracing: Enable diagnostic tracing
 settingsPage.EnableDiagnostictracing.Details: This is to be used for tracking certain things like performance by experienced devs.
@@ -1749,9 +1749,110 @@ ctPage.JoystickDeadzone.Range.SubTitle: Adjusts how far the stick can travel, de
 ctPage.JoystickDeadzone.Sensitivity.Title: Sensitivity
 ctPage.JoystickDeadzone.Sensitivity.SubTitle: Increasing sensitivity makes the joystick more responsive, so even small movements have a big effect on the screen. Decreasing sensitivity does the opposite, needing bigger joystick movements to make the same changes on the screen.
 
+homepage.VirtualDevice.DSModeConfig.Title: DualSense Mode Configuration
+homepage.VirtualDevice.DSModeConfig.SubTitle: When DualSense Emulation is active, you can adjust the passthrough options below.
+
+app.LaunchV2Button: Launch DSX v2
+
+profiles.ResetProfile: Reset Profile
+profiles.RenameProfile: Rename Profile
+
+ctPage.ActiveMouseMappingsDescription: Your list of active Mouse Mappings.
+
+ctPage.selectedButton: Selected Button
+ctPage.selectedButtons: Selected Buttons ## Plural
+
+ctPage.Input: Input
+ctPage.Output: Output
+
+ctPage.Mouse.ScrollUp: Scroll Wheel Up (%i Points) # %i is a number that is auto filled so think of it like this: - Scroll Wheel Up (2 Points) -
+ctPage.Mouse.ScrollDown: Scroll Wheel Down (%i Points) # %i is a number that is auto filled so think of it like this: - Scroll Wheel Down (2 Points) -
+
+ctPage.R2TriggerInputRange: R2 Trigger Input Range
+
+notificationsPage.SystemNotification.Title: System Notifications
+notificationsPage.SystemNotification.SubTitle: In order for DSX to send notifications, DSX needs permissions. Click `Open Notification Settings` to allow DSX to send notifications if its not already enabled.
+notificationsPage.SystemNotification.Button.Title: Open Notification Settings
+
+notificationsPage.LowBattery.Title: Low Battery
+notificationsPage.LowBattery.SubTitle: Get notified when battery becomes low only when its not charging.
+
+notificationsPage.LowBattery.Percentage.Title: Battery Percentage
+notificationsPage.LowBattery.Percentage.SubTitle: Choose when this notification should trigger when it falls below the specified battery percentage.
+
+notificationsPage.LowBattery.Repeat.Title: Notification Repeat
+notificationsPage.LowBattery.Repeat.SubTitle: Choose how many times this notification should repeat.
+
+notificationsPage.LowBattery.Repeat.1: Repeat 1 time
+notificationsPage.LowBattery.Repeat.3: Repeat 3 times
+notificationsPage.LowBattery.Repeat.5: Repeat 5 times
+notificationsPage.LowBattery.Repeat.10: Repeat 10 times
+notificationsPage.LowBattery.Repeat.Forever: Repeat forever
+
+notificationsPage.LowBattery.Interval.Title: Notification Interval
+notificationsPage.LowBattery.Interval.SubTitle: Choose the interval time between each repeat.
+
+notificationsPage.LowBattery.Interval.30Seconds: 30 Second Intervals
+notificationsPage.LowBattery.Interval.1: 1 Minute Intervals
+notificationsPage.LowBattery.Interval.2: 2 Minute Intervals
+notificationsPage.LowBattery.Interval.5: 5 Minute Intervals
+notificationsPage.LowBattery.Interval.10: 10 Minute Intervals
+
+notificationsPage.ConnectionStatus.Title: Connection Status
+notificationsPage.ConnectionStatus.SubTitle: Get notified when this device is connected or disconnected from DSX, or when an emulation mode becomes active.
+
+notificationsPage.ConnectionStatus.DeviceConnected.Title: Device Connected
+notificationsPage.ConnectionStatus.DeviceConnected.SubTitle: Get notified when this device connectes to DSX.
+
+notificationsPage.ConnectionStatus.DeviceDisconnected.Title: Device Disconnected
+notificationsPage.ConnectionStatus.DeviceDisconnected.SubTitle: Get notified when this device disconnects from DSX.
+
+notificationsPage.ConnectionStatus.VirtualDevice.Title: Virtual Device Status
+notificationsPage.ConnectionStatus.VirtualDevice.SubTitle: Get notified when a Virtual Device becomes active.
 
 
+notificationsPage.ProfileSystem.SubTitle: Get notified when a profile becomes active.
 
+colorPicker.InitialColor: Initial Color
+colorPicker.SelectedColor: Selected Color
+
+color.Gradient: Gradient
+
+# %i is a number that is auto filled, also keep the translation inside the single quotes.
+installedGamesPage.TotalPlaytime.Day.single: '%i Day' 
+installedGamesPage.TotalPlaytime.Day.plural: '%i Days'
+
+installedGamesPage.TotalPlaytime.Hour.single: '%i Hour'
+installedGamesPage.TotalPlaytime.Hour.plural: '%i Hours'
+
+installedGamesPage.TotalPlaytime.Minute.single: '%i Minute'
+installedGamesPage.TotalPlaytime.Minute.plural: '%i Minutes'
+
+setupPage.DSXSetup.Title: DSX Setup
+
+setupPage.DSXSetup.AdaptiveTriggers.SubTitle: Wide range of Adaptive Trigger modes and configurations to get the perfect feeling.
+
+setupPage.DSXSetup.HapticFeedback.Title: Haptic Feedback
+setupPage.DSXSetup.HapticFeedback.SubTitle: Feel a more immersive experience of rumble with Audio To Haptics, Rumble To Haptics, and more..
+
+setupPage.DSXSetup.MultipleController.Title: Multiple Controller Support
+setupPage.DSXSetup.MultipleController.SubTitle: Connect as many controllers as your PC can handle.
+
+setupPage.DSXSetup.ProfileSystem.SubTitle: Add unlimited profiles, and configure them to suit your needs.
+
+setupPage.DSXSetup.Actions.Title: Actions System
+setupPage.DSXSetup.Actions.SubTitle: Rebind gamepad buttons, assign shortcuts, add macros, set keboard mappings, and more...
+
+setupPage.Finish.FeedbackSupport.Title: Feedback and Support
+setupPage.Finish.FeedbackSupport.SubTitle: Your feedback is important, please join the Discord Server to report bugs, get support, or provide any suggestions.
+
+app.LetsTakeYourSkills: Let's take your skills to the next level.
+
+virtualPad.SelfInstall.Title: VirtualPad Self-Install
+virtualPad.SelfInstall.SubTitle: Manually download the driver to do a self-install.
+virtualPad.SelfInstall.SubTitle2: Once manually installed, restart DSX and proceed wiith this setup again.
+
+virtualPad.SelfInstall.Button.Title: Download VirtualPad
 
 
 
