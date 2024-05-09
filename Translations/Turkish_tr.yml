@@ -1,0 +1,1726 @@
+#
+# * Copyright (c) 2022-2023 Paliverse Apps LLC. All rights reserved.
+# *
+# * Proprietary and Confidential - This source code is the sole property of Paliverse Apps LLC.
+# * Reproduction or dissemination of this source code, in whole or in part, or the 
+# * production of derivative works therefrom without the express permission of Paliverse Apps LLC.
+# * is strictly forbidden.
+# *
+# * Written by Paliverse Apps LLC.
+
+# ------------------------------------------------------------------------------------------------
+# More info on how to use Yaml files: https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started
+# Yaml files must be Embedded Resource in the file properties in DSX, otherwise translation files can also be selected from user's PC
+# ------------------------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------------------------
+# EXAMPLES: 
+# ------------------------------------------------------------------------------------------------
+
+# Anything before the colon : is the key, anything after the colon is the translated text (Value)
+
+# to use a colon : in parts of the text on the right, put the text inside quotes like this:
+colon.Example: "this is a text : with a colon"
+# example usage: <TextBlock Text="{i18n:Translate String='colon.Example', UsedForXamlTemp='this is a text : with a colon'}" />
+# programmatically: var text = Translator.Instance.GetTranslation("colon.Example", "this is a text : with a colon");
+# ----Takes in (single key, fallback text)
+
+# ------------------------------------------------------------------------------------------------
+
+# Normal String:
+houseString.Example: 'This is a house string.'
+# example usage: <TextBlock Text="{i18n:Translate String='houseString.Example', UsedForXamlTemp='This is a house string.'}" />
+# programmatically: var text = Translator.Instance.GetTranslation("houseString.Example", "This is a house string.");
+# ----Takes in (single key, fallback text)
+
+# ------------------------------------------------------------------------------------------------
+
+# String with a number that changes:
+# %i will be replaced with the number provided in xaml
+houseNumber.Example: 'Current House Address is %i Paliverse St. Chicago, IL 60640'
+# example usage: <TextBlock Text="{i18n:Translate String='houseNumber.Example', UsedForXamlTemp='Current House Address is %i Paliverse St. Chicago, IL 60640', Number=1234}" />
+# programmatically: var textNumber = Translator.Instance.GetTranslation("houseNumber.Example", $"Current House Address is {Number} Paliverse St. Chicago, IL 60640", 1234);
+# ----Takes in (single key, fallback text, number)
+
+# The number can be binded itself: Number={Binding ViewModel.HouseAddressNumber}
+
+# ------------------------------------------------------------------------------------------------
+
+# Singular or Plural string:
+# %i will be replaced with the number provided in xaml
+houseExample.single: '%i house'
+houseExample.plural: '%i houses'
+# example usage: <TextBlock Text="{i18n:Translate String='houseExample.single', Plural=houseExample.plural, UsedForXamlTemp='%i houses.', Number=1}" />
+# programmatically: var textPlural = Translator.Instance.GetTranslation("houseExample.single", "houseExample.plural", $"{Number} houses.", 1234);
+# ----Takes in (single key, plural key, fallback text, number)
+
+# The number reflects whether to use House or Houses.
+# The number can be binded itself: Number={Binding ViewModel.Number}
+
+# ------------------------------------------------------------------------------------------------
+# EXAMPLES END 
+# ------------------------------------------------------------------------------------------------
+
+
+# Please make sure you read the above before modifying this file.
+# If you're unsure of a translation or the key etc.. Contact @paliverse on discord in the DSX Server:
+# Https://discord.gg/dsx
+
+# ------------------------------------------------------------------------------------------------
+# Common things - For one time usage or Used in more than one place
+# ------------------------------------------------------------------------------------------------
+NoControllerDetected.Title: Kontrolcü Bulunamadı
+NoControllerDetected.ATMessage: Adaptif Tetikleri yapılandırmak için Kontrolcünüzü kablo veya Bluetooth ile bağlayınız.
+NoControllerDetected.Subtitle: Bilgilerine erişmek için uyumlu bir kontrolcüyü kablo veya Bluetooth ile bağlayınız.
+
+# ------------------------------------------------------------------------------------------------
+# Small generic words
+# ------------------------------------------------------------------------------------------------
+OFF: "KAPALI"
+NotAny: N/A
+Frequency: Frekans
+Cancel: İptal
+TryAgain: Tekrar Dene
+# A period of time, obviously
+Period: Süre
+
+# ------------------------------------------------------------------------------------------------
+# DSX
+# ------------------------------------------------------------------------------------------------
+dsx.Initialization.Title: Potansyelinizi ortaya çıkaralım.
+dsx.NoControllersDetected: Kontrolcü Bulunamadı
+dsx.KindlyConnectController: Bilgilerine erişmek için uyumlu bir kontrolcüyü kablo veya Bluetooth ile bağlayınız.
+dsx.PlugInControllerToConfigure: Dokunsal veya Standart Titreşimi'i yapılandırmak için lütfen kontrolcünüzü kablo veya Bluetooth ile bağlayın.
+dsx.ConnectControllerToAccessInfo: Bilgilerine erişmek için uyumlu bir kontrolcüyü kablo veya Bluetooth ile bağlayınız.
+dsx.ConnectControllerToConfigureNotifications: Bildirimler ayarlarını yapılandırmak için lütfen kontrolcünüzü kablo veya Bluetooth ile bağlayın.
+dsx.ConnectControllerToConfigureProfiles: Profilleri yapılandırmak için lütfen kontrolcünüzü kablo veya Bluetooth ile bağlayın.
+
+dsx.Initialization.Error.SteamIDNoMatch.Title: Steam ID uyuşmuyor
+dsx.Initialization.Error.SteamIDNoMatch.Detail: Steam ID, Steam API'sindeki ID ile uyuşmuyor. Lütfen DSX'i yüklemek için kullanılmış hesaba giriş yaptığınızdan emin olun.
+
+dsx.Initialization.Error.ServerFailure.Title: Bilinmeyen Sunucu Hatası
+dsx.Initialization.Error.ServerFailure.Detail: Sahipliği doğrulamak için DSX sunucuları ile iletişim kurulamıyor, lütfen Windows güvenlik duvarınızda DSX'e izin verildiğinden emin olun ve tekrar deneyin.
+
+dsx.Initialization.Error.SteamApiServerFailure.Title: Steam API Sunucu Hatası
+dsx.Initialization.Error.SteamApiServerFailure.Detail: Steam API sunucuları ile iletişim kurulamıyor, Lütfen Steam sunucularının çevrimiçi olduğunu doğrulayın, Çevrimdışıysa lütfen daha sonra tekrar deneyin.
+
+dsx.Initialization.Error.VirtualPadError.Title: VirtualPad Driver by Nefarius Sunucu Hatası
+dsx.Initialization.Error.VirtualPadError.Detail: VirtualPad Driver sunucuları ile iletişim kurulamıyor, Bu sorun devam ederse, lütfen DSX Discord sunucusunda veya Steam forumlarında bizimle iletişime geçin.
+
+dsx.Initialization.Error.InternetConnection.Title: İnternet Bağlantısı Gerekli
+dsx.Initialization.Error.InternetConnection.Detail: DSX'i başlatmak için açılış esnasında internet bağlantısı gereklidir, lütfen Windows güvenlik duvarınızda DSX'e izin verildiğinden emin olun ve tekrar deneyin.
+
+dsx.Initialization.Error.UnautorizedAccess.Title: Yetkisiz erişim nedeniyle sunucu ile iletişim kurulamıyor
+dsx.Initialization.Error.UnautorizedAccess.DetailOne: Bağlantı sağlanamadı çünkü bilgisayarınızın Tarih ve Saati
+dsx.Initialization.Error.UnautorizedAccess.DetailTwo: yanlış.
+
+dsx.Initialization.AppSettings: Uygulama Ayarları Yükleniyor...
+dsx.Initialization.AccentColor: Tema Rengi Uygulanıyor...
+dsx.Initialization.Discord: Discord Rich Presence Ayarlanıyor...
+dsx.Initialization.InternetCheck: İnternet Bağlantısı Kontrol ediliyor...
+dsx.Initialization.SteamID: Steam ID Kontrol Ediliyor...
+dsx.Initialization.DSXOwnership: Steam Sunucuları ile DSX sahipliği kontrol ediliyor...
+dsx.Initialization.DLCOwnership: Steam sunucuları ile DualSense Emülasyon DLC'si sahipliği kontrol ediliyor...
+dsx.Initialization.OwnershipResults: DSX/DLC sahipliği sonuçları kontrol ediliyor...
+dsx.Initialization.DSFirmware: En son Dualsense Yazılımı sürümü alınıyor...
+dsx.Initialization.VirtualPad: VirtualPad Driver by Nefarius güncellemeleri kontrol ediliyor...
+dsx.Initialization.VirtualPadResult: VirtualPad Driver by Nefarius en son sürümde çalışıyor...
+dsx.Initialization.SetupPage: Kurulum Ekranı Hazırlanıyor...
+dsx.Initialization.v3BetaInfo: v3 Beta Bilgi Ekranı Hazırlanıyor...
+dsx.Initialization.HomePage: Ana Sayfa Hazırlanıyor...
+
+dsx.Initialization.VirtualPad.LicenseExpired: VirtualPad Driver lisans süresi doldu. Yeniden kurulum veya Yeniden başlatma gerekli.
+dsx.Initialization.VirtualPad.ServiceError: VirtualPad Driver Hizmet Hatası, Yeniden kurulum gerekli.
+dsx.Initialization.VirtualPad.UpdateAvailable.PartOne: VirtualPad Driver Sürümü
+dsx.Initialization.VirtualPad.UpdateAvailable.PartTwo: Mevcut
+dsx.Initialization.VirtualPad.NotInstalled: VirtualPad Driver by Nefarius kurulu değil.
+
+dsx.ShutDown: DSX'i Kapat
+dsx.ShutDown.PopupTitle: DSX Kapatılsın mı?
+dsx.ShutDown.Detail: DSX'i kapatmak istediğinize emin misiniz?
+
+dsx.NavigationButtons.Home: Ana Sayfa
+dsx.NavigationButtons.Profiles: Profiller
+dsx.NavigationButtons.Controller: Kontrolcü
+dsx.NavigationButtons.Notifications: Bildirimler
+dsx.NavigationButtons.DSEdgePSVR2: DS Edge | PSVR2
+dsx.NavigationButtons.AdaptiveTriggers: Adaptif Tetikler
+dsx.NavigationButtons.ControllerLED: Kontrolcü LED
+dsx.NavigationButtons.HapticsRumble: Titreşim
+dsx.NavigationButtons.InstalledGames: Yüklü Oyunlar
+dsx.NavigationButtons.HidHide: HidHide
+dsx.NavigationButtons.DSXLogs: DSX Kayıtları
+dsx.NavigationButtons.Settings: Ayarlar
+dsx.NavigationButtons.About: Hakkında
+
+dsx.TaskbarIcon.QuitDSX: DSX'den Çık
+
+dsx.UnexpectedError.Popup.Title: Unhandled AppDomain exception occurred
+dsx.UnexpectedError.Popup.TitleTwo: Unhandled UI Thread exception occurred
+
+dsx.UnexpectedError.Popup.LineOne: Beklenmedik Hata meydana geldi, DSX v3 devam edemiyor.
+dsx.UnexpectedError.Popup.LineTwo: Çökmeyle ilgili detaylar belirtilen Kayıt klasöründe bulunabilir
+
+
+# ------------------------------------------------------------------------------------------------
+# Descriptions
+# ------------------------------------------------------------------------------------------------
+
+X360Gamepad.Title: Sanal Xbox 360 Kontrolcüsü
+X360Gamepad.Description: Xinput destekli oyunlarda sanal Xbox 360 kontrolcüsünü kullanın.
+
+DS4Gamepad.Title: Sanal DualShock 4 Kontrolcüsü
+DS4Gamepad.Description: Destekli oyunlarda sanal Dualshock 4 kontrolcüsünü kullanın.
+
+DualSensePad.Title: Sanal DualSense Kontrolcüsü (DLC Gerekli)
+DualSensePad.Description: Destekli oyunlarda sanal Dualsense kontrolcüsünü kullanın.
+
+# ------------------------------------------------------------------------------------------------
+# Profile system
+# ------------------------------------------------------------------------------------------------
+profiles.CannotUndo: Bu işlem geri alınamaz.
+profiles.EnterProfileName: Profil İsmi Girin
+profiles.ProfileName: Profil İsmi
+profiles.ProfileSystem: Profil Sistemi
+profiles.ProfileType: Profil Tipi
+profiles.EditProfiles: Profilleri Düzenle
+
+# Duplicate like the verb/action "I will duplicate the profile", not the noun/subject "a duplicate profile"
+profiles.DuplicateProfile: Profili Çoğalt
+profiles.DeleteSelectedProfiles: Seçili Profili Sil
+profiles.DeleteSelectedProfilesPlural: Seçili Profilleri Sil
+profiles.ConfirmButton.DeleteSelectedProfiles: Profili Sil
+profiles.ConfirmButton.DeleteSelectedProfilesPlural: Profilleri Sil
+profiles.CreateNewProfile: Yeni Profil Oluştur
+profiles.ActiveProfile: Aktif Profil
+profiles.ImportProfile: İçe Profil Aktar
+profiles.ShareProfile: Profili Paylaş
+profiles.SearchControllerProfiles: Kontrolcü Profili Ara
+profiles.CopySettingsFromAnotherProfile: Başka Bir Profilden Ayarları Kopyala
+
+profiles.Controller.Search: Kontrolcü Profili Ara
+
+profiles.Type.ProfilesPage: Kontrolcü Profilleri
+profiles.Type.ProfilesPage.Detail: Kişiselleştirmek için yeni kontrolcü profili ekle, yada silinecek profilleri çoklu seçmek için düzenle düğmesine bas.
+
+profiles.Type.Notification: Bildirim Profilleri
+profiles.Type.Notification.Detail: Kişiselleştirmek için yeni bildirim profili ekle, yada silinecek profilleri çoklu seçmek için düzenle düğmesine bas.
+
+profiles.Type.Actions: Eylem Profilleri
+profiles.Type.Actions.Detail: Kişiselleştirmek için yeni eylem profili ekle, yada silinecek profilleri çoklu seçmek için düzenle düğmesine bas.
+
+profiles.Type.Deadzone: Ölü Bölge Profilleri
+profiles.Type.Deadzone.Detail: Kişiselleştirmek için yeni ölü bölge profili ekle, yada silinecek profilleri çoklu seçmek için düzenle düğmesine bas.
+
+profiles.Type.Touchpad: Dokunmatik Yüzey Profilleri
+profiles.Type.Touchpad.Detail: Kişiselleştirmek için yeni dokunmaktik yüzey profili ekle, yada silinecek profilleri çoklu seçmek için düzenle düğmesine bas.
+
+profiles.Type.Motion: Hareket Profilleri
+profiles.Type.Motion.Detail: Kişiselleştirmek için yeni hareket profili ekle, yada silinecek profilleri çoklu seçmek için düzenle düğmesine bas.
+
+profiles.Type.AdaptiveTriggers: Adaptif Tetik Profilleri
+profiles.Type.AdaptiveTriggers.Detail: Kişiselleştirmek için yeni adaptif tetik profili ekle, yada silinecek profilleri çoklu seçmek için düzenle düğmesine bas.
+
+profiles.Type.HapticsRumble: Titreşim Profilleri
+profiles.Type.HapticsRumble.Detail: Kişiselleştirmek için yeni titreşim profili ekle, yada silinecek profilleri çoklu seçmek için düzenle düğmesine bas.
+
+
+# ------------------------------------------------------------------------------------------------
+# Home Page
+# ----------------------------------------------------------------------------------------------R--
+
+homePage.Firmware.Info.Title: Donanım/Yazılım Bilgisi
+
+homePage.Hardware.Info.Title: Donanım Bilgisi
+homePage.Hardware.Info.SubTitle: Kontrolcünün donanım (Revizyon) bilgisi
+
+homePage.Hardware.Variation.Title: Donanım Varyasyonu
+homePage.Hardware.Variation.SubTitle: Kontrolcünün donanım varyasyonu.
+
+homePage.Hardware.Version.Title: Donanım Sürümü
+homePage.Hardware.Version.SubTitle: Kontrolcünün donanım sürümü.
+
+homePage.Firmware.Version.Title: Yazılım Sürümü
+homePage.Firmware.Version.SubTitle: Mevcut kontrolcü yazılımı sürümü.
+
+homePage.Firmware.Type.Title: Yazılım Tipi
+homePage.Firmware.Type.SubTitle: Kontrolcünün yazılım tipi.
+
+homePage.Firmware.BuildDate: Yazılım Yapım Tarihi
+homePage.Firmware.BuildDate.SubTitle: Yazılımınızın yapıldığı tarih.
+
+homePage.Firmware.MainVersion.Title: Ana Yazılım Sürümü
+homePage.Firmware.MainVersion.SubTitle: Ana Yazılım Sürümü.
+
+homePage.MAC.Title: MAC Adresi
+homePage.MAC.SubTitle: Benzersiz MAC adresi tanımlayıcısı.
+
+homePage.HWInfo.Export.Title: Donanım/Yazılım Bilgisini Dışa Aktar
+
+homePage.MoreDualSenseInfo.Title: Daha Fazla DualSense Bilgisi
+homePage.MoreDualSenseInfo.SubTitle: Dualsense kontrolcüsü hakkında geriye kalan Donanım/Yazılım bilgileri.
+
+homePage.ExperienceTrueImmersionWith: Daha derin bir oyun deneyimi
+homePage.AdaptiveTriggers: Adaptif Tetikler
+homePage.HapticFeedback: Dokunsal Geribildirim!
+homePage.ConnectionMode: Bağlantı Tipi
+homePage.ConnectionType.Detail: Bilgisayara bağlanmak için kullanılan bağlantı tipi.
+homePage.BatteryPercent: Batarya Yüzdesi
+homePage.BatteryPercent.Detail: Kontrolcü tarafından bildirilen batarya yüzdesi.
+homePage.PowerState: Güç Durumu
+homePage.PowerState.ToolTip: Kontrolcü tarafından bildirilen batarya güç durumu.
+homePage.PollingRate: Polling Rate
+homePage.PollingRate.ToolTip: Bilgisayar ile Konrolcü arasındaki veri aktarım oranı.
+homePage.PollingRate.JustNo: Hayır, DSX ile değiştirilemez.
+homePage.Firmware.UpdateAvailable: Aygıt Yazılımı Güncellemesi Mevcut
+homePage.Firmware.UpdateAvailable.Detail: DualSense™ kablosuz kontrolcünüzün ve DualSense Edge™ kablosuz kontrolcünüzün yazılımını güncelleyerek performanısını iyileştirin.
+homePage.Firmware.CurrentVersion: "Mevcut Yazılım Sürümü: "
+homePage.Firmware.LatestVersion: "En son Yazılım Sürümü: "
+homePage.Firmware.UpdateNow: Şimdi Güncelle
+
+homePage.ConstantDataCommunication.Title: Kesintisiz Veri İletişimi
+homePage.ConstantDataCommunication.Detail: Etkinleştirildiğinde, DSX bu aygıtı sık sık yenileyecek, Devre dışı bırakıldığında, DSX bu aygıtı sadece yeni bir şey olduğunda yenileyecek.
+homePage.ConstantDataCommunication.Note: DSX/PC'ye başka Bluetooth kontrolcü bağlayamıyorsanız bunu devre dışı bırakın.
+
+homePage.VirtualDevice.Title: Sanal Aygıt
+homePage.VirtualDevice.Detail: Sanal Aygıt, bilgisayarınızın fiziksel kontrolcünüz yerine kullandığınızı düşüneceği aygıttır.
+
+homePage.VirtualDevice.Mode.Native.Title: Ana Mod
+homePage.VirtualDevice.Mode.Native.Configuration.Title: Ana Mod Ayarları
+homePage.VirtualDevice.Mode.Native.Configuration.Detail: Ana Mod seçildiğinde, sanal aygıt oluşturulmaz, desteklenen oyunlarla daha uyumlu hale getirmek için Veri Gönderme özelliğini etkinleştirmeyi veya devre dışı bırakmayı seçebilirsiniz.
+homePage.VirtualDevice.Mode.Native.Configuration.SendData.Title: Aygıta Veri Gönderme
+homePage.VirtualDevice.Mode.Native.Configuration.SendData.Detail: Etkinleştirildiğinde, DSX, Adaptif Tetikler, LED, Titreşim vb. gibi şeyleri kontrol edecektir. Destekli oyunların veya diğer programların bu aygıtı kontrol etmesine izin vermek için devre dışı bırakın.
+
+homePage.VirtualDevice.Mode.X360.Configuration.Title: Xbox Modu Ayarları
+homePage.VirtualDevice.Mode.X360.Configuration.Detail: Xbox 360 Emülasyonu aktifken, aşağıdaki aktarma seçeneklerini ayarlayabilirsiniz. 
+homePage.VirtualDevice.Mode.X360.Configuration.SubType: Xbox 360 Alt türü
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Detail: Desteklenen oyunların tanıyacağı istediğiniz Xbox 360 Alt Türünü seçin.
+
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Gamepad: Gamepad
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.ArcadePad: Arcade Pad
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.ArcadeStick: Arcade Stick
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.DancePad: Dance Pad
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.DrumKit: Drum Kit
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.FlightStick: Flight Stick
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Guitar: Guitar
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.GuitarAlternate: Guitar Alternate
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.GuitarBass: Guitar Bass
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Wheel: Wheel
+
+homePage.VirtualDevice.Mode.X360.Configuration.RumblePassthrough.Title: Titreşim Aktarma
+homePage.VirtualDevice.Mode.X360.Configuration.RumblePassthrough.Detail: Etkinleştirildiğinde, sanal Xbox 360 kontrolcüsüne gönderilen titreşim fiziksel aygıta aktarılacaktır.
+
+homePage.VirtualDevice.Mode.DS4.Configuration.RumblePassthrough.Title: Titreşim Aktarma
+homePage.VirtualDevice.Mode.DS4.Configuration.RumblePassthrough.Detail: Etkinleştirildiğinde, sanal DualShock 4 kontrolcüsüne gönderilen titreşim fiziksel aygıta aktarılacaktır.
+
+homePage.VirtualDevice.Mode.DS4.Configuration.LEDPassthrough.Title: LED Aktarma
+homePage.VirtualDevice.Mode.DS4.Configuration.LEDPassthrough.Detail: Etkinleştirildiğinde, sanal DualShock 4 kontrolcüsüne gönderilen LED efektleri fiziksel aygıta aktarılacaktır.
+
+homePage.VirtualDevice.Mode.DualSense.Configuration.RumblePassthrough.Title: Titreşim Aktarma
+homePage.VirtualDevice.Mode.DualSense.Configuration.RumblePassthrough.Detail: Etkinleştirildiğinde, sanal DualSense kontrolcüsüne gönderilen titreşim fiziksel aygıta aktarılacaktır.
+
+homePage.VirtualDevice.Mode.DualSense.Configuration.ATPassthrough.Title: Adaptif Tetik Aktarma
+homePage.VirtualDevice.Mode.DualSense.Configuration.ATPassthrough.Detail: Etkinleştirildiğinde, sanal DualSense kontrolcüsüne gönderilen Adaptif Tetik Efektleri fiziksel aygıta aktarılacaktır.
+
+homePage.VirtualDevice.Mode.DualSense.Configuration.LEDPassthrough.Title: LED Aktarma
+homePage.VirtualDevice.Mode.DualSense.Configuration.LEDPassthrough.Detail: Etkinleştirildiğinde, sanal DualSense kontrolcüsüne gönderilen LED efektleri fiziksel aygıta aktarılacaktır.
+
+homePage.VirtualDevice.Mode.X360.Title: Xbox 360 Emülasyonu
+homePage.VirtualDevice.Mode.DS4.Title: DualShock 4 Emülasyonu
+homePage.VirtualDevice.Mode.DualSense.Title: DualSense Emülasyonu
+homePage.VirtualDevice.Mode.DualSense.Detail: Kablosuz AT & Dahası.
+homePage.VirtualDevice.Mode.Rev1: Revizyon 1
+homePage.VirtualDevice.Mode.Rev2: Revizyon 2
+
+homePage.VirtualDevice.Mode.DS4.Configuration.Title: DualShock 4 Modu Ayarları
+homePage.VirtualDevice.Mode.DS4.Configuration.Detail: DualShock 4 Emülasyonu aktifken, aşağıdaki aktarma seçeneklerini ayarlayabilirsiniz. 
+homePage.VirtualDevice.Mode.DS4.Configuration.SubType: DualShock 4 Alt Türü
+homePage.VirtualDevice.Mode.DS4.Configuration.SubType.Detail: Desteklenen oyunların tanıyacağı istediğiniz DualShock 4 Alt Türünü seçin.
+
+homePage.VirtualDevice.DS4.IssuesUnderInvestigation: DualShock 4 Emülasyon Sorunları Hala Araştırılmaktadır
+homePage.VirtualDevice.DS4.IssuesUnderInvestigation.Detail: Şu anda DualShock 4 emülasyonu ile ilgili sorunları araştırıyoruz, bu modu kullanmak beklenmedik sistem yeniden başlatmasına neden olabilir. Kendi sorumluluğunuzda kullanın. 
+homePage.VirtualDevice.DSDLC.Explore: KEŞFET
+
+homePage.ControllerOptions: Kontrolcü Seçenekleri
+
+
+# ------------------------------------------------------------------------------------------------
+# Profiles Page
+# ------------------------------------------------------------------------------------------------
+
+profilesPage.DeviceName.Title : Aygıt İsmi
+profilesPage.DeviceName.SubTitle : Bu aygıt için kullanılacak takma isim.
+
+profilesPage.ProfilesDirectory.Title : Profillerin Konumu
+profilesPage.ProfilesDirectory.SubTitle : Bu kontrolcü için kaydedilmiş olan profillerin konumunu görüntüle.
+
+profilesPage.ResetController.Title : Kontrolcü Profil Sistemini Sıfırla
+profilesPage.ResetController.SubTitle : Bu aygıtla ilişkili Eylem, LED, Adaptif Tetik vb. bütün profilleri siler.
+profilesPage.ResetController.Popup.LineOne : BU İŞLEM GERİ ALINAMAZ!
+profilesPage.ResetController.Popup.LineTwo : Bu aygıtla ilişkili Eylem, LED, Adaptif Tetik vb. bütün profiller silinecektir.
+profilesPage.ResetController.Popup.LineThree : Devam etmek istediğinize emin misiniz?
+
+profilesPage.ProfileList.SubTitle : Farklı profil sistemleri için şu anda aktif olan profil.
+
+profilesPage.Action : Eylem Profili
+profilesPage.AdaptiveTriggers : Adaptif Tetik Profili
+profilesPage.Deadzone : Ölü Bölge Profili
+profilesPage.HapticsRumble : Titreşim Profili
+profilesPage.LED : LED Profili
+profilesPage.Motion : Hareket Profili
+profilesPage.Notification : Bildirim Profili
+profilesPage.Touchpad : Dokunmatik Yüzey Profili
+
+
+# ------------------------------------------------------------------------------------------------
+# Controller Page
+# ------------------------------------------------------------------------------------------------
+ctPage.IdleShutoffInactiveDuringCharging: Boşta Kapatma Şarj Sırasında Etkin Değil
+ctPage.DurationSinceIdle: "Boşta Geçen Süre:" 
+ctPage.InputFeedback.Title: Girdi Geribildirimi
+ctPage.InputFeedback.Description: Fiziksel(gerçek) yada sanal (emüle edilen) girdiyi görüntüle.
+ctPage.Physical: FİZİKSEL
+ctPage.Virtual: SANAL 
+ctPage.LeftFN: SOL FN
+ctPage.RightFN: SAĞ FN
+ctPage.Actions.Title: Eylemler
+ctPage.Actions.Description: Düğme eşleme, klavye eşleme, kısayollar, makrolar ve dahası için bir Eylem oluşturun.
+ctPage.KeyboardButtonDetector.Title: Klavye Tuşu Tanıyıcısı
+ctPage.KeyboardButtonDetector.Description: DSX bu metin kutusu tarafından tanınan herhangi bir tuşu taklit edebilir.
+ctPage.KeyDetector.Placeholder: Metin kutusu aktifken klavyenizde herhangi bir tuşa basın.
+ctPage.KeyDetector.ToolTip: Ekran Klavyesini Aç
+ctPage.KeyDetector.Detail: DSX bu metin kutusuna yazılan herhangi bir yazıyı taklit edebilir.
+ctPage.KeyDetector.Input.Placeholder: Taklit etmek için buraya bir şey yazın.
+ctPage.ListOfAddedKeyboardMappings: Ekli Klavye Eşlemelerinin Listesi
+ctPage.ListOfAddedKeyboardMappings.NoneAdded: Hiçbir Klavye Eşlemesi Eklenmedi
+ctPage.ListOfAddedKeyboardMappings.Detail: Klavye eşlemeleriniz burada listelenecek.
+ctPage.VirtualMouse.Detail: Seçili düğme(ler) basıldığında aşağıda eklenmiş Sanal Fare tuşlarını basılmış gibi taklit eder.
+ctPage.MouseButtonDetector: Fare Tuşu Tanıyıcısı
+ctPage.MouseButtonDetector.Detail: DSX bu kutu tarafından tanınabilen fare tıklamalarını taklit edebilir. Kutunun üzerine gelin ve farenizdeki bir tuşa basın.
+ctPage.MouseButtonDetector.Text: Burası seçiliyken Farenizde bir tuşa basın.
+ctPage.MouseButtons: Fare Tuşları
+ctPage.MouseButtons.Detail: DSX bu listeden eklenen fare tuşlarından herhangibirini taklit edebilir.
+ctPage.LeftMouseButton: Sol Fare Tuşu
+ctPage.RightMouseButton: Sağ Fare Tuşu
+ctPage.MiddleMouseButton: Orta Fare Tuşu
+ctPage.ScrollWheelUp: Fare Tekerleği Yukarı
+ctPage.ScrollWheelDown: Fare Tekerleği Aşağı
+ctPage.BackMouseButton: Fare Geri Tuşu
+ctPage.ForwardMouseButton: Fare İleri Tuşu
+ctPage.ListOfAddedMouseMappings: Ekli Fare Eşlemelerinin Listesi
+ctPage.ListOfAddedMouseMappings.NoneAdded: Hiçbir Fare Eşlemesi Eklenmedi
+ctPage.ListOfAddedMouseMappings.NoneAdded.Sub: Klavye eşlemeleriniz burada listelenecek.
+ctPage.Shortcuts.Title: Kısayollar
+ctPage.Shortcuts.Detail: Seçili düğme(ler) basıldığında ekli kısayol(lar) tetiklenir.
+ctPage.WindowsActionPresets.Title: Windows Klavye Kısayolları
+ctPage.AppSettings.Title: Uygulama Ayarları
+ctPage.ChangeEmulationType: Emülasyon Tipini Değiştir
+ctPage.ToggleTouchpadToMouse: Dokunmatik Yüzeyi Fare Olarak Kullan
+ctPage.GeneralSettings.Title: Genel Ayarlar
+
+ctPage.GeneralSettings.Description: Boşta Otomatik Kapama gibi genel kontrolcü ayarları.
+ctPage.Deadzones.Title: Ölü Bölge
+ctPage.Deadzones.Description: İsabetliliği artırmak için tetik ölü bölgesi girdi aralığını ve Analog ölü bölgesini ayarlayın.
+ctPage.Touchpad.Title: Dokunmatik Yüzey
+ctPage.Touchpad.Description: Dokunmatik yüzeyi çeşitli girdiler ve kısayollar yaratmak için kullanın.
+ctPage.Motion.Title: Hareket
+ctPage.Motion.Description: Kontrolcünüzün Hareket sensörüyle ilgili çeşitli ayarları yapılandırın.
+ctPage.RawFeedback.Title: Ham Geribildirim
+ctPage.RawFeedback.Description: Direkt olarak kontrolcünüzden gelen tetik, analog, dokunmatik yüzey ve hareket bilgisi gibi çeşitli bilgileri görüntüleyin.
+ctPage.GamepadSkin.Title: Kontrolcü Kaplaması
+ctPage.GamepadSkin.Description: Soldaki Kontrolcü için istediğiniz kaplamayı seçin.
+ctPage.NoSelectedButtons.Title: Hiçbir Düğme(ler) Seçilmedi
+ctPage.NoSelectedButtons.Description: Başlamak için lütfen sol taraftan bir düğme(ler) seçin.
+ctPage.RawPressureValue: Ham Basış Değeri
+
+ctPage.InsertGamepadButton: Kontrolcü Düğmesi Ekleyin
+ctPage.ButtonMappingsList: Ekli Düğme Eşlemelerinin Listesi
+ctPage.NoButtonMappingAdded: Hiçbir Düğme Eşlemesi Eklenmedi
+ctPage.NoButtonMappingAdded.Sub: Kontrolcü düğmesi eşlemeleriniz burada listelenecek.
+
+ctPage.TriggerPosition.Title: Tetik Konumu
+ctPage.TriggerPosition.Sub: L2 | R2 'ye basıldığında hangi noktada (1-255) bir düğmenin taklit edileceğini seçin
+
+ctPage.ActionsProfileSwitchTo: Eylem Profilini Şuna Değiştir
+ctPage.AdaptiveTriggerProfileSwitchTo: Adaptif Tetik Profilini Şuna Değiştir
+ctPage.ControllerProfileSwitchTo: Kontrolcü Profilini Şuna Değiştir
+ctPage.DeadzoneProfileSwitchTo: Ölü Bölge Profilini Şuna Değiştir
+ctPage.HapticsRumbleProfileSwitchTo: Titreşim Profilini Şuna Değiştir
+ctPage.LEDProfileSwitchTo: LED Profilini Şuna Değiştir
+ctPage.MotionProfileSwitchTo: Hareket Profilini Şuna Değiştir
+ctPage.NotificationsProfileSwitchTo: Bildirim Profilini Şuna Değiştir
+ctPage.TouchpadProfileSwitchTo: Dokunmatik Yüzey Profilini Şuna Değiştir
+ctPage.ActivateNativeMode: Ana Modu Etkinleştir (Sanal Aygıt Yok)
+ctPage.ActivateXbox360VirtualDevice: Xbox 360 Sanal Kontrolcü Modunu Etkinleştir
+ctPage.ActivateDualShock4VirtualDevice: DualShock 4 Sanal Kontrolcü Modunu Etkinleştir
+ctPage.ActivateDualSenseVirtualDevice: DualSense Sanal Kontrolcü Modunu Etkinleştir
+ctPage.TurnControllerOff: Kontrolcüyü KAPAT (Sadece Bluetooth)
+ctPage.RestartController: Kontrolcüyü Yeniden Başlat (Sadece USB) (Sadece DualSense, DualSense Edge ve PSVR Sense)
+ctPage.MediaAndSystemKeys: Medya ve Sistem Tuşları
+ctPage.ToggleXboxGameBar: Xbox Game Bar'ı Aç/Kapa
+ctPage.TakeSystemScreenshot: Ekran Görüntüsü Al
+ctPage.IncreaseBrightnessLevel: Ekran Parlaklığını Artır
+ctPage.DecreaseBrightnessLevel: Ekran Parlaklığını Azalt
+ctPage.ToggleMicrophoneMute: Mikrofonu Aç/Kapa
+ctPage.PreviousTrack: Önceki Parça
+ctPage.PlayPause: Oynat/Duraklat
+ctPage.NextTrack: Sonraki Parça
+ctPage.ToggleVolumeMute: Sesi Aç/Kapa
+ctPage.IncreaseVolumeLevel: Ses Seviyesini Artır
+ctPage.DecreaseVolumeLevel: Ses Seviyesi Azalt
+ctPage.DeviceStatus: Aygıt Durumu
+ctPage.ActiveActionProfile: Aktif Eylem Profili
+ctPage.ActiveAdaptiveTriggerProfile: Aktif Adaptif Tetik Profili
+ctPage.ActiveDeadzoneProfile: Aktif Ölü Bölge Profili
+ctPage.ActiveHapticsRumbleProfile: Aktif Titreşim Profili
+ctPage.ActiveLEDProfile: Aktif LED Profili
+ctPage.ActiveMotionProfile: Aktif Hareket Profili
+ctPage.ActiveNotificationProfile: Aktif Bildirim Profili
+ctPage.ActiveTouchpadProfile: Aktif Dokunmatik Yüzey Profili
+ctPage.LaunchExecutable: Çalıştırılabilir bir Dosya'yı Başlat
+ctPage.FileDoesNotExist: Dosya Mevcut Değil
+ctPage.EnterPathToExecutable: Çalıştırılabilir bir dosyanın yolunu girin (.bat .exe vb.)
+ctPage.EnterLaunchArgsHere: Başlatma Seçeneklerini buraya girin.
+ctPage.ListOfAddedShortcuts: Ekli Kısayolların Listesi
+ctPage.NoShortcutsAdded: Hiçbir Kısayol Eklenmedi
+ctPage.ShortcutsListPlaceholder: Kısayollarınız burada listelenecek.
+ctPage.VirtualDeviceOption: Sanal Aygıt Seçenekleri
+ctPage.WindowsActionPreset: Windows Klavye Kısayolları
+ctPage.GoBack: Geri Git
+ctPage.Macros: Makrolar
+ctPage.MacrosDescription: Seçili düğmelere basıldığında aşağıya eklenen düğmeleri eklendiği sırayla taklit eder.
+ctPage.Notifications: Bildirimler
+ctPage.MacroSettings: Makro Ayarları
+ctPage.PlayOnce: Bir Kere Oynat
+ctPage.ActionWillPlayOneTime: Eylem bir kere gerçekleşecek.
+ctPage.KeyDown: Tuş Basıldığında
+ctPage.MacroEditing: Makro Düzenleme
+ctPage.InsertGamepadButtonToList: Kontrolcü Düğmesini Listeye Ekle
+ctPage.ListOfAddedMacros: Ekli Makroların Listesi
+ctPage.NoMacrosAdded: Hiçbir Makro Eklenmedi
+ctPage.MacrosListPlaceholder: Makrolarınız burada listelenecek.
+ctPage.Turbo: Turbo
+ctPage.TurboDescription: Seçili düğme(ler)nin hızlı ve tekrarlı bir şekilde basılmasını taklit eder. 
+ctPage.WaitLengthDescription: Tekrarlanmadan önce beklenecek süre.
+ctPage.Duration: Süre
+ctPage.DurationDescription: Düğmenin basılı halde kalacağı süre.
+ctPage.Action: Eylem
+ctPage.ActionDescription: Bu AÇIK konuma getirildiğinde, bu eylem profili için seçilen tüm düğmeler için aşağıdaki aktif eylemler etkin olacaktır. Bu KAPALI konumdaysa, soldaki düğmelerden yada aşağıdaki eylemlerden hangisi seçili olursa olsun, hiçbir şey olmayacaktır.
+ctPage.ActivationMethod: Etkinleştirme Yöntemi
+ctPage.ActivationMethodDescription: Bu eylemin anında mı yoksa gecikmeli mi gerçekleşeceğini seçin.
+ctPage.ActionInstantActivation: Eylem anında gerçekleşecek.
+ctPage.AfterDelay: Gecikmeli
+ctPage.AfterDelayDescription: Eylem belli bir gecikmeden sonra gerçekleşecek.
+ctPage.MouseMapping.Title: Fare Eşleme
+ctPage.MouseMapping.Description: Seçili düğme(ler) basıldığında eklenmiş Sanal Fare tuşlarını basılmış gibi taklit eder.
+ctPage.Shortcuts.Description: Seçili düğme(ler) basıldığında ekli kısayol(lar) tetiklenir. 
+
+ctPage.ButtonMapping.Title: Düğme Eşleme
+ctPage.ButtonMapping.Description: Seçili Düğme(ler) basıldığında aşağıda ekli Kontrolcü düğmelerini taklit eder.
+ctPage.KeyboardMapping.Title: Klavye Eşleme
+ctPage.KeyboardMapping.Description: Seçili düğmeler basıldığında aşağıda ekli olan Sanal düğmeleri yada yazıyı taklit eder.
+ctPage.ListOfActiveActions: Aktif Eylemlerin Listesi
+ctPage.ActiveButtonMappingsDescription: Aktif düğme eşleme listeniz.
+
+ctPage.KeyboardMappingList: Klavye Eşleme
+ctPage.ActiveKeyboardMappingsDescription: Aktif klavye eşleme listeniz.
+ctPage.ShortcutsList: Kısayollar
+ctPage.ActiveShortcutsDescription: Aktif kısayol listeniz.
+ctPage.ActiveTurbosDescription: Aktif turbo listeniz.
+
+ctPage.Delay: Gecikme
+ctPage.DelayDescription: Tekrar tetiklenmeden önce beklenilecek süre.
+ctPage.NoActiveActions: Aktif Eylem Yok
+ctPage.YourListOfActiveActionsWillShowUpHere: Aktif eylemleriniz burada listelenecek.
+ctPage.L2TriggerInputRange: L2 Tetik Girdi Aralığı
+ctPage.AdjustSlidersToUpdateTriggerDeadzone: Sanal kontrolcüye gönderilen tetik ölü bölgelerini değiştirmek için aşağıdaki kaydırma çubuğunu ayarlayın.
+ctPage.L2TriggerDeadzone: L2 Tetik Ölü Bölgesi
+ctPage.R2TriggerDeadzone.Title: R2 Tetik Ölü Bölgesi
+ctPage.TriggerDeadzone.Description: Ölü Bölge Aralığını Yapılandırın.
+ctPage.LeftTrigger: Sol Tetik
+ctPage.RightTrigger: Sağ Tetik
+ctPage.PressureValue: Basış Değeri
+ctPage.PressureValueRange: 0 - 255
+ctPage.NoneMs: N/A ms
+ctPage.NotAny: N/A
+ctPage.RawJoystickData: Ham Analog Verisi
+ctPage.RawJoystickDataDescription: Sağ ve Sol Analog hakkında ham bilgi.
+ctPage.LeftStickXRaw: Sol Analog X Ham
+ctPage.LeftStickYRaw: Sol Analog Y Ham
+
+ctPage.LeftStickXConvertedXbox: Sol Analog X Çevrilmiş (xbox)
+ctPage.LeftStickYConvertedXbox: Sol Analog Y Çevrilmiş (xbox)
+ctPage.LeftJoystick: Sol Analog
+ctPage.RightJoystick: Sağ Analog
+ctPage.ControllerSkins.Title: Kontrolcü Kaplamaları
+ctPage.To: Buna
+ctPage.From: Bundan
+ctPage.PhysicalAndVirtualDeviceOptions.Title: Fiziksel ve Sanal Aygıt Seçenekleri
+ctPage.RawTouchpadData.Title: Ham Dokunmatik Yüzey Verisi
+ctPage.RawTouchpadData.Description: Parmak 1 ve 2 X/Y konumu ve kaydırma hareketleri gibi çeşitli dokunmatik yüzey bilgileri.
+ctPage.TouchpadShowGrid: Dokunmatik Yüzey Izgarasını Göster
+ctPage.CenterDarkSquareSafeZone: Orta Koyu Kare güvenli alandır
+ctPage.Finger1Data: Parmak 1 Verisi
+ctPage.Finger1TouchCounter: "Parmak 1 Dokunma sayacı:"
+ctPage.Finger1XPosition: "Parmak 1 X Konumu:"
+ctPage.Finger1YPosition: "Parmak 1 Y Konumu:"
+ctPage.Finger2Data: Parmak 2 Verisi
+ctPage.Finger2TouchCounter: "Parmak 2 Dokunma sayacı:"
+ctPage.Finger2XPosition: "Parmak 2 X Konumu:"
+ctPage.Finger2YPosition: "Parmak 2 Y Konumu:"
+ctPage.TouchPoints: Dokunma Noktaları
+ctPage.Finger1TouchPoints: Parmak 1 Dokunma Noktaları
+ctPage.TouchPointsDescription: Parmak 1 dokunmatik yüzeydeki çeşitli dokunma noktaları
+ctPage.TouchPointsTopLeftTouch: Sol Üst Dokunma
+ctPage.TouchPointsTopCenterTouch: Orta Üst Dokunma
+ctPage.TouchPointsTopRightTouch: Sağ Üst Dokunma
+ctPage.TouchPointsCenterLeftTouch: Sol Orta Dokunma
+ctPage.TouchPointsCenterTouch: Orta Dokunma
+ctPage.TouchPointsCenterRightTouch: Sağ Orta Dokunma
+ctPage.TouchPointsBottomLeftTouch: Sol Alt Dokunma
+ctPage.TouchPointsBottomCenterTouch: Orta Alt Dokunma
+ctPage.TouchPointsBottomRightTouch: Sağ Alt Dokunma
+ctPage.Finger1SwipeGesturesDescription: Parmak 1 dokunmatik yüzeydeki çeşitli kaydırmak hareketleri
+ctPage.LeftSideSwipe: Sol Kenarda Kaydırma
+ctPage.EntireTouchpad: Dokunmatik Yüzey Boyunca Kaydırma
+ctPage.RightSideSwipe: Sağ Kenarda Kaydırma
+ctPage.SwipeRight: Sağa Kaydır
+ctPage.SwipeLeft: Sola Kaydır
+ctPage.LeftSideSwipeDetection: "Kaydırma algılama için gereken Sol Taraf piksel mesafesi:"
+ctPage.EntireTouchpadSwipeDetection: "Tüm Dokunmatik Yüzyde kaydırma algılama için gereken piksel mesafesi:"
+ctPage.RightSideSwipeDetection: "Kaydırma algılama için gereken Sağ Taraf piksel mesafesi:"
+ctPage.Touchpad.SwipeGestures.LeftSideUp: Yukarı Kaydır
+ctPage.Touchpad.SwipeGestures.EntireTouchpad.Up: Yukarı Kaydır
+ctPage.Touchpad.SwipeGestures.RightSideUp: Yukarı Kaydır
+ctPage.Touchpad.SwipeGestures.LeftSideDown: Aşağı Kaydır
+ctPage.Touchpad.SwipeGestures.EntireTouchpad.Down: Aşağı Kaydır
+ctPage.Touchpad.SwipeGestures.RightSideDown: Aşağı Kaydır
+
+ctPage.TouchpadButtonLatency: Dokunmatik Yüzey Düğmesi Gecikmesi
+ctPage.TouchpadClick: Dokanmatik Yüzey Tıklaması
+ctPage.LeftSide: Sol Taraf
+ctPage.RightSide: Sağ Taraf
+ctPage.TopLeftBox: Sol Üst Kutu
+ctPage.TopRightBox: Sağ Üst Kutu
+ctPage.BottomLeftBox: Sol Alt Kutu
+ctPage.BottomRightBox: Sağ Alt Kutu
+
+ctPage.LeftJoystickDeadzoneUnderConstruction: Sol Analog Ölü Bölgesi geliştirme aşamasındadır.
+ctPage.RightJoystickDeadzoneUnderConstruction: Sağ Analog Ölü Bölgesi geliştirme aşamasındadır.
+ctPage.LeftJoystickDeadzone: Sol Analog Ölü Bölgesi
+ctPage.ConfigureLeftJoystickDeadzone: Sol analog ölü bölgesini yapılandır.
+ctPage.RightJoystickDeadzone: Sağ Analog Ölü Bölgesi
+ctPage.ConfigureRightJoystickDeadzone: Sağ analog ölü bölgesini yapılandır.
+ctPage.TouchpadUnderConstruction: Dokunmatik Yüzey geliştirme aşamasındadır.
+ctPage.MacrosUnderConstruction: Makrolar geliştirme aşamasındadır.
+ctPage.MotionUnderConstruction: Hareket geliştirme aşamasındadır.
+ctPage.RawTriggerData: Ham Tetik Verisi
+ctPage.RawTriggerDataDescription: Fiziksel kontolcüden gelen L2 ve R2 hakkında ham veri.
+ctPage.GeneralSettings.AutoIdleShutOff: Boşta Otomatik Kapanma
+ctPage.GeneralSettings.AutoIdleShutOffDescription: Etkinleştirildiğinde, DSX, kontrolcünün belirtilen süre boyunca boşta kaldığını tespit ederse Bluetooth aracılığıyla kontrolcüyü otomatik olarak kapatır.
+ctPage.GeneralSettings.DisableAutoIdleShutOffDuringCharging: Şarj Olurken Boşta Otomatik Kapamayı Devre Dışı Bırak
+ctPage.GeneralSettings.DisableAutoIdleShutOffDuringChargingDescription: Bu seçenek, kontrolcü şarj olurken otomatik boşta kapatma işlevini kapatarak, kesintisiz bir şarj deneyimi elde etmenize olanak tanır.
+ctPage.InactivityDuration: Boşta Geçecek Süre
+ctPage.InactivityDurationDescription: Bu aygıt için otomatik kapanmayı tetikleyecek hareketsizlik süresi.
+ctPage.FiveMinutes: 5 Dakika
+ctPage.TenMinutes: 10 Dakika
+ctPage.FifteenMinutes: 15 Dakika
+ctPage.ThirtyMinutes: 30 Dakika
+ctPage.SixtyMinutes: 60 Dakika
+ctPage.OneHundredTwentyMinutes: 120 Dakika
+ctPage.CustomMinutes: Özel (Dakika)
+ctPage.Never: Asla
+ctPage.PressLatency: Basma Geçikmesi
+
+ctPage.NoControllersDetected: Kontrolcü Bulunamadı
+ctPage.ConnectController: Eylemleri, Ölü Bölgeleri, vb. yapılandırmak için lütfen kontrolcünüzü kablo veya Bluetooth ile bağlayın.
+
+ctPage.RealTimeUpdate: Gerçek Zamanlı Yenileme
+ctPage.UsesMoreGPU: (Daha Çok GPU Kullanır)
+ctPage.Finger1: Parmak 1
+ctPage.Finger2: Parmak 2
+ctPage.DirectionalButtons: Yön Düğmeleri
+ctPage.CenterButtons: Orta Düğmeler
+ctPage.ActionButtons: Eylem Düğmeleri
+ctPage.BackLeftButtonTrigger: Sol Arka Düğme ve Tetik
+ctPage.BackRightButtonTrigger: Sağ Arka Düğme ve Tetik
+ctPage.ActiveGridBasedOnFinger1Position: Parmak 1'in X/Y konumuna göre aktif ızgara.
+
+ctPage.Actions: Eylemler
+ctPage.Deadzones: Ölü Bölgeler
+ctPage.Touchpad: Dokunmatik Yüzey
+ctPage.Motion: Hareket
+ctPage.RawFeedback: Ham Geribildirim
+ctPage.ControllerSkins: Kontrolcü Kaplaması
+ctPage.GeneralSettings: Genel Ayarlar
+
+ctPage.ButtonMapping: Düğme Eşleme
+ctPage.KeyboardMapping: Klavye Eşleme
+ctPage.MouseMapping: Fare Eşleme
+ctPage.Shortcuts: Kısayollar
+
+ctPage.L2Trigger: L2 Tetik
+ctPage.R2Trigger: R2 Tetik
+ctPage.R2Position: R2 Konum
+ctPage.ScrollDistance: Kaydırma Mesafesi (Noktalar)
+ctPage.Source: Kaynak
+ctPage.Activation: Etkinleştirme
+ctPage.DelayMilliseconds: Geçikme (ms)
+ctPage.Repeats: Tekrar
+ctPage.PlayOnKey: Basıldığında Oynat
+ctPage.InsertDelayToList: Listeye Gecikme (ms) ekle
+ctPage.StartRecording: Kaydetmeye Başla
+ctPage.Milliseconds: Milisaniye
+ctPage.Seconds: Saniye
+
+ctPage.RawInfoJoystick: Sol ve Sağ analog hakkında ham bilgi
+ctPage.SwipeGestures: Kaydırma Hareketleri
+ctPage.GridPosition: Izgara Konumu
+ctPage.TouchpadInfo: Parmak 1 ve 2 X/Y konumu ve kaydırma hareketleri gibi çeşitli dokunmatik yüzey bilgileri
+ctPage.GreenScreenEffect: Yeşil Ekran Efekti (Yayıncılar İçin)
+
+ctPage.GeneralSettings.InvertLeftX: Sol Analog X'i ters çevir
+ctPage.GeneralSettings.InvertLeftX.Description: Etkinleştirildiğinde, DSX sol analoğun X eksenini tersine çevirir, böylece sola gitmek, sağa gitmek gibi algılanır ve bunun tersi de geçerlidir.
+ctPage.GeneralSettings.InvertLeftY: Sol Analog Y'yi ters çevir
+ctPage.GeneralSettings.InvertLeftY.Description: Etkinleştirildiğinde, DSX sol analoğun Y eksenini tersine çevirir, böylece yukarı gitmek, aşağı gitmek gibi algılanır ve bunun tersi de geçerlidir.
+ctPage.GeneralSettings.InvertRightX: Sağ Analog X'i ters çevir
+ctPage.GeneralSettings.InvertRightX.Description: Etkinleştirildiğinde, DSX sağ analoğun X eksenini tersine çevirir, böylece sola gitmek, sağa gitmek gibi algılanır ve bunun tersi de geçerlidir.
+ctPage.GeneralSettings.InvertRightY: Sağ Analog Y'yi ters çevir
+ctPage.GeneralSettings.InvertRightY.Description: Etkinleştirildiğinde, DSX sağ analoğun Y eksenini tersine çevirir, böylece yukarı gitmek, aşağı gitmek gibi algılanır ve bunun tersi de geçerlidir.
+
+
+btn.DpadUp: D-PAD YUKARI
+btn.DpadDown: D-PAD AŞAĞI
+btn.DpadLeft: D-PAD SOL
+btn.DpadRight: D-PAD SAĞ
+btn.Triangle: ÜÇGEN
+btn.Square: KARE
+btn.Circle: DAİRE
+btn.Cross: ÇARPI
+btn.Share: PAYLAŞ
+btn.Options: SEÇENEKLER
+btn.Mute: SESSİZ
+btn.PS: PS
+btn.Touchpad: DOKUNMATİK YÜZEY
+btn.L1: L1
+btn.L2: L2
+btn.L2Position: L2 KONUM
+btn.L3: L3
+btn.R1: R1
+btn.R2: R2
+btn.R3: R3
+
+
+# ------------------------------------------------------------------------------------------------
+# Adaptive Triggers Page
+# ------------------------------------------------------------------------------------------------
+
+atPage.RightTrigger: Sağ Tetik
+
+atPage.PassthroughWarning.Title: "Uyarı: Adaptif Tetik Aktarma Etkinleştirildi"
+atPage.PassthroughWarning.Sub: Adaptif Tetik Aktarma Etkinleştirildiğinde, Adaptif Tetik profilleri devre dışı kalır ve destekli oyunlara dinemik kontrol şansı verir. Bu özellik aşağıda seçilen tüm ayarları geçersiz kılar ve destekli oyunların Adaptif Tetik davranışını kontrol etmesine izin verir.
+atPage.DisableATPassthrough: Adaptif Tetik Aktarmayı Devre Dışı Bırak.
+atPage.LeftTrigger: Sol Tetik
+atPage.OfficialATModes: Resmi Adaptif Tetik Modları
+
+atPage.ATEffectOff.Detail: Adaptif tetik efektini kapatır, ve tetiği normal haline döndürür.
+
+atPage.Sliders.StartPosition: Başlama Noktası
+atPage.Sliders.EndPosition: Bitiş Noktası
+atPage.Sliders.Amplitude: Titreşim Şiddeti
+atPage.Sliders.AmplitudeA: Titreşim Şiddeti A
+atPage.Sliders.AmplitudeB: Titreşim Şiddeti B
+atPage.Sliders.ResistanceStrength: Direnç Şiddeti
+atPage.Sliders.StartResistanceStrength: Başlangıç Direnç Şiddeti
+atPage.Sliders.EndResistanceStrength: Bitiş Direnç Şiddeti
+atPage.Sliders.SnapForce: Çekme Kuvveti
+atPage.Sliders.FirstFoot: İlk Ayak
+atPage.Sliders.SecondFoot: İkinci Ayak
+
+atPage.Sliders.Region1Resistance: Bölge 1 Direnç Şiddeti
+atPage.Sliders.Region2Resistance: Bölge 2 Direnç Şiddeti
+atPage.Sliders.Region3Resistance: Bölge 3 Direnç Şiddeti
+atPage.Sliders.Region4Resistance: Bölge 4 Direnç Şiddeti
+atPage.Sliders.Region5Resistance: Bölge 5 Direnç Şiddeti
+atPage.Sliders.Region6Resistance: Bölge 6 Direnç Şiddeti
+atPage.Sliders.Region7Resistance: Bölge 7 Direnç Şiddeti
+atPage.Sliders.Region8Resistance: Bölge 8 Direnç Şiddeti
+atPage.Sliders.Region9Resistance: Bölge 9 Direnç Şiddeti
+atPage.Sliders.Region10Resistance: Bölge 10 Direnç Şiddeti
+
+atPage.Sliders.Region1Amplitude: Bölge 1 Titreşim Şiddeti
+atPage.Sliders.Region2Amplitude: Bölge 2 Titreşim Şiddeti
+atPage.Sliders.Region3Amplitude: Bölge 3 Titreşim Şiddeti
+atPage.Sliders.Region4Amplitude: Bölge 4 Titreşim Şiddeti
+atPage.Sliders.Region5Amplitude: Bölge 5 Titreşim Şiddeti
+atPage.Sliders.Region6Amplitude: Bölge 6 Titreşim Şiddeti
+atPage.Sliders.Region7Amplitude: Bölge 7 Titreşim Şiddeti
+atPage.Sliders.Region8Amplitude: Bölge 8 Titreşim Şiddeti
+atPage.Sliders.Region9Amplitude: Bölge 9 Titreşim Şiddeti
+atPage.Sliders.Region10Amplitude: Bölge 10 Titreşim Şiddeti
+
+
+atPage.Mode.Feedback.Title: GeriBildirim
+atPage.Mode.Feedback.SubTitle: Tetik başlangıç noktasında itibaren direnç göstericektir.
+
+atPage.Mode.Weapon.Title: Silah
+atPage.Mode.Weapon.SubTitle: Tetik tabanca tetiği gibi anlık bir direnç gösterecektir.
+
+atPage.Mode.Vibration.Title: Titreşim
+atPage.Mode.Vibration.SubTitle: Tetik başlangıç noktasından itibaren seçili frekans ve titreşim şiddeti ile titreyecektir.
+
+atPage.Mode.Vibration.DynamicRumbleSync.Title: Dinamik Titreşim Senkronizasyonu
+atPage.Mode.Vibration.DynamicRumbleSync.Left.SubTitle: Sanal aygıtın sol titreşim motoruyla dinamik senkronizasyonu etkinleştirerek titreşim frekansını sanal aygıtın titreşim gücüne göre ayarlayın. Yukarıdaki kaydırıcıyı kullanarak frekansı özelleştirin ve istenen maksimum titreşim frekansını ayarlayın.
+atPage.Mode.Vibration.DynamicRumbleSync.Right.SubTitle: Sanal aygıtın sağ titreşim motoruyla dinamik senkronizasyonu etkinleştirerek titreşim frekansını sanal aygıtın titreşim gücüne göre ayarlayın. Yukarıdaki kaydırıcıyı kullanarak frekansı özelleştirin ve istenen maksimum titreşim frekansını ayarlayın.
+
+atPage.Mode.SlopeFeedback.Title: Eğim Geribildirimi
+atPage.Mode.SlopeFeedback.SubTitle: Tetik, doğrusal bir şiddet aralığında harekete direnecektir.
+
+atPage.Mode.MultiplePositionFeedback.Title: Çoklu Konum Geri Bildirimi
+atPage.Mode.MultiplePositionFeedback.SubTitle: Tetik 10 bölgede değişen şiddetlerde harekete karşı koyacaktır.
+
+atPage.Mode.MultiplePositionVibration.Title: Çoklu Konum Titreşimi
+atPage.Mode.MultiplePositionVibration.SubTitle: Tetik 10 bölgede değişen titreşim şiddetinde ve bir frekansta titreşecektir.
+
+atPage.Mode.GameCube.Title: GameCube
+atPage.Mode.GameCube.SubTitle: Efekt, GameCube Kontrolcüsünün arka düğmesine basmayı andırır.
+
+atPage.Mode.Bow.Title: Yay
+atPage.Mode.Bow.SubTitle: Efekt yukarıdaki Silah efektine benzerdir, ancak tetiği sıfırlamaya çalışan bir geri tepme kuvveti vardır.
+
+atPage.Mode.Galloping.Title: At Binme
+atPage.Mode.Galloping.SubTitle: Tetik, dörtnala koşmaya benzeyen ritmik bir düzende titreyecektir. Bu etkinin sadece düşük frekans değerlerinde fark edilebilir olduğunu unutmayın.
+
+atPage.Mode.Machine.Title: Makine
+atPage.Mode.Machine.SubTitle: Etki yukarıdaki Titreşim etkisine benzer, ancak iki titreşim şiddeti arasında gidip gelecektir.
+
+atPage.Mode.MotorWarning: "UYARI: Tetik motoru için olası zarar"
+atPage.UnofficialATModes: Resmi Olmayan Adaptif Tetik Modları
+
+atPage.Legacyv2Modes: DSX v2 Eski Adaptif Tetik Modları
+atPage.Legacyv2Modes.CustomTriggerValues.Title: Özel Tetik Değerleri (Deneysel)
+atPage.Legacyv2Modes.CustomTriggerValues.SubTitle: Rastegele efektlere neden olacak mod ve değerlere dayalı deneysel tetik efektleri.
+atPage.Legacyv2Modes.CustomTriggerValues.Mode: Özel Tetik Değeri Modu
+
+atPage.Legacy.Slider.Rigid: Rigid
+atPage.Legacy.Slider.RigidA: Rigid A
+atPage.Legacy.Slider.RigidB: Rigid B
+atPage.Legacy.Slider.RigidAB: Rigid AB
+
+atPage.Legacy.Slider.Pulse: Pulse
+atPage.Legacy.Slider.PulseA: Pulse A
+atPage.Legacy.Slider.PulseB: Pulse B
+atPage.Legacy.Slider.PulseAB: Pulse AB
+
+atPage.Legacy.Slider.VibrateResistance: VibrateResistance
+atPage.Legacy.Slider.VibrateResistanceA: VibrateResistance A
+atPage.Legacy.Slider.VibrateResistanceB: VibrateResistance B
+atPage.Legacy.Slider.VibrateResistanceAB: VibrateResistance AB
+
+atPage.Legacy.Slider.VibratePulse: Vibrate Pulse
+atPage.Legacy.Slider.VibratePulseA: Vibrate Pulse A
+atPage.Legacy.Slider.VibratePulseB: Vibrate Pulse B
+atPage.Legacy.Slider.VibratePulseAB: Vibrate Pulse AB
+
+atPage.Legacy.Slider.Force1: Force 1
+atPage.Legacy.Slider.Force2: Force 2
+atPage.Legacy.Slider.Force3: Force 3
+atPage.Legacy.Slider.Force4: Force 4
+atPage.Legacy.Slider.Force5: Force 5
+atPage.Legacy.Slider.Force6: Force 6
+atPage.Legacy.Slider.Force7: Force 7
+
+atPage.Legacy.Mode.Choppy.Title: Dalgalı
+atPage.Legacy.Mode.Choppy.SubTitle: Efekt, bastıkça değişen güçlerle GeriBildirim modunu andırır.
+
+atPage.Legacy.Mode.VerySoft.Title: Çok Zayıf
+atPage.Legacy.Mode.VerySoft.SubTitle: Efekt, çok zayıf yoğunluğa sahip Silah modunu andırır.
+
+atPage.Legacy.Mode.Soft.Title: Zayıf
+atPage.Legacy.Mode.Soft.SubTitle: Efekt, zayıf yoğunluğa sahip Silah modunu andırır.
+
+atPage.Legacy.Mode.Medium.Title: Orta
+atPage.Legacy.Mode.Medium.SubTitle: Efekt, orta yoğunluğa sahip Silah modunu andırır.
+
+atPage.Legacy.Mode.Hard.Title: Sert
+atPage.Legacy.Mode.Hard.SubTitle: Efekt, sert yoğunluğa sahip Silah modunu andırır.
+
+atPage.Legacy.Mode.VeryHard.Title: Çok Sert
+atPage.Legacy.Mode.VeryHard.SubTitle: Efekt, çok sert yoğunluğa sahip Silah modunu andırır.
+
+atPage.Legacy.Mode.Hardest.Title: En Sert
+atPage.Legacy.Mode.Hardest.SubTitle: Efekt, en sert yoğunluğa sahip Silah modunu andırır.
+
+atPage.Legacy.Mode.Rigid.Title: Rigid
+atPage.Legacy.Mode.Rigid.SubTitle: Efekt, çok sert yoğunluğa sahip Silah modunu andırır.
+
+atPage.Legacy.Mode.VibrateTriggerPulse.Title: Değişken Tetik Titreşimi
+atPage.Legacy.Mode.VibrateTriggerPulse.SubTitle: Efekt, otomatik olarak değişen bir frekansa sahip Titreşim moduna benzer.
+
+# ------------------------------------------------------------------------------------------------
+# LED Page
+# ------------------------------------------------------------------------------------------------
+
+ledPage.RGB: RGB
+ledPage.LEDProfiles: LED Profilleri
+ledPage.AddEditLEDProfiles: Kişiselleştirmek için yeni LED profili ekle, yada silinecek profilleri çoklu seçmek için düzenle düğmesine bas.
+ledPage.SearchControllerProfiles: Kontrolcü Profili Ara
+ledPage.WarningLEDPassthroughEnabled: "Uyarı: LED Aktarma Etkinleştirildi"
+ledPage.LEDPassthroughDescription: LED Aktarma Etkinleştirildiğinde, LED profilleri devre dışı kalır ve destekli oyunlara dinemik kontrol şansı verir. Bu özellik aşağıda seçilen tüm ayarları geçersiz kılar ve destekli oyunların LED davranışını kontrol etmesine izin verir.
+ledPage.DisableLEDPassthrough: LED Aktarmayı Devre Dışı Bırak
+ledPage.LightBarBrightness: Işık Çubuğu Parlaklığı
+ledPage.LightBarBrightnessDescription: Kontrolcü üzerindeki ışık çubuğunun parlaklığını ayarlar.
+ledPage.BatteryLowFlashing: Düşük Batarya Flaş Efekti
+ledPage.BatteryLowFlashingDescription: Etkinleştirildiğinde, hangi ışık çubuğu modu seçilmiş olursa olsun kontrolcünün batarya seviyesi düşük olduğunda bu efekt devreye girecektir.
+ledPage.BatteryLowFlashingPercentage: Düşük Batarya Flaş Efekti Yüzdesi
+ledPage.BatteryLowFlashingPercentageDescription: Etkinleştirildiğinde, kontrolcünün batarya yüzdesi belirlenen miktardan az ise, aşağıda belirlenen renk ile yanıp sönecektir.
+ledPage.IgnoreFlashingWhileCharging: Şarjdayken Flaş Efektini Geçersiz Kıl
+ledPage.IgnoreFlashingWhileChargingDescription: Etkinleştirildiğinde, kontrolcü şarj oluyorsa veya tamamen şarj olmuşsa, artık yanıp sönmeyecek ve o anda seçili olan Işık Çubuğu moduna geri dönecektir.
+ledPage.LightBarFlash: Işık Çubuğu Flaş Efekti
+ledPage.LightBarFlashDescription: Etkinleştirildiğinde, DualShock™️ 4, DualSense™️, yada DualSense Edge™️ Kablosuz Kontrolcüsünün Işık Çubuğu yanıp sönecektir.
+ledPage.PlayerLEDFlash: Oyuncu LED Flaş Efekti
+ledPage.PlayerLEDFlashDescription: Etkinleştirildiğinde, DualSense™️ veya DualSense Edge™️ Kablosuz Kontrolcüsünün Oyuncu LED'i yanıp sönecektir.
+ledPage.MuteButtonLEDFlash: Sessiz Düğmesi LED Flaş Efekti
+ledPage.MuteButtonLEDFlashDescription: Etkinleştirildiğinde, DualSense™️ veya DualSense Edge™️ Kablosuz Kontrolcüsünün Sessiz Düğmesi LED'i yanıp sönecektir.
+ledPage.BatteryLowFlashingColor: Düşük Batarya Flaş Efekti Rengi
+ledPage.BatteryLowFlashingColorDescription: Kontrolcünüzün bataryası düşükken kullanılacak olan, yanıp sönen ışığın rengi.
+ledPage.StaticColor: Sabit Renk
+ledPage.StaticColorDescription: Değişmeyen sabit renk
+ledPage.SelectedColor: Seçili Renk
+ledPage.SelectedColorDescription: Sabit Renk efekti seçildiğinde kullanılacak renk.
+ledPage.MultiColor: Geçiş Efekti
+ledPage.MultiColorDescription: HSL renk spektrumu yada özel olarak eklenen renkler arasında geçiş yapar.
+ledPage.CycleSpeed: Geçiş Hızı
+ledPage.CycleSpeedDescription: Renk arasındaki geçişin ne kadar hızlı olacağını belirler.
+ledPage.AutoReverseColor: Otomatik Ters Renk
+ledPage.AutoReverseColorDescription: Etkinleştirildiğinde, HSL renk spektrumu 0'dan 360'a ardındansa 360'dan 0'a doğru gidecektir. Devre dışı bırakılırsa, spektrum 0'dan 360'a gidip ardından tekrar 0'dan başlayacaktır.
+ledPage.HSLColorSpectrum: HSL Renk Spektrumu
+ledPage.HSLColorSpectrumDescription: Seçildiğinde, renkler HSL Renk Spektrumu arasında geçiş yapacaktır.
+ledPage.CustomColors: Özel Renkler
+ledPage.CustomColorsDescription: Seçildiğinde, özel olarak eklenen renkler arasında geçiş yapar.
+ledPage.SelectedGradient: Seçili Gradyan
+ledPage.SelectedGradientDescription: Arasında geçiş yapılacak renkler, en az 2 renk gerekli.
+ledPage.ResetToDefaults: Varsayılana Dön
+ledPage.DeleteSelectedColor: Seçili Rengi Sil
+ledPage.AddNewGradientColor: Yeni Gradyan Rengi Ekle
+ledPage.Breathing: Nefes Alma
+ledPage.BreathingDescription: 0'dan en fazla belirlenen Işık Çubuğu parlaklığına çıkan nefes alma efekti. 
+ledPage.BreathingSpeed: Nefes Alma Hızı
+ledPage.BreathingSpeedDescription: Işığın 0'dan belirlenen Işık Çubuğu parlaklığına ne kadar hızlı gideceğini belirler.
+ledPage.RandomColor: Rastgele Renk
+ledPage.RandomColorDescription: Parlaklık her 0'a geldiğinde otomatik olarak yeni bir renk seçilir.
+ledPage.Strobing: Yanıp Sönme
+ledPage.StrobingDescription: 0'dan belirlenen parlaklığa doğru sert geçiş yapan, yanıp sönme efekti. 
+ledPage.StrobingSpeed: Yanıp Sönme Hızı
+ledPage.StrobingSpeedDescription: Yanıp sönme hızını belirler.
+ledPage.AnimateWhenCharging: Şarj Animasyonu Göster
+ledPage.AnimateWhenChargingDescription: Kontrolcünün şarj olduğunu göstermek için aşağıda seçilmiş gradyanı kullanarak bir şarj animasyonu göster.
+
+ledPage.PlayerIndicator: Oyuncu Göstergesi
+ledPage.PlayerIndicatorDescription: Oyuncu LED'inde gösterilen oyuncu sayısı.
+ledPage.BatteryMode: Batarya Modu
+ledPage.Battery: Batarya
+ledPage.BatteryDescription: 0'dan 100'e belirlenen gradyan renkleri kullanılarak gösterilen batarya seviyesi.
+
+ledPage.NoPlayerIndicator: Oyuncu Yok Göstergesi
+ledPage.PlayerOne: Oyuncu Bir
+ledPage.PlayerOneIndicator: Birinci Oyuncu Göstergesi
+ledPage.PlayerTwo: Oyuncu İki
+ledPage.PlayerTwoIndicator: İkinci Oyuncu Göstergesi
+ledPage.PlayerThree: Oyuncu Üç
+ledPage.PlayerThreeIndicator: Üçüncü Oyuncu Göstergesi
+ledPage.PlayerFour: Oyuncu Dört
+ledPage.PlayerFourIndicator: Dördüncü Oyuncu Göstergesi
+ledPage.PlayerFive: Oyuncu Beş
+ledPage.PlayerFiveIndicator: Beşinci Oyuncu Göstergesi
+
+ledPage.BatteryModeDescription: Seçildiğinde, Batarya seviyesini oyuncu LED göstergesi üzerinde gösterecektir.
+ledPage.Battery0To20Percent: Batarya 0% - 20%
+ledPage.Battery20To40Percent: Batarya 20% - 40%
+ledPage.Battery40To60Percent: Batarya 40% - 60%  
+ledPage.Battery60To80Percent: Batarya 60% - 80%
+ledPage.Battery80To100Percent: Batarya 80% - 100%
+  
+ledPage.MuteIndicator: Sessiz Göstergesi
+ledPage.MuteIndicatorDescription: Sessiz düğmesi LED'inin durumu.
+
+ledPage.PlayerMuteBrightness: Oyuncu / Sessiz LED Parlaklığı
+ledPage.PlayerMuteBrightnessDescription: Hem oyuncu LED'ini hem de Sessiz LED'ini etkileyen parlaklık ayarı.
+
+ledPage.DualSenseFeatures: Dualsense Özellikleri
+
+ledPage.Off: "KAPALI"
+ledPage.On: "AÇIK"
+ledPage.Pulse: "NABIZ"
+ledPage.Dim: KISIK
+ledPage.Medium: ORTA
+ledPage.Bright: PARLAK
+ledPage.NoControllersDetected: Kontrolcü Bulunamadı
+ledPage.PleasePlugInController: Işık Çubuğu ve Dahasını yapılandırmak için lütfen kontrolcünüzü kablo veya Bluetooth ile bağlayın.
+ledPage.LightBarConfiguration: Işık Çubuğu Ayarları
+ledPage.LightBarModes: Işık Çubuğu Modları
+
+# ------------------------------------------------------------------------------------------------
+# HapticsRumble Page
+# ------------------------------------------------------------------------------------------------
+
+hapticsPage.RumbleModeCard.Title: Standart Titreşim Modu
+hapticsPage.RumbleModeCard.SubTitle: Seçildiğinde, motorlara Xbox 360 ve DualShock 4 kontrolcüsü tarzında standart titreşim gönderilecektir.
+
+hapticsPage.HapticFeedbackModeCard.Title: Dokunsal Geribildirim Modu
+hapticsPage.HapticFeedbackModeCard.SubTitle: Seçildiğinde, tercih edilen dokunsal geribildirim modlarından biri uygulanacaktır.
+
+hapticsPage.HapticFeedback.WarningCard.Title: Dokunsal Geribildirim Modu Dualsense harici kontrolcülerde ve Kablosuz Bağlantı ile kullanılamaz
+hapticsPage.HapticFeedback.WarningCard.SubTitle: Dokunsal Geribildirim Modu sadece Dualsense kontrolcülerinde, sadece USB kablosu ile bağlanıldığında kullanılabilir. 
+
+hapticsPage.EnableRumbleCard.Title: Standart Titreşimi Etkinleştir
+hapticsPage.EnableRumbleCard.SubTitle: Etkinleştirildiğinde, standart titreşim kontrolcüye gönderilecektir.
+
+hapticsPage.EnhancedRumbleCard.Title: Geliştirilmiş Standart Titreşim
+hapticsPage.EnhancedRumbleCard.SubTitle: Etkinleştirildiğinde, DualSense™️ ve DualSense Edge™️ Kablosuz Kontrolcüleri'nin yeni yazılım güncellemelerinde gelen Geliştirilmiş Titreşim özelliğini kullanarak Standart Titreşim özelliğini iyileştirir.
+
+hapticsPage.RumbleIntensityCard.Title: Titreşim Şiddeti
+hapticsPage.RumbleIntensityCard.SubTitle: Genel motor şiddetinin ne kadar yüksek olacağını belirleyin.
+
+hapticsPage.MaxRumbleStrengthCard.Title: Azami Titreşim Şiddeti
+hapticsPage.MaxRumbleStrengthCard.SubTitle: Sağda belirtilen sayının üstündeki titreşim değeri kontrolcüye gönderilmez.
+hapticsPage.MaxRumbleStrengthCard.SubTitle2: Örnek - Eğer 200'e ayarlanırsa, 200'ün üstündeki her değer kontrolcüye 200 olarak gönderilir.
+
+hapticsPage.HapticMode.Disabled: Devre Dışı
+hapticsPage.HapticMode.AudioHaptics: Sesten Dokunsallık
+hapticsPage.HapticMode.RumbleHaptics: Titreşimden Dokunsallık
+hapticsPage.HapticMode.ButtonHaptics: Düğmeden Dokunsallık
+hapticsPage.HapticMode.TriggerHaptics: Tetikten Dokunsallık
+hapticsPage.HapticMode.JoystickHaptics: Analogdan Dokunsallık
+
+hapticsPage.Disabled.Title: Dokunsal Geribildirim Devre Dışı
+hapticsPage.Disabled.SubTitle: Seçildiğinde, titreşim devre dışı kalır.
+
+hapticsPage.AudioHapticsConfig.Title: Sesten Dokunsallık Yapılandırması
+hapticsPage.AudioHapticsConfig.SubTitle: Sistem genelindeki sesi kontrolcüye gönderir ve bunu dokunsal geribildirime çevirir.
+
+hapticsPage.RumbleHapticsConfig.Title: Titreşimden Dokunsallık Yapılandırması
+hapticsPage.RumbleHapticsConfig.SubTitle: Emüle edilmiş aygıtlardan gelen titreşim değerlerini istenilen ses dalga tipine göre dokunsal geribildirime çevirir.
+
+hapticsPage.ButtonHapticsConfig.Title: Düğmeden Dokunsallık Yapılandırması
+hapticsPage.ButtonHapticsConfig.SubTitle: Kontrolcü üstündeki düğmeleri (Üçgen, Kare, YÖN, vb.) istenilen ses dalgası tipi ile hissetmenizi sağlar.
+
+hapticsPage.TriggerHapticsConfig.Title: Tetikten Dokunsallık Yapılandırması
+hapticsPage.TriggerHapticsConfig.SubTitle: L2/R2 basışlarınızı istenilen ses dalgası tipi ile hissetmenizi sağlar. Bu bir Adaptif Tetik Modu DEĞİLDİR.
+
+hapticsPage.JoystickHapticsConfig.Title: Analogdan Dokunsallık Yapılandırması
+hapticsPage.JoystickHapticsConfig.SubTitle: Sağ ve Sol Analog hareketlerinizi istenilen ses dalgası tipi ile dokunsal geribildirime çevirir. Sağ Tetik sağ motoru, Sol Tetik sol motoru kontrol eder.
+
+hapticsPage.RestartButton.Title : Yeniden Başlat
+
+hapticsPage.RumblePassthrough.Title: Titreşim Aktarma
+hapticsPage.RumblePassthrough.AudioHaptics.SubTitle: Etkinleştirildiğinde, sanal kontrolcüye gönderilen titreşim fiziksel kontrolcüye uygulanır. Eğer titreşim gönderilmiyorsa, Sesten Dokunsallık normal şekilde çalışmaya devam eder.
+hapticsPage.RumblePassthrough.ButtonHaptics.SubTitle: Etkinleştirildiğinde, sanal kontrolcüye gönderilen titreşim fiziksel kontrolcüye uygulanır. Eğer titreşim gönderilmiyorsa, Düğmeden Dokunsallık normal şekilde çalışmaya devam eder.
+hapticsPage.RumblePassthrough.TriggerHaptics.SubTitle: Etkinleştirildiğinde, sanal kontrolcüye gönderilen titreşim fiziksel kontrolcüye uygulanır. Eğer titreşim gönderilmiyorsa, Tetikten Dokunsallık normal şekilde çalışmaya devam eder.
+hapticsPage.RumblePassthrough.JoystickHaptics.SubTitle: Etkinleştirildiğinde, sanal kontrolcüye gönderilen titreşim fiziksel kontrolcüye uygulanır. Eğer titreşim gönderilmiyorsa, Analogdan Dokunsallık normal şekilde çalışmaya devam eder.
+
+hapticsPage.LeftMotorMaxIntensity.Title: Sol Motor Azami Şiddeti
+hapticsPage.LeftMotorMaxIntensity.SubTitle: Sol motor için izin verilen en yüksek şiddet değeri.
+
+hapticsPage.RightMotorMaxIntensity.Title: Sağ Motor Azami Şiddeti
+hapticsPage.RightMotorMaxIntensity.SubTitle: Sağ motor için izin verilen en yüksek şiddet değeri.
+
+hapticsPage.AudioHaptics.InternalSpeakerVolume.Title: Kontrolcü Hoparlör Ses Seviyesi
+hapticsPage.AudioHaptics.InternalSpeakerVolume.SubTitle: Kontrolcüye gönderilen sesin şiddet seviyesi.
+
+hapticsPage.AudioHaptics.InternalJackVolume.Title: Kontrolcü Jak Girişi Ses Seviyesi
+hapticsPage.AudioHaptics.InternalJackVolume.SubTitle: Kontrolcü Jakı'na gönderilen sesin şiddet seviyesi.
+
+hapticsPage.JoystickHaptics.InnerDeadzone.Title: Analog Ölü Bölge
+hapticsPage.JoystickHaptics.InnerDeadzone.SubTitle: Analogları merkezden köşelere doğru hareket ettirirken, gönderilen titreşimlerin ne kadar göz ardı edileceğini belirler. İki analoğa da uygulanır.
+
+hapticsPage.SoundWaveConfig.Title: Ses Dalgası Yapılandırması
+
+hapticsPage.SoundWave.Sine: Sinüs Dalgası
+hapticsPage.SoundWave.Sqaure: Kare Dalga
+hapticsPage.SoundWave.Triangle: Üçgen Dalga
+hapticsPage.SoundWave.WhiteNoise: Beyaz Gürültü
+hapticsPage.SoundWave.PinkNoise: Pembe Gürültü
+hapticsPage.SoundWave.Sweep: Kavis Dalgası
+
+hapticsPage.SoundWave.Gain.Title: Gain
+hapticsPage.SoundWave.Gain.SubTitle: Ses sinyaline uygulanan yükseltme miktarı.
+
+hapticsPage.SoundWave.Frequency.Title: Frekans
+hapticsPage.SoundWave.Frequency.SubTitle: Bir ses basınç dalgasının saniyede kendini tekrarlama sayısı. 60 Hz civarı en güçlü olanıdır.
+
+hapticsPage.SoundWave.Sweep.StartEndFreq.Title : Başlangıç ve Bitiş Frekansları
+hapticsPage.SoundWave.Sweep.StartEndFreq.SubTitle : İstenen frekanslar için başlangıç ve bitişi noktalarını belirleyin.
+hapticsPage.SoundWave.Sweep.StartFreq.Title : Başlangıç Frekansı
+hapticsPage.SoundWave.Sweep.EndFreq.Title : Bitiş Frekansı
+
+hapticsPage.SoundWave.Sweep.Duration.Title : Süre
+hapticsPage.SoundWave.Sweep.Duration.Title2 : Süre (saniye)
+hapticsPage.SoundWave.Sweep.Duration.SubTitle : Başlangıç Frekansından Bitiş Frekansına gitmek için saniye cinsinden ne kadar süre gerekeceği.
+
+# ------------------------------------------------------------------------------------------------
+# Installed Games Page
+# ------------------------------------------------------------------------------------------------
+
+installedGamesPage.Loading: Oyun Kütüphaneleri Yükleniyor...
+installedGamesPage.GameFound: Oyun Bulundu.
+
+installedGamesPage.GamesList.Filter: Filtrele
+
+installedGamesPage.GamesList.SortBy: Sırala
+installedGamesPage.GamesList.SortBy.Name: İsim
+installedGamesPage.GamesList.SortBy.RecentlyPlayed: Son Oynanan
+installedGamesPage.GamesList.SortBy.Playtime: Oynanış Süresi
+
+installedGamesPage.GamesList.SortBy.Ascending: Artan
+installedGamesPage.GamesList.SortBy.Descending: Azalan
+
+installedGamesPage.GamesList.RescanButton.Tooltip: Yeniden Tara
+
+installedGamesPage.GamesList.Search.TextBoxPlaceholder: Oyun Ara
+installedGamesPage.NA: N/A
+installedGamesPage.ViewSteamPage: Steam Sayfasını Görüntüle
+installedGamesPage.LaunchProgram: Başlat
+installedGamesPage.Category: Kategori
+installedGamesPage.Platform: Platform
+installedGamesPage.LastPlayed: En Son Oynama
+installedGamesPage.TotalPlaytime: Oynanma Süresi
+installedGamesPage.PlaytimeRecent: Oynanma Süresi (Son 2 hafta)
+installedGamesPage.InstallDirectory: Yüklü Klasör
+installedGamesPage.LibraryPath: Kütüphane Konumu
+installedGamesPage.RunCommand: Çalıştırma Komutu
+installedGamesPage.ExecutablePath: Exe. Konumu (En Yakın Eşleşme)
+installedGamesPage.ControllerProfile: Kontrolcü Profili
+installedGamesPage.ControllerProfileDescription: Bu oyun için kullanılacak kontrolcü profili.
+
+installedGamesPage.SelectedGame.PlayButton.Tooltip: Başlat
+installedGamesPage.SelectedGame.LinkButton.Tooltip: Steam Sayfasını Görüntüle
+installedGamesPage.SelectedGame.Category: Kategori
+installedGamesPage.SelectedGame.Platform: Platform
+installedGamesPage.SelectedGame.AppID: Uygulama Kimliği
+installedGamesPage.SelectedGame.LastPlayed: En Son Oynama
+installedGamesPage.SelectedGame.TotalPlaytime: Oynama Süresi
+installedGamesPage.SelectedGame.PlaytimeRecent: Oynama Süresi (Son 2 hafta)
+installedGamesPage.SelectedGame.RunCommand: Çalıştırma Komutu
+installedGamesPage.SelectedGame.InstallDirectory: Yüklü Klasör
+installedGamesPage.SelectedGame.LibraryPath: Kütüphane Konumu
+installedGamesPage.SelectedGame.ExePath: Exe. Konumu (En Yakın Eşleşme)
+
+installedGamesPage.Profile1: Profil 1
+installedGamesPage.Profile2: Profil 2
+installedGamesPage.Profile3: Profil 3
+installedGamesPage.RescanLibrary: Yeniden Tara
+installedGamesPage.NoGamesFound: Oyun Bulunamadı.
+installedGamesPage.UpdateExecutablePath: Exe. Kunumunu Güncelleştir
+installedGamesPage.ActiveProcesses: Aktif İşlemler
+installedGamesPage.ListOfActiveProcesses: Aktif İşlemlerin Listesi
+installedGamesPage.Cancel: İptal
+installedGamesPage.SelectExecutablePath: Exe. Konumunu Seç
+installedGamesPage.ManuallyChooseExecutable: Konumu Elle Seç
+installedGamesPage.Filter: Filtrele
+installedGamesPage.Steam: Steam
+installedGamesPage.EpicStore: Epic Store
+installedGamesPage.SortBy: Sırala
+installedGamesPage.Name: İsim
+installedGamesPage.Ascending: Artan
+installedGamesPage.Descending: Azalan
+installedGamesPage.RecentlyPlayed: Son Oynanan
+installedGamesPage.Playtime: Oynama Süresi
+installedGamesPage.AddLibrary: Kütüphane Ekle
+installedGamesPage.NoGamesFound.Detail: Sisteminizde yüklü hiçbir oyun bulunamadı.
+
+
+
+
+# ------------------------------------------------------------------------------------------------
+# HidHide Page
+# ------------------------------------------------------------------------------------------------
+
+hidHidePage.HidHideDriverInfo.Title: HidHide Sürücüsü
+hidHidePage.HidHideDriverInfo.SubTitle: HidHide, uygulamanın sanal bir aygıtı (Xbox 360, Dualshock 4 Kontrolcüsü gibi) taklit ederken fiziksel kontrolcüyü gizleyebilmesini sağlar. Bu, oyunlarda çift basma sorunun önüne geçer ve oyunun sadece sanal kontrolcüyü görmesini sağlar.
+
+hidHidePage.ActivateHidHide.Title: HidHide'ı Etkinleştir
+hidHidePage.ActivateHidHide.SubTitle: Etkinleştirildiğinde, HidHide Sürücüsü aşağıdaki Gizlenmiş Aygıtlar Listesinde bulunan fiziksel aygıtları gizleyecektir.
+
+hidHidePage.ApplicationList.Title: Uygulama Listesi 
+hidHidePage.HiddenDevicesList.Title: Gizlenmiş Aygıtlar Listesi
+
+hidHidePage.ApplicationPath: Uygulama Konumu
+hidHidePage.RefreshApplicationList: Uygulama Listesini Yenile
+
+hidHidePage.RemoveSelectedApps.Title: Seçili Uygulamaları Sil
+hidHidePage.RemoveSelectedApps.SubTitle: Bir uygulamayı listeden silmek, o uygulamanın gizlenmiş aygıtları görememesine yol açacaktır.
+hidHidePage.RemoveSelectedApps.Button: Uygulamaları Sil
+
+hidHidePage.AddApp.Title: Uygulama Ekle
+hidHidePage.AddApp.SubTitle: Bir uygulamayı listeye eklemek, uygulamanın gizlenmiş aygıtları görebilmesini sağlayacaktır.
+hidHidePage.AddApp.TextBox.Placeholder: Çalıştırılabilir bir dosyanın dosya yolunu girin (.bat .exe vb..)
+hidHidePage.AddApp.Error.FileDoesntExist: Dosya mevcut değil
+hidHidePage.AddApp.Warning.AlreadyAdded: Uygulama zaten listede var.
+
+hidHidePage.InverseCloak.Title: "Ters Uygulama Gizleme"
+hidHidePage.InverseCloak.SubTitle: Etkinleştirildiğinde, listedeki uygulamaların, gizlenmiş aygıtları görememesine yol açacaktır.
+
+hidHidePage.DevicePath: Cihaz Örneği Yolu
+hidHidePage.RefreshHiddenDevicesList: Gizlenmiş Aygıt Listesini Yenile
+
+hidHidePage.RemoveSelectedDevices.Title: Seçili Aygıtları Sil
+hidHidePage.RemoveSelectedDevices.SubTitle: Bu listeden bir aygıtı silmek yeniden eklenene kadar o aygıtın gizlenmesini engelleyecektir.
+hidHidePage.RemoveSelectedDevices.Button: Aygıtları Sil
+
+hidHidePage.AddDevice.Title: Aygıt Ekle
+hidHidePage.AddDevice.SubTitle: Listeye aygıt eklemek, aygıtı sol tarafaki listeye eklenmemiş uygulamalardan gizleyecektir.
+hidHidePage.AddDevice.TextBox.Placeholder: Cihaz örneği yolunu girin
+hidHidePage.AddDevice.Warning.AlreadyAdded: Cihaz Örneği Yolu zaten listede var
+
+
+# ------------------------------------------------------------------------------------------------
+# DSX Logs Page
+# ------------------------------------------------------------------------------------------------
+
+logsPage.Title: DSX KAYITLARI
+logsPage.CompressLogFiles.Button: Kayıt Dosyalarını Paylaşmak için Sıkıştır
+logsPage.OpenLogsDirectory.Button: Kayıt Klasörünü Aç
+
+logsPage.LogCheckBox.ControllerLogs: Kontrolcü Kayıtları
+logsPage.LogCheckBox.ButtonPresses: Fiziksel Düğme Basış Kayıtları
+logsPage.LogCheckBox.DebugLogs: Hata Ayıklama Kayıtları
+
+logsPage.LogsViewTable.Title.Date: TARİH
+logsPage.LogsViewTable.Title.Category: KATEGORİ
+logsPage.LogsViewTable.Title.Status: DURUM
+logsPage.LogsViewTable.Title.Message: İLETİ
+
+logsPage.LogsViewTable.Status.Title.Information: Bilgi
+logsPage.LogsViewTable.Status.Title.Debug: Hata Ayıklama
+logsPage.LogsViewTable.Status.Title.Warning: Uyarı
+logsPage.LogsViewTable.Status.Title.Error: Hata
+
+# ------------------------------------------------------------------------------------------------
+# Settings Page
+# ------------------------------------------------------------------------------------------------
+settingsPage.Tabs.Display: Arayüz
+settingsPage.Tabs.Behavior: Davranış
+settingsPage.Tabs.UDP: UDP
+
+settingsPage.DriverInstallation.CompanyName: Şirket İsmi
+settingsPage.DriverInstallation.FileDescription: Dosya Tanımı
+settingsPage.DriverInstallation.FileSize: Dosya Boyutu
+settingsPage.DriverInstallation.FileVersion: Dosya Sürümü
+settingsPage.DriverInstallation.LatestReleaseDate: En Son Yayınlanma Tarihi
+settingsPage.DriverInstallation.ProductName: Ürün İsmi
+settingsPage.DriverInstallation.ProductVersion: Ürün Sürümü
+settingsPage.DriverInstallation.AcceptedLicense: Lisans anlaşmasını okudum ve koşulları kabul ediyorum.
+settingsPage.DriverInstallation.FollowDriverSetupInstructions: Sürücü yüklemesini tamamlamak için lütfen ekrandaki talimatları takip edin.
+settingsPage.DriverInstallation.ProceedByClickingNextBelow: Tamamlandığında, lütfen aşağıdaki ileri düğmesine basarak devam edin.
+settingsPage.DriverInstallation.InternetRequiredVPadDriver: VirtualPad Driver by Nefarius sürücüsünü indirmek ve yüklemek için internet bağlantısı gereklidir.
+settingsPage.DriverInstallation.InternetRequiredHidHideDriver: HidHide Sürücüsünü indirmek ve yüklemek için internet bağlantısı gereklidir.
+settingsPage.DriverInstallation.ProceedByClickingRetry: İnternete bağlandığınızda, lütfen aşağıdaki yeniden dene düğmesine basarak devam edin.
+settingsPage.DriverInstallation.UnexpectedError: Sürücü kurulumu sırasında beklenmedik bir hata meydana geldi.
+settingsPage.DriverInstallation.PleaseTryAgain: Lütfen yeniden deneyin.
+settingsPage.DriverInstallation.LicenseStatus: Lisans Durumu
+settingsPage.DriverInstallation.DriverName: Sürücü İsmi
+settingsPage.DriverInstallation.DriverVersion: Sürücü Sürümü
+settingsPage.DriverInstallation.DriverSize: Sürücü Boyutu
+settingsPage.DriverInstallation.RuntimeAPIVersion: Runtime API Sürümü
+
+settingsPage.DriverInstallation.Button.Next: İleri
+settingsPage.DriverInstallation.Button.InstallDriver: Sürücüyü Yükle
+settingsPage.DriverInstallation.Button.Retry: Yeniden Dene
+
+settingsPage.DriverInstallation.VPad.LicenseInfo: VirtualPad Sürücüsü Lisans Bilgisi
+settingsPage.DriverInstallation.VPad.LicenseIssuer: Lisansı Veren Firma
+settingsPage.DriverInstallation.VPad.LicenseType: Lisans Tipi
+settingsPage.DriverInstallation.VPad.LicenseExpiresAt: Lisans Dolma Tarihi
+settingsPage.DriverInstallation.VPad.LicenseCreatedAt: Lisans Oluşturulma Tarihi
+settingsPage.DriverInstallation.VPad.Installed: VirtualPad Driver by Nefarius Yüklendi
+
+settingsPage.HidHide.Title: Fiziksel Kontrolcüyü Gizleyin
+settingsPage.HidHide.Details: Hiçbir uygulama veya oyunun görememesi için bilgisayarınıza bağlı fiziksel kontrolcünüzü gizleyin. DSX'in oluşturduğu sanal kontrolcüler ile birlikte kullanılması en idealidir.
+settingsPage.HidHide.HidePhysDevices: Fiziksel Aygıtları Gizleyin
+settingsPage.HidHide.HidePhysDevices.Details: Fareniz veya klavyeniz gibi oyun çevre birimlerinizi uygulamalardan ve oyunlardan gizleyin.
+settingsPage.HidHide.WhitelistApps: Beyaz Liste
+settingsPage.HidHide.WhitelistApps.Details: Hangi uygulamaların veya oyunların gizlenmiş aygıtları görebileceğini seçin.
+settingsPage.HidHide.ProductInfo: HidHide Ürün Bilgisi
+settingsPage.HidHide.Installed: HidHide Sürücüsü Yüklendi
+settingsPage.HidHide.RebootPlease: Eğer sürücüyü henüz yüklediyseniz, lütfen sürücünün etki gösterebilmesi için bilgisayarınızı yeniden başlatın.
+
+settingsPage.Tabs.VirtualPadDriver: VirtualPad Sürücüsü
+settingsPage.Tabs.VirtualPadDriverProductInfo: VirtualPad Sürücüsü Ürün Bilgisi
+settingsPage.VirtualPadDriverDescription: Sanal kontrolcülerin oluşturulabilmesini sağlayan sistem sürücüsü, Nefarius Software Solutions e.U. tarafından yaratıldı ve geliştirildi.
+
+settingsPage.Tabs.HidHideDriver: HidHide Sürücüsü
+settingsPage.HidHideInfo: HidHide DSX'in sanal kontrolcüleri emüle ederken fiziksel kontrolcüyü saklamasına izin verir. Sanal ve Fizksel kontrolcü tarafından yapılacak çift basışları engellemek için kullanılır ve oyunun yada programın sadece sanal kontrolcüyü görmesini sağlar. Nefarius Software Solutions e.U. tarafından yaratıldı ve geliştirildi.              
+settingsPage.Tabs.DangerZone: Uygulama Sıfırlama
+settingsPage.Tabs.DangerZone.Warning: Bu işlem geri alınamaz. Uygulama Ayarları, Profiller ve herşey varsayılan ayarlarına sıfırlanacaktır.
+settingsPage.Tabs.DangerZone.ResetAppSettings: Uygulama Ayarlarını Sıfırla
+
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineOne : Kayıt Klasörü Konumu
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineTwo : BU İŞLEM GERİ ALINAMAZ!
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineThree : Devam etmek istediğinize emin misiniz?
+
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Title : Uygulama Sıfırlama Başarılı
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Detail : DSX yeniden başlatılacak.
+
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Title : Hata
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Detail : Uygulama sıfırlama başarısız oldu.
+
+settingsPage.EnableDiagnostictracing: Tanılama İzlemeyi Etkinleştir
+settingsPage.EnableDiagnostictracing.Details: Bu, deneyimli geliştiriciler tarafından performans gibi belirli şeyleri izleyebilmeleri için kullanılır.
+
+# -------------------------------
+settingsPage.Display.LanguageCard.Title: Dil
+settingsPage.Display.LanguageCard.SubTitle: Uygulama dilini seçin.
+settingsPage.Display.LanguageCard.SearchBar.PlaceHolder: Ara
+
+settingsPage.Display.LightThemeCard.Title: Açık Tema
+settingsPage.Display.LightThemeCard.SubTitle: Açık temayı etkinleştirin veya devre dışı bırakın.
+
+settingsPage.Display.FullDarkModeCard.Title: Tam Karanlık Modu
+settingsPage.Display.FullDarkModeCard.SubTitle: Karanlık Modu sevenler için arka planı siyah yapar.
+
+settingsPage.Display.AccentColorCard.Title: Uygulama Tema Rengi
+settingsPage.Display.AccentColorCard.SubTitle: DSX tarafından kullanılacak tema rengini seçin.
+settingsPage.Display.AccentColorCard.Reset.Button: Varsayılana Dön
+
+settingsPage.Display.BatteryIconCard.Title: Canlı Batarya Simgeleri
+settingsPage.Display.BatteryIconCard.SubTitle: Kontrolcü seçme sekmesindeki batarya durumu simgesi için canlı batarya gradyan renk tonlarını açın veya kapatın.
+
+settingsPage.Display.WindowSizeCard.Title: Uygulama Pencere Boyutu
+settingsPage.Display.WindowSizeCard.SubTitle: Uygulama en son ayarlanan pencere boyutunu hatırlar. Bu değeri varsayılan haline buradan sıfırlayabilirsiniz.
+settingsPage.Display.WindowSizeCard.ResetAppSize: Pencere Boyutunu Sıfırla
+
+settingsPage.Display.WindowScaleCard.Title: Pencere Ölçeğini Ayarlama
+settingsPage.Display.WindowScaleCard.SubTitle: Pencere içeriğini uygun şekilde ölçeklendirmek için bu değeri değiştirin. İdeal görünürlük için düşük çözünürlüklü bir ekranda çalışıyorsanız sayıyı azaltmanız önerilir.
+settingsPage.Display.WindowScaleSlider.Title: Pencere Ölçeği Değeri
+
+settingsPage.Display.TaskbarPreferences.Title: Görev Çubuğu Tercihleri
+settingsPage.Display.TaskbarPreferences.Description: Görev çubuğu simgesine sağ tıklandığında hangi menü öğelerinin görüneceğini özelleştirin.
+
+settingsPage.Display.TaskbarPreferences.HomePage: Ana Sayfa
+settingsPage.Display.TaskbarPreferences.ProfilesPage: Profil Sayfası
+settingsPage.Display.TaskbarPreferences.ControllerPage: Kontrolcü Sayfası
+settingsPage.Display.TaskbarPreferences.NotificationsPage: Bildirimler Sayfası
+settingsPage.Display.TaskbarPreferences.AdaptiveTriggersPage: Adaptif Tetikler Sayfası
+settingsPage.Display.TaskbarPreferences.ControllerLEDPage: Kontrolcü LED Sayfası
+settingsPage.Display.TaskbarPreferences.HapticsRumblePage: Titreşim Sayfası
+settingsPage.Display.TaskbarPreferences.InstalledGamesPage: Yüklü Oyunlar Sayfası
+settingsPage.Display.TaskbarPreferences.HidHidePage: HidHide Sayfası
+settingsPage.Display.TaskbarPreferences.DSXLogsPage: DSX Kayıtları Sayfası
+settingsPage.Display.TaskbarPreferences.SettingsPage: Ayarlar Sayfası
+
+settingsPage.Display.TaskbarPreferences.ShowConnectedControllers: Bağlı Kontrolcüleri Göster
+
+# -------------------------------
+settingsPage.Behavior.StartUpWithWindowCard.Title: Windows'la Başlat 
+settingsPage.Behavior.StartUpWithWindowCard.SubTitle: "DSX'i Windows açıldığında başlayacak şekilde ayarlar."
+settingsPage.Behavior.StartUpWithWindowCard.Note: "Steam de başlangıçta açılacaktır."
+
+settingsPage.Behavior.Launchv2Automatically.Title: DSX v2'yi Otomatik Başlat
+settingsPage.Behavior.Launchv2Automatically.SubTitle: Etkinleştirildiğinde, DSX v2 açılacak ve v3 kapanacaktır.
+settingsPage.Behavior.Launchv2Automatically.Note: DSX başlarken ESCAPE(esc) düğmesine basarak v3'e dönebilirsiniz. v3'e geldiğinizde, bu ayarı devre dışı bırakabilirsiniz.
+
+settingsPage.Behavior.StartUpMinimizedCard.Title: Başlangıç Pencere Durumu 
+settingsPage.Behavior.StartUpMinimizedCard.SubTitle: "DSX'in açıldığında nasıl görüneceğini seçin: Normal, Küçültülmüş, Sistem Tepsisinde yada Tam Ekran."
+
+settingsPage.Behavior.StartUpMinimizedCard.State.Normal: Normal
+settingsPage.Behavior.StartUpMinimizedCard.State.Maximized: Tam Ekran
+settingsPage.Behavior.StartUpMinimizedCard.State.Minimized: Küçültülmüş
+settingsPage.Behavior.StartUpMinimizedCard.State.MinimizedToTray: Sistem Tepsisinde
+
+settingsPage.Behavior.KeepAppInTrayCard.Title: Sistem Tepsisine Küçült
+settingsPage.Behavior.KeepAppInTrayCard.SubTitle: Küçültüldüğünde, DSX sistem tepsisi simgesinden erişilebilir şekilde arka planda çalışmaya devam eder.
+
+settingsPage.Behavior.DisconnectControllersOnExit.Title: Çıkarken Kontrolcülerin Bağlantısını Kes
+settingsPage.Behavior.DisconnectControllersOnExit.SubTitle: Etkinleştirildiğinde, DSX uygulaması kapatıldığında Bluetooth ile bağlı tüm kontrolcüleri kapatır.
+
+settingsPage.Behavior.DiscordRPCard.Title: Discord Rich Presence
+settingsPage.Behavior.DiscordRPCard.SubTitle: Discord'un seçili sayfa, kontrolcü ayrıntıları ve kullanım süresi gibi ayrıntılı bilgileri göstermesini sağlar. 
+settingsPage.Behavior.DiscordRPCard.Note: Değişikliklerin Discord'da görünmesi birkaç saniye sürebilir.
+
+settingsPage.Behavior.SteamNowPlayingStatus.Title: Steam Şimdi Oynanıyor Bilgisi
+settingsPage.Behavior.SteamNowPlayingStatus.SubTitle: Steam'de DSX'i 'şu anda oynanıyor' olarak görüntülemek için başlatıcıyı arka planda simge durumuna küçültür.
+settingsPage.Behavior.SteamNowPlayingStatus.Note: Etkili olması için DSX'in yeniden başlatılması gerekir.
+
+# -------------------------------
+settingsPage.Networking.IncomingUDP.Section: Gelen UDP
+settingsPage.Networking.OutgoingUDP.Section: Giden UDP
+settingsPage.Networking.WindowsFireWall.Section: Windows Güvenlik Duvarı
+
+# Used more than once:
+settingsPage.Networking.ipAddress: IP Adresi
+settingsPage.Networking.ipAddress.Description: Varsayılan olarak IP Adresi localhost, yani bu bilgisayardır.
+settingsPage.Networking.portNumber: Bağlantı Noktası
+settingsPage.Networking.portNumber.Description: Bu bilgisayarda DSX ile iletişim için kullanılacak Bağlantı Noktası numarası.
+settingsPage.Networking.ipAddressPort: IP Adresi ve Bağlantı Noktası ayarları.
+settingsPage.Networking.ipAddressPlaceholder: Localhost 127.0.0.1
+##
+
+settingsPage.Networking.IncomingUDPCard.SubTitle: Etkinleştirildiğinde Modlar Adaptif Tetikler, Işık Çubuğu LED'i, Oyuncu LED'i ve Sessiz LED'i kontrol etmek için DualSense kontrolcüsü ile iletişim kurabilirler.
+settingsPage.Networking.IncomingUDPSettingsCard.Title: Gelen UDP Ayarları
+
+settingsPage.Networking.OutgoingUDPCard.SubTitle: Etkinleştirildiğinde, DSX, Hareket Verileri gibi verileri çeşitli verileri emülatörlere gönderebilir.
+settingsPage.Networking.OutgoingUDPSettingsCard.Title: Giden UDP Ayarları
+
+settingsPage.Networking.FirewallCard.WinFirewall: Windows Güvelik Duvarı
+settingsPage.Networking.FirewallCard.Title: Güvenlik Duvarı UDP Denetimi
+settingsPage.Networking.FirewallCard.SubTitle: Windows güvenlik duvarı ayarlarında yukarıda belirtilen UDP bağlantı noktalarının açık olup olmadığını kontrol edin.
+settingsPage.Networking.FirewallCard.Status: Durum
+settingsPage.Networking.FirewallCard.CheckPortStatus: Bağlantı Noktası Durumunu Kontrol Et
+settingsPage.Networking.FirewallCard.Status.IncomingTitle: "Gelen UDP Bağlantı Noktası"
+settingsPage.Networking.FirewallCard.Status.IncomingDescr: Gelen UDP bağlantı noktasının Windows güvenlik duvarına eklenip eklenmediğinin durumu.
+settingsPage.Networking.FirewallCard.Status.OutgoingTitle: "Giden UDP Bağlantı Noktası"
+settingsPage.Networking.FirewallCard.Status.OutgoingDescr: Giden UDP bağlantı noktasının Windows güvenlik duvarına eklenip eklenmediğinin durumu.
+
+settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: Güvenlik Duvarına Bağlantı Noktasını Ekle
+
+# Make sure the %i is in here as it represents a number. Example: Incoming UDP Port for 6969 is open.
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: %i için gelen UDP Bağlantı Noktası açık.
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: %i için giden UDP Bağlantı Noktası açık.
+
+settingsPage.Networking.FirewallCard.Status.IncomingFailed: %i için giden UDP Bağlantı Noktası kapalı.
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed: %i için giden UDP Bağlantı Noktası kapalı.
+
+settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: Gelen UDP Bağlantı Noktasını Windows Güvenlik Duvarına Ekle.
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Giden UDP Bağlantı Noktasını Windows Güvenlik Duvarına Ekle.
+
+# -------------------------------
+settingsPage.Driver.VirtualPadDriverCard.SubTitle: VirtualPad Sürücüsü, orijinali fiziksel olarak bağlıymış gibi taklit ederek, sanal bir aygıtın kullanılabilmesini sağlar.
+settingsPage.Driver.HidHideCard.SubTitle: HidHide DSX'in sanal kontrolcüleri emüle ederken fiziksel kontrolcüyü saklamasına izin verir. Sanal ve Fizksel kontrolcü tarafından yapılacak çift basışları engellemek için kullanılır ve oyunun yada programın sadece sanal kontrolcüyü görmesini sağlar.
+settingsPage.Driver.NefariusCard.SubTitle: Nefarius, VirtualPad Sürücüsü ve HidHide Sürücüsünün Geliştiricisidir, onun araçları olmadan bu uygulama mümkün olmazdı! Lütfen aşağıdaki geliştiriciyi destekleyin.
+settingsPage.Driver.NefariusCard.GetInTouch: İletişime geçin
+settingsPage.Driver.NefariusCard.ShowSupport: Desteğinizi gösterin
+
+# Used more than once:
+settingsPage.Driver.DriverName: Sürücü İsmi
+settingsPage.Driver.DriverVersion: Sürücü Sürümü
+settingsPage.Driver.DriverSize: Sürücü Boyutu
+settingsPage.Driver.DriverReleaseDate: En Son Yayınlanma Tarihi
+##
+
+
+# -------------------------------
+
+# ------------------------------------------------------------------------------------------------
+# About Page
+# ------------------------------------------------------------------------------------------------
+
+aboutPage.DSXDevelopers: DSX Geliştiricileri (KSL)
+aboutPage.DSXChangeLog: DSX Yama Notları
+
+aboutPage.NefariusDescription.1: Sürücü Mühendisi
+aboutPage.NefariusDescription.2: Donanım & Uyumluluk
+aboutPage.NefariusDescription.3: Performans & Kararlılık
+aboutPage.NefariusDescription.4: Optimizasyon & DevOps
+aboutPage.NefariusDescription.5: Teknik Yazar
+
+aboutPage.PaliverseDescription.1: Kurucu & Çekirdek Geliştiricisi
+aboutPage.PaliverseDescription.2: Donanım & Uyumluluk
+aboutPage.PaliverseDescription.3: Bakım & Performans
+aboutPage.PaliverseDescription.4: Yönetim & Güncellemeler
+aboutPage.PaliverseDescription.5: UI/UX & Test Etme
+
+aboutPage.RamDescription.1: Çekirdek & Mantık Geliştiricisi
+aboutPage.RamDescription.2: Grafik Tasarımcı
+aboutPage.RamDescription.3: Performans & Kararlılık
+aboutPage.RamDescription.4: Kalite & Topluluk
+aboutPage.RamDescription.5: UI/UX & Test Etme
+
+
+aboutPage.DSX.SteamPage.Title: DSX Steam Sayfası
+aboutPage.DSX.SteamPage.SubTitle: En son bilgiler için Steam'de DSX'i ziyaret edin.
+aboutPage.DSX.SteamPage.Button: Steam'de DSX
+
+aboutPage.DSX.DiscordServer.Title: DSX Discord Sunucusu
+aboutPage.DSX.DiscordServer.SubTitle: Herhangi bir sorunla ilgili yardım almak, hata veya aksaklıkları bildirmek için DSX Discord Sunucusuna katılın.
+aboutPage.DSX.DiscordServer.Button: Discord Sunucusuna Katıl
+
+aboutPage.DSX.LibrariesUsed.Title: DSX'de kullanılan kütüphaneler
+aboutPage.DSX.LibrariesUsed.SubTitle: DSX'e güç vermek için kullanılan genel Kütüphanelerin listesi.
+
+
+# Strings used programmatically
+p.Unavailable: Kullanılamıyor
+p.NotInstalled: Kurulu Değil
+p.Close: Kapat
+p.ViewDriverInfo: Sürücü Bilgisini Görüntüle
+p.ViewFirmwareUpdaterTool: Yazılım Güncelleme Aracını Görüntüle
+
+# Update notifications etc.
+p.MissingHidHideDriver.Title: HidHide Sürücüsü Eksik
+p.MissingHidHideDriver.Detail: "\nSanal Kontrolcü kullanırken çift basışı önlemek amacıyla fiziksel Kontrolcünün gizlenebilmesi için HidHide Sürücüsünün yüklenmesi gerekir."
+
+p.MissingVPadDriver.Title: VirtualPad Sürücüsü Eksik
+p.MissingVPadDriver.Detail: "\nEksik sürücülerden dolayı sanal kontrolcü oluşturulamadı."
+
+p.CantStartVPadDriver.Title: VirtualPad Sürücüsü Başlatılamadı
+p.CantStartVPadDriver.Detail: "\nSanal kontrolcü oluşturulamıyor.\nLütfen VirtualPad Sürücüsünü yeniden yükleyin, bilgisayarınızı yeniden başlatın ve ardından tekrar deneyin."
+
+p.VPadError.Title: VirtualPad Sürücü Hatası
+p.VPadError.Detail: "\nSanal kontrolcü oluşturulamıyor.\nBilgisayarınızı yeniden başlatın ve tekrar deneyin."
+
+p.DriverError.Title: VirtualPad Sürücüsü ve HidHide Sürücüsü Eksik
+p.DriverError.Detail: "\nXbox 360 veya DualShock 4 Kontrolcüsünü emüle edebilmek için VirtualPad Sürücüsünün yüklenmesi gerekir.\n\nSanal Kontrolcü kullanırken çift basışı önlemek amacıyla fiziksel Kontrolcünün gizlenebilmesi için HidHide Sürücüsünün yüklenmesi gerekir. \n\nYüklemek üzere eksik sürücüleri görmek için Sürücü Bilgilerini Görüntüle'ye tıklayın."
+
+p.DriverUpdate.Title: VirtualPad veya HidHide Sürücü Güncellemesi
+p.DriverUpdate.Detail: "\nHidHide veya VirtualPad Sürücü Güncellemesi mevcut.\n\nHangisinin güncellenmesi gerektiğini öğrenmek için lütfen Sürücü Bilgilerini Görüntüle'ye tıklayın."
+
+p.DualSenseUpdate.Title: DualSense Yazılım Güncellemesi Mevcut
+p.DualSenseUpdate.Detail: "\nDualSense kontrolcünüz için yeni bir Yazılım sürümü mevcut.\n\nMevcut Sürüm: 0x00\nYeni Sürüm: 0x00\n\nŞu nedenlerden dolayı her zaman en son sürüme güncellemelisiniz:\n- DualSense Batarya okuma hatasını düzeltme\n- Standart Titreşim (eski oyunlar için)\n- Çeşitli düzeltmeler ve iyileştirmeler\n\nKontrolcünüzü güncellemek için lütfen Sony'nin resmi Yazılım Güncelleme Aracını yükleyin.\n\nNOT: Güncelleme yaparken, işlem sırasında herhangi bir sorunla karşılaşmamak için DSX'in kapalı olduğundan emin olun."
+
+p.UnknownHidHideStatus: HidHide Sürücü Durumu belirlenemiyor
+p.UnknownHidHideStatus.Detail: "\nLütfen HidHide Sürücüsünü yeniden yükleyin ve ardından bilgisayarınızı yeniden başlatın."
+
+# HidHide Card
+p.HidHide.HidHideIsInstalled: HidHide Sürücüsü yüklendi
+p.HidHide.HidHideIsNotInstalled: HidHide Sürücüsü yüklenmedi
+
+# Vpad Card
+p.VPad.VPadIsInstalled: VirtualPad Driver by Nefarius yüklendi
+p.VPad.VPadIsNotInstalled: VirtualPad Driver by Nefarius yüklenmedi
+
+p.Controllers.PSVR2SenseL: PS VR 2 Sense™ Kontrolcüsü (Sol)
+p.Controllers.PSVR2SenseR: PS VR 2 Sense™ Kontrolcüsü (Sağ)
+p.Controllers.DualSense: DualSense™️ Kablosuz Kontrolcüsü
+p.Controllers.DualSenseEdge: DualSense Edge™️ Kablosuz Kontrolcüsü
+p.Controllers.DualShockv1: DualShock™️ 4 Kablosuz Kontrolcüsü [v1]
+p.Controllers.DualShockv2: DualShock™️ 4 Kablosuz Kontrolcüsü [v2]
+p.Controllers.DualShock4USBAdapter: DualShock™️ 4 USB Kablosuz Adaptörü
+
+# DLC Info
+p.ViewDLCOnSteam: DLC'yi Steamde Görüntüle
+p.UnlockDualSenseEmulation: DualSense Emülasyonu'nun Kilidini Aç
+p.UnlockDualSenseEmulation.Detail: "Şu anda DualSense Emülasyonu'na erişiminiz yok.\n\nBu özellikten yararlanmak için DualSense Emülasyon DLC'sini almanız gerekmektedir. Desteğiniz VirtualPad Sürücüsünün geliştiricisine yardımcı olacaktır.\n\nSteam'de görüntülemek ister misiniz?"
+
+# Macros
+p.MacrosActivation.PlayOnce.Title: Bir Kere Oynat
+p.MacrosActivation.PlayOnce.Subtitle: Eylem bir kez oynatılacaktır.
+p.MacrosActivation.PlayNTimes.Title: N Kere Oynat
+p.MacrosActivation.PlayNTimes.Subtitle: Eylem belirlenen sayıda tekrarlanacaktır.
+p.MacrosActivation.RepeatWhilePressed.Title: Basılı Tutarken Tekrarla
+p.MacrosActivation.RepeatWhilePressed.Subtitle: Bir eylemi otomatik olarak tekrarlamak için düğmeyi basılı tutun.
+p.MacrosActivation.ToggleAutoRepeat.Title: Otomatik Tekrarı Aç / Kapat
+p.MacrosActivation.ToggleAutoRepeat.Subtitle: Eylemi otomatik olarak tekrarlamaya başlamak için bir kez basın ve durdurmak için tekrar basın.
+p.MacrosActivation.ToggleAutoRepeatContinuous.Title: Otomatik Tekrarı Aç / Kapat (Sürekli)
+p.MacrosActivation.ToggleAutoRepeatContinuous.Subtitle: Eylemi sürekli oynatmaya başlamak için düğmeye bir kez basın ve durdurmak için tekrar basın.
+
+p.MacrosDelay.Title: Geçikme
+p.MacrosDelay.Subtitle: Tekrarlar arasındaki bekleme süresi.
+
+p.MacrosRepeat.Title: Tekrarla
+p.MacrosRepeat.Subtitle: Tekrarlanma sayısı
+
+p.MacrosPlayOnKey.Title: Basıldığında Oynat
+p.MacrosPlayOnKey.Subtitle: Düğmeye basıldığında mı yoksa bırakıldığında mı bu makronun etkinleştirileceğini seçin.
+p.KeyDown: Basıldığında
+p.KeyUp: Bırakıldığında
+p.StartRecording: Kayda Başla
+p.StopRecording: Kaydı Bitir
+
+p.DeleteSelectedActionProfile: Seçili Eylem Profili Silinsin mi?
+p.DeleteSelectedActionProfiles: Seçili Eylem Profilleri Silinsin mi?
+p.DeleteSelectedDeadzoneProfile: Seçili Ölü Bölge Profili Silinsin mi?
+p.DeleteSelectedDeadzoneProfiles: Seçili Ölü Bölge Profilleri Silinsin mi?
+p.DeleteSelectedTouchpadProfile: Seçili Dokunmatik Yüzey Profili Silinsin mi?
+p.DeleteSelectedTouchpadProfiles: Seçili Dokunmatik Yüzey Profilleri Silinsin mi?
+p.DeleteSelectedMotionProfile: Seçili Hareket Profili Silinsin mi?
+p.DeleteSelectedMotionProfiles: Seçili Hareket Profilleri Silinsin mi?
+p.DeleteProfile: Profili Sil
+p.DeleteProfiles: Profilleri Sil
+p.LeftMouseButton.Text: Sol Fare Tuşu
+p.RightMouseButton.Text: Sağ Fare Tuşu
+p.MiddleMouseButton.Text: Orta Fare Tuşu
+p.BackMouseButton.Text: Fare Geri Tuşu
+p.ForwardMouseButton.Text: Fare İleri Tuşu
+p.ScrollWheelUp: Fare Tekerleği Yukarı
+p.ScrollWheelDown: Fare Tekerleği Aşağı
+
+p.DeviceStatus: Aygıt Durumu
+p.ActiveActionProfile: Aktif Eylem Profili
+p.ActiveAdaptiveTriggersProfile: Aktif Adaptif Tetik Profili
+p.ActiveDeadzoneProfile: Aktif Ölü Bölge Profili
+p.ActiveHapticsRumbleProfile: Aktif Titreşim Profili
+p.ActiveLEDProfile: Aktif LED Profili
+p.ActiveMotionProfile: Aktif Hareket Profili
+p.ActiveNotificationsProfile: Aktif Bildirim Profili
+p.ActiveTouchpadProfile: Aktif Dokunmatik Yüzey Profili
+
+p.Shortcuts.ToggleXboxGameBar: Xbox Game Bar'ı Aç/Kapa
+p.Shortcuts.SystemScreenshot: Sistem Ekran Görüntüsü
+p.Shortcuts.IncreaseBrightnessLevel: Ekran Parlaklığını Artır
+p.Shortcuts.DecreaseBrightnessLevel: Ekran Parlaklığını Azalt
+p.Shortcuts.TogglePCMicMute: Mikrofonu aç/kapa
+p.Shortcuts.PreviousTrack: Önceki Parça
+p.Shortcuts.TogglePlayPause: Oynat/Duraklat
+p.Shortcuts.NextTrack: Sonraki Parça
+p.Shortcuts.ToggleVolumeMute: Sesi aç/kapa
+p.Shortcuts.IncreaseVolumeLevel: Ses Seviyesini Artır
+p.Shortcuts.DecreaseVolumeLevel: Ses Seviyesini Azalt
+
+p.Shortcuts.StartScreen: Başlangıç ekranını görüntüleme veya gizleme
+p.Shortcuts.QuickSettingsWin11: Hızlı Ayarlar'ı açın (Windows 11)
+p.Shortcuts.QuickSettingsWin10: İşlem Merkezi’ni açın (Windows 10)
+p.Shortcuts.FocusNotificationArea: Odağı bildirim alanına getirin
+p.Shortcuts.ChatTeamsWin11: Microsoft Teams'den Sohbet açın (Windows 11)
+p.Shortcuts.CortanaWin10: Cortana’yı dinleme modunda açın (Windows 10)
+p.Shortcuts.CharmsMenu: Düğmeleri açma (Windows 8)
+p.Shortcuts.ColorFiltersWin11: Renk filtrelerini açın (önce Renk Filtresi ayarlarında bu kısayolu etkinleştirin). (Windows 11)
+p.Shortcuts.ShowDesktop: Masaüstünü görüntüleyip gizleyin
+p.Shortcuts.ShowDateAndTime: Masaüstünde tarihi ve saati görüntüleyip gizleyin
+p.Shortcuts.FileExplorer: Dosya Gezgini’ni açın
+p.Shortcuts.FeedbackHub: Geri Bildirim Merkezi’ni açın ve ekran görüntüsü alın
+p.Shortcuts.XboxGameBar: Bir oyun açıkken Xbox Game Bar'ı açın
+p.Shortcuts.TurnHDROnOff: HDR'yi açın veya kapatın
+p.Shortcuts.LaunchVoiceTypingWin11: Sesle yazmayı başlatın. (Windows 11)
+p.Shortcuts.StartDictationWin10: Dikteyi başlatın (Windows 10)
+p.Shortcuts.OpenSettings: Ayarlar’ı açın
+p.Shortcuts.OpenCastWin11: Hızlı Ayarlar'dan Yayınla'yı açın (Windows 11)
+p.Shortcuts.OpenConnectWin10: Bağlan hızlı işlemini açın (Windows 10)
+p.Shortcuts.ToggleMicrophoneMute: Çağrı Susturmayı destekleyen uygulamalarda mikrofon sesini Kapat. Windows 11, sürüm 22H2'den itibaren mevcuttur
+p.Shortcuts.LockPCSwitchAccounts: Bilgisayarınızı kilitleyin veya hesapları değiştirin
+p.Shortcuts.MinimizeAllWindows: Tüm pencereleri simge durumuna küçültün
+p.Shortcuts.RestoreMinimizedWindows: Masaüstünde simge durumuna küçültülmüş pencereleri önceki durumlarına getirin
+p.Shortcuts.LockDeviceOrientation: Aygıt yönünü kilitleyin
+p.Shortcuts.ChoosePresentationDisplayMode: Bir sunu görüntüleme modu seçin
+p.Shortcuts.OpenQuickAssist: Hızlı Yardım’ı açın
+p.Shortcuts.OpenRunDialogBox: Çalıştır iletişim kutusunu açın
+p.Shortcuts.RecordVideoGameWindowWin11: Odaktaki oyun penceresinin videosunu kaydedin (Xbox Game Bar kullanarak) (Windows 11)
+p.Shortcuts.OpenSearch: Aramayı açın
+p.Shortcuts.TakeScreenshotPartScreen: Ekranınızın bir bölümünün ekran görüntüsünü alın
+p.Shortcuts.CycleThroughAppsTaskbar: Görev çubuğundaki uygulamalar arasında geçiş yapın
+p.Shortcuts.OpenAccessibilitySettings: Erişilebilirlik Ayarları'nı açın
+p.Shortcuts.OpenClipboardHistoryWin11: Pano geçmişini açın (Ayarlarda Etkinleştirilmiş ise) (Windows 11)
+p.Shortcuts.OpenClipboardWin10: Panoyu Aç (Ayarlarda Etkinleştirilmiş ise) (Windows 10)
+p.Shortcuts.OpenClipboardHistoryBoth: Pano geçmişini açın (Windows 11) | Panoyu Aç (Windows 10) (İkisi İçinde Ayarlarda Etkinleştirilmiş ise)
+p.Shortcuts.SetFocusNotificationWin11: Odağı bir bildirime ayarlayın
+p.Shortcuts.CycleThroughNotificationsWin10: Bildirimler arasında Gezin
+p.Shortcuts.SetFocusNotificationBoth: Bir Bildirime Odaklan (Windows 11) | Bildirimler arasında Gezin (Windows 10)
+p.Shortcuts.OpenWidgetsWin11: Pencere Öğelerini Aç
+p.Shortcuts.OpenWidgetsBoth: Pencere Öğelerini Aç (Windows 11)
+p.Shortcuts.OpenQuickLinkMenu: Hızlı Bağlantı Menüsünü Aç
+p.Shortcuts.SwitchInputMixedReality: Windows Mixed Reality ve masaüstünüz arasında girişi değiştirin
+p.Shortcuts.OpenSnapLayoutsWin11: Tutturulan Pencereleri Aç (Windows 11) | Bir uygulamada tam ekran modunda kullanılabilen komutları gösterme (Windows 10)
+p.Shortcuts.OpenEmojiPanel: Emoji Panelini Aç
+p.Shortcuts.PeekAtDesktop: Masaüstüne geçici bir şekilde Göz At
+p.Shortcuts.OpenAboutPCWin11: Ayarlarda Hakkında kısmını Aç (Windows 11) | Sistem Bilgisi Penceresini Aç (Windows 10)
+p.Shortcuts.SearchForPCsNetwork: Başka Bilgisayarları Ara (Bir Ağ Bağlıysanız)
+p.Shortcuts.StartAppPinnedTaskbar: Görev çubuğuna 1 konumunda sabitlenmiş uygulamayı başlat veya göster
+p.Shortcuts.StartAppPinnedTaskbar2: Görev çubuğuna 2 konumunda sabitlenmiş uygulamayı başlat veya göster
+p.Shortcuts.StartAppPinnedTaskbar3: Görev çubuğuna 3 konumunda sabitlenmiş uygulamayı başlat veya göster
+p.Shortcuts.StartAppPinnedTaskbar4: Görev çubuğuna 4 konumunda sabitlenmiş uygulamayı başlat veya göster
+p.Shortcuts.StartAppPinnedTaskbar5: Görev çubuğuna 5 konumunda sabitlenmiş uygulamayı başlat veya göster
+p.Shortcuts.StartAppPinnedTaskbar6: Görev çubuğuna 6 konumunda sabitlenmiş uygulamayı başlat veya göster
+p.Shortcuts.StartAppPinnedTaskbar7: Görev çubuğuna 7 konumunda sabitlenmiş uygulamayı başlat veya göster
+p.Shortcuts.StartAppPinnedTaskbar8: Görev çubuğuna 8 konumunda sabitlenmiş uygulamayı başlat veya göster
+p.Shortcuts.StartAppPinnedTaskbar9: Görev çubuğuna 9 konumunda sabitlenmiş uygulamayı başlat veya göster
+p.Shortcuts.StartAppPinnedTaskbar10: Görev çubuğuna 10 konumunda sabitlenmiş uygulamayı başlat veya göster
+p.Shortcuts.OpenTaskView: AltTab menüsünü Aç
+p.Shortcuts.MaximizeWindow: Pencereyi Büyüt
+p.Shortcuts.SnapWindowTopHalfWin11: Odaktaki pencereyi ekranın üst yarısına tutturur (Windows 11)
+p.Shortcuts.RemoveAppScreen: Geçerli uygulamayı ekrandan kaldırın veya masaüstü penceresini simge durumuna küçültün.
+p.Shortcuts.SnapWindowBottomHalfWin11: Odaktaki pencereyi ekranın alt yarısına tutturur (Windows 11)
+p.Shortcuts.MaximizeLeftSideScreen: Uygulama veya masaüstü penceresinin ekranın sol tarafında ekranı kaplamasını sağlayın
+p.Shortcuts.MaximizeRightSideScreen: Uygulama veya masaüstü penceresinin ekranın sağ tarafında ekranı kaplamasını sağlayın
+p.Shortcuts.MinimizeAllExceptActive: Etkin masaüstü penceresi dışındaki tüm pencereleri simge durumuna küçültün (ikinci kez basıldığında tüm pencereler önceki durumlarına geri döner)
+p.Shortcuts.StretchDesktopWindow: Masaüstü penceresini ekranın üstüne ve altına doğru genişletin
+p.Shortcuts.RestoreMinimizeActiveDesktopWindowsVertically: Genişliği koruyarak etkin masaüstü pencerelerini dikey olarak önceki boyuta getirin/simge durumuna küçültün
+p.Shortcuts.MoveAppWindowBetweenMonitorsLeft: Masaüstündeki uygulamayı veya pencereyi bir monitörden diğerine taşıyın (Sol'a)
+p.Shortcuts.MoveAppWindowBetweenMonitorsRight: Masaüstündeki uygulamayı veya pencereyi bir monitörden diğerine taşıyın (Sağ'a)
+p.Shortcuts.CycleBackwardsLanguageKeyboardLayoutWin11: Dil ve klavye düzeni arasında geriye doğru geçiş yapın (Windows 11)
+p.Shortcuts.SwitchInputLanguageKeyboardLayout: Giriş dilini ve klavye düzenini değiştirin
+p.Shortcuts.ChangeToPreviouslySelectedInput: Önceden seçili giriş olarak değiştirin
+p.Shortcuts.TurnOnNarrator: Ekran Okuyucusu’nu açın
+p.Shortcuts.OpenMagnifierAndZoomIn: Büyüteç'i açın ve yakınlaştırın
+p.Shortcuts.ZoomOutInMagnifier: Büyüteç'te uzaklaştırın
+p.Shortcuts.CloseMagnifierWin11: Büyüteç'i kapatın (Windows 11)
+p.Shortcuts.BeginIMEReconversion: IME yeniden dönüşümünü başlatın
+p.Shortcuts.OpenShoulderTapsWin10: Omuza dokunmaları açın (Windows 10)
+p.Shortcuts.WakePCFromBlankOrBlackScreen: Bilgisayarı boş veya siyah ekrandan uyandırın
+p.Shortcuts.SaveScreenshotOfGameWindowToFile: Odaktaki oyun penceresinin ekran görüntüsünü dosyaya kaydedin (Xbox Game Bar kullanarak)
+p.Shortcuts.OpenTaskbarSettingsOnTaskbarFocus: Windows Media Center’ı açma (Windows 8)
+
+
+
+
+# Controller Page -> Touchpad Section
+
+ctPage.Touchpad.Mode.Title: Dokunmatik Yüzey Modu
+ctPage.Touchpad.Mode.SubTitle: Dokunmatik yüzeyden tam olarak yararlanmak için Aktarma Modu, Fare Modu veya Dokunmatik Yüzey+ arasından seçim yapın.
+
+ctPage.TouchpadToMouse.Mode.Passthrough.Title: Aktarma Modu
+ctPage.TouchpadToMouse.Mode.Passthrough.SubTitle: Dokunmatik yüzey verileri DualShock 4 veya DualSense Emülasyonu üzerinden aktarılacaktır.
+
+ctPage.TouchpadToMouse.Mode.Mouse.Title: Fare Modu
+ctPage.TouchpadToMouse.Mode.Mouse.SubTitle: Dokunmatik Yüzey bilgisayarınızın fare imlecini kontrol edecektir.
+
+ctPage.TouchpadToMouse.Mode.Plus.Title: Dokunmatik Yüzey+
+ctPage.TouchpadToMouse.Mode.Plus.SubTitle: Dokunmatik yüzey girişi, eşleme ve diğer çeşitli görevler için kullanılabilir.
+
+ctPage.TouchpadToMouse.PressToLeftClick.Title: Sol Fare Tıklaması için Bas
+ctPage.TouchpadToMouse.PressToLeftClick.SubTitle: Etkinleştirildiğinde, dokunmatik yüzeye basmak Sol Fare Tıklaması ile sonuçlanacaktır
+
+ctPage.TouchpadToMouse.TapToLeftClick.Title: Sol Fare Tıklaması için Dokun
+ctPage.TouchpadToMouse.TapToLeftClick.SubTitle: Etkinleştirildiğinde, dokunmatik yüzeye bir kere dokunmak Sol Fare Tıklaması ile sonuçlanacaktır
+
+ctPage.TouchpadToMouse.TapToRightClick.Title: Sağ Fare Tıklaması için Dokun
+ctPage.TouchpadToMouse.TapToRightClick.SubTitle: Etkinleştirildiğinde, dokunmatik yüzeye bir kere dokunmak Sağ Fare Tıklaması ile sonuçlanacaktır
+
+ctPage.TouchpadToMouse.NormalSensi.Title: Normal Hassasiyet Hızı
+ctPage.TouchpadToMouse.NormalSensi.SubTitle: Farenin hareket edeceği Hassasiyet hızı.
+
+ctPage.TouchpadToMouse.PreciseSensi.Title: Keskin Hassasiyet Hızı
+ctPage.TouchpadToMouse.PreciseSensi.SubTitle: Bu düğme basılı tutulduğunda, fare burada ayarlanan değere kadar yavaşlatıldığı hassas bir duruma girecektir.
+
+ctPage.TouchpadToMouse.FastSensi.Title: Seri Hassasiyet Hızı
+ctPage.TouchpadToMouse.FastSensi.SubTitle: Bu düğme basılı tutulduğunda, fare burada ayarlanan değer kadar hızlandığı seri bir duruma girecektir.
+
+ctPage.TouchpadToMouse.ScrollSensi.Title: Kaydırma Hassasiyeti Hızı
+ctPage.TouchpadToMouse.ScrollSensi.SubTitle: 2 parmağınızla dokunun ve ardından Orta Fare Düğmesine basıp Fareyi hareket ettirir gibi kaydırmaya başlamak için herhangi bir yönde sürükleyin.
+
+ctPage.TouchpadToMouse.ScrollInvert.Title: Ters Kaydırma
+ctPage.TouchpadToMouse.ScrollInvert.SubTitle: Etkinleştirildiğinde, kaydırma ters çevrilecektir.
+
+# --------------------
+
+settingsPage.Display.WindowBackgroundEffect.Title: Pencere Arka Plan Efekti
+settingsPage.Display.WindowBackgroundEffect.SubTitle: İstediğiniz arka plan efektini seçin.
+
+settingsPage.Display.WindowBackgroundEffect.Mode.None.Title: Hiçbiri
+settingsPage.Display.WindowBackgroundEffect.Mode.None.Subtitle: Arka Plan efekti yok.
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Acrylic.Title: Akrilik
+settingsPage.Display.WindowBackgroundEffect.Mode.Acrylic.Subtitle: Windows Akrilik efekti.
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Title: Mika
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Subtitle: Windows 11 Mika efekti.
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Warning.Title: ⚠️ Sadece Windows 11 (derleme 22000) ve sonrasında geçerlidir
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Title: Sekmeli
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Subtitle: Windows 11 duvar kağıdı bulanıklaştırma efekti.
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Warning.Title: ⚠️ Sadece Windows 11 Insider 10 (derleme 22523) ve sonrasında geçerlidir
+
+settingsPage.Display.FullDarkModeCard.Title: Tam Karanlık Modu
+settingsPage.Display.FullDarkModeCard.SubTitle: Karanlık Modu sevenler için arka planı siyah yapar.
+
+BatteryPowerState.Discharging: Şarj Olmuyor
+BatteryPowerState.Charging: Şarj Oluyor
+BatteryPowerState.Complete: Dolu
+BatteryPowerState.AbnormalVoltage: Anormal Voltaj
+BatteryPowerState.AbnormalTemperture: Anormal Sıcaklık
+BatteryPowerState.ChargingError: Şarj Hatası
+
+ToastNotifications.BatteryInfo: Batarya Bilgisi
+ToastNotifications.BatteryLevelLow: 🪫⚠️ Batarya Seviyesi Düşük ⚠️🪫
+ToastNotifications.DeviceConnected: ℹ️ Aygıt Bağlandı
+ToastNotifications.DeviceDisconnected: ⚠️ Aygıt Bağlantısı Kesildi
+ToastNotifications.EmulationActivated: aktif edildi
+ToastNotifications.ActiveProfile: Aktif
+ToastNotifications.IsActiveProfile: aktif
+ToastNotifications.Activated: aktif edildi
+
+
+
+
+
+
