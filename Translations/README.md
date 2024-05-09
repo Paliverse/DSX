@@ -6,7 +6,7 @@ We deeply appreciate your willingness to contribute to translating DSX. Your eff
 
 ## Getting Started
 
-1. Download the [en-US.yml](https://github.com/Paliverse/DSX/blob/main/Translations/English%20(United%20States)/en-US.yml) file from the repository.
+1. Download the [en-US.yml](https://github.com/Paliverse/DSX/blob/main/Translations/en-US.yml) file from the repository.
 2. Rename the file to match your language and country.
 3. Translate the text after the colon for each key.
 
@@ -16,7 +16,7 @@ NoControllerDetected.Title: No Controllers Detected
 ```
 In this example, "No Controllers Detected" is what you would translate.
 
-**Note:** Updates to the `en-US.yml` file will be visible [here](https://github.com/Paliverse/DSX/commits/main/Translations/English%20(United%20States)/en-US.yml).
+**Note:** Updates to the `en-US.yml` file will be visible [here](https://github.com/Paliverse/DSX/commits/main/Translations/en-US.yml).
 
 **New Translations:** Any new translations will be added to the bottom of the `en-US.yml` file to make it easier for new items to be translated. So check regularly for new updates. If you have the Translator role in the discord server, you will be notified of new changes.
 
