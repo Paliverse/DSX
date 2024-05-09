@@ -1,0 +1,1755 @@
+#
+# * Copyright (c) 2022-2023 Paliverse Apps LLC. All rights reserved.
+# *
+# * Proprietary and Confidential - This source code is the sole property of Paliverse Apps LLC.
+# * Reproduction or dissemination of this source code, in whole or in part, or the 
+# * production of derivative works therefrom without the express permission of Paliverse Apps LLC.
+# * is strictly forbidden.
+# *
+# * Written by Paliverse Apps LLC.
+
+# ------------------------------------------------------------------------------------------------
+# More info on how to use Yaml files: https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started
+# Yaml files must be Embedded Resource in the file properties in DSX, otherwise translation files can also be selected from user's PC
+# ------------------------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------------------------
+# EXAMPLES: 
+# ------------------------------------------------------------------------------------------------
+
+# Anything before the colon : is the key, anything after the colon is the translated text (Value)
+
+# to use a colon : in parts of the text on the right, put the text inside quotes like this:
+colon.Example: "this is a text : with a colon"
+# example usage: <TextBlock Text="{i18n:Translate String='colon.Example', UsedForXamlTemp='this is a text : with a colon'}" />
+# programmatically: var text = Translator.Instance.GetTranslation("colon.Example", "this is a text : with a colon");
+# ----Takes in (single key, fallback text)
+
+# ------------------------------------------------------------------------------------------------
+
+# Normal String:
+houseString.Example: 'This is a house string.'
+# example usage: <TextBlock Text="{i18n:Translate String='houseString.Example', UsedForXamlTemp='This is a house string.'}" />
+# programmatically: var text = Translator.Instance.GetTranslation("houseString.Example", "This is a house string.");
+# ----Takes in (single key, fallback text)
+
+# ------------------------------------------------------------------------------------------------
+
+# String with a number that changes:
+# %i will be replaced with the number provided in xaml
+houseNumber.Example: 'Current House Address is %i Paliverse St. Chicago, IL 60640'
+# example usage: <TextBlock Text="{i18n:Translate String='houseNumber.Example', UsedForXamlTemp='Current House Address is %i Paliverse St. Chicago, IL 60640', Number=1234}" />
+# programmatically: var textNumber = Translator.Instance.GetTranslation("houseNumber.Example", $"Current House Address is {Number} Paliverse St. Chicago, IL 60640", 1234);
+# ----Takes in (single key, fallback text, number)
+
+# The number can be binded itself: Number={Binding ViewModel.HouseAddressNumber}
+
+# ------------------------------------------------------------------------------------------------
+
+# Singular or Plural string:
+# %i will be replaced with the number provided in xaml
+houseExample.single: '%i house'
+houseExample.plural: '%i houses'
+# example usage: <TextBlock Text="{i18n:Translate String='houseExample.single', Plural=houseExample.plural, UsedForXamlTemp='%i houses.', Number=1}" />
+# programmatically: var textPlural = Translator.Instance.GetTranslation("houseExample.single", "houseExample.plural", $"{Number} houses.", 1234);
+# ----Takes in (single key, plural key, fallback text, number)
+
+# The number reflects wheather to use House or Houses.
+# The number can be binded itself: Number={Binding ViewModel.Number}
+
+# ------------------------------------------------------------------------------------------------
+# EXAMPLES END 
+# ------------------------------------------------------------------------------------------------
+
+
+# Please make sure you read the above before modifying this file.
+# If you're unsure of a translation or the key etc.. Contactpaliverse on discord in the DSX Server:
+# Https://discord.gg/dsx
+
+# ------------------------------------------------------------------------------------------------
+# Common things - For one time usage or Used in more than one place
+# ------------------------------------------------------------------------------------------------
+NoControllerDetected.Title: Контролери не виявлено
+NoControllerDetected.ATMessage: Підключіть свій контролер або з’єднайте його через Bluetooth, щоб налаштувати адаптивні тригери.
+NoControllerDetected.Subtitle: Будь ласка, підключіть сумісний контролер через дротове з’єднання або через Bluetooth, щоб отримати доступ до його інформації.
+
+# ------------------------------------------------------------------------------------------------
+# Small generic words
+# ------------------------------------------------------------------------------------------------
+OFF: "ВИМК"
+NotAny: Н/Д
+Frequency: Частота
+Cancel: Скасувати
+TryAgain: Спробуйте знову
+# A period of time, obviously
+Period: Період
+
+# ------------------------------------------------------------------------------------------------
+# DSX
+# ------------------------------------------------------------------------------------------------
+dsx.Initialization.Title: Давайте розкриємо ваш потенціал.
+dsx.NoControllersDetected: Контролери не виявлено
+dsx.KindlyConnectController: Будь ласка, підключіть сумісний контролер через дротове з’єднання або через Bluetooth, щоб отримати доступ до його інформації.
+dsx.PlugInControllerToConfigure: Підключіть контролер або з’єднайте його через Bluetooth, щоб налаштувати різноманітність вібрацію.
+dsx.ConnectControllerToAccessInfo: Будь ласка, підключіть сумісний контролер через дротове з’єднання або через Bluetooth, щоб отримати доступ до його інформації.
+dsx.ConnectControllerToConfigureNotifications: Щоб налаштувати сповіщення, підключіть контролер або з’єднайте його через Bluetooth.
+dsx.ConnectControllerToConfigureProfiles: Будь ласка, підключіть свій контролер або з’єднайте його через Bluetooth, щоб налаштувати свої профілі.
+
+dsx.Initialization.Error.SteamIDNoMatch.Title: Steam ID не збігається
+dsx.Initialization.Error.SteamIDNoMatch.Detail: Steam ID не збігається з Steam API. Переконайтеся, що ви ввійшли в той самий обліковий запис, який використовувався для встановлення DSX.
+
+dsx.Initialization.Error.ServerFailure.Title: Невідомий збій сервера
+dsx.Initialization.Error.ServerFailure.Detail: Не вдалося з’єднатися з серверами DSX для підтвердження права власності. Будь ласка, переконайтеся, що DSX дозволено у вашому брандмауері Windows, і спробуйте знову.
+
+dsx.Initialization.Error.SteamApiServerFailure.Title: Збій сервера Steam API
+dsx.Initialization.Error.SteamApiServerFailure.Detail: Неможливо зв’язатися із серверами Steam API. Будь ласка, перевірте стан сервера Steam, щоб переконатися, що він не працює, якщо це так, то спробуйте пізніше.
+
+dsx.Initialization.Error.VirtualPadError.Title: Збій сервера через драйвер VirtualPad від Nefarius
+dsx.Initialization.Error.VirtualPadError.Detail: Неможливо зв’язатися із сервером драйвера VirtualPad. Якщо ця проблема не зникне, будь ласка, зв’яжіться з нами на сервері DSX в Discord або на сайті Steam.
+
+dsx.Initialization.Error.InternetConnection.Title: Потрібне підключення до Інтернету
+dsx.Initialization.Error.InternetConnection.Detail: Щоб запустити DSX, під час ініціалізації потрібне підключення до Інтернету. Будь ласка, переконайтеся, що DSX дозволено у вашому брандмауері Windows, і спробуйте знову.
+
+dsx.Initialization.Error.UnautorizedAccess.Title: Не вдається зв’язатися із сервером через неавторизований доступ
+dsx.Initialization.Error.UnautorizedAccess.DetailOne: Неможливо встановити з’єднання через дату й час вашого ПК
+dsx.Initialization.Error.UnautorizedAccess.DetailTwo: є неправильними.
+
+dsx.Initialization.AppSettings: Завантаження налаштувань програми...
+dsx.Initialization.AccentColor: Застосування акцентного кольору...
+dsx.Initialization.Discord: Налаштування присутності у Discord...
+dsx.Initialization.InternetCheck: Перевірка підключення до Інтернету...
+dsx.Initialization.SteamID: Перевірка Steam ID...
+dsx.Initialization.DSXOwnership: Перевірка права власності на DSX за допомогою серверів Steam...
+dsx.Initialization.DLCOwnership: Перевірка права власності на DLC емуляції DualSense за допомогою серверів Steam...
+dsx.Initialization.OwnershipResults: Перевірка результатів прав власності на DSX/DLC...
+dsx.Initialization.DSFirmware: Отримання останньої версії прошивки DualSense...
+dsx.Initialization.VirtualPad: Перевірка драйвера VirtualPad від Nefarius на наявність оновлень...
+dsx.Initialization.VirtualPadResult: Драйвер VirtualPad від Nefarius працює під керуванням останньої версії...
+dsx.Initialization.SetupPage: Підготовка сторінки налаштування...
+dsx.Initialization.v3BetaInfo: Підготовка інформаційної сторінки бета-версії...
+dsx.Initialization.HomePage: Підготовка домашньої сторінки...
+
+dsx.Initialization.VirtualPad.LicenseExpired: Термін дії ліцензії VirtualPad закінчився. Потрібне перевстановлення або перезавантаження.
+dsx.Initialization.VirtualPad.ServiceError: Помилка служби драйверів VirtualPad, потрібно перевстановити.
+dsx.Initialization.VirtualPad.UpdateAvailable.PartOne: Версія драйвера VirtualPad
+dsx.Initialization.VirtualPad.UpdateAvailable.PartTwo: Наявна
+dsx.Initialization.VirtualPad.NotInstalled: Драйвер VirtualPad від Nefarius не встановлено.
+
+dsx.ShutDown: Припинити роботу DSX
+dsx.ShutDown.PopupTitle: Припинити роботу DSX?
+dsx.ShutDown.Detail: Ви впевнені, що хочете припинити роботу DSX?
+
+dsx.NavigationButtons.Home: Головна
+dsx.NavigationButtons.Profiles: Профілі
+dsx.NavigationButtons.Controller: Контролер
+dsx.NavigationButtons.Notifications: Сповіщення
+dsx.NavigationButtons.DSEdgePSVR2: DS Edge | PSVR2
+dsx.NavigationButtons.AdaptiveTriggers: Адаптивні тригери
+dsx.NavigationButtons.ControllerLED: LED
+dsx.NavigationButtons.HapticsRumble: Вібрація
+dsx.NavigationButtons.InstalledGames: Встановлені ігри
+dsx.NavigationButtons.HidHide: HidHide
+dsx.NavigationButtons.DSXLogs: Журнал DSX
+dsx.NavigationButtons.Settings: Налаштування
+dsx.NavigationButtons.About: Про DSX
+
+dsx.TaskbarIcon.QuitDSX: Вийти
+
+dsx.UnexpectedError.Popup.Title: Виняткова ситуація
+dsx.UnexpectedError.Popup.TitleTwo: Виникла виняткова ситуація необробленого потоку інтерфейсу
+
+dsx.UnexpectedError.Popup.LineOne: Сталася неочікувана помилка, DSX v3 не може продовжити роботу.
+dsx.UnexpectedError.Popup.LineTwo: Подробиці про збій можна знайти в підкаталозі журналів, розташованому за адресою
+
+
+# ------------------------------------------------------------------------------------------------
+# Descriptions
+# ------------------------------------------------------------------------------------------------
+
+X360Gamepad.Title: Віртуальний геймпад Xbox 360
+X360Gamepad.Description: Використовуйте віртуальний геймпад Xbox 360 з будь-якою грою з підтримкою Xinput.
+
+DS4Gamepad.Title: Віртуальний геймпад DualShock 4
+DS4Gamepad.Description: Використовуйте віртуальний геймпад DualShock 4 з іграми, які його підтримують.
+
+DualSensePad.Title: Віртуальний геймпад DualSense (потрібен DLC)
+DualSensePad.Description: Використовуйте віртуальний геймпад DualSense з іграми, які його підтримують.
+
+# ------------------------------------------------------------------------------------------------
+# Profile system
+# ------------------------------------------------------------------------------------------------
+profiles.CannotUndo: Цю дію не можна скасувати.
+profiles.EnterProfileName: Введіть назву профілю
+profiles.ProfileName: Імя профілю
+profiles.ProfileSystem: Система профілів
+profiles.ProfileType: Тип профілю
+profiles.EditProfiles: Редагувати профілі
+
+# Duplicate like the verb/action "I will duplicate the profile", not the noun/subject "a duplicate profile"
+profiles.DuplicateProfile: Продублювати профіль
+profiles.DeleteSelectedProfiles: Видалити вибраний профіль
+profiles.DeleteSelectedProfilesPlural: Видалити вибрані профілі
+profiles.ConfirmButton.DeleteSelectedProfiles: Видалити профіль
+profiles.ConfirmButton.DeleteSelectedProfilesPlural: Видалити профілі
+profiles.CreateNewProfile: Створити новий профіль
+profiles.ActiveProfile: Активний профіль
+profiles.ImportProfile: Імпорт профілю
+profiles.ShareProfile: Поділитися профілем
+profiles.SearchControllerProfiles: Пошук профілів контролера
+profiles.CopySettingsFromAnotherProfile: Копіювати налаштування з іншого профілю
+
+profiles.Controller.Search: Пошук профілів контролера
+
+profiles.Type.ProfilesPage: Профілі контролера
+profiles.Type.ProfilesPage.Detail: Додайте новий профіль для налаштування або натисніть «Редагувати», щоб вибрати кілька профілів для видалення.
+
+profiles.Type.Notification: Профілі сповіщень
+profiles.Type.Notification.Detail: Додайте новий профіль, щоб налаштувати, або натисніть «Редагувати», щоб вибрати декілька профілів для видалення.
+
+profiles.Type.Actions: Профілі дій
+profiles.Type.Actions.Detail: Додайте новий профіль, щоб налаштувати, або натисніть «Редагувати», щоб вибрати декілька профілів для видалення.
+
+profiles.Type.Deadzone: Профілі мертвих зон
+profiles.Type.Deadzone.Detail: Додайте новий профіль для налаштування або натисніть «Редагувати», щоб вибрати декілька профілів для видалення.
+
+profiles.Type.Touchpad: Профілі сенсорної панелі
+profiles.Type.Touchpad.Detail: Додайте новий профіль для налаштування або натисніть «Редагувати», щоб вибрати декілька профілів для видалення.
+
+profiles.Type.Motion: Профілі руху
+profiles.Type.Motion.Detail: Додайте новий профіль, щоб налаштувати його, або натисніть «Редагувати», щоб вибрати кілька профілів для видалення.
+
+profiles.Type.AdaptiveTriggers: Профыль адаптивних тригерів
+profiles.Type.AdaptiveTriggers.Detail: Додайте новий профіль для налаштування або натисніть «Редагувати», щоб вибрати кілька профілів для видалення.
+
+profiles.Type.HapticsRumble: Профіль вібрацій
+profiles.Type.HapticsRumble.Detail: Додайте новий профіль для налаштування або натисніть «Редагувати», щоб вибрати кілька профілів для видалення.
+
+
+# ------------------------------------------------------------------------------------------------
+# Home Page
+# ----------------------------------------------------------------------------------------------R--
+
+homePage.Firmware.Info.Title: Інформація про обладнання/прошивку
+
+homePage.Hardware.Info.Title: Інформація про обладнання
+homePage.Hardware.Info.SubTitle: Інформація (версія) цього контролера.
+
+homePage.Hardware.Variation.Title: Варіація обладнання
+homePage.Hardware.Variation.SubTitle: Різновид обладнання цього контролера.
+
+homePage.Hardware.Version.Title: Апаратна версія
+homePage.Hardware.Version.SubTitle: Апаратна версія цього контролера.
+
+homePage.Firmware.Version.Title: Версія прошивки
+homePage.Firmware.Version.SubTitle: Поточна версія прошивки.
+
+homePage.Firmware.Type.Title: Тип прошивки
+homePage.Firmware.Type.SubTitle: Тип прошивки цього контролера.
+
+homePage.Firmware.BuildDate: Дата збірки прошивки
+homePage.Firmware.BuildDate.SubTitle: День народження вашої прошивки!
+
+homePage.Firmware.MainVersion.Title: Основна версія прошивки
+homePage.Firmware.MainVersion.SubTitle: Основна версія прошивки.
+
+homePage.MAC.Title: MAC-адреса
+homePage.MAC.SubTitle: Унікальний ідентифікатор MAC-адреси.
+
+homePage.HWInfo.Export.Title: Експорт інформації про апаратне/програмне забезпечення
+
+homePage.MoreDualSenseInfo.Title: Більше інформації про DualSense
+homePage.MoreDualSenseInfo.SubTitle: Решта інформації про апаратне/програмне забезпечення для контролера DualSense.
+
+homePage.ExperienceTrueImmersionWith: Відчуйте справжнє занурення з
+homePage.AdaptiveTriggers: адаптивними тригерами
+homePage.HapticFeedback: тактильним відгуком!
+homePage.ConnectionMode: Режим підключення
+homePage.ConnectionType.Detail: Тип підключення, який використовується для підключення до ПК.
+homePage.BatteryPercent: Заряд батареї
+homePage.BatteryPercent.Detail: Відсоток заряду батареї, який повідомляє контролер.
+homePage.PowerState: Стан заряду батареї
+homePage.PowerState.ToolTip: Стан заряду батареї повідомляє контролер.
+homePage.PollingRate: Швидкість опитування
+homePage.PollingRate.ToolTip: Швидкість опитування контролера.
+homePage.PollingRate.JustNo: Ні, це не можна змінити в DSX.
+homePage.Firmware.UpdateAvailable: Доступне оновлення прошивки
+homePage.Firmware.UpdateAvailable.Detail: Оновіть прошивку, щоб покращити продуктивність бездротових контролерів DualSense™ і DualSense Edge™.
+homePage.Firmware.CurrentVersion: "Поточна версія прошивки: "
+homePage.Firmware.LatestVersion: "Остання версія прошивки: "
+homePage.Firmware.UpdateNow: Оновити
+
+homePage.ConstantDataCommunication.Title: Постійний обмін даними
+homePage.ConstantDataCommunication.Detail: Якщо ввімкнено, DSX оновлюватиме цей пристрій дуже часто, якщо вимкнено - лише тоді, коли буде щось нове.
+homePage.ConstantDataCommunication.Note: Вимкніть це, якщо не вдається підключити інші контролери по BT до DSX/ПК
+
+homePage.VirtualDevice.Title: Віртуальний пристрій
+homePage.VirtualDevice.Detail: Віртуальний пристрій – це пристрій, який комп’ютер вважатиме, який ви використовуєте замість фізичного контролера.
+
+homePage.VirtualDevice.Mode.Native.Title: Режим без емуляції
+homePage.VirtualDevice.Mode.Native.Configuration.Title: Конфігурація режиму
+homePage.VirtualDevice.Mode.Native.Configuration.Detail: Якщо вибрано цей режим, віртуальний пристрій не створюється,але ви можете вибрати, чи ввімкнути або вимкнути надсилання даних, щоб зробити його більш сумісним із іграми, що підтримуються нативно.
+
+homePage.VirtualDevice.Mode.Native.Configuration.SendData.Title: Відправлення даних на пристрій
+homePage.VirtualDevice.Mode.Native.Configuration.SendData.Detail: DSX буде керувати такими функціями контролера, як адаптивні тригери, світлова панель, типи вібрацій тощо... Вимкніть, щоб ігри чи інші програми могли самі це контролювати.
+
+homePage.VirtualDevice.Mode.X360.Configuration.Title: Конфігурація режиму Xbox
+homePage.VirtualDevice.Mode.X360.Configuration.Detail: Коли емуляція Xbox 360 активна, ви можете налаштувати параметри проходження нижче.
+homePage.VirtualDevice.Mode.X360.Configuration.SubType: Підтип Xbox 360
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Detail: Виберіть потрібний підтип Xbox 360, який розпізнають підтримувані ігри.
+
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Gamepad: Геймпад
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.ArcadePad: Аркадна панель
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.ArcadeStick: Аркадний стік
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.DancePad: Танцювальна панель
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.DrumKit: Барабанний комплект
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.FlightStick: Стік для польоту
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Guitar: Гітара
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.GuitarAlternate: Альтернатива гітари
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.GuitarBass: Бас-гітара
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Wheel: Колесо
+
+homePage.VirtualDevice.Mode.X360.Configuration.RumblePassthrough.Title: Передача класичної вібрації
+homePage.VirtualDevice.Mode.X360.Configuration.RumblePassthrough.Detail: Коли ввімкнено, вібрація, надіслана на віртуальний контролер Xbox 360, буде передана на цей пристрій.
+
+homePage.VirtualDevice.Mode.DS4.Configuration.RumblePassthrough.Title: Передача класичної вібрації
+homePage.VirtualDevice.Mode.DS4.Configuration.RumblePassthrough.Detail: Коли ввімкнено, вібрація, яка надсилається на віртуальний контролер DualShock 4, передаватиметься на цей пристрій.
+
+homePage.VirtualDevice.Mode.DS4.Configuration.LEDPassthrough.Title: LED
+homePage.VirtualDevice.Mode.DS4.Configuration.LEDPassthrough.Detail: Коли ввімкнено, кольори світлової панелі, які надсилаються на віртуальний контролер DualShock 4, будуть передані на цей пристрій.
+
+homePage.VirtualDevice.Mode.DualSense.Configuration.RumblePassthrough.Title: Передача класичної вібрації
+homePage.VirtualDevice.Mode.DualSense.Configuration.RumblePassthrough.Detail: Якщо ввімкнути цю функцію, вібрація, яка надсилається на віртуальний контролер DualSense, передаватиметься на цей пристрій.
+
+homePage.VirtualDevice.Mode.DualSense.Configuration.ATPassthrough.Title: Передача адаптивних тригерів
+homePage.VirtualDevice.Mode.DualSense.Configuration.ATPassthrough.Detail: Коли ввімкнено, адаптивні тригери, надіслані на віртуальний контролер DualSense, будуть передані на цей пристрій.
+
+homePage.VirtualDevice.Mode.DualSense.Configuration.LEDPassthrough.Title: Передача LED
+homePage.VirtualDevice.Mode.DualSense.Configuration.LEDPassthrough.Detail: Коли ввімкнено, кольори світлової панелі, які надсилаються на віртуальний контролер DualSense, будуть передані на цей пристрій.
+
+homePage.VirtualDevice.Mode.X360.Title: Емуляція Xbox 360
+homePage.VirtualDevice.Mode.DS4.Title: Емуляція DualShock 4
+homePage.VirtualDevice.Mode.DualSense.Title: Емуляція DualSense
+homePage.VirtualDevice.Mode.DualSense.Detail: Поліпшувати за допомогою Wireless AT та інших
+homePage.VirtualDevice.Mode.Rev1: Ревізія 1
+homePage.VirtualDevice.Mode.Rev2: Ревізія 2
+
+homePage.VirtualDevice.Mode.DS4.Configuration.Title: Конфігурація режиму DualShock 4
+homePage.VirtualDevice.Mode.DS4.Configuration.Detail: Коли емуляція DualShock 4 активна, ви можете налаштувати параметри передачі нижче. 
+homePage.VirtualDevice.Mode.DS4.Configuration.SubType: Підтип DualShock 4
+homePage.VirtualDevice.Mode.DS4.Configuration.SubType.Detail: Виберіть потрібний підтип DualShock 4, який розпізнають підтримувані ігри.
+
+homePage.VirtualDevice.DS4.IssuesUnderInvestigation: Розслідуються проблеми емуляції DualShock 4
+homePage.VirtualDevice.DS4.IssuesUnderInvestigation.Detail: Зараз ми досліджуємо проблеми, пов’язані з емуляцією DualShock 4, використання цього режиму може призвести до неочікуваного перезавантаження системи. Використовуйте на свій страх і ризик. Зачекайте, поки ми працюємо над виправленням!
+homePage.VirtualDevice.DSDLC.Explore: ДОСЛІДЖУЙТЕ
+
+homePage.ControllerOptions: Параметри контролера
+
+
+# ------------------------------------------------------------------------------------------------
+# Profiles Page
+# ------------------------------------------------------------------------------------------------
+
+profilesPage.DeviceName.Title : Ім'я пристрою
+profilesPage.DeviceName.SubTitle : Псевдонім для цього пристрою.
+
+profilesPage.ProfilesDirectory.Title : Каталог профілів
+profilesPage.ProfilesDirectory.SubTitle : Переглядайте місце збереження профілів для цього контролера.
+
+profilesPage.ResetController.Title : Скинути систему профілю контролера
+profilesPage.ResetController.SubTitle : Видаляє всі пов’язані профілі для цього пристрою, як-от різні дії, світлодіод, адаптивні тригери тощо.
+profilesPage.ResetController.Popup.LineOne : ЦЕ НЕ МОЖЕ БУТИ СКАСОВАНЕ!
+profilesPage.ResetController.Popup.LineTwo : Усі пов’язані профілі для цього пристрою, як-от різні дії, світлодіод, адаптивні тригери тощо, буде видалено.
+profilesPage.ResetController.Popup.LineThree : Ви впевнені, що бажаєте продовжити?
+
+profilesPage.ProfileList.SubTitle : Поточний активний профіль для різних профільних систем.
+
+profilesPage.Action : Профіль дій
+profilesPage.AdaptiveTriggers : Профіль Адаптивних тригерів
+profilesPage.Deadzone : Профіль мертвих зон
+profilesPage.HapticsRumble : Профіль вібрацій
+profilesPage.LED : Профіль LED
+profilesPage.Motion : Профіль руху
+profilesPage.Notification : Профіль сповіщень
+profilesPage.Touchpad : Профіль сенсорної панелі
+
+
+# ------------------------------------------------------------------------------------------------
+# Controller Page
+# ------------------------------------------------------------------------------------------------
+ctPage.IdleShutoffInactiveDuringCharging: Вимкнення в режимі очікування неактивне під час заряджання
+ctPage.DurationSinceIdle: "Тривалість під час простою:" 
+ctPage.InputFeedback.Title: Введення зворотного зв'язку
+ctPage.InputFeedback.Description: Перегляд фізичного (реального) введення або віртуального (емульованого) введення.
+ctPage.Physical: ФІЗИЧНЕ
+ctPage.Virtual: ВІРТУАЛЬНЕ 
+ctPage.LeftFN: ЛІВИЙ FN
+ctPage.RightFN: ПРАВИЙ FN
+ctPage.Actions.Title: Дії
+ctPage.Actions.Description: Створіть дію для відображення кнопок, клавіатури, ярликів, макросів тощо.
+ctPage.KeyboardButtonDetector.Title: Розпізнавання кнопок клавіатури
+ctPage.KeyboardButtonDetector.Description: DSX може вводити (імітувати) будь-яку кнопку клавіатури, яка розпізнається в цьому текстовому полі.
+ctPage.KeyDetector.Placeholder: Натисніть клавішу на клавіатурі, якщо ви активні.
+ctPage.KeyDetector.ToolTip: Відкрийте екранну клавіатуру
+ctPage.KeyDetector.Detail: DSX може вводити (імітувати) будь-який текст, доданий у це текстове поле.
+ctPage.KeyDetector.Input.Placeholder: Введіть тут будь-що для імітації.
+ctPage.ListOfAddedKeyboardMappings: Список доданих розкладок клавіатури
+ctPage.ListOfAddedKeyboardMappings.NoneAdded: Розкладку клавіатури не додано
+ctPage.ListOfAddedKeyboardMappings.Detail: Тут з’явиться ваш список розкладок клавіатури.
+ctPage.VirtualMouse.Detail: Викликає додані кнопки віртуальної миші нижче, коли миша натискає вибрану(-і) кнопку(-и) під час натискання.
+ctPage.MouseButtonDetector: Розпізнавач кнопок миші
+ctPage.MouseButtonDetector.Detail: DSX може імітувати натискання кнопок миші, які розпізнаються цим полем. Наведіть курсор на поле та натисніть кнопку миші.
+ctPage.MouseButtonDetector.Text: Натисніть кнопку миші, коли виділите.
+ctPage.MouseButtons: Кнопки миші
+ctPage.MouseButtons.Detail: DSX може імітувати будь-яку кнопку миші, додану з цього списку.
+ctPage.LeftMouseButton: Ліва кнопка миші
+ctPage.RightMouseButton: Права кнопка миші
+ctPage.MiddleMouseButton: Середня кнопка миші
+ctPage.ScrollWheelUp: Колесо прокрутки вгору
+ctPage.ScrollWheelDown: Колесо прокрутки вниз
+ctPage.BackMouseButton: Кнопка миші назад
+ctPage.ForwardMouseButton: Кнопка миші вперед
+ctPage.ListOfAddedMouseMappings: Список доданих відображень миші
+ctPage.ListOfAddedMouseMappings.NoneAdded: Список доданих відображень миші
+ctPage.ListOfAddedMouseMappings.NoneAdded.Sub: Список доданих відображень миші
+ctPage.Shortcuts.Title: Ярлики
+ctPage.Shortcuts.Detail: Під час натискання запускає доданий(і) ярлик(и) для вибраної(их) кнопки(ок).
+ctPage.WindowsActionPresets.Title: Попередні налаштування дій Windows
+ctPage.AppSettings.Title: Параметри додатка
+ctPage.ChangeEmulationType: Змінити тип емуляції
+ctPage.ToggleTouchpadToMouse: Переключити сенсорну панель на мишу
+ctPage.GeneralSettings.Title: Загальні налаштування
+
+ctPage.GeneralSettings.Description: Загальні параметри контролера, такі як автоматичне вимкнення тощо.
+ctPage.Deadzones.Title: Мертві зони
+ctPage.Deadzones.Description: Налаштуйте вхідний діапазон мертвих зон тригера та джойстика, щоб підвищити свою точність.
+ctPage.Touchpad.Title: Сенсорна панель
+ctPage.Touchpad.Description: Використовуйте весь спектр сенсорної панелі, щоб створювати різні введення одним дотиком пальця.
+ctPage.Motion.Title: Рух
+ctPage.Motion.Description: Використовуйте весь спектр сенсорної панелі, щоб створювати різні введення одним дотиком пальця.
+ctPage.RawFeedback.Title: Необроблений відгук
+ctPage.RawFeedback.Description: Переглядайте різноманітну інформацію, яка надходить безпосередньо з вашого геймпада, як-от тригери, джойстик, сенсорна панель і рух.
+ctPage.GamepadSkin.Title: Оболонка геймпада
+ctPage.GamepadSkin.Description: Виберіть, яку оболонку геймпада ви хочете бачити для відгуків ліворуч.
+ctPage.NoSelectedButtons.Title: Кнопка(и) не вибрана
+ctPage.NoSelectedButtons.Description: Будь ласка, натисніть кнопку ліворуч, щоб розпочати.
+ctPage.RawPressureValue: Необроблене значення тиску
+
+ctPage.InsertGamepadButton: Вставити кнопку геймпада
+ctPage.ButtonMappingsList: Список доданих відповідностей кнопок
+ctPage.NoButtonMappingAdded: Не додано зіставлення кнопок
+ctPage.NoButtonMappingAdded.Sub: Не додано зіставлення кнопок
+
+ctPage.TriggerPosition.Title: Положення тригера
+ctPage.TriggerPosition.Sub: Налаштуйте, коли кнопка повинна бути симульована для L2 | R2 (1-255)
+
+ctPage.ActionsProfileSwitchTo: З цього профілю переключитися на
+ctPage.AdaptiveTriggerProfileSwitchTo: З цього профілю переключитися на
+ctPage.ControllerProfileSwitchTo: З цього профілю переключитися на
+ctPage.DeadzoneProfileSwitchTo: З цього профілю переключитися на
+ctPage.HapticsRumbleProfileSwitchTo: З цього профілю переключитися на
+ctPage.LEDProfileSwitchTo: З цього профілю переключитися на
+ctPage.MotionProfileSwitchTo: З цього профілю переключитися на
+ctPage.NotificationsProfileSwitchTo: З цього профілю переключитися на
+ctPage.TouchpadProfileSwitchTo: З цього профілю переключитися на
+ctPage.ActivateNativeMode: Активувати режим без емуляції(без віртуального пристрою)
+ctPage.ActivateXbox360VirtualDevice: Активувати віртуальний пристрій Xbox 360
+ctPage.ActivateDualShock4VirtualDevice: Активувати віртуальний пристрій DualShock 4
+ctPage.ActivateDualSenseVirtualDevice: Активувати віртуальний пристрій DualSense
+ctPage.TurnControllerOff: Вимкніть контролер (тільки з’єднання Bluetooth)
+ctPage.RestartController: Перезапустіть контролер (тільки USB-з’єднання) (лише DualSense, DualSense Edge і PSVR Sense)
+ctPage.MediaAndSystemKeys: Медіа та системні ключі
+ctPage.ToggleXboxGameBar: Увімкнути або вимкнути ігрову панель Xbox
+ctPage.TakeSystemScreenshot: Зробити скріншот системи
+ctPage.IncreaseBrightnessLevel: Збільшити рівень яскравості
+ctPage.DecreaseBrightnessLevel: Зменшити рівень яскравості
+ctPage.ToggleMicrophoneMute: Увімкнути або вимкнути мікрофон
+ctPage.PreviousTrack: Попередній трек
+ctPage.PlayPause: Відтворення/Пауза
+ctPage.NextTrack: Наступний трек
+ctPage.ToggleVolumeMute: Увімкнути або вимкнути звук
+ctPage.IncreaseVolumeLevel: Збільшити рівень гучності
+ctPage.DecreaseVolumeLevel: Зменшити рівень гучності
+ctPage.DeviceStatus: Стан пристрою
+ctPage.ActiveActionProfile: Активувати профіль дій
+ctPage.ActiveAdaptiveTriggerProfile: Активувати профіль Адаптивних тригерів
+ctPage.ActiveDeadzoneProfile: Активувати профіль мертвих зон
+ctPage.ActiveHapticsRumbleProfile: Активувати профіль вібрацій
+ctPage.ActiveLEDProfile: Активувати профіль LED
+ctPage.ActiveMotionProfile: Активувати профіль руху
+ctPage.ActiveNotificationProfile: Активувати профіль сповіщень
+ctPage.ActiveTouchpadProfile: Активувати профіль сенсорної панелі
+ctPage.LaunchExecutable: Запустіть виконуваний файл
+ctPage.FileDoesNotExist: Файлу не існує
+ctPage.EnterPathToExecutable: Введіть шлях до виконуваного файлу (.bat .exe тощо)
+ctPage.EnterLaunchArgsHere: Введіть тут аргументи запуску
+ctPage.ListOfAddedShortcuts: Список доданих ярликів
+ctPage.NoShortcutsAdded: Жодних ярликів не додано
+ctPage.ShortcutsListPlaceholder: Тут з’явиться ваш список ярликів.
+ctPage.VirtualDeviceOption: Параметр віртуального пристрою
+ctPage.WindowsActionPreset: Попереднє налаштування дій Windows
+ctPage.GoBack: Назад
+ctPage.Macros: Макроси
+ctPage.MacrosDescription: Імітує додані нижче кнопки в записаному вигляді для вибраних кнопок під час натискання.
+ctPage.Notifications: Сповіщення
+ctPage.MacroSettings: Налаштування макросу
+ctPage.PlayOnce: Грати один раз
+ctPage.ActionWillPlayOneTime: Дія відтворюється один раз.
+ctPage.KeyDown: Клавіша вниз
+ctPage.MacroEditing: Редагування макросу
+ctPage.InsertGamepadButtonToList: Вставити кнопку геймпада до списку
+ctPage.ListOfAddedMacros: Список доданих макросів
+ctPage.NoMacrosAdded: Макроси не додано
+ctPage.MacrosListPlaceholder: Тут з’явиться ваш список макросів.
+ctPage.Turbo: Турбо
+ctPage.TurboDescription: Імітує швидке та повторне натискання для вибраних кнопок.
+ctPage.WaitLengthDescription: Тривалість очікування перед повторним запуском.
+ctPage.Duration: Тривалість
+ctPage.DurationDescription: Тривалість перебування кнопки в натиснутому стані.
+ctPage.Action: Дія
+ctPage.ActionDescription: Якщо цей параметр УВІМКНЕНО, увімкнені типи, наведені нижче, діятимуть для будь-яких вибраних кнопок для цього профілю дій. Якщо його ВИМКНЕНО, незалежно від вибраних кнопок ліворуч і навіть якщо нижче ввімкнено, нічого не станеться.
+ctPage.ActivationMethod: Метод активації
+ctPage.ActivationMethodDescription: Виберіть активувати цю дію миттєво чи після затримки.
+ctPage.ActionInstantActivation: Дія активується миттєво.
+ctPage.AfterDelay: Після затримки
+ctPage.AfterDelayDescription: Дія активується через деяку затримку.
+ctPage.MouseMapping.Title: Відображення миші
+ctPage.MouseMapping.Description: Викликає додані кнопки віртуальної миші під час натискання мишею вибраних кнопок під час тривалого натискання.
+ctPage.Shortcuts.Description: Запускає додані ярлики для вибраних кнопок під час тривалого натискання.
+
+ctPage.ButtonMapping.Title: Зіставлення кнопок
+ctPage.ButtonMapping.Description: Імітує додані нижче кнопки геймпада для вибраних кнопок під час натискання.
+ctPage.KeyboardMapping.Title: Розкладка клавіатури
+ctPage.KeyboardMapping.Description: Під час натискання викликає додані віртуальні клавіші або змодельований текст для вибраних кнопок.
+ctPage.ListOfActiveActions: Список активних дій
+ctPage.ActiveButtonMappingsDescription: Ваш список активних зіставлень кнопок.
+
+ctPage.KeyboardMappingList: Розкладка клавіатури
+ctPage.ActiveKeyboardMappingsDescription: Ваш список активних розкладок клавіатури.
+ctPage.ShortcutsList: Ярлики
+ctPage.ActiveShortcutsDescription: Ваш список активних ярликів.
+ctPage.ActiveTurbosDescription: Ваш список активних Турбо.
+
+ctPage.Delay: Затримка
+ctPage.DelayDescription: Тривалість очікування перед повторним запуском.
+ctPage.NoActiveActions: Немає активних дій
+ctPage.YourListOfActiveActionsWillShowUpHere: Тут з’явиться ваш список активних дій.
+ctPage.L2TriggerInputRange: Вхідний діапазон тригера L2
+ctPage.AdjustSlidersToUpdateTriggerDeadzone: Відрегулюйте повзунки нижче, щоб оновити мертву зону тригера, надіслану на емульований контролер.
+ctPage.L2TriggerDeadzone: Мертва зона тригера L2
+ctPage.R2TriggerDeadzone.Title: Мертва зона тригера R2
+ctPage.TriggerDeadzone.Description: Налаштувати діапазон для мертвої зони.
+ctPage.LeftTrigger: Лівий тригер
+ctPage.RightTrigger: Правий тригер
+ctPage.PressureValue: Значення тиску
+ctPage.PressureValueRange: 0 - 255
+ctPage.NoneMs: Н/Д мс
+ctPage.NotAny: Н/Д
+ctPage.RawJoystickData: Необроблені дані джойстика
+ctPage.RawJoystickDataDescription: Необроблена інформація про лівий і правий джойстики
+ctPage.LeftStickXRaw: Неточність X лівого джойстика 
+ctPage.LeftStickYRaw: Неточність Y лівого джойстика
+
+ctPage.LeftStickXConvertedXbox: Конвертовано неточність X лівого джойстика (xbox)
+ctPage.LeftStickYConvertedXbox: Конвертовано неточність Y лівого джойстика (xbox)
+ctPage.LeftJoystick: Лівий джойстик
+ctPage.RightJoystick: Правий джойстик
+ctPage.ControllerSkins.Title: Скіни контролера
+ctPage.To: До
+ctPage.From: З
+ctPage.PhysicalAndVirtualDeviceOptions.Title: Параметри фізичного та віртуального пристрою
+ctPage.RawTouchpadData.Title: Неточність сенсорної панелі
+ctPage.RawTouchpadData.Description: Різна інформація сенсорної панелі, як-от позиції пальців 1 і 2 X/Y і жести проведення.
+ctPage.TouchpadShowGrid: Показати сітку сенсорної панелі
+ctPage.CenterDarkSquareSafeZone: Центр темного квадрату — безпечна зона
+ctPage.Finger1Data: Дані пальця 1
+ctPage.Finger1TouchCounter: "Лічильник дотиків:"
+ctPage.Finger1XPosition: "Положення X:"
+ctPage.Finger1YPosition: "Положення Y:"
+ctPage.Finger2Data: Дані пальця 2
+ctPage.Finger2TouchCounter: "Лічильник дотиків:"
+ctPage.Finger2XPosition: "Положення X:"
+ctPage.Finger2YPosition: "Положення Y:"
+ctPage.TouchPoints: Точки дотику
+ctPage.Finger1TouchPoints: Точки дотику 1-го пальця
+ctPage.TouchPointsDescription: Різні точки дотику на сенсорній панелі
+ctPage.TouchPointsTopLeftTouch: Верхній лівий бік
+ctPage.TouchPointsTopCenterTouch: Верхній центр
+ctPage.TouchPointsTopRightTouch: Верхній правий бік
+ctPage.TouchPointsCenterLeftTouch: Центральний лівий дотик
+ctPage.TouchPointsCenterTouch: Центральний дотик
+ctPage.TouchPointsCenterRightTouch: Торкніться праворуч по центру
+ctPage.TouchPointsBottomLeftTouch: Торкніться лівого нижнього кута
+ctPage.TouchPointsBottomCenterTouch: Нижній центр Touch
+ctPage.TouchPointsBottomRightTouch: Торкніться праворуч унизу
+ctPage.Finger1SwipeGesturesDescription: Різноманітні жести 1-го пальця по сенсорній панелі
+ctPage.LeftSideSwipe: Проведіть по лівій стороні
+ctPage.EntireTouchpad: Цілий сенсорний екран
+ctPage.RightSideSwipe: Проведіть по правій стороні
+ctPage.SwipeRight: Проведіть праворуч
+ctPage.SwipeLeft: Проведіть ліворуч
+ctPage.LeftSideSwipeDetection: "Відстань у пікселях лівого боку для виявлення проведення пальцем:"
+ctPage.EntireTouchpadSwipeDetection: "Уся відстань у пікселях сенсорної панелі для виявлення проведення пальцем:"
+ctPage.RightSideSwipeDetection: "Відстань у пікселях правого боку для виявлення проведення пальцем:"
+ctPage.Touchpad.SwipeGestures.LeftSideUp: Проведіть пальцем вгору
+ctPage.Touchpad.SwipeGestures.EntireTouchpad.Up: Проведіть пальцем вгору
+ctPage.Touchpad.SwipeGestures.RightSideUp: Проведіть пальцем вгору
+ctPage.Touchpad.SwipeGestures.LeftSideDown: Проведіть пальцем вниз
+ctPage.Touchpad.SwipeGestures.EntireTouchpad.Down: Проведіть пальцем вниз
+ctPage.Touchpad.SwipeGestures.RightSideDown: Проведіть пальцем вниз
+
+ctPage.TouchpadButtonLatency: Затримка кнопки сенсорної панелі
+ctPage.TouchpadClick: Натисніть сенсорну панель 
+ctPage.LeftSide: Ліва сторона
+ctPage.RightSide: Права сторона
+ctPage.TopLeftBox: Верхнє ліве поле
+ctPage.TopRightBox: Верхнє праве поле
+ctPage.BottomLeftBox: Нижнє ліве поле
+ctPage.BottomRightBox: Нижнє праве поле
+
+ctPage.LeftJoystickDeadzoneUnderConstruction: Мертва зона лівого джойстика знаходиться в стадії розробки.
+ctPage.RightJoystickDeadzoneUnderConstruction: Мертва зона правого джойстика знаходиться в стадії розробки.
+ctPage.LeftJoystickDeadzone: Мертва зона лівого джойстика
+ctPage.ConfigureLeftJoystickDeadzone: Налаштуйте мертву зону лівого джойстика.
+ctPage.RightJoystickDeadzone: Мертва зона правого джойстика
+ctPage.ConfigureRightJoystickDeadzone: Налаштуйте потрібну мертву зону джойстика.
+ctPage.TouchpadUnderConstruction: Сенсорна панель знаходиться в стадії розробки.
+ctPage.MacrosUnderConstruction: Макроси знаходяться в стадії розробки.
+ctPage.MotionUnderConstruction: Рух знаходиться в стадії розробки.
+ctPage.RawTriggerData: Необроблені тригерні дані
+ctPage.RawTriggerDataDescription: Необроблена інформація про дані L2 і R2, що надходять із фізичного контролера.
+ctPage.GeneralSettings.AutoIdleShutOff: Автоматичне відключення холостого ходу
+ctPage.GeneralSettings.AutoIdleShutOffDescription: Після активації DSX автоматично вимкне живлення контролера через Bluetooth, якщо виявить, що контролер не використовувався протягом зазначеного часу.
+ctPage.GeneralSettings.DisableAutoIdleShutOffDuringCharging: Вимкніть автоматичне відключення в режимі очікування під час заряджання
+ctPage.GeneralSettings.DisableAutoIdleShutOffDuringChargingDescription: Це дозволяє запобігти автоматичному вимкненню в режимі очікування під час заряджання пристрою, забезпечуючи безперервні сеанси заряджання без перерв через тайм-аути в режимі очікування.
+ctPage.InactivityDuration: Тривалість бездіяльності
+ctPage.InactivityDurationDescription: Тривалість бездіяльності викликає автоматичне вимкнення цього пристрою.
+ctPage.FiveMinutes: 5 хвилин
+ctPage.TenMinutes: 10 хвилин
+ctPage.FifteenMinutes: 15 хвилин
+ctPage.ThirtyMinutes: 30 хвилин
+ctPage.SixtyMinutes: 60 хвилин
+ctPage.OneHundredTwentyMinutes: 120 хвилин
+ctPage.CustomMinutes: Обрати (хвилини)
+ctPage.Never: Немає
+ctPage.PressLatency: Затримка натискання
+
+ctPage.NoControllersDetected: Контролери не виявлено
+ctPage.ConnectController: Будь ласка, підключіть свій контролер або з’єднайте його через Bluetooth, щоб налаштувати дії, мертві зони тощо.
+
+ctPage.RealTimeUpdate: Оновлення в реальному часі
+ctPage.UsesMoreGPU: (Використовує більше ресурсу ГП)
+ctPage.Finger1: 1-ий палець
+ctPage.Finger2: 2-ий палець
+ctPage.DirectionalButtons: Кнопки направлення
+ctPage.CenterButtons: Центральні кнопки
+ctPage.ActionButtons: Кнопки дій
+ctPage.BackLeftButtonTrigger: Ліва кнопка назад і тригер
+ctPage.BackRightButtonTrigger: Права кнопка назад і тригер
+ctPage.ActiveGridBasedOnFinger1Position: Яка сітка активна на основі положення 1-го пальця X/Y
+
+ctPage.Actions: Дії
+ctPage.Deadzones: Мертві зони
+ctPage.Touchpad: Сенсорна панель
+ctPage.Motion: Рух
+ctPage.RawFeedback: Необроблений відгук
+ctPage.ControllerSkins: Скіни контролера
+ctPage.GeneralSettings: Загальні налаштування
+
+ctPage.ButtonMapping: Зіставлення кнопок
+ctPage.KeyboardMapping: Розкладка клавіатури
+ctPage.MouseMapping: Розкладка миші
+ctPage.Shortcuts: Ярлики
+
+ctPage.L2Trigger: Тригер L2
+ctPage.R2Trigger: Тригер R2
+ctPage.R2Position: Позиція R2
+ctPage.ScrollDistance: Відстань прокручування (точки)
+ctPage.Source: Джерело
+ctPage.Activation: Активація
+ctPage.DelayMilliseconds: Затримка (мс)
+ctPage.Repeats: Повтори
+ctPage.PlayOnKey: Грати на ключі
+ctPage.InsertDelayToList: Вставте затримку (мс) до списку
+ctPage.StartRecording: Почніть запис
+ctPage.Milliseconds: Мілісекунди
+ctPage.Seconds: Секунди
+
+ctPage.RawInfoJoystick: Необроблена інформація про лівий і правий джойстики
+ctPage.SwipeGestures: Жести пальцем
+ctPage.GridPosition: Положення сітки
+ctPage.TouchpadInfo: Різна інформація про сенсорну панель, як-от положення X/Y 1-го та 2-го пальців і його жести
+ctPage.GreenScreenEffect: Ефект зеленого екрану (для стримерів)
+
+ctPage.GeneralSettings.InvertLeftX: Інвертувати лівий X
+ctPage.GeneralSettings.InvertLeftX.Description: Після активації DSX інвертує вісь X лівого джойстика таким чином, що рух ліворуч діятиме як рух праворуч, і навпаки.
+ctPage.GeneralSettings.InvertLeftY: Інвертувати лівий Y
+ctPage.GeneralSettings.InvertLeftY.Description: Після активації DSX інвертує вісь Y лівого джойстика таким чином, що підйом вгору діятиме як опуск, і навпаки.
+ctPage.GeneralSettings.InvertRightX: Інвертувати правий X
+ctPage.GeneralSettings.InvertRightX.Description: Після активації DSX інвертує вісь X правого джойстика таким чином, що рух ліворуч діятиме як рух праворуч, і навпаки.
+ctPage.GeneralSettings.InvertRightY: Інвертувати правий Y
+ctPage.GeneralSettings.InvertRightY.Description: Після активації DSX інвертує вісь Y правого джойстика таким чином, що підйом вгору діятиме як опуск, і навпаки.
+
+
+btn.DpadUp: D-PAD ВГОРУ
+btn.DpadDown: D-PAD ВНИЗ
+btn.DpadLeft: D-PAD ЛІВО
+btn.DpadRight: D-PAD ПРАВО
+btn.Triangle: ТРИКУТНИК
+btn.Square: КВАДРАТ
+btn.Circle: КРУГ
+btn.Cross: ХРЕСТ
+btn.Share: ПОДІЛИТИСЯ
+btn.Options: ОПЦІЇ
+btn.Mute: ВИМКНЕННЯ ЗВУКУ
+btn.PS: PS
+btn.Touchpad: СЕНСОРНА ПАНЕЛЬ
+btn.L1: L1
+btn.L2: L2
+btn.L2Position: Позиція L2
+btn.L3: L3
+btn.R1: R1
+btn.R2: R2
+btn.R3: R3
+
+
+# ------------------------------------------------------------------------------------------------
+# Adaptive Triggers Page
+# ------------------------------------------------------------------------------------------------
+
+atPage.RightTrigger: Правий тригер
+
+atPage.PassthroughWarning.Title: "Попередження: увімкнено передачу адаптивних тригерів"
+atPage.PassthroughWarning.Sub: Коли увімкнено, адаптивні тригери стають неактивними, що дозволяє динамічно керувати грою.&#10;Ця функція перекриває будь-які ручні конфігурації, встановлені нижче, дозволяючи грі диктувати поведінку адаптивних тригерів.
+atPage.DisableATPassthrough: Вимкнути
+atPage.LeftTrigger: Лівий тригер
+atPage.OfficialATModes: Офіційні режими адаптивного тригера
+
+atPage.ATEffectOff.Detail: Вимикає ефект адаптивного тригера та повертає його до нормального стану.
+
+atPage.Sliders.StartPosition: Початкова позиція
+atPage.Sliders.EndPosition: Кінцева позиція
+atPage.Sliders.Amplitude: Амплітуда
+atPage.Sliders.AmplitudeA: A
+atPage.Sliders.AmplitudeB: B
+atPage.Sliders.ResistanceStrength: Сила опору
+atPage.Sliders.StartResistanceStrength: На початку
+atPage.Sliders.EndResistanceStrength: В кінці
+atPage.Sliders.SnapForce: Сила фіксації
+atPage.Sliders.FirstFoot: Перша ступня
+atPage.Sliders.SecondFoot: Друга ступня
+
+atPage.Sliders.Region1Resistance: Перша
+atPage.Sliders.Region2Resistance: Друга
+atPage.Sliders.Region3Resistance: Третя
+atPage.Sliders.Region4Resistance: Четверта
+atPage.Sliders.Region5Resistance: П'ята
+atPage.Sliders.Region6Resistance: Шоста
+atPage.Sliders.Region7Resistance: Сьома
+atPage.Sliders.Region8Resistance: Восьма
+atPage.Sliders.Region9Resistance: Дев'ята
+atPage.Sliders.Region10Resistance: Десята
+
+atPage.Sliders.Region1Amplitude: Перша
+atPage.Sliders.Region2Amplitude: Друга
+atPage.Sliders.Region3Amplitude: Третя
+atPage.Sliders.Region4Amplitude: Четверта
+atPage.Sliders.Region5Amplitude: П'ята
+atPage.Sliders.Region6Amplitude: Шоста
+atPage.Sliders.Region7Amplitude: Сьома
+atPage.Sliders.Region8Amplitude: Восьма
+atPage.Sliders.Region9Amplitude: Дев'ята
+atPage.Sliders.Region10Amplitude: Десята
+
+
+atPage.Mode.Feedback.Title: Зворотній зв'язок
+atPage.Mode.Feedback.SubTitle: Тригер буде чинити опір переміщенню за межі початкової позиції.
+
+atPage.Mode.Weapon.Title: Зброя
+atPage.Mode.Weapon.SubTitle: Тригер буде чинити опір із відчуттям клацання.
+
+atPage.Mode.Vibration.Title: Вібрація
+atPage.Mode.Vibration.SubTitle: Тригер буде вібрувати з амплітудою та частотою вхідного сигналу за межами початкової позиції.
+
+atPage.Mode.Vibration.DynamicRumbleSync.Title: Динамічна синхронізація класичної вібрації
+atPage.Mode.Vibration.DynamicRumbleSync.Left.SubTitle: Синхронізацію з вібро-мотором лівого боку віртуального пристрою, регулюючи частоту вібрації на основі сили з віртуального пристрою. Налаштуйте частоту за допомогою повзунка вище, установивши максимальну бажану частоту вібрації.
+atPage.Mode.Vibration.DynamicRumbleSync.Right.SubTitle: Синхронізацію з вібро-мотором правого боку віртуального пристрою, регулюючи частоту вібрації на основі сили з віртуального пристрою. Налаштуйте частоту за допомогою повзунка вище, установивши максимальну бажану частоту вібрації.
+
+atPage.Mode.SlopeFeedback.Title: Зворотний зв'язок нахилу
+atPage.Mode.SlopeFeedback.SubTitle: Тригер чинить опір руху в лінійному діапазоні сил.
+
+atPage.Mode.MultiplePositionFeedback.Title: Багатопозиційний зворотний зв'язок
+atPage.Mode.MultiplePositionFeedback.SubTitle: Тригер протистоятиме рухам із різною силою.
+
+atPage.Mode.MultiplePositionVibration.Title: Багатопозиційна вібрація
+atPage.Mode.MultiplePositionVibration.SubTitle: Тригер буде вібрувати із різною амплітудою та однією частотою.
+
+atPage.Mode.GameCube.Title: GameCube
+atPage.Mode.GameCube.SubTitle: Ефект нагадує натискання задньої кнопки контролера від консолі GameCube.
+
+atPage.Mode.Bow.Title: Лук
+atPage.Mode.Bow.SubTitle: Ефект нагадує наслідок використання зброї, наведеної вище, однак є сила відкидання, яка намагається скинути тригер.
+
+atPage.Mode.Galloping.Title: Галопом
+atPage.Mode.Galloping.SubTitle: Тригер коливатиметься ритмічно, нагадуючи галоп. Зауважте, що ефект помітний лише при низьких значеннях частоти.
+
+atPage.Mode.Machine.Title: Машина
+atPage.Mode.Machine.SubTitle: Ефект нагадує ефект вібрації, наведений вище, але коливатиметься між двома амплітудами.
+
+atPage.Mode.MotorWarning: "ПОПЕРЕДЖЕННЯ: Потенційна шкода для двигуна тригера."
+atPage.UnofficialATModes: Неофіційні режими адаптивних тригерів
+
+atPage.Legacyv2Modes: Застарілі режими адаптивних тригерів
+atPage.Legacyv2Modes.CustomTriggerValues.Title: Спеціальні значення тригера (експериментальний)
+atPage.Legacyv2Modes.CustomTriggerValues.SubTitle: На основі режиму та значень, які матимуть випадковий ефект.
+atPage.Legacyv2Modes.CustomTriggerValues.Mode: Режим користувацьких значень тригера
+
+atPage.Legacy.Slider.Rigid: Жорсткість
+atPage.Legacy.Slider.RigidA: A
+atPage.Legacy.Slider.RigidB: B
+atPage.Legacy.Slider.RigidAB: AB
+
+atPage.Legacy.Slider.Pulse: Пульсація
+atPage.Legacy.Slider.PulseA: A
+atPage.Legacy.Slider.PulseB: B
+atPage.Legacy.Slider.PulseAB: AB
+
+atPage.Legacy.Slider.VibrateResistance: Вібростійкість
+atPage.Legacy.Slider.VibrateResistanceA: A
+atPage.Legacy.Slider.VibrateResistanceB: B
+atPage.Legacy.Slider.VibrateResistanceAB: AB
+
+atPage.Legacy.Slider.VibratePulse: Вібропульс
+atPage.Legacy.Slider.VibratePulseA: A
+atPage.Legacy.Slider.VibratePulseB: B
+atPage.Legacy.Slider.VibratePulseAB: AB
+
+atPage.Legacy.Slider.Force1: Перша
+atPage.Legacy.Slider.Force2: Друга
+atPage.Legacy.Slider.Force3: Третя
+atPage.Legacy.Slider.Force4: Четверта
+atPage.Legacy.Slider.Force5: П'ята
+atPage.Legacy.Slider.Force6: Шоста
+atPage.Legacy.Slider.Force7: Сьома
+
+atPage.Legacy.Mode.Choppy.Title: Поривчасто
+atPage.Legacy.Mode.Choppy.SubTitle: Ефект нагадує режим зворотного зв’язку з різною інтенсивністю під час натискання.
+
+atPage.Legacy.Mode.VerySoft.Title: Дуже м'яко
+atPage.Legacy.Mode.VerySoft.SubTitle: Ефект нагадує режим «Зброя» з дуже м’якою інтенсивністю.
+
+atPage.Legacy.Mode.Soft.Title: М'яко
+atPage.Legacy.Mode.Soft.SubTitle: Ефект нагадує режим «Зброя» з м’якою інтенсивністю.
+
+atPage.Legacy.Mode.Medium.Title: Середньо
+atPage.Legacy.Mode.Medium.SubTitle: Ефект нагадує режим «Зброя» із середньою інтенсивністю.
+
+atPage.Legacy.Mode.Hard.Title: Важко
+atPage.Legacy.Mode.Hard.SubTitle: Ефект нагадує режим «Зброя» з жорсткою інтенсивністю.
+
+atPage.Legacy.Mode.VeryHard.Title: Дуже важко
+atPage.Legacy.Mode.VeryHard.SubTitle: Ефект нагадує режим «Зброя» з дуже жорсткою інтенсивністю.
+
+atPage.Legacy.Mode.Hardest.Title: Найважче
+atPage.Legacy.Mode.Hardest.SubTitle: Ефект нагадує режим «Зброя» з максимальною інтенсивністю.
+
+atPage.Legacy.Mode.Rigid.Title: Жорстко
+atPage.Legacy.Mode.Rigid.SubTitle: Ефект нагадує режим «Зброя» з дуже сильною інтенсивністю.
+
+atPage.Legacy.Mode.VibrateTriggerPulse.Title: Вібросимпульсний тригер
+atPage.Legacy.Mode.VibrateTriggerPulse.SubTitle: Ефект нагадує режим вібрації з частотою, яка змінюється автоматично.
+
+# ------------------------------------------------------------------------------------------------
+# LED Page
+# ------------------------------------------------------------------------------------------------
+
+ledPage.RGB: RGB
+ledPage.LEDProfiles: Світлодіодні профілі
+ledPage.AddEditLEDProfiles: Додайте новий світлодіодний профіль, щоб налаштувати натисніть «Редагувати», також це дозволить вибрати декілька профілів для видалення.
+ledPage.SearchControllerProfiles: Пошук профілів контролера
+ledPage.WarningLEDPassthroughEnabled: "Попередження: прохідний світлодіод увімкнено"
+ledPage.LEDPassthroughDescription: Коли ввімкнено, ручні налаштування світлодіодів стають неактивними, що дозволяє грі динамічно керувати світлодіодами. Ця функція перекриває будь-які ручні конфігурації, встановлені нижче, дозволяючи грі диктувати поведінку світлодіодів.
+ledPage.DisableLEDPassthrough: Вимкнути прохідний світлодіод
+ledPage.LightBarBrightness: Яскравість світлової панелі
+ledPage.LightBarBrightnessDescription: Наскільки яскравою має бути світлова панель на контролері.
+ledPage.BatteryLowFlashing: Блимання при низькому рівні заряду батареї
+ledPage.BatteryLowFlashingDescription: Якщо ввімкнено, це діятиме, коли в контролері низький заряд батареї, незалежно від вибраного режиму світлової панелі.
+ledPage.BatteryLowFlashingPercentage: Блимання при низькому відсотковому заряду батареї
+ledPage.BatteryLowFlashingPercentageDescription: Якщо цей параметр увімкнено, коли відсоток заряду батареї контролера нижчий від установленого значення, він блиматиме вказаним нижче кольором.
+ledPage.IgnoreFlashingWhileCharging: Ігнорувати блимання під час заряджання
+ledPage.IgnoreFlashingWhileChargingDescription: Якщо ввімкнено, коли контролер заряджається або повністю заряджений, він більше не блиматиме та відновить поточний вибраний режим світлової панелі.
+ledPage.LightBarFlash: Спалах світлової панелі
+ledPage.LightBarFlashDescription: Якщо ввімкнено, світлова панель на бездротовому контролері DualShock™️ 4, DualSense™️ або DualSense Edge™️ блиматиме.
+ledPage.PlayerLEDFlash: Спалахи світлової панелі щодо програвача
+ledPage.PlayerLEDFlashDescription: Якщо ввімкнено, світлодіодні індикатори на бездротовому контролері DualSense™️ або DualSense Edge™️ блиматимуть.
+ledPage.MuteButtonLEDFlash: Світлодіодний спалах кнопки вимкнення звуку
+ledPage.MuteButtonLEDFlashDescription: Якщо ввімкнено, світлодіод кнопки вимкнення звуку на бездротовому контролері DualSense™️ або DualSense Edge™️ блиматиме.
+ledPage.BatteryLowFlashingColor: Колір блимання при низькому заряді батареї
+ledPage.BatteryLowFlashingColorDescription: Колір для сповіщення про низький заряд батареї контролера.
+ledPage.StaticColor: Статичний колір
+ledPage.StaticColorDescription: Статичний колір, який не змінюється
+ledPage.SelectedColor: Вибраний колір
+ledPage.SelectedColorDescription: Колір для використання, коли активний ефект статичного кольору.
+ledPage.MultiColor: Різнокольоровий
+ledPage.MultiColorDescription: Перемикається між кольоровим спектром HSL або доданими кольорами.
+ledPage.CycleSpeed: Швидкість циклу
+ledPage.CycleSpeedDescription: Як швидко переключатися між кольорами.
+ledPage.AutoReverseColor: Автоматичний зворотний колір
+ledPage.AutoReverseColorDescription: Коли ввімкнено, колірний спектр HSL змінюватиметься від 0 до 360, а потім 360 повертатиметься до 0. Якщо вимкнено, спектр змінюватиметься від 0 до 360, а потім знову почнеться з 0.
+ledPage.HSLColorSpectrum: Колірний спектр HSL
+ledPage.HSLColorSpectrumDescription: Коли його вибрано, він буде циклічно змінювати спектр кольорів HSL.
+ledPage.CustomColors: Користувальницькі кольори
+ledPage.CustomColorsDescription: Після вибору вони будуть циклічно перемикатися між доданими вами кольорами.
+ledPage.SelectedGradient: Вибраний градієнт
+ledPage.SelectedGradientDescription: Кольори для циклічного перемикання, потрібні мінімум 2 кольори.
+ledPage.ResetToDefaults: Скинути до значень за замовчуванням
+ledPage.DeleteSelectedColor: Видалити вибраний колір
+ledPage.AddNewGradientColor: Додайте новий колір градієнта
+ledPage.Breathing: Дихання
+ledPage.BreathingDescription: Ефект змінюється від нульової яскравості до зазначеної вище яскравості світлової смуги.
+ledPage.BreathingSpeed: Швидкість дихання
+ledPage.BreathingSpeedDescription: Як швидко колір має переходити від нульової яскравості до зазначеної вище яскравості світлової смуги.
+ledPage.RandomColor: Випадковий колір
+ledPage.RandomColorDescription: Новий колір вибиратиметься кожного разу, коли яскравість досягне нульового значення.
+ledPage.Strobing: Стробоскоп
+ledPage.StrobingDescription: Ефект, що блимає від нульової яскравості до вказаної вище яскравості світлової смуги.
+ledPage.StrobingSpeed: Швидкість стробоскоп
+ledPage.StrobingSpeedDescription: Як швидко блимає колір.
+ledPage.AnimateWhenCharging: Анімація під час зарядки
+ledPage.AnimateWhenChargingDescription: Відобразіть анімацію заряджання, використовуючи вибраний градієнт нижче, щоб продемонструвати зарядку контролера.
+
+ledPage.PlayerIndicator: Індикатор гравця
+ledPage.PlayerIndicatorDescription: Номер гравця, показаний світлодіодним індикатором.
+ledPage.BatteryMode: Режим батареї
+ledPage.Battery: Акумулятор
+ledPage.BatteryDescription: Рівень заряду батареї з використанням заданих кольорів градієнта для відображення від 0% до 100%.
+
+ledPage.NoPlayerIndicator: Немає індикатора гравця
+ledPage.PlayerOne: Перший гравець
+ledPage.PlayerOneIndicator: Індикатор першого гравця
+ledPage.PlayerTwo: Другий гравець
+ledPage.PlayerTwoIndicator: Індикатор другого гравця
+ledPage.PlayerThree: Третій гравець
+ledPage.PlayerThreeIndicator: Індикатор третього гравця
+ledPage.PlayerFour: Четвертий гравець
+ledPage.PlayerFourIndicator: Індикатор четвертого гравця
+ledPage.PlayerFive: П'ятий гравець
+ledPage.PlayerFiveIndicator: Індикатор п'яти гравців
+
+ledPage.BatteryModeDescription: Коли перевіряється рівень заряду батареї, відображатиметься у форматі світлодіодного індикатора гравця.
+ledPage.Battery0To20Percent: 0% - 20%
+ledPage.Battery20To40Percent: 20% - 40%
+ledPage.Battery40To60Percent: 40% - 60%  
+ledPage.Battery60To80Percent: 60% - 80%
+ledPage.Battery80To100Percent: 80% - 100%
+  
+ledPage.MuteIndicator: Індикатор вимкнення звуку
+ledPage.MuteIndicatorDescription: Статус світлодіода.
+
+ledPage.PlayerMuteBrightness: Яскравість гравця / заглушування
+ledPage.PlayerMuteBrightnessDescription: Яскравість, яку потрібно встановити, що впливає як на світлодіодний індикатор гравця, так і на світлодіодний індикатор кнопки вимкнення звуку.
+
+ledPage.DualSenseFeatures: Особливості DualSense
+
+ledPage.Off: "ВИМКНЕНО"
+ledPage.On: "УВІМКНЕНО"
+ledPage.Pulse: "ПУЛЬС"
+ledPage.Dim: МЕРЕХТІННЯ
+ledPage.Medium: СЕРЕДНЬО
+ledPage.Bright: ЯСКРАВО
+ledPage.NoControllersDetected: Контролери не виявлено
+ledPage.PleasePlugInController: Будь ласка, підключіть свій контролер або з’єднайте його через Bluetooth, щоб налаштувати світлову панель тощо.
+ledPage.LightBarConfiguration: Конфігурація світлової панелі
+ledPage.LightBarModes: Режими світлової панелі
+
+# ------------------------------------------------------------------------------------------------
+# HapticsRumble Page
+# ------------------------------------------------------------------------------------------------
+
+hapticsPage.RumbleModeCard.Title: Класична вібрація
+hapticsPage.RumbleModeCard.SubTitle: Коли це перевірено, до мотора надсилатиметься стандартна вібрація.
+
+hapticsPage.HapticFeedbackModeCard.Title: Тактильний відгук (вібрація)
+hapticsPage.HapticFeedbackModeCard.SubTitle: Коли цей пункт активний, діятиме один із застосованих тактильних режимів.
+
+hapticsPage.HapticFeedback.WarningCard.Title: Режим тактильного зворотного зв’язку недоступний для контролерів не DualSense або для бездротових з’єднань
+hapticsPage.HapticFeedback.WarningCard.SubTitle: Режим тактильного зворотного зв’язку доступний лише тоді, коли підключений пристрій є контролером типу DualSense і лише підключений через USB.
+
+hapticsPage.EnableRumbleCard.Title: Увімкнути класичну вібрацію
+hapticsPage.EnableRumbleCard.SubTitle: Коли це ввімкнено, вона надсилатиметься на контролер.
+
+hapticsPage.EnhancedRumbleCard.Title: Покращений досвід класичної вібрації
+hapticsPage.EnhancedRumbleCard.SubTitle: Якщо ввімкнути, ця функція покращує класичну вібрацію, представлену в новішій версії прошивки для бездротових контролерів DualSense™️ або DualSense Edge™️.
+
+hapticsPage.RumbleIntensityCard.Title: Інтенсивність класичної вібрації
+hapticsPage.RumbleIntensityCard.SubTitle: Виберіть, наскільки сильною має бути загальна сила мотору.
+
+hapticsPage.MaxRumbleStrengthCard.Title: Максимальна сила класичної вібрації
+hapticsPage.MaxRumbleStrengthCard.SubTitle: Вібрація не надсилатиметься на контролер, яка перевищує вказане праворуч число.
+hapticsPage.MaxRumbleStrengthCard.SubTitle2: Наприклад, якщо встановлено 200, то все, що перевищує 200 - ігноруватиметься та надсилатиме лише 200 на контролер.
+
+hapticsPage.HapticMode.Disabled: Вимкнено
+hapticsPage.HapticMode.AudioHaptics: Аудіо в тактильний відгук
+hapticsPage.HapticMode.RumbleHaptics: Класичну вібрацію в тактильний відгук
+hapticsPage.HapticMode.ButtonHaptics: Кнопка в тактильний відгук
+hapticsPage.HapticMode.TriggerHaptics: Тригер в тактильний відгук
+hapticsPage.HapticMode.JoystickHaptics: Джойстик в тактильний відгук
+
+hapticsPage.Disabled.Title: Тактильний зворотний зв'язок вимкнено
+hapticsPage.Disabled.SubTitle: Якщо вибрано цей параметр, тактильний зворотний зв’язок не буде діяти, розгляньте можливість використання режиму Рамбл.
+
+hapticsPage.AudioHapticsConfig.Title: Аудіо в тактильний відгук
+hapticsPage.AudioHapticsConfig.SubTitle: Надсилає загальносистемне аудіо на контролер і перетворює його на тактильний відгук.
+
+hapticsPage.RumbleHapticsConfig.Title: Класичну вібрацію в тактильний відгук
+hapticsPage.RumbleHapticsConfig.SubTitle: Дозволяє перетворювати вхідні значення класичної вібрації від пристрою емуляції та перетворювати їх на тактильні відчуття з потрібною звуковою хвилею.
+
+hapticsPage.ButtonHapticsConfig.Title: Кнопка в тактильний відгук
+hapticsPage.ButtonHapticsConfig.SubTitle: Дозволяє відчути тактильні відгук під час натискання кнопок, як-от хрест, квадрат, трикутник, D-Pad тощо з потрібною звуковою хвилею.
+
+hapticsPage.TriggerHapticsConfig.Title: Тригер в тактильний відгук
+hapticsPage.TriggerHapticsConfig.SubTitle: Дозволяє перетворювати натискання L2/R2 на тактильні відчуття з потрібною звуковою хвилею. Це НЕ режим адаптивного тригера.
+
+hapticsPage.JoystickHapticsConfig.Title: Джойстик в тактильний відгук
+hapticsPage.JoystickHapticsConfig.SubTitle: Дозволяє вам перетворювати рухи лівого та правого джойстиків у тактильні відчуття з потрібною звуковою хвилею. Лівий джойстик керує лівим мотором, правий - правим.
+
+hapticsPage.RestartButton.Title : Перезапустити
+
+hapticsPage.RumblePassthrough.Title: Передача через класичну вібрацію
+hapticsPage.RumblePassthrough.AudioHaptics.SubTitle: Якщо ввімкнено, вібрація, яка надсилається на віртуальний контролер, буде застосована до цього фізичного контролера. Якщо звук не надсилається, аудіо в тактильні відчуття відновлять роботу в звичайному режимі.
+hapticsPage.RumblePassthrough.ButtonHaptics.SubTitle: Якщо ввімкнено, вібрація, яка надсилається на віртуальний контролер, буде застосована до цього фізичного контролера. Якщо звук не надсилається, кнопки в тактильні відчуття відновить роботу у звичайному режимі.
+hapticsPage.RumblePassthrough.TriggerHaptics.SubTitle: Якщо ввімкнено, вібрація, яка надсилається на віртуальний контролер, буде застосовано до цього фізичного контролера. Якщо вібрація не надсилається, тригер в тактильні відчуття відновиться у звичайному режимі.
+hapticsPage.RumblePassthrough.JoystickHaptics.SubTitle: Якщо ввімкнено, вібрація, яка надсилається на віртуальний контролер, буде застосовано до цього фізичного контролера. Якщо вібрація не надсилається, джойстик в тактильні відчуття відновить роботу у звичайному режимі.
+
+hapticsPage.LeftMotorMaxIntensity.Title: Макс. інтенсивність лівого мотора
+hapticsPage.LeftMotorMaxIntensity.SubTitle: Максимально допустима міцність для лівого мотора.
+
+hapticsPage.RightMotorMaxIntensity.Title: Макс. інтенсивність правого мотора
+hapticsPage.RightMotorMaxIntensity.SubTitle: Максимально допустима міцність для правого мотора.
+
+hapticsPage.AudioHaptics.InternalSpeakerVolume.Title: Гучність внутрішнього динаміка
+hapticsPage.AudioHaptics.InternalSpeakerVolume.SubTitle: Гучність аудіо, що надсилається на контролер.
+
+hapticsPage.AudioHaptics.InternalJackVolume.Title: Гучність внутрішнього гнізда для навушників
+hapticsPage.AudioHaptics.InternalJackVolume.SubTitle: Гучність аудіо, що надсилається до підключеного гнізда навушників.
+
+hapticsPage.JoystickHaptics.InnerDeadzone.Title: Внутрішня мертва зона джойстика
+hapticsPage.JoystickHaptics.InnerDeadzone.SubTitle: Чи ігнорувати тактильні сигнали, які надсилаються під час переміщення джойстиків від центру до країв?
+
+hapticsPage.SoundWaveConfig.Title: Конфігурація звукової хвилі
+
+hapticsPage.SoundWave.Sine: Синусоїда
+hapticsPage.SoundWave.Sqaure: Квадратна хвиля
+hapticsPage.SoundWave.Triangle: Трикутна хвиля
+hapticsPage.SoundWave.WhiteNoise: Білий шум
+hapticsPage.SoundWave.PinkNoise: Рожевий шум
+hapticsPage.SoundWave.Sweep: Розгортання хвилі
+
+hapticsPage.SoundWave.Gain.Title: Децибел
+hapticsPage.SoundWave.Gain.SubTitle: Величина підсилення сигналу.
+
+hapticsPage.SoundWave.Frequency.Title: Частота
+hapticsPage.SoundWave.Frequency.SubTitle: Кількість разів на секунду, коли хвиля звукового тиску повторюється. Близько 60 Гц є найсильнішим.
+
+hapticsPage.SoundWave.Sweep.StartEndFreq.Title : Початкова та кінцева частоти
+hapticsPage.SoundWave.Sweep.StartEndFreq.SubTitle : Визначте початок і кінець для бажаних частот.
+hapticsPage.SoundWave.Sweep.StartFreq.Title : Початкова частота
+hapticsPage.SoundWave.Sweep.EndFreq.Title : Кінцева частота
+
+hapticsPage.SoundWave.Sweep.Duration.Title : Тривалість
+hapticsPage.SoundWave.Sweep.Duration.Title2 : Тривалість (секунди)
+hapticsPage.SoundWave.Sweep.Duration.SubTitle : Скільки часу потрібно для переходу від початкової до кінцевої частоти в секундах.
+
+# ------------------------------------------------------------------------------------------------
+# Installed Games Page
+# ------------------------------------------------------------------------------------------------
+
+installedGamesPage.Loading: Завантаження ігрових бібліотек...
+installedGamesPage.GameFound: Гра знайдена.
+
+installedGamesPage.GamesList.Filter: Фільтр
+
+installedGamesPage.GamesList.SortBy: Сортувати
+installedGamesPage.GamesList.SortBy.Name: Ім'я
+installedGamesPage.GamesList.SortBy.RecentlyPlayed: Нещодавні
+installedGamesPage.GamesList.SortBy.Playtime: Час гри
+
+installedGamesPage.GamesList.SortBy.Ascending: Зростання
+installedGamesPage.GamesList.SortBy.Descending: Спадання
+
+installedGamesPage.GamesList.RescanButton.Tooltip: Пересканувати бібліотеку
+
+installedGamesPage.GamesList.Search.TextBoxPlaceholder: Пошук гри
+installedGamesPage.NA: Н/Д
+installedGamesPage.ViewSteamPage: Переглянути сторінку Steam
+installedGamesPage.LaunchProgram: Запустити програму
+installedGamesPage.Category: Категорія
+installedGamesPage.Platform: Платформа
+installedGamesPage.LastPlayed: Остання гра
+installedGamesPage.TotalPlaytime: Загальний час гри
+installedGamesPage.PlaytimeRecent: Недавній час гри (2 тижні)
+installedGamesPage.InstallDirectory: Інсталяція каталогу
+installedGamesPage.LibraryPath: Шлях до бібліотеки
+installedGamesPage.RunCommand: Виконати команду
+installedGamesPage.ExecutablePath: Шлях до виконуваного файлу (найближчий збіг)
+installedGamesPage.ControllerProfile: Профіль контролера
+installedGamesPage.ControllerProfileDescription: Профіль контролера для цієї гри.
+
+installedGamesPage.SelectedGame.PlayButton.Tooltip: Запуск програми
+installedGamesPage.SelectedGame.LinkButton.Tooltip: Переглянути сторінку Steam
+installedGamesPage.SelectedGame.Category: Категорія
+installedGamesPage.SelectedGame.Platform: Платформа
+installedGamesPage.SelectedGame.AppID: Ідентифікатор програми
+installedGamesPage.SelectedGame.LastPlayed: Остання гра
+installedGamesPage.SelectedGame.TotalPlaytime: Загальний час гри
+installedGamesPage.SelectedGame.PlaytimeRecent: Недавній час гри (2 тижні)
+installedGamesPage.SelectedGame.RunCommand: Виконати команду
+installedGamesPage.SelectedGame.InstallDirectory: Інсталяція каталогу
+installedGamesPage.SelectedGame.LibraryPath: Шлях до бібліотеки
+installedGamesPage.SelectedGame.ExePath: Шлях до виконуваного файлу (найближчий збіг)
+
+installedGamesPage.Profile1: 1-ий профіль
+installedGamesPage.Profile2: 2-ий профіль
+installedGamesPage.Profile3: 3-ий профіль
+installedGamesPage.RescanLibrary: Пересканувати бібліотеку
+installedGamesPage.NoGamesFound: Ігор не знайдено.
+installedGamesPage.UpdateExecutablePath: Оновити шлях до виконуваного файлу
+installedGamesPage.ActiveProcesses: Активні процеси
+installedGamesPage.ListOfActiveProcesses: Список активних процесів.
+installedGamesPage.Cancel: Скасувати
+installedGamesPage.SelectExecutablePath: Виберіть шлях до виконуваного файлу
+installedGamesPage.ManuallyChooseExecutable: Вручну вибрати виконуваний файл
+installedGamesPage.Filter: Фільтр
+installedGamesPage.Steam: Steam
+installedGamesPage.EpicStore: Epic Store
+installedGamesPage.SortBy: Сортувати
+installedGamesPage.Name: Ім'я
+installedGamesPage.Ascending: Зростання
+installedGamesPage.Descending: Спадання
+installedGamesPage.RecentlyPlayed: Нещодавні
+installedGamesPage.Playtime: Час гри
+installedGamesPage.AddLibrary: Додати бібліотеку
+installedGamesPage.NoGamesFound.Detail: Неможливо знайти будь-які ігри, встановлені у вашій системі.
+
+
+
+
+# ------------------------------------------------------------------------------------------------
+# HidHide Page
+# ------------------------------------------------------------------------------------------------
+
+hidHidePage.HidHideDriverInfo.Title: Драйвер «HidHide»
+hidHidePage.HidHideDriverInfo.SubTitle: Цей драйвер дозволяє програмі приховувати фізичний контролер під час емуляції віртуального пристрою. Він використовується, щоб уникнути подвійного введення даних від віртуального та фізичного контролерів і дозволяє грі чи програмі бачити лише віртуальний контролер.
+
+hidHidePage.ActivateHidHide.Title: Активувати «HidHide»
+hidHidePage.ActivateHidHide.SubTitle: Якщо його ввімкнути, він приховає фізичні пристрої, які знаходяться в списку прихованих пристроїв нижче.
+
+hidHidePage.ApplicationList.Title: Список програм
+hidHidePage.HiddenDevicesList.Title: Список прихованих пристроїв
+
+hidHidePage.ApplicationPath: Шлях до програм
+hidHidePage.RefreshApplicationList: Оновити список програм
+
+hidHidePage.RemoveSelectedApps.Title: Видалити вибрані програми
+hidHidePage.RemoveSelectedApps.SubTitle: Видалення програми призведе до того, що приховані пристрої не відображатимуться в цих програмах.
+hidHidePage.RemoveSelectedApps.Button: Видалити програми
+
+hidHidePage.AddApp.Title: Додати програму
+hidHidePage.AddApp.SubTitle: Якщо додати програму до списку, приховані пристрої з’являться тут.
+hidHidePage.AddApp.TextBox.Placeholder: Введіть шлях до виконуваного файлу (.bat .exe тощо)
+hidHidePage.AddApp.Error.FileDoesntExist: Файл не існує
+hidHidePage.AddApp.Warning.AlreadyAdded: Програма вже додана
+
+hidHidePage.InverseCloak.Title: "ЗАВДАННЯ: «Плащ» для програм"
+hidHidePage.InverseCloak.SubTitle: Якщо ввімкнено, програмам у списку буде заблоковано доступ до пристроїв у списку прихованих пристроїв.
+
+hidHidePage.DevicePath: Шлях до пристрою
+hidHidePage.RefreshHiddenDevicesList: Оновити список прихованих пристроїв
+
+hidHidePage.RemoveSelectedDevices.Title: Видалити вибрані пристрої
+hidHidePage.RemoveSelectedDevices.SubTitle: Видалення пристрою зі списку призведе до того, що пристрій не зможе сховатися, доки його не буде знову додано.
+hidHidePage.RemoveSelectedDevices.Button: Видалити пристрої
+
+hidHidePage.AddDevice.Title: Додати пристрій
+hidHidePage.AddDevice.SubTitle: Додавання пристрою до списку приховає його від програм, не доданих до списку ліворуч.
+hidHidePage.AddDevice.TextBox.Placeholder: Введіть ідентифікатор екземпляра пристрою
+hidHidePage.AddDevice.Warning.AlreadyAdded: Ідентифікатор екземпляра пристрою вже додано
+
+
+# ------------------------------------------------------------------------------------------------
+# DSX Logs Page
+# ------------------------------------------------------------------------------------------------
+
+logsPage.Title: Журнал
+logsPage.CompressLogFiles.Button: Стискайте файли журналу для спільного використання
+logsPage.OpenLogsDirectory.Button: Відкрийте каталог журналів
+
+logsPage.LogCheckBox.ControllerLogs: Журнали контролера
+logsPage.LogCheckBox.ButtonPresses: Журнали натиснутих кнопок
+logsPage.LogCheckBox.DebugLogs: Журнали відлагодження
+
+logsPage.LogsViewTable.Title.Date: ДАТА
+logsPage.LogsViewTable.Title.Category: КАТЕГОРІЯ
+logsPage.LogsViewTable.Title.Status: СТАТУС
+logsPage.LogsViewTable.Title.Message: ПОВІДОМЛЕННЯ
+
+logsPage.LogsViewTable.Status.Title.Information: Інформація
+logsPage.LogsViewTable.Status.Title.Debug: Відлагоджувати
+logsPage.LogsViewTable.Status.Title.Warning: Попередження
+logsPage.LogsViewTable.Status.Title.Error: Помилка
+
+# ------------------------------------------------------------------------------------------------
+# Settings Page
+# ------------------------------------------------------------------------------------------------
+settingsPage.Tabs.Display: Інтерфейс
+settingsPage.Tabs.Behavior: Поведінка
+settingsPage.Tabs.UDP: UDP
+
+settingsPage.DriverInstallation.CompanyName: Назва компанії
+settingsPage.DriverInstallation.FileDescription: Опис файлу
+settingsPage.DriverInstallation.FileSize: Розмір файлу
+settingsPage.DriverInstallation.FileVersion: Версія файлу
+settingsPage.DriverInstallation.LatestReleaseDate: Дата останнього виходу
+settingsPage.DriverInstallation.ProductName: Назва продукту
+settingsPage.DriverInstallation.ProductVersion: Версія продукту
+settingsPage.DriverInstallation.AcceptedLicense: Я прочитав ліцензійну угоду та приймаю її умови.
+settingsPage.DriverInstallation.FollowDriverSetupInstructions: Дотримуйтесь інструкцій на екрані, щоб завершити встановлення драйвера.
+settingsPage.DriverInstallation.ProceedByClickingNextBelow: Після завершення перейдіть, натиснувши «Далі» нижче.
+settingsPage.DriverInstallation.InternetRequiredVPadDriver: Для завантаження та встановлення драйвера VirtualPad від Nefarius потрібне підключення до інтернету.
+settingsPage.DriverInstallation.InternetRequiredHidHideDriver: Для завантаження та встановлення драйвера HidHide потрібне підключення до інтернету.
+settingsPage.DriverInstallation.ProceedByClickingRetry: Коли ви підключитесь до Інтернету, будь ласка, продовжте, натиснувши «Повторити» нижче.
+settingsPage.DriverInstallation.UnexpectedError: Під час інсталяції драйвера сталася неочікувана помилка.
+settingsPage.DriverInstallation.PleaseTryAgain: Будь ласка, спробуйте знову.
+settingsPage.DriverInstallation.LicenseStatus: Стан ліцензії
+settingsPage.DriverInstallation.DriverName: Назва драйвера
+settingsPage.DriverInstallation.DriverVersion: Версія драйвера
+settingsPage.DriverInstallation.DriverSize: Розмір драйвера
+settingsPage.DriverInstallation.RuntimeAPIVersion: Версія API середовища виконання
+
+settingsPage.DriverInstallation.Button.Next: Далі
+settingsPage.DriverInstallation.Button.InstallDriver: Встановити драйвер
+settingsPage.DriverInstallation.Button.Retry: Повторити
+
+settingsPage.DriverInstallation.VPad.LicenseInfo: Інформація про ліцензію драйвера VirtualPad
+settingsPage.DriverInstallation.VPad.LicenseIssuer: Видавець ліцензії
+settingsPage.DriverInstallation.VPad.LicenseType: Тип ліцензії
+settingsPage.DriverInstallation.VPad.LicenseExpiresAt: Ліцензія закінчується
+settingsPage.DriverInstallation.VPad.LicenseCreatedAt: Ліцензія створена
+settingsPage.DriverInstallation.VPad.Installed: Встановлено драйвер VirtualPad від Nefarius
+
+settingsPage.HidHide.Title: Сховати фізичний контролер
+settingsPage.HidHide.Details: Приховайте свій фізичний контролер, підключений до ПК, щоб жодні програми чи ігри не могли його побачити. Краще використовувати його в поєднанні з віртуальним контролером, створеним DSX.
+settingsPage.HidHide.HidePhysDevices: Сховати фізичні пристрої
+settingsPage.HidHide.HidePhysDevices.Details: Приховуйте ігрові периферійні пристрої, такі як миша або клавіатура, від програм та ігор.
+settingsPage.HidHide.WhitelistApps: Білий список програм
+settingsPage.HidHide.WhitelistApps.Details: Виберіть, яким програмам чи іграм дозволено переглядати замасковані пристрої.
+settingsPage.HidHide.ProductInfo: Інформація про HidHide
+settingsPage.HidHide.Installed: Встановлено драйвер HidHide
+settingsPage.HidHide.RebootPlease: Якщо ви щойно встановили драйвер, будь ласка, перезавантажте ПК, щоб драйвер почав діяти після встановлення.
+
+settingsPage.Tabs.VirtualPadDriver: Драйвер VirtualPad
+settingsPage.Tabs.VirtualPadDriverProductInfo: Інформація про драйвер VirtualPad
+settingsPage.VirtualPadDriverDescription: Нова генерація використання віртуальних геймпадів у Windows, переосмислена, розроблена та створена Nefarius Software Solutions e.U.
+
+settingsPage.Tabs.HidHideDriver: Драйвер HidHide
+settingsPage.HidHideInfo: HidHide дозволяє DSX приховати фізичний контролер під час емуляції віртуального пристрою. Він використовується, щоб уникнути подвійних вводів від віртуального та фізичного контролерів і дозволяє грі чи програмі бачити лише віртуальний контролер; розроблено та підтримується Nefarius Software Solutions e.U.
+settingsPage.Tabs.DangerZone: Небезпечна зона
+settingsPage.Tabs.DangerZone.Warning: Цю дію неможливо скасувати, налаштування програм, профілі та все буде скинуто до стандартного стану.
+settingsPage.Tabs.DangerZone.ResetAppSettings: Скинути налаштування програми
+
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineOne : Зберегти розташування папки
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineTwo : ЦЕ НЕ МОЖЕ БУТИ СКАСОВАНЕ!
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineThree : Ви впевнені, що бажаєте продовжити?
+
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Title : Успішне скидання програми
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Detail : Тепер DSX перезапуститься.
+
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Title : Помилка
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Detail : Не вдалося скинути налаштування програми.
+
+settingsPage.EnableDiagnostictracing: Увімкнути діагностичне трасування
+settingsPage.EnableDiagnostictracing.Details: Це має використовуватись для відстеження певних речей, наприклад продуктивності досвідчених розробників.
+
+# -------------------------------
+settingsPage.Display.LanguageCard.Title: Мова
+settingsPage.Display.LanguageCard.SubTitle: Оберіть мову для програми.
+settingsPage.Display.LanguageCard.SearchBar.PlaceHolder: Пошук
+
+settingsPage.Display.LightThemeCard.Title: Світла тема
+settingsPage.Display.LightThemeCard.SubTitle: Робить все світлим.
+
+settingsPage.Display.FullDarkModeCard.Title: Повний темний режим
+settingsPage.Display.FullDarkModeCard.SubTitle: Робить все чорним (для любителів темного режиму).
+
+settingsPage.Display.AccentColorCard.Title: Акцентний колір
+settingsPage.Display.AccentColorCard.SubTitle: Оберіть акцентний колір, який буде використовувати в DSX.
+settingsPage.Display.AccentColorCard.Reset.Button: Скинути до системних налаштувань
+
+settingsPage.Display.BatteryIconCard.Title: : «Живий» значок батареї
+settingsPage.Display.BatteryIconCard.SubTitle: Використовує градієнтні відтінки для відображення рівня заряду акумулятора, якщо попередньо активний режим індикатора батареї на вкладці контролера.
+
+settingsPage.Display.WindowSizeCard.Title: Розмір вікна
+settingsPage.Display.WindowSizeCard.SubTitle: Буде завантажено останню ширину та висоту вікна. Також тут ви можете скинути розмір до стандартного.
+settingsPage.Display.WindowSizeCard.ResetAppSize: Скинути
+
+settingsPage.Display.WindowScaleCard.Title: Маштаб у вікні
+settingsPage.Display.WindowScaleCard.SubTitle: Змініть це значення, щоб масштабувати вміст вікна. Рекомендується зменшити кількість, якщо ви працюєте в середовищі з низькою роздільною здатністю для оптимальної видимості.
+settingsPage.Display.WindowScaleSlider.Title: Розмір шкали вікна
+
+settingsPage.Display.TaskbarPreferences.Title: Налаштування панелі задач
+settingsPage.Display.TaskbarPreferences.Description: Налаштуйте, які пункти меню будуть відображаються на панелі завдань.
+
+settingsPage.Display.TaskbarPreferences.HomePage: Головна
+settingsPage.Display.TaskbarPreferences.ProfilesPage: Профілі
+settingsPage.Display.TaskbarPreferences.ControllerPage: Контролер
+settingsPage.Display.TaskbarPreferences.NotificationsPage: Сповіщення
+settingsPage.Display.TaskbarPreferences.AdaptiveTriggersPage: Адаптивні тригери
+settingsPage.Display.TaskbarPreferences.ControllerLEDPage: LED
+settingsPage.Display.TaskbarPreferences.HapticsRumblePage: Вібрація
+settingsPage.Display.TaskbarPreferences.InstalledGamesPage: Встановлені ігри
+settingsPage.Display.TaskbarPreferences.HidHidePage: HidHide
+settingsPage.Display.TaskbarPreferences.DSXLogsPage: Журнал DSX
+settingsPage.Display.TaskbarPreferences.SettingsPage: Налаштування
+
+settingsPage.Display.TaskbarPreferences.ShowConnectedControllers: Показати підключені контролери
+
+# -------------------------------
+settingsPage.Behavior.StartUpWithWindowCard.Title: Запускати з Windows
+settingsPage.Behavior.StartUpWithWindowCard.SubTitle: "Налаштовує автоматичний запуск DSX у Windows."
+settingsPage.Behavior.StartUpWithWindowCard.Note: "Steam також запускається під час запуску системи."
+
+settingsPage.Behavior.Launchv2Automatically.Title: Автоматичний запуск DSX v2
+settingsPage.Behavior.Launchv2Automatically.SubTitle: Якщо ввімкнено, DSX v2 буде запущено, а v3 вимкнеться.
+settingsPage.Behavior.Launchv2Automatically.Note: Примітка: аби легко повернутися до v3 - утримуйте клавішу ESCAPE (esc) під час запуску DSX. Ви можете вимкнути цю опцію тут (у v3).
+
+settingsPage.Behavior.StartUpMinimizedCard.Title: Початковий розмір вікна
+settingsPage.Behavior.StartUpMinimizedCard.SubTitle: "Виберіть, як DSX відображатиметься під час запуску: у вікні, згорнуто або на весь екран."
+
+settingsPage.Behavior.StartUpMinimizedCard.State.Normal: У вікні
+settingsPage.Behavior.StartUpMinimizedCard.State.Maximized: На весь екран
+settingsPage.Behavior.StartUpMinimizedCard.State.Minimized: Згорнуто
+settingsPage.Behavior.StartUpMinimizedCard.State.MinimizedToTray: Згорнуто в треї
+
+settingsPage.Behavior.KeepAppInTrayCard.Title: Згорнуто в треї
+settingsPage.Behavior.KeepAppInTrayCard.SubTitle: Після згортання, DSX продовжуватиме працювати у фоновому режимі. Доступ можна отримати за допомогою значка в панелі задач.
+
+settingsPage.Behavior.DisconnectControllersOnExit.Title: Відключати контролери під час виходу
+settingsPage.Behavior.DisconnectControllersOnExit.SubTitle: Якщо увімкнути цей параметр, усі контролери, підключені через Bluetooth, від’єднаються під час завершення роботи DSX.
+
+settingsPage.Behavior.DiscordRPCard.Title: Присутність у Discord
+settingsPage.Behavior.DiscordRPCard.SubTitle: Дозволяє показувати в Discord детальну інформацію з DSX, таку як вибрана сторінка, деталі контролера та час використання. 
+settingsPage.Behavior.DiscordRPCard.Note: Зміни можуть з’явитися через кілька секунд.
+
+settingsPage.Behavior.SteamNowPlayingStatus.Title: Статус у Steam
+settingsPage.Behavior.SteamNowPlayingStatus.SubTitle: Під час роботи DSX зберігатиметься статус у Steam «у грі DSX», щоб зараховувався час використання. Якщо ж неактивна, статус зникне через кілька секунд після запуску DSX.
+settingsPage.Behavior.SteamNowPlayingStatus.Note: Для набуття чинності, потрібно перезапустити DSX.
+
+# -------------------------------
+settingsPage.Networking.IncomingUDP.Section: Вхідний UDP
+settingsPage.Networking.OutgoingUDP.Section: Вихідний UDP
+settingsPage.Networking.WindowsFireWall.Section: Брандмауер Windows
+
+# Used more than once:
+settingsPage.Networking.ipAddress: IP-адреса
+settingsPage.Networking.ipAddress.Description: За замовчуванням IP-адресою є локальний хост, який є цим ПК.
+settingsPage.Networking.portNumber: Номер порту
+settingsPage.Networking.portNumber.Description: Номер порту, який використовуватиметься для зв’язку з DSX на цьому ПК.
+settingsPage.Networking.ipAddressPort: Параметри IP-адреси та порту.
+settingsPage.Networking.ipAddressPlaceholder: Локальний хост 127.0.0.1
+##
+
+settingsPage.Networking.IncomingUDPCard.SubTitle: Якщо ввімкнено, моди можуть використовувати контролер DualSense для керування адаптивними тригерами, світлодіодною панеллю, світлодіодами гравця та світлодіодами вимкнення звуку.
+settingsPage.Networking.IncomingUDPSettingsCard.Title: Вхідний UDP
+
+settingsPage.Networking.OutgoingUDPCard.SubTitle: Якщо ввімкнено, DSX може надсилати різні дані емуляторам, наприклад, дані руху.
+settingsPage.Networking.OutgoingUDPSettingsCard.Title: Вихідний UDP
+
+settingsPage.Networking.FirewallCard.WinFirewall: Брандмауер Windows
+settingsPage.Networking.FirewallCard.Title: Перевірка UDP брандмауера
+settingsPage.Networking.FirewallCard.SubTitle: Перевірте, чи відкриті вказані вище порти UDP у налаштуваннях брандмауера Windows.
+settingsPage.Networking.FirewallCard.Status: Статус
+settingsPage.Networking.FirewallCard.CheckPortStatus: Перевірити стан порту
+settingsPage.Networking.FirewallCard.Status.IncomingTitle: "Вхідний порт UDP"
+settingsPage.Networking.FirewallCard.Status.IncomingDescr: Статус того, чи вхідний порт UDP додано до брандмауера Windows.
+settingsPage.Networking.FirewallCard.Status.OutgoingTitle: "Вихідний порт UDP"
+settingsPage.Networking.FirewallCard.Status.OutgoingDescr: Статус того, чи вихідний порт UDP додано до брандмауера Windows.
+
+settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: Додати порт до брандмауера
+
+# Make sure the %i is in here as it represents a number. Example: Incoming UDP Port for 6969 is open.
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: Вхідний порт UDP для %i is відкрито.
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: Вихідний порт UDP для %i is відкрито.
+
+settingsPage.Networking.FirewallCard.Status.IncomingFailed: Вхідний порт UDP для %i закрито.
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed: Вихідний порт UDP для %i закрито.
+
+settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: Додайте вхідний порт UDP до брандмауера Windows.
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Додайте вихідний порт UDP до брандмауера Windows.
+
+# -------------------------------
+settingsPage.Driver.VirtualPadDriverCard.SubTitle: Драйвер Virtual Pad дозволяє використовувати віртуальний пристрій, який імітує оригінал, ніби він фізично підключений.
+settingsPage.Driver.HidHideCard.SubTitle: HidHide дозволяє програмі приховувати фізичний контролер під час емуляції віртуального пристрою. Він використовується, щоб уникнути подвійного введення даних від віртуального та фізичного контролерів і дозволяє грі чи програмі бачити лише віртуальний контролер.
+settingsPage.Driver.NefariusCard.SubTitle: Nefarius є розробником драйверів VirtualPad і HidHide, без його інструментів ця програма була б неможливою! Будь ласка, підтримайте автора нижче.
+settingsPage.Driver.NefariusCard.GetInTouch: Будемо на зв'язку
+settingsPage.Driver.NefariusCard.ShowSupport: Покажіть свою підтримку
+
+# Used more than once:
+settingsPage.Driver.DriverName: Назва драйвера
+settingsPage.Driver.DriverVersion: Версія драйвера
+settingsPage.Driver.DriverSize: Розмір драйвера
+settingsPage.Driver.DriverReleaseDate: Дата останнього виходу
+##
+
+
+# -------------------------------
+
+# ------------------------------------------------------------------------------------------------
+# About Page
+# ------------------------------------------------------------------------------------------------
+
+aboutPage.DSXDevelopers: Розробники DSX
+aboutPage.DSXChangeLog: Журнал змін DSX
+
+aboutPage.NefariusDescription.1: Інженер драйвера
+aboutPage.NefariusDescription.2: Обладнання і сумісність
+aboutPage.NefariusDescription.3: Продуктивність і стабільність
+aboutPage.NefariusDescription.4: Оптимізація і розробка
+aboutPage.NefariusDescription.5: Технічний письменник
+
+aboutPage.PaliverseDescription.1: Засновник і основний розробник
+aboutPage.PaliverseDescription.2: Обладнання і сумісність
+aboutPage.PaliverseDescription.3: Обслуговування і продуктивність
+aboutPage.PaliverseDescription.4: Адміністрування і оновлення
+aboutPage.PaliverseDescription.5: UI/UX і тестування
+
+aboutPage.RamDescription.1: Розробник ядра і логіки
+aboutPage.RamDescription.2: Графічний дизайнер
+aboutPage.RamDescription.3: Продуктивність і стабільність
+aboutPage.RamDescription.4: Якість і спільнота
+aboutPage.RamDescription.5: UI/UX і тестування
+
+
+aboutPage.DSX.SteamPage.Title: DSX у Steam
+aboutPage.DSX.SteamPage.SubTitle: Відвідайте DSX у Steam, щоб отримати новішу інформацію.
+aboutPage.DSX.SteamPage.Button: DSX у Steam
+
+aboutPage.DSX.DiscordServer.Title: DSX у Discord
+aboutPage.DSX.DiscordServer.SubTitle: Приєднуйтесь до сервера в Discord, щоб отримати допомогу щодо будь-яких проблем, повідомити про помилки чи збої.
+aboutPage.DSX.DiscordServer.Button: Долучитися до сервера Discord
+
+aboutPage.DSX.LibrariesUsed.Title: Бібліотеки в DSX
+aboutPage.DSX.LibrariesUsed.SubTitle: Список публічних бібліотек, які використовуються для роботи DSX.
+
+
+# Strings used programmatically
+p.Unavailable: Недоступно
+p.NotInstalled: Не встановлено
+p.Close: Закрити
+p.ViewDriverInfo: Перегляд інформації про драйвер
+p.ViewFirmwareUpdaterTool: Переглянути інструмент оновлення прошивки
+
+# Update notifications etc.
+p.MissingHidHideDriver.Title: Відсутній драйвер HidHide
+p.MissingHidHideDriver.Detail: "\nЩоб приховати фізичний контролер і уникнути подвійного введення разом із віртуальним контролером, потрібно встановити драйвер HidHide."
+
+p.MissingVPadDriver.Title: Відсутній драйвер VirtualPad
+p.MissingVPadDriver.Detail: "\nНе вдалося створити віртуальний контролер через відсутність драйверів."
+
+p.CantStartVPadDriver.Title: Неможливо запустити драйвер VirtualPad
+p.CantStartVPadDriver.Detail: "\nНе вдалося створити віртуальний контролер.\nПеревстановіть драйвер VirtualPad, перезавантажте та повторіть спробу."
+
+p.VPadError.Title: Помилка драйвера VirtualPad
+p.VPadError.Detail: "\nНе вдалося створити віртуальний контролер.\nПерезавантажте ПК і повторіть спробу."
+
+p.DriverError.Title: Відсутні драйвери VirtualPad і HidHide
+p.DriverError.Detail: "\nIЩоб мати можливість емулювати контролер Xbox 360 або контролер DualShock 4, необхідно встановити драйвер VirtualPad.\n\nЩоб приховати фізичний контролер і уникнути подвійного введення разом із віртуальним контролером, потрібно встановити драйвер HidHide. \n\nНатисніть «Переглянути інформацію про драйвер», щоб переглянути відсутні драйвери та інсталювати їх."
+
+p.DriverUpdate.Title: Оновлення драйвера VirtualPad або HidHide
+p.DriverUpdate.Detail: "\nЄ оновлення драйвера HidHide або оновлення драйвера VirtualPad.\n\nКлацніть «Переглянути інформацію про драйвер», щоб дізнатися, який драйвер потребує оновлення."
+
+p.DualSenseUpdate.Title: Доступне оновлення прошивки DualSense
+p.DualSenseUpdate.Detail: "\nДля вашого контролера DualSense доступна нова версія прошивки.\n\nПоточна версія: 0x00\nНова версія: 0x00\n\nЗавжди слід оновлювати до останньої версії з цих причин:\n- Виправлена помилка зчитування акумулятора DualSense\n- Нормальний Рамбл (для старих ігор)\n- Різні виправлення та покращення\n\nЩоб оновити контролер, установіть офіційний інструмент оновлення прошивки від Sony.\n\nПРИМІТКА. Під час оновлення переконайтеся, що DSX закрито, щоб уникнути проблем під час процесу."
+
+p.UnknownHidHideStatus: Не вдалося визначити статус драйвера HidHide
+p.UnknownHidHideStatus.Detail: "\nПеревстановіть драйвер HidHide і після цього перезавантажтеся."
+
+# HidHide Card
+p.HidHide.HidHideIsInstalled: Драйвер HidHide встановлено
+p.HidHide.HidHideIsNotInstalled: Драйвер HidHide не встановлено
+
+# Vpad Card
+p.VPad.VPadIsInstalled: Встановлено драйвер VirtualPad від Nefarius
+p.VPad.VPadIsNotInstalled: Драйвер VirtualPad від Nefarius не встановлено
+
+p.Controllers.AccessController: Контролер Access™
+p.Controllers.PSVR2SenseL: Контролер PS VR 2 Sense™ (Л)
+p.Controllers.PSVR2SenseR: Контролер PS VR 2 Sense™ (П)
+p.Controllers.DualSense: Бездротовий контролер DualSense™️
+p.Controllers.DualSenseEdge: Бездротовий контролер DualSense Edge™️
+p.Controllers.DualShockv1: Бездротовий контролер DualShock™️ 4 [v1]
+p.Controllers.DualShockv2: Бездротовий контролер DualShock™️ 4 [v2]
+p.Controllers.DualShock4USBAdapter: Бездротовий USB-адаптерDualShock™️ 4
+
+# DLC Info
+p.ViewDLCOnSteam: Переглянути DLC у Steam
+p.UnlockDualSenseEmulation: Розблокувати емуляцію DualSense
+p.UnlockDualSenseEmulation.Detail: "Наразі ви не маєте доступу до емуляції DualSense.\n\nЩоб насолодитися цією функцією, подумайте про придбання DualSense Emulation DLC. Ваша підтримка допомагає розробнику драйвера VirtualPad.\n\nБажаєте переглянути це в Steam?"
+
+# Macros
+p.MacrosActivation.PlayOnce.Title: Грати один раз
+p.MacrosActivation.PlayOnce.Subtitle: Дія відтворюється один раз.
+p.MacrosActivation.PlayNTimes.Title: Грати N раз
+p.MacrosActivation.PlayNTimes.Subtitle: Дія повторюватиметься задану кількість разів.
+p.MacrosActivation.RepeatWhilePressed.Title: Повторювати, поки натиснуто
+p.MacrosActivation.RepeatWhilePressed.Subtitle: Натисніть і утримуйте кнопку, щоб автоматично повторити дію.
+p.MacrosActivation.ToggleAutoRepeat.Title: Перемкнути автоматичне повторення
+p.MacrosActivation.ToggleAutoRepeat.Subtitle: Натисніть один раз, щоб почати автоматичне повторення дії, і натисніть знову, щоб зупинити.
+p.MacrosActivation.ToggleAutoRepeatContinuous.Title: Перемкнути автоматичне повторення (безперервно)
+p.MacrosActivation.ToggleAutoRepeatContinuous.Subtitle: Натисніть кнопку один раз, щоб розпочати безперервне відтворення дії, і натисніть її знову, щоб зупинити.
+
+p.MacrosDelay.Title: Затримка
+p.MacrosDelay.Subtitle: Час відпочинку між повторами.
+
+p.MacrosRepeat.Title: Повторення
+p.MacrosRepeat.Subtitle: Число повторів
+
+p.MacrosPlayOnKey.Title: Грати на клавіші
+p.MacrosPlayOnKey.Subtitle: Виберіть, чи активувати цей макрос під час натискання чи відпускання кнопки.
+p.KeyDown: Клавіша вниз
+p.KeyUp: Клавіша вгору
+p.StartRecording: Почати запис
+p.StopRecording: Зупинити запис
+
+p.DeleteSelectedActionProfile: Видалити вибраний профіль дії?
+p.DeleteSelectedActionProfiles: Видалити вибрані профілі дій?
+p.DeleteSelectedDeadzoneProfile: Видалити вибраний профіль мертвої зони?
+p.DeleteSelectedDeadzoneProfiles: Видалити вибрані профілі мертвої зони?
+p.DeleteSelectedTouchpadProfile: Видалити вибраний профіль сенсорної панелі?
+p.DeleteSelectedTouchpadProfiles: Видалити вибрані профілі сенсорної панелі?
+p.DeleteSelectedMotionProfile: Видалити вибраний профіль руху?
+p.DeleteSelectedMotionProfiles: Видалити вибрані профілі руху?
+p.DeleteProfile: Видалити профіль
+p.DeleteProfiles: Видалити профілі
+p.LeftMouseButton.Text: Ліва кнопка миші
+p.RightMouseButton.Text: Права кнопка миші
+p.MiddleMouseButton.Text: Середня кнопка миші
+p.BackMouseButton.Text: Кнопка миші назад
+p.ForwardMouseButton.Text: Кнопка миші вперед
+p.ScrollWheelUp: Колесо прокрутки вгору
+p.ScrollWheelDown: Колесо прокрутки вниз
+
+p.DeviceStatus: Стан пристрою
+p.ActiveActionProfile: Активний профіль дій
+p.ActiveAdaptiveTriggersProfile: Активний профіль адаптивних тригерів
+p.ActiveDeadzoneProfile: Активний профіль мертвої зони
+p.ActiveHapticsRumbleProfile: Активний профіль вібрацій
+p.ActiveLEDProfile: Активний профіль LED
+p.ActiveMotionProfile: Активний профіль руху
+p.ActiveNotificationsProfile: Активний профіль сповіщень
+p.ActiveTouchpadProfile: Активний профіль сенсорної панелі
+
+p.Shortcuts.ToggleXboxGameBar: Перемикач ігрової панелі Xbox
+p.Shortcuts.SystemScreenshot: Скріншот системи
+p.Shortcuts.IncreaseBrightnessLevel: Збільшити рівень яскравості
+p.Shortcuts.DecreaseBrightnessLevel: Зменшити рівень яскравості
+p.Shortcuts.TogglePCMicMute: Перемикач вимкнення мікрофона ПК
+p.Shortcuts.PreviousTrack: Попередній трек
+p.Shortcuts.TogglePlayPause: Перемикач відтворення/пауза
+p.Shortcuts.NextTrack: Наступний трек
+p.Shortcuts.ToggleVolumeMute: Перемикач вимкнення звуку
+p.Shortcuts.IncreaseVolumeLevel: Збільшити рівень гучності
+p.Shortcuts.DecreaseVolumeLevel: Зменшити рівень гучності
+
+p.Shortcuts.StartScreen: Відобразити або приховати початковий екран
+p.Shortcuts.QuickSettingsWin11: Відкрити швидкі налаштування (Windows 11)
+p.Shortcuts.QuickSettingsWin10: Відкрити центр дій (Windows 10)
+p.Shortcuts.FocusNotificationArea: Встановити фокус в області сповіщень
+p.Shortcuts.ChatTeamsWin11: Відкрити чат із Microsoft Teams (Windows 11)
+p.Shortcuts.CortanaWin10: Відкрити Кортану в режимі прослуховування (Windows 10)
+p.Shortcuts.CharmsMenu: Відкрити меню ключових кнопок
+p.Shortcuts.ColorFiltersWin11: Увімкнути кольорові фільтри (спочатку ввімкніть цей ярлик у налаштуваннях кольорового фільтра) (Windows 11)
+p.Shortcuts.ShowDesktop: Показати та приховати робочий стіл
+p.Shortcuts.ShowDateAndTime: Показати та приховати дату й час на робочому столі
+p.Shortcuts.FileExplorer: Відкрийте Провідник файлів
+p.Shortcuts.FeedbackHub: Відкрийте центр відгуків і зробіть знімок екрана
+p.Shortcuts.XboxGameBar: Відкрийте панель ігор Xbox, коли відкрито гру
+p.Shortcuts.TurnHDROnOff: Увімкніть або вимкніть HDR
+p.Shortcuts.LaunchVoiceTypingWin11: Запустіть голосовий ввід (Windows 11)
+p.Shortcuts.StartDictationWin10: Розпочати диктування (Windows 10)
+p.Shortcuts.OpenSettings: Відкрийте «Налаштування».
+p.Shortcuts.OpenCastWin11: Відкрити «Передача трансляції» із швидких налаштувань (Windows 11)
+p.Shortcuts.OpenConnectWin10: Відкрийте швидку дію Connect (Windows 10)
+p.Shortcuts.ToggleMicrophoneMute: Увімкнути або вимкнути звук мікрофона в програмах, які підтримують функцію вимкнення звуку виклику. Доступно, починаючи з Windows 11, версія 22H2
+p.Shortcuts.LockPCSwitchAccounts: Заблокуйте свій ПК або змініть обліковий запис
+p.Shortcuts.MinimizeAllWindows: Згорнути всі вікна
+p.Shortcuts.RestoreMinimizedWindows: Відновлення згорнутих вікон на робочому столі
+p.Shortcuts.LockDeviceOrientation: Блокування орієнтації пристрою
+p.Shortcuts.ChoosePresentationDisplayMode: Виберіть режим відображення презентації
+p.Shortcuts.OpenQuickAssist: Відкрийте панель швидких дій
+p.Shortcuts.OpenRunDialogBox: Відкрийте діалогове вікно «Виконати».
+p.Shortcuts.RecordVideoGameWindowWin11: Запис відео ігрового вікна у фокусі (за допомогою ігрової панелі Xbox) (Windows 11)
+p.Shortcuts.OpenSearch: Відкрийте пошук
+p.Shortcuts.TakeScreenshotPartScreen: Зробіть скріншот частини екрана
+p.Shortcuts.CycleThroughAppsTaskbar: Перехід між програмами на панелі завдань
+p.Shortcuts.OpenAccessibilitySettings: Відкрийте налаштування доступності
+p.Shortcuts.OpenClipboardHistoryWin11: Відкрити історію буфера обміну (якщо ввімкнено в налаштуваннях)
+p.Shortcuts.OpenClipboardWin10: Відкрити буфер обміну (якщо ввімкнено в налаштуваннях)
+p.Shortcuts.OpenClipboardHistoryBoth: Відкрити історію буфера обміну (Windows 11) | Відкрити буфер обміну (Windows 10), якщо для будь-якої з них увімкнено в налаштуваннях
+p.Shortcuts.SetFocusNotificationWin11: Установити фокус на сповіщення
+p.Shortcuts.CycleThroughNotificationsWin10: Перехід між сповіщеннями
+p.Shortcuts.SetFocusNotificationBoth: Перевести фокус на сповіщення (Windows 11) | Перехід між сповіщеннями (Windows 10)
+p.Shortcuts.OpenWidgetsWin11: Відкрити віджети
+p.Shortcuts.OpenWidgetsBoth: Відкрити віджети (Windows 11)
+p.Shortcuts.OpenQuickLinkMenu: Відкрийте меню швидкого посилання
+p.Shortcuts.SwitchInputMixedReality: Перемикайте введення між Windows Mixed Reality і робочим столом
+p.Shortcuts.OpenSnapLayoutsWin11: Відкрийте макети прив’язки (Windows 11) | Показати команди, доступні в програмі, у повноекранному режимі (Windows 10)
+p.Shortcuts.OpenEmojiPanel: Відкрити панель емодзі
+p.Shortcuts.PeekAtDesktop: Тимчасово заглянути на робочий стіл
+p.Shortcuts.OpenAboutPCWin11: Відкрийте «Про ПК» у налаштуваннях (Windows 11) | Відображення діалогового вікна «Властивості системи» (Windows 10)
+p.Shortcuts.SearchForPCsNetwork: Пошук ПК (якщо ви в мережі)
+p.Shortcuts.StartAppPinnedTaskbar: Запустіть або відобразіть програму, закріплену на панелі задач на 1-ій позиції
+p.Shortcuts.StartAppPinnedTaskbar2: Запустіть або відобразіть програму, закріплену на панелі задач на 2-ій позиції
+p.Shortcuts.StartAppPinnedTaskbar3: Запустіть або відобразіть програму, закріплену на панелі задач на 3-ій позиції
+p.Shortcuts.StartAppPinnedTaskbar4: Запустіть або відобразіть програму, закріплену на панелі задач на 4-ій позиції
+p.Shortcuts.StartAppPinnedTaskbar5: Запустіть або відобразіть програму, закріплену на панелі задач на 5-ій позиції
+p.Shortcuts.StartAppPinnedTaskbar6: Запустіть або відобразіть програму, закріплену на панелі задач на 6-ій позиції
+p.Shortcuts.StartAppPinnedTaskbar7: Запустіть або відобразіть програму, закріплену на панелі задач на 7-ій позиції
+p.Shortcuts.StartAppPinnedTaskbar8: Запустіть або відобразіть програму, закріплену на панелі задач на 8-ій позиції
+p.Shortcuts.StartAppPinnedTaskbar9: Запустіть або відобразіть програму, закріплену на панелі задач на 9-ій позиції
+p.Shortcuts.StartAppPinnedTaskbar10: Запустіть або відобразіть програму, закріплену на панелі задач на 10-ій позиції
+p.Shortcuts.OpenTaskView: Відкрити перегляд завдань
+p.Shortcuts.MaximizeWindow: Розгорніть вікно
+p.Shortcuts.SnapWindowTopHalfWin11: Прив’язка вікна у фокусі до верхньої половини екрана (Windows 11)
+p.Shortcuts.RemoveAppScreen: Видаліть поточну програму з екрана або згорніть вікно робочого столу
+p.Shortcuts.SnapWindowBottomHalfWin11: Прив’язка вікна у фокусі до нижньої половини екрана (Windows 11)
+p.Shortcuts.MaximizeLeftSideScreen: Розгорніть вікно програми або робочого столу в лівій частині екрана
+p.Shortcuts.MaximizeRightSideScreen: Розгорніть вікно програми або робочого столу в праву частину екрана
+p.Shortcuts.MinimizeAllExceptActive: Згорнути все, крім активного вікна робочого столу (відновлює всі вікна після другого натискання)
+p.Shortcuts.StretchDesktopWindow: Розтягніть вікно робочого столу до верхньої та нижньої частини екрана
+p.Shortcuts.RestoreMinimizeActiveDesktopWindowsVertically: Відновити/згорнути вікна активного робочого столу по вертикалі, зберігаючи ширину
+p.Shortcuts.MoveAppWindowBetweenMonitorsLeft: Переміщення програми або вікна на робочому столі з одного монітора на інший (ліворуч)
+p.Shortcuts.MoveAppWindowBetweenMonitorsRight: Переміщення програми або вікна на робочому столі з одного монітора на інший (праворуч)
+p.Shortcuts.CycleBackwardsLanguageKeyboardLayoutWin11: Перехід назад між мовою та розкладкою клавіатури (Windows 11)
+p.Shortcuts.SwitchInputLanguageKeyboardLayout: Змінити мову введення та розкладку клавіатури
+p.Shortcuts.ChangeToPreviouslySelectedInput: Змінити на раніше вибраний вхід
+p.Shortcuts.TurnOnNarrator: Увімкніть Екранний диктор
+p.Shortcuts.OpenMagnifierAndZoomIn: Відкрийте лупу та збільште масштаб
+p.Shortcuts.ZoomOutInMagnifier: Зменшити масштаб за допомогою лупи
+p.Shortcuts.CloseMagnifierWin11: Закрити екранну лупу (Windows 11)
+p.Shortcuts.BeginIMEReconversion: Почати перетворення IME
+p.Shortcuts.OpenShoulderTapsWin10: Відкриті плечові крани (Windows 10)
+p.Shortcuts.WakePCFromBlankOrBlackScreen: Виведення комп’ютера з режиму сну через порожній або чорний екран
+p.Shortcuts.SaveScreenshotOfGameWindowToFile: Зберегти знімок вікна гри у фокусі у файл (за допомогою панелі ігор Xbox)
+p.Shortcuts.OpenTaskbarSettingsOnTaskbarFocus: Відкрити налаштування панелі завдань (у фокусі панелі завдань)
+
+
+# Controller Page -> Touchpad Section
+
+ctPage.Touchpad.Mode.Title: Режим сенсорної панелі
+ctPage.Touchpad.Mode.SubTitle: Щоб повністю використовувати сенсорну панель, виберіть «Наскрізний доступ», Сенсордну панель до миші» або «Сенсорна панель+».
+
+ctPage.TouchpadToMouse.Mode.Passthrough.Title: Наскрізний доступ
+ctPage.TouchpadToMouse.Mode.Passthrough.SubTitle: Дані сенсорної панелі будуть передаватися через DualShock 4 або емуляцію DualSense.
+
+ctPage.TouchpadToMouse.Mode.Mouse.Title: Сенсорна панель до миші
+ctPage.TouchpadToMouse.Mode.Mouse.SubTitle: Сенсорна панель керуватиме мишею цього ПК.
+
+ctPage.TouchpadToMouse.Mode.Plus.Title: Сенсорна панель+
+ctPage.TouchpadToMouse.Mode.Plus.SubTitle: Введення з сенсорної панелі можна використовувати для переналаштування та інших різних завдань.
+
+ctPage.TouchpadToMouse.PressToLeftClick.Title: Натисніть, щоб клацнути лівою кнопкою миші
+ctPage.TouchpadToMouse.PressToLeftClick.SubTitle: Якщо ввімкнено, натискання на сенсорній панелі призведе до клацання лівою кнопкою миші
+
+ctPage.TouchpadToMouse.TapToLeftClick.Title: Натисніть, щоб клацнути лівою кнопкою миші
+ctPage.TouchpadToMouse.TapToLeftClick.SubTitle: Якщо ввімкнено, торкання сенсорної панелі призведе до клацання лівою кнопкою миші
+
+ctPage.TouchpadToMouse.TapToRightClick.Title: Натисніть, щоб клацнути правою кнопкою миші
+ctPage.TouchpadToMouse.TapToRightClick.SubTitle: Якщо ввімкнено, торкання сенсорної панелі двома пальцями призведе до клацання правою кнопкою миші
+
+ctPage.TouchpadToMouse.NormalSensi.Title: Нормальна швидкість чутливості
+ctPage.TouchpadToMouse.NormalSensi.SubTitle: Швидкість чутливості для руху миші.
+
+ctPage.TouchpadToMouse.PreciseSensi.Title: Точна швидкість чутливості
+ctPage.TouchpadToMouse.PreciseSensi.SubTitle: Поки цю кнопку утримувати, миша перейде в точний стан, у якому вона сповільниться до встановленого тут значення.
+
+ctPage.TouchpadToMouse.FastSensi.Title: Швидка швидкість чутливості
+ctPage.TouchpadToMouse.FastSensi.SubTitle: Поки цю кнопку утримувати, миша перейде у швидкий стан, у якому вона прискориться до значення, встановленого тут.
+
+ctPage.TouchpadToMouse.ScrollSensi.Title: Швидкість чутливості прокрутки
+ctPage.TouchpadToMouse.ScrollSensi.SubTitle: Торкніться двома пальцями, а потім перетягніть у будь-якому напрямку, щоб почати прокручування, як натискання середньої кнопки миші та переміщення миші.
+
+ctPage.TouchpadToMouse.ScrollInvert.Title: Інвертувати прокручування
+ctPage.TouchpadToMouse.ScrollInvert.SubTitle: Якщо ввімкнено, прокручування буде інвертованим.
+
+# --------------------
+
+settingsPage.Display.WindowBackgroundEffect.Title: Ефект фону вікна
+settingsPage.Display.WindowBackgroundEffect.SubTitle: Виберіть бажаний фоновий ефект.
+
+settingsPage.Display.WindowBackgroundEffect.Mode.None.Title: Ніякий
+settingsPage.Display.WindowBackgroundEffect.Mode.None.Subtitle: Відсутність ефекту фону.
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Acrylic.Title: Акрил
+settingsPage.Display.WindowBackgroundEffect.Mode.Acrylic.Subtitle:  акрилу Windows.
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Title: Mica
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Subtitle: Ефект Mica Windows 11.
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Warning.Title: ⚠️ Доступно для Windows 11 (збірка 22000) або новішої
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Title: Tabbed
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Subtitle: Ефект бере за основу шшпалери робочого столу Windows 11 і розмиває їх.
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Warning.Title: ⚠️ Доступно для Windows 11 Insider 10 (збірка 22523) або новішої версії
+
+BatteryPowerState.Discharging: Розряджання
+BatteryPowerState.Charging: Pаряджання
+BatteryPowerState.Complete: Завершено
+BatteryPowerState.AbnormalVoltage: Аномальна напруга
+BatteryPowerState.AbnormalTemperture: Аномальна температура
+BatteryPowerState.ChargingError: Помилка під час зарядки
+
+ToastNotifications.BatteryInfo: Інформація про акумулятор
+ToastNotifications.BatteryLevelLow: 🪫⚠️ Низький рівень заряду батареї ⚠️🪫
+ToastNotifications.DeviceConnected: ℹ️ Пристрій підключено
+ToastNotifications.DeviceDisconnected: ⚠️ Пристрій відключено
+ToastNotifications.EmulationActivated: активовано
+ToastNotifications.ActiveProfile: Активний
+ToastNotifications.IsActiveProfile: є активним
+ToastNotifications.Activated: активовано
+
+aboutPage.DSX.Libraries.Title: Використані бібліотеки
+aboutPage.DSX.Libraries.Subtitle: Список загальнодоступних бібліотек, які використовуються для роботи DSX.
+
+ctPage.JoystickDeadzone.Left.Mode.Title: Режим лівого джойстика
+ctPage.JoystickDeadzone.Right.Mode.Title: Режим правого джойстиковий
+ctPage.JoystickDeadzone.Mode.SubTitle: Для більш точного налаштування виберіть наскрізний доступ, просту або розширену мертву зону.
+
+ctPage.JoystickDeadzone.Mode.Passthrough.SubTitle: Дані джойстика безперебійно проходять через емуляцію Xbox 360, DualShock 4 або DualSense. Жодні коригування або модифікації мертвої зони не застосовуються.
+
+ctPage.JoystickDeadzone.Mode.Simple.Title: Проста мертва зона
+ctPage.JoystickDeadzone.Mode.Simple.SubTitle: Вибір між осьовим і радіальним режимами мертвої зони визначає реакцію контролера. Осьовий надає пріоритет точному управлінню в кожному напрямку, що ідеально підходить для платформерів або шутерів, тоді як радіальний забезпечує рівномірну реакцію, чудово підходить для гонок або симуляторів польоту.
+
+ctPage.JoystickDeadzone.Mode.Advanced.Title: Розширена мертва зона
+ctPage.JoystickDeadzone.Mode.Advanced.SubTitle: Точніше налаштуйте роботу джойстика за допомогою цього режиму. Налаштуйте параметри чутливості, мертвої зони та діапазону, щоб створити схему керування, яка вам ідеально підходить.
+
+ctPage.JoystickDeadzone.Simple.Mode.Title: Режим мертвої зони
+ctPage.JoystickDeadzone.Simple.Mode.Subtitle: Вибір між осьовим і радіальним режимами мертвої зони визначає, як контролер реагує на невеликі рухи. Осьові мертві зони надають пріоритет точному контролю в окремих напрямках, що чудово підходить для платформерів і шутерів. Радіальні мертві зони забезпечують рівномірну реакцію в усіх напрямках, зменшуючи ненавмисні рухи, що ідеально підходить для перегонів чи симуляції польотів.
+
+ctPage.JoystickDeadzone.SimpleMode.Axial.Title: Осьовий
+ctPage.JoystickDeadzone.SimpleMode.Radial.Title: Радіальний
+
+ctPage.JoystickDeadzone.Deadzone.Title: Мертва зона
+ctPage.JoystickDeadzone.Deadzone.SubTitle: Це область навколо центру, де введення ігнорується.
+
+ctPage.JoystickDeadzone.Saturation.Title: Насичення
+ctPage.JoystickDeadzone.Saturation.SubTitle: Контролює чутливість джойстика. Встановлення значення нижче 1 робить джойстик більш чутливим, тому навіть невеликі рухи мають великий вплив на вашу гру чи програму. Якщо встановити значення 1, джойстик збереже нормальну чутливість. Налаштування насиченості дає змогу налаштувати, наскільки ваші рухи впливають на екран.
+
+ctPage.JoystickDeadzone.Range.Title: Діапазон
+ctPage.JoystickDeadzone.Range.SubTitle: Налаштовує відстань, на яку може рухатися джойстик, визначаючи максимальний обсяг руху джойстика, який впливає на дії на екрані.
+
+ctPage.JoystickDeadzone.Sensitivity.Title: Чутливість
+ctPage.JoystickDeadzone.Sensitivity.SubTitle: Підвищення чутливості робить джойстик більш чуйним, тому навіть невеликі рухи сильно впливають на екран. Зменшення чутливості робить протилежне: потрібні більші рухи джойстика, щоб зробити ті самі зміни на екрані.
+
+
+
+
+
