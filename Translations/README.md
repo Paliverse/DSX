@@ -1,6 +1,6 @@
-# Translate DSX v3
+# Translate DSX
 
-## Thank You for Your Support!
+### Thank You for Your Support!
 
 We deeply appreciate your willingness to contribute to translating DSX. Your efforts help make DSX more accessible to a wider audience.
 
@@ -10,6 +10,11 @@ We deeply appreciate your willingness to contribute to translating DSX. Your eff
 2. Rename the file to match your language and country.
 3. Translate the text after the colon for each key.
 
+**Updating Existing Translations:** 
+
+Already translated language files are added above to be updated if needed.
+
+## Translating
 For example:
 ```yaml
 NoControllerDetected.Title: No Controllers Detected
@@ -18,7 +23,7 @@ In this example, "No Controllers Detected" is what you would translate.
 
 **Note:** Updates to the `en-US.yml` file will be visible [here](https://github.com/Paliverse/DSX/commits/main/Translations/en-US.yml).
 
-**New Translations:** Any new translations will be added to the bottom of the `en-US.yml` file to make it easier for new items to be translated. So check regularly for new updates. If you have the Translator role in the discord server, you will be notified of new changes.
+**New Translations:** Any new translation keys will be added to the bottom of the `en-US.yml` file to make it easier for new items to be translated. So check regularly for new updates. If you have the Translator role in the discord server, you will be notified of new changes.
 
 ## Submitting Your Translation
 
