@@ -71,8 +71,8 @@ houseExample.plural: '%i houses'
 # Common things - For one time usage or Used in more than one place
 # ------------------------------------------------------------------------------------------------
 NoControllerDetected.Title: Контролери не виявлено
-NoControllerDetected.ATMessage: Підключіть свій контролер або з’єднайте його через Bluetooth, щоб налаштувати адаптивні тригери.
-NoControllerDetected.Subtitle: Будь ласка, підключіть сумісний контролер через дротове з’єднання або через Bluetooth, щоб отримати доступ до його інформації.
+NoControllerDetected.ATMessage: Підключіть контролер дротом або через Bluetooth, щоб налаштувати адаптивні тригери.
+NoControllerDetected.Subtitle: Підключіть сумісний контролер дротом або через Bluetooth, щоб отримати доступ до його інформації.
 
 # ------------------------------------------------------------------------------------------------
 # Small generic words
@@ -81,7 +81,7 @@ OFF: "ВИМК"
 NotAny: Н/Д
 Frequency: Частота
 Cancel: Скасувати
-TryAgain: Спробуйте знову
+TryAgain: Спробувати знову
 # A period of time, obviously
 Period: Період
 
@@ -89,27 +89,27 @@ Period: Період
 # DSX
 # ------------------------------------------------------------------------------------------------
 dsx.Initialization.Title: Давайте розкриємо ваш потенціал.
-dsx.NoControllersDetected: Контролери не виявлено
-dsx.KindlyConnectController: Будь ласка, підключіть сумісний контролер через дротове з’єднання або через Bluetooth, щоб отримати доступ до його інформації.
-dsx.PlugInControllerToConfigure: Підключіть контролер або з’єднайте його через Bluetooth, щоб налаштувати різноманітність вібрацію.
-dsx.ConnectControllerToAccessInfo: Будь ласка, підключіть сумісний контролер через дротове з’єднання або через Bluetooth, щоб отримати доступ до його інформації.
-dsx.ConnectControllerToConfigureNotifications: Щоб налаштувати сповіщення, підключіть контролер або з’єднайте його через Bluetooth.
-dsx.ConnectControllerToConfigureProfiles: Будь ласка, підключіть свій контролер або з’єднайте його через Bluetooth, щоб налаштувати свої профілі.
+dsx.NoControllersDetected: Контролерів не виявлено
+dsx.KindlyConnectController: Підключіть сумісний контролер дротом або через Bluetooth, щоб отримати доступ до його інформації.
+dsx.PlugInControllerToConfigure: Підключіть контролер дротом або через Bluetooth, щоб налаштувати різноманітність вібрації.
+dsx.ConnectControllerToAccessInfo: Підключіть сумісний контролер дротом або через Bluetooth, щоб отримати доступ до його інформації.
+dsx.ConnectControllerToConfigureNotifications: Щоб налаштувати сповіщення, підключіть контролер дротом або через Bluetooth.
+dsx.ConnectControllerToConfigureProfiles: Підключіть контролер дротом або через Bluetooth, щоб налаштувати профілі.
 
 dsx.Initialization.Error.SteamIDNoMatch.Title: Steam ID не збігається
-dsx.Initialization.Error.SteamIDNoMatch.Detail: Steam ID не збігається з Steam API. Переконайтеся, що ви ввійшли в той самий обліковий запис, який використовувався для встановлення DSX.
+dsx.Initialization.Error.SteamIDNoMatch.Detail: Переконайтеся, що ви ввійшли в той самий обліковий запис Steam, який використовувався для встановлення DSX.
 
-dsx.Initialization.Error.ServerFailure.Title: Невідомий збій сервера
-dsx.Initialization.Error.ServerFailure.Detail: Не вдалося з’єднатися з серверами DSX для підтвердження права власності. Будь ласка, переконайтеся, що DSX дозволено у вашому брандмауері Windows, і спробуйте знову.
+dsx.Initialization.Error.ServerFailure.Title: Невідомий збій
+dsx.Initialization.Error.ServerFailure.Detail: Неможливо зв’язатися з серверами DSX для підтвердження права власності. Переконайтеся, чи наявний дозвіл у брандмауері Windows і спробуйте знову.
 
-dsx.Initialization.Error.SteamApiServerFailure.Title: Збій сервера Steam API
-dsx.Initialization.Error.SteamApiServerFailure.Detail: Неможливо зв’язатися із серверами Steam API. Будь ласка, перевірте стан сервера Steam, щоб переконатися, що він не працює, якщо це так, то спробуйте пізніше.
+dsx.Initialization.Error.SteamApiServerFailure.Title: Збій через Steam API
+dsx.Initialization.Error.SteamApiServerFailure.Detail: Неможливо зв’язатися із серверами Steam API. Перевірте стан Steam, щоб переконатися, що він не працює, якщо це так, то спробуйте знову.
 
-dsx.Initialization.Error.VirtualPadError.Title: Збій сервера через драйвер VirtualPad від Nefarius
-dsx.Initialization.Error.VirtualPadError.Detail: Неможливо зв’язатися із сервером драйвера VirtualPad. Якщо ця проблема не зникне, будь ласка, зв’яжіться з нами на сервері DSX в Discord або на сайті Steam.
+dsx.Initialization.Error.VirtualPadError.Title: Збій через драйвер VirtualPad від Nefarius
+dsx.Initialization.Error.VirtualPadError.Detail: Неможливо зв’язатися із сервером драйвера VirtualPad. Якщо ця проблема не зникне, зв’яжіться з нами в Discord або на сторінці товару в Steam.
 
-dsx.Initialization.Error.InternetConnection.Title: Потрібне підключення до Інтернету
-dsx.Initialization.Error.InternetConnection.Detail: Щоб запустити DSX, під час ініціалізації потрібне підключення до Інтернету. Будь ласка, переконайтеся, що DSX дозволено у вашому брандмауері Windows, і спробуйте знову.
+dsx.Initialization.Error.InternetConnection.Title: Потрібне підключення до інтернету
+dsx.Initialization.Error.InternetConnection.Detail: Для запуску DSX, під час ініціалізації, потрібне підключення до інтернету. Переконайтеся, чи наявний дозвіл у брандмауері Windows і спробуйте знову.
 
 dsx.Initialization.Error.UnautorizedAccess.Title: Не вдається зв’язатися із сервером через неавторизований доступ
 dsx.Initialization.Error.UnautorizedAccess.DetailOne: Неможливо встановити з’єднання через дату й час вашого ПК
@@ -117,11 +117,11 @@ dsx.Initialization.Error.UnautorizedAccess.DetailTwo: є неправильни�
 
 dsx.Initialization.AppSettings: Завантаження налаштувань програми...
 dsx.Initialization.AccentColor: Застосування акцентного кольору...
-dsx.Initialization.Discord: Налаштування присутності у Discord...
-dsx.Initialization.InternetCheck: Перевірка підключення до Інтернету...
+dsx.Initialization.Discord: Налаштування присутності в Discord...
+dsx.Initialization.InternetCheck: Перевірка підключення до інтернету...
 dsx.Initialization.SteamID: Перевірка Steam ID...
-dsx.Initialization.DSXOwnership: Перевірка права власності на DSX за допомогою серверів Steam...
-dsx.Initialization.DLCOwnership: Перевірка права власності на DLC емуляції DualSense за допомогою серверів Steam...
+dsx.Initialization.DSXOwnership: Перевірка права власності на DSX у Steam...
+dsx.Initialization.DLCOwnership: Перевірка права власності на DLC емуляції DualSense в Steam...
 dsx.Initialization.OwnershipResults: Перевірка результатів прав власності на DSX/DLC...
 dsx.Initialization.DSFirmware: Отримання останньої версії прошивки DualSense...
 dsx.Initialization.VirtualPad: Перевірка драйвера VirtualPad від Nefarius на наявність оновлень...
@@ -131,7 +131,7 @@ dsx.Initialization.v3BetaInfo: Підготовка інформаційної �
 dsx.Initialization.HomePage: Підготовка домашньої сторінки...
 
 dsx.Initialization.VirtualPad.LicenseExpired: Термін дії ліцензії VirtualPad закінчився. Потрібне перевстановлення або перезавантаження.
-dsx.Initialization.VirtualPad.ServiceError: Помилка служби драйверів VirtualPad, потрібно перевстановити.
+dsx.Initialization.VirtualPad.ServiceError: Помилка служби драйверів VirtualPad - потрібно перевстановити.
 dsx.Initialization.VirtualPad.UpdateAvailable.PartOne: Версія драйвера VirtualPad
 dsx.Initialization.VirtualPad.UpdateAvailable.PartTwo: Наявна
 dsx.Initialization.VirtualPad.NotInstalled: Драйвер VirtualPad від Nefarius не встановлено.
@@ -157,7 +157,7 @@ dsx.NavigationButtons.About: Про DSX
 dsx.TaskbarIcon.QuitDSX: Вийти
 
 dsx.UnexpectedError.Popup.Title: Виняткова ситуація
-dsx.UnexpectedError.Popup.TitleTwo: Виникла виняткова ситуація необробленого потоку інтерфейсу
+dsx.UnexpectedError.Popup.TitleTwo: Виникла ситуація необробленого потоку інтерфейсу
 
 dsx.UnexpectedError.Popup.LineOne: Сталася неочікувана помилка, DSX v3 не може продовжити роботу.
 dsx.UnexpectedError.Popup.LineTwo: Подробиці про збій можна знайти в підкаталозі журналів, розташованому за адресою
@@ -168,18 +168,18 @@ dsx.UnexpectedError.Popup.LineTwo: Подробиці про збій можна
 # ------------------------------------------------------------------------------------------------
 
 X360Gamepad.Title: Віртуальний геймпад Xbox 360
-X360Gamepad.Description: Використовуйте віртуальний геймпад Xbox 360 з будь-якою грою з підтримкою Xinput.
+X360Gamepad.Description: Використовуйте віртуальний геймпад з підтримкою Xinput.
 
 DS4Gamepad.Title: Віртуальний геймпад DualShock 4
-DS4Gamepad.Description: Використовуйте віртуальний геймпад DualShock 4 з іграми, які його підтримують.
+DS4Gamepad.Description: Використовуйте віртуальний геймпад з іграми, які його підтримують.
 
 DualSensePad.Title: Віртуальний геймпад DualSense (потрібен DLC)
-DualSensePad.Description: Використовуйте віртуальний геймпад DualSense з іграми, які його підтримують.
+DualSensePad.Description: Використовуйте віртуальний геймпад з іграми, які його підтримують.
 
 # ------------------------------------------------------------------------------------------------
 # Profile system
 # ------------------------------------------------------------------------------------------------
-profiles.CannotUndo: Цю дію не можна скасувати.
+profiles.CannotUndo: Цю дію неможливо скасувати.
 profiles.EnterProfileName: Введіть назву профілю
 profiles.ProfileName: Імя профілю
 profiles.ProfileSystem: Система профілів
@@ -232,29 +232,29 @@ profiles.Type.HapticsRumble.Detail: Додайте новий профіль д�
 
 homePage.Firmware.Info.Title: Інформація про обладнання/прошивку
 
-homePage.Hardware.Info.Title: Інформація про обладнання
-homePage.Hardware.Info.SubTitle: Інформація (версія) цього контролера.
+homePage.Hardware.Info.Title: Версія обладнання
+homePage.Hardware.Info.SubTitle: Версія цього контролера
 
 homePage.Hardware.Variation.Title: Варіація обладнання
-homePage.Hardware.Variation.SubTitle: Різновид обладнання цього контролера.
+homePage.Hardware.Variation.SubTitle: Партія цього контролера
 
 homePage.Hardware.Version.Title: Апаратна версія
-homePage.Hardware.Version.SubTitle: Апаратна версія цього контролера.
+homePage.Hardware.Version.SubTitle: Версія цього контролера
 
 homePage.Firmware.Version.Title: Версія прошивки
-homePage.Firmware.Version.SubTitle: Поточна версія прошивки.
+homePage.Firmware.Version.SubTitle: Поточна версія прошивки
 
 homePage.Firmware.Type.Title: Тип прошивки
-homePage.Firmware.Type.SubTitle: Тип прошивки цього контролера.
+homePage.Firmware.Type.SubTitle: Тип прошивки цього контролера
 
 homePage.Firmware.BuildDate: Дата збірки прошивки
 homePage.Firmware.BuildDate.SubTitle: День народження вашої прошивки!
 
 homePage.Firmware.MainVersion.Title: Основна версія прошивки
-homePage.Firmware.MainVersion.SubTitle: Основна версія прошивки.
+homePage.Firmware.MainVersion.SubTitle: Основна версія прошивки
 
 homePage.MAC.Title: MAC-адреса
-homePage.MAC.SubTitle: Унікальний ідентифікатор MAC-адреси.
+homePage.MAC.SubTitle: Унікальний ідентифікатор MAC-адреси
 
 homePage.HWInfo.Export.Title: Експорт інформації про апаратне/програмне забезпечення
 
@@ -274,9 +274,9 @@ homePage.PollingRate: Швидкість опитування
 homePage.PollingRate.ToolTip: Швидкість опитування контролера.
 homePage.PollingRate.JustNo: Ні, це не можна змінити в DSX.
 homePage.Firmware.UpdateAvailable: Доступне оновлення прошивки
-homePage.Firmware.UpdateAvailable.Detail: Оновіть прошивку, щоб покращити продуктивність бездротових контролерів DualSense™ і DualSense Edge™.
-homePage.Firmware.CurrentVersion: "Поточна версія прошивки: "
-homePage.Firmware.LatestVersion: "Остання версія прошивки: "
+homePage.Firmware.UpdateAvailable.Detail: Оновіться, щоб покращити продуктивність бездротових контролерів DualSense™ і DualSense Edge™.
+homePage.Firmware.CurrentVersion: "Поточна версія: "
+homePage.Firmware.LatestVersion: "Остання версія: "
 homePage.Firmware.UpdateNow: Оновити
 
 homePage.ConstantDataCommunication.Title: Постійний обмін даними
@@ -284,11 +284,11 @@ homePage.ConstantDataCommunication.Detail: Якщо ввімкнено, DSX он
 homePage.ConstantDataCommunication.Note: Вимкніть це, якщо не вдається підключити інші контролери по BT до DSX/ПК
 
 homePage.VirtualDevice.Title: Віртуальний пристрій
-homePage.VirtualDevice.Detail: Віртуальний пристрій – це пристрій, який комп’ютер вважатиме, який ви використовуєте замість фізичного контролера.
+homePage.VirtualDevice.Detail: Вказує комп’ютеру, як визначати фізичний контролер
 
 homePage.VirtualDevice.Mode.Native.Title: Режим без емуляції
 homePage.VirtualDevice.Mode.Native.Configuration.Title: Конфігурація режиму
-homePage.VirtualDevice.Mode.Native.Configuration.Detail: Якщо вибрано цей режим, віртуальний пристрій не створюється,але ви можете вибрати, чи ввімкнути або вимкнути надсилання даних, щоб зробити його більш сумісним із іграми, що підтримуються нативно.
+homePage.VirtualDevice.Mode.Native.Configuration.Detail: Віртуальний пристрій не створюється. Можна ввімкнути або вимкнути надсилання даних, щоб зробити їх більш сумісним із іграми, що підтримуються нативно.
 
 homePage.VirtualDevice.Mode.Native.Configuration.SendData.Title: Відправлення даних на пристрій
 homePage.VirtualDevice.Mode.Native.Configuration.SendData.Detail: DSX буде керувати такими функціями контролера, як адаптивні тригери, світлова панель, типи вібрацій тощо... Вимкніть, щоб ігри чи інші програми могли самі це контролювати.
@@ -310,22 +310,22 @@ homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.GuitarBass: Бас-�
 homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Wheel: Колесо
 
 homePage.VirtualDevice.Mode.X360.Configuration.RumblePassthrough.Title: Передача класичної вібрації
-homePage.VirtualDevice.Mode.X360.Configuration.RumblePassthrough.Detail: Коли ввімкнено, вібрація, надіслана на віртуальний контролер Xbox 360, буде передана на цей пристрій.
+homePage.VirtualDevice.Mode.X360.Configuration.RumblePassthrough.Detail: Коли ввімкнено, вібрація, надіслана на віртуальний контролер Xbox 360, буде передана на ваш пристрій.
 
 homePage.VirtualDevice.Mode.DS4.Configuration.RumblePassthrough.Title: Передача класичної вібрації
-homePage.VirtualDevice.Mode.DS4.Configuration.RumblePassthrough.Detail: Коли ввімкнено, вібрація, яка надсилається на віртуальний контролер DualShock 4, передаватиметься на цей пристрій.
+homePage.VirtualDevice.Mode.DS4.Configuration.RumblePassthrough.Detail: Коли ввімкнено, вібрація, яка надсилається на віртуальний контролер DualShock 4, передаватиметься на ваш пристрій.
 
 homePage.VirtualDevice.Mode.DS4.Configuration.LEDPassthrough.Title: LED
-homePage.VirtualDevice.Mode.DS4.Configuration.LEDPassthrough.Detail: Коли ввімкнено, кольори світлової панелі, які надсилаються на віртуальний контролер DualShock 4, будуть передані на цей пристрій.
+homePage.VirtualDevice.Mode.DS4.Configuration.LEDPassthrough.Detail: Коли ввімкнено, кольори світлової панелі, які надсилаються на віртуальний контролер DualShock 4, будуть передані на ваш пристрій.
 
 homePage.VirtualDevice.Mode.DualSense.Configuration.RumblePassthrough.Title: Передача класичної вібрації
-homePage.VirtualDevice.Mode.DualSense.Configuration.RumblePassthrough.Detail: Якщо ввімкнути цю функцію, вібрація, яка надсилається на віртуальний контролер DualSense, передаватиметься на цей пристрій.
+homePage.VirtualDevice.Mode.DualSense.Configuration.RumblePassthrough.Detail: Якщо ввімкнути цю функцію, вібрація, яка надсилається на віртуальний контролер DualSense, передаватиметься на ваш пристрій.
 
 homePage.VirtualDevice.Mode.DualSense.Configuration.ATPassthrough.Title: Передача адаптивних тригерів
-homePage.VirtualDevice.Mode.DualSense.Configuration.ATPassthrough.Detail: Коли ввімкнено, адаптивні тригери, надіслані на віртуальний контролер DualSense, будуть передані на цей пристрій.
+homePage.VirtualDevice.Mode.DualSense.Configuration.ATPassthrough.Detail: Коли ввімкнено, адаптивні тригери, надіслані на віртуальний контролер DualSense, будуть передані на ваш пристрій.
 
 homePage.VirtualDevice.Mode.DualSense.Configuration.LEDPassthrough.Title: Передача LED
-homePage.VirtualDevice.Mode.DualSense.Configuration.LEDPassthrough.Detail: Коли ввімкнено, кольори світлової панелі, які надсилаються на віртуальний контролер DualSense, будуть передані на цей пристрій.
+homePage.VirtualDevice.Mode.DualSense.Configuration.LEDPassthrough.Detail: Коли ввімкнено, кольори світлової панелі, які надсилаються на віртуальний контролер DualSense, будуть передані на ваш пристрій.
 
 homePage.VirtualDevice.Mode.X360.Title: Емуляція Xbox 360
 homePage.VirtualDevice.Mode.DS4.Title: Емуляція DualShock 4
@@ -350,28 +350,28 @@ homePage.ControllerOptions: Параметри контролера
 # Profiles Page
 # ------------------------------------------------------------------------------------------------
 
-profilesPage.DeviceName.Title : Ім'я пристрою
-profilesPage.DeviceName.SubTitle : Псевдонім для цього пристрою.
+profilesPage.DeviceName.Title: Ім'я пристрою
+profilesPage.DeviceName.SubTitle: Псевдонім цього пристрою.
 
-profilesPage.ProfilesDirectory.Title : Каталог профілів
-profilesPage.ProfilesDirectory.SubTitle : Переглядайте місце збереження профілів для цього контролера.
+profilesPage.ProfilesDirectory.Title: Каталог профілів
+profilesPage.ProfilesDirectory.SubTitle: Переглянути місце збереження профілів цього контролера.
 
-profilesPage.ResetController.Title : Скинути систему профілю контролера
-profilesPage.ResetController.SubTitle : Видаляє всі пов’язані профілі для цього пристрою, як-от різні дії, світлодіод, адаптивні тригери тощо.
-profilesPage.ResetController.Popup.LineOne : ЦЕ НЕ МОЖЕ БУТИ СКАСОВАНЕ!
-profilesPage.ResetController.Popup.LineTwo : Усі пов’язані профілі для цього пристрою, як-от різні дії, світлодіод, адаптивні тригери тощо, буде видалено.
-profilesPage.ResetController.Popup.LineThree : Ви впевнені, що бажаєте продовжити?
+profilesPage.ResetController.Title: Скинути систему профілю контролера
+profilesPage.ResetController.SubTitle: Видаляє всі пов’язані профілі цього пристрою, як-от різні дії, LED, адаптивні тригери тощо.
+profilesPage.ResetController.Popup.LineOne: ЦЕ НЕМОЖЛИВО ПОТІМ БУДЕ СКАСУВАТИ!
+profilesPage.ResetController.Popup.LineTwo: Усі пов’язані профілі для цього пристрою буде видалено.
+profilesPage.ResetController.Popup.LineThree: Ви впевнені, що бажаєте продовжити?
 
-profilesPage.ProfileList.SubTitle : Поточний активний профіль для різних профільних систем.
+profilesPage.ProfileList.SubTitle: Поточний активний профіль для різних профільних систем.
 
-profilesPage.Action : Профіль дій
-profilesPage.AdaptiveTriggers : Профіль Адаптивних тригерів
-profilesPage.Deadzone : Профіль мертвих зон
-profilesPage.HapticsRumble : Профіль вібрацій
-profilesPage.LED : Профіль LED
-profilesPage.Motion : Профіль руху
-profilesPage.Notification : Профіль сповіщень
-profilesPage.Touchpad : Профіль сенсорної панелі
+profilesPage.Action: Профіль дій
+profilesPage.AdaptiveTriggers: Профіль адаптивних тригерів
+profilesPage.Deadzone: Профіль мертвих зон
+profilesPage.HapticsRumble: Профіль вібрацій
+profilesPage.LED: Профіль LED
+profilesPage.Motion: Профіль руху
+profilesPage.Notification: Профіль сповіщень
+profilesPage.Touchpad: Профіль сенсорної панелі
 
 
 # ------------------------------------------------------------------------------------------------
@@ -1013,7 +1013,7 @@ hapticsPage.TriggerHapticsConfig.SubTitle: Дозволяє перетворюв
 hapticsPage.JoystickHapticsConfig.Title: Джойстик в тактильний відгук
 hapticsPage.JoystickHapticsConfig.SubTitle: Дозволяє вам перетворювати рухи лівого та правого джойстиків у тактильні відчуття з потрібною звуковою хвилею. Лівий джойстик керує лівим мотором, правий - правим.
 
-hapticsPage.RestartButton.Title : Перезапустити
+hapticsPage.RestartButton.Title: Перезапустити
 
 hapticsPage.RumblePassthrough.Title: Передача через класичну вібрацію
 hapticsPage.RumblePassthrough.AudioHaptics.SubTitle: Якщо ввімкнено, вібрація, яка надсилається на віртуальний контролер, буде застосована до цього фізичного контролера. Якщо звук не надсилається, аудіо в тактильні відчуття відновлять роботу в звичайному режимі.
@@ -1051,14 +1051,14 @@ hapticsPage.SoundWave.Gain.SubTitle: Величина підсилення си�
 hapticsPage.SoundWave.Frequency.Title: Частота
 hapticsPage.SoundWave.Frequency.SubTitle: Кількість разів на секунду, коли хвиля звукового тиску повторюється. Близько 60 Гц є найсильнішим.
 
-hapticsPage.SoundWave.Sweep.StartEndFreq.Title : Початкова та кінцева частоти
-hapticsPage.SoundWave.Sweep.StartEndFreq.SubTitle : Визначте початок і кінець для бажаних частот.
-hapticsPage.SoundWave.Sweep.StartFreq.Title : Початкова частота
+hapticsPage.SoundWave.Sweep.StartEndFreq.Title: Початкова та кінцева частоти
+hapticsPage.SoundWave.Sweep.StartEndFreq.SubTitle: Визначте початок і кінець для бажаних частот.
+hapticsPage.SoundWave.Sweep.StartFreq.Title: Початкова частота
 hapticsPage.SoundWave.Sweep.EndFreq.Title : Кінцева частота
 
-hapticsPage.SoundWave.Sweep.Duration.Title : Тривалість
-hapticsPage.SoundWave.Sweep.Duration.Title2 : Тривалість (секунди)
-hapticsPage.SoundWave.Sweep.Duration.SubTitle : Скільки часу потрібно для переходу від початкової до кінцевої частоти в секундах.
+hapticsPage.SoundWave.Sweep.Duration.Title: Тривалість
+hapticsPage.SoundWave.Sweep.Duration.Title2: Тривалість (секунди)
+hapticsPage.SoundWave.Sweep.Duration.SubTitle: Скільки часу потрібно для переходу від початкової до кінцевої частоти в секундах.
 
 # ------------------------------------------------------------------------------------------------
 # Installed Games Page
@@ -1257,15 +1257,15 @@ settingsPage.Tabs.DangerZone: Небезпечна зона
 settingsPage.Tabs.DangerZone.Warning: Цю дію неможливо скасувати, налаштування програм, профілі та все буде скинуто до стандартного стану.
 settingsPage.Tabs.DangerZone.ResetAppSettings: Скинути налаштування програми
 
-settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineOne : Зберегти розташування папки
-settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineTwo : ЦЕ НЕ МОЖЕ БУТИ СКАСОВАНЕ!
-settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineThree : Ви впевнені, що бажаєте продовжити?
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineOne: Зберегти розташування папки
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineTwo: ЦЕ НЕ МОЖЕ БУТИ СКАСОВАНЕ!
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineThree: Ви впевнені, що бажаєте продовжити?
 
-settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Title : Успішне скидання програми
-settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Detail : Тепер DSX перезапуститься.
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Title: Успішне скидання програми
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Detail: Тепер DSX перезапуститься.
 
-settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Title : Помилка
-settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Detail : Не вдалося скинути налаштування програми.
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Title: Помилка
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Detail: Не вдалося скинути налаштування програми.
 
 settingsPage.EnableDiagnostictracing: Увімкнути діагностичне трасування
 settingsPage.EnableDiagnostictracing.Details: Це має використовуватись для відстеження певних речей, наприклад продуктивності досвідчених розробників.
@@ -1285,7 +1285,7 @@ settingsPage.Display.AccentColorCard.Title: Акцентний колір
 settingsPage.Display.AccentColorCard.SubTitle: Оберіть акцентний колір, який буде використовувати в DSX.
 settingsPage.Display.AccentColorCard.Reset.Button: Скинути до системних налаштувань
 
-settingsPage.Display.BatteryIconCard.Title: : «Живий» значок батареї
+settingsPage.Display.BatteryIconCard.Title: «Живий» значок батареї
 settingsPage.Display.BatteryIconCard.SubTitle: Використовує градієнтні відтінки для відображення рівня заряду акумулятора, якщо попередньо активний режим індикатора батареї на вкладці контролера.
 
 settingsPage.Display.WindowSizeCard.Title: Розмір вікна
@@ -1701,7 +1701,7 @@ settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Subtitle: Ефект б�
 settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Warning.Title: ⚠️ Доступно для Windows 11 Insider 10 (збірка 22523) або новішої версії
 
 BatteryPowerState.Discharging: Розряджання
-BatteryPowerState.Charging: Pаряджання
+BatteryPowerState.Charging: Заряджання
 BatteryPowerState.Complete: Завершено
 BatteryPowerState.AbnormalVoltage: Аномальна напруга
 BatteryPowerState.AbnormalTemperture: Аномальна температура
@@ -1749,7 +1749,115 @@ ctPage.JoystickDeadzone.Range.SubTitle: Налаштовує відстань, �
 ctPage.JoystickDeadzone.Sensitivity.Title: Чутливість
 ctPage.JoystickDeadzone.Sensitivity.SubTitle: Підвищення чутливості робить джойстик більш чуйним, тому навіть невеликі рухи сильно впливають на екран. Зменшення чутливості робить протилежне: потрібні більші рухи джойстика, щоб зробити ті самі зміни на екрані.
 
+homepage.VirtualDevice.DSModeConfig.Title: Конфігурація режиму DualSense
+homepage.VirtualDevice.DSModeConfig.SubTitle: Якщо емуляція DualSense активна, ви можете налаштувати параметри передачі нижче.
+
+app.LaunchV2Button: Назад до DSX v2
+
+profiles.ResetProfile: Скинути профіль
+profiles.RenameProfile: Перейменувати профіль
+
+ctPage.ActiveMouseMappingsDescription: Ваш список активних розкладок миші.
+
+ctPage.selectedButton: Вибрана кнопка
+ctPage.selectedButtons: Вибрані кнопки ## Plural
+
+ctPage.Input: Введення
+ctPage.Output: Виведення
+
+ctPage.Mouse.ScrollUp: Колесо прокрутки вгору (%i балів) # %i is a number that is auto filled so think of it like this: - Scroll Wheel Up (2 Points) -
+ctPage.Mouse.ScrollDown: Колесо прокрутки вниз (%i балів) # %i is a number that is auto filled so think of it like this: - Scroll Wheel Down (2 Points) -
+
+ctPage.R2TriggerInputRange: Діапазон введення тригера R2
+
+notificationsPage.SystemNotification.Title: Системні сповіщення
+notificationsPage.SystemNotification.SubTitle: Щоб DSX міг надсилати сповіщення, потрібно це дозволити. Натисніть «Відкрити налаштування сповіщень», щоб дати можливість це робити, якщо звісно ще не ввімкнено.
+notificationsPage.SystemNotification.Button.Title: Відкритии налаштування сповіщень
+
+notificationsPage.LowBattery.Title: Низький заряд батареї
+notificationsPage.LowBattery.SubTitle: Отримуйте сповіщення про це, лише тоді, коли він не заряджається.
+
+notificationsPage.LowBattery.Percentage.Title: Відсоток заряду батареї
+notificationsPage.LowBattery.Percentage.SubTitle: Сповіщення спрацює, коли рівень заряду акумулятора впаде нижче вказаного відсотка.
+
+notificationsPage.LowBattery.Repeat.Title: Повтор сповіщення
+notificationsPage.LowBattery.Repeat.SubTitle: Кількість разів повторення сповіщення.
+
+notificationsPage.LowBattery.Repeat.1: 1 раз
+notificationsPage.LowBattery.Repeat.3: 3 рази
+notificationsPage.LowBattery.Repeat.5: 5 разів
+notificationsPage.LowBattery.Repeat.10: 10 разів
+notificationsPage.LowBattery.Repeat.Forever: Завжди
+
+notificationsPage.LowBattery.Interval.Title: Інтервал сповіщення
+notificationsPage.LowBattery.Interval.SubTitle: Виберіть інтервал між кожним повторенням.
+
+notificationsPage.LowBattery.Interval.30Seconds: 30 секунд
+notificationsPage.LowBattery.Interval.1: 1 хвилина
+notificationsPage.LowBattery.Interval.2: 2 хвилини
+notificationsPage.LowBattery.Interval.5: 5 хвилин
+notificationsPage.LowBattery.Interval.10: 10 хвилин
+
+notificationsPage.ConnectionStatus.Title: Статус підключення
+notificationsPage.ConnectionStatus.SubTitle: Отримуйте сповіщення, коли цей пристрій підключається або від’єднується від DSX, або коли режим емуляції стає активним.
+
+notificationsPage.ConnectionStatus.DeviceConnected.Title: Пристрій підключено
+notificationsPage.ConnectionStatus.DeviceConnected.SubTitle: Отримуйте сповіщення, коли цей пристрій підключається до DSX.
+
+notificationsPage.ConnectionStatus.DeviceDisconnected.Title: Пристрій відключено
+notificationsPage.ConnectionStatus.DeviceDisconnected.SubTitle: Отримуйте сповіщення, коли цей пристрій від’єднується від DSX.
+
+notificationsPage.ConnectionStatus.VirtualDevice.Title: Статус віртуального пристрою
+notificationsPage.ConnectionStatus.VirtualDevice.SubTitle: Отримуйте сповіщення, коли віртуальний пристрій стає активним.
 
 
+notificationsPage.ProfileSystem.SubTitle: Отримуйте сповіщення, коли профіль стає активним.
 
+colorPicker.InitialColor: Початковий колір
+colorPicker.SelectedColor: Вибраний колір
+
+color.Gradient: Градієнт
+
+# %i is a number that is auto filled, also keep the translation inside the single quotes.
+installedGamesPage.TotalPlaytime.Day.single: '%i день' 
+installedGamesPage.TotalPlaytime.Day.plural: '%i днів'
+
+installedGamesPage.TotalPlaytime.Hour.single: '%i година'
+installedGamesPage.TotalPlaytime.Hour.plural: '%i годин'
+
+installedGamesPage.TotalPlaytime.Minute.single: '%i хвилина'
+installedGamesPage.TotalPlaytime.Minute.plural: '%i хвилин'
+
+setupPage.DSXSetup.Title: Налаштування
+
+setupPage.DSXSetup.AdaptiveTriggers.SubTitle: Широкий вибір режимів адаптивного тригера та конфігурацій для ідеального відчуття.
+
+setupPage.DSXSetup.HapticFeedback.Title: Тактильний відгук
+setupPage.DSXSetup.HapticFeedback.SubTitle: Відчуйте ще більший ефект занурення в гру за допомогою «Аудіо в тактильний відгук», «Класичну вібрацію в тактильний відгук» тощо.
+
+setupPage.DSXSetup.MultipleController.Title: Підтримка кількох контролерів
+setupPage.DSXSetup.MultipleController.SubTitle: Підключіть стільки контролерів, скільки ваш комп’ютер може обробити.
+
+setupPage.DSXSetup.ProfileSystem.SubTitle: Додайте необмежену кількість профілів і налаштуйте їх відповідно до своїх потреб.
+
+setupPage.DSXSetup.Actions.Title: Система дій
+setupPage.DSXSetup.Actions.SubTitle: Повторно прив’язуйте кнопки геймпада, призначайте ярлики, додавайте макроси, встановлюйте розкладки клавіатури тощо.
+
+setupPage.Finish.FeedbackSupport.Title: Зворотній зв'язок і підтримка
+setupPage.Finish.FeedbackSupport.SubTitle: Ваш відгук важливий. Приєднайтеся до сервера Discord, щоб повідомити про помилки, отримати підтримку або надати будь-які пропозиції.
+
+app.LetsTakeYourSkills: Давайте виведемо ваші навички на новий рівень.
+
+virtualPad.SelfInstall.Title: Самостійне встановлення VirtualPad
+virtualPad.SelfInstall.SubTitle: Завантажте драйвер вручну, щоб виконати самостійне встановлення.
+virtualPad.SelfInstall.SubTitle2: Після інсталяції вручну перезапустіть DSX і виконайте це налаштування знову.
+
+virtualPad.SelfInstall.Button.Title: Завантажити
+
+ctPage.Passthrough.Title: Пройти через
+
+ctPage.GeneralSettings.Mute.Title: Перемикач звуку мікрофона
+ctPage.GeneralSettings.Mute.Subtitle: DSX буде перемикати мікрофон ПК - вимикати або вмикати його під час натискання кнопки вимкнення звуку на пристрої. Це впливає на вибраний мікрофон ПК, а не лише на мікрофон пристрою.
+
+ledPage.Mute: "Вимкнення/увімкнення мікрофона ПК"
 
