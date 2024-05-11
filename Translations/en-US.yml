@@ -1859,5 +1859,9 @@ ctPage.Passthrough.Title: Passthrough
 ctPage.GeneralSettings.Mute.Title: Toggle Microphone Mute
 ctPage.GeneralSettings.Mute.Subtitle: When enabled, DSX will toggle the microphone on the PC, muting or unmuting it when pressing the Mute button on the device. This affects the selected PC microphone, not just the devices microphone.
 
-ledPage.Mute: "PC Microphone Mute/Unmute"
+ledPage.Mute: Microphone Mute/Unmute
+ctPage.GeneralSettings.Mute.PC: PC Microphone Mute/Unmute
+ctPage.GeneralSettings.Mute.Controller: Controller Microphone Mute/Unmute (USB)
+
+hidHidePage.InstallHidHide.Title: Install HidHide
 
