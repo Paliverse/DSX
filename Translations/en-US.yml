@@ -1857,7 +1857,7 @@ virtualPad.SelfInstall.Button.Title: Download VirtualPad
 ctPage.Passthrough.Title: Passthrough
 
 ctPage.GeneralSettings.Mute.Title: Toggle Microphone Mute
-ctPage.GeneralSettings.Mute.Subtitle: When enabled, DSX will toggle the microphone on the PC, muting or unmuting it when pressing the Mute button on the device. This affects the selected PC microphone, not just the devices microphone.
+ctPage.GeneralSettings.Mute.Subtitle: When enabled, DSX will toggle the microphone according to the selected mode, muting or unmuting the selected microphone when pressing the Mute button on the device. In mode PC Microphone Mute/Unmute - This affects any microphone used by the PC, not just the microphone of the controller. In mode Controller Microphone Mute/Unmute (USB) - This affects only on the controller microphone.
 
 ledPage.Mute: Microphone Mute/Unmute
 ctPage.GeneralSettings.Mute.PC: PC Microphone Mute/Unmute
