@@ -180,10 +180,10 @@ DualSensePad.Description: 가상 DualSense 게임패드를 기본적으로 지�
 # Profile system
 # ------------------------------------------------------------------------------------------------
 profiles.CannotUndo: 이 작업은 취소할 수 없습니다.
-profiles.EnterProfileName: 프로파일 이름 입력
+profiles.EnterProfileName: 프로필 이름 입력
 profiles.ProfileName: 프로필 이름
 profiles.ProfileSystem: 프로필 시스템
-profiles.ProfileType: 프로파일 유형
+profiles.ProfileType: 프로필 유형
 profiles.EditProfiles: 프로필 편집
 
 # Duplicate like the verb/action "I will duplicate the profile", not the noun/subject "a duplicate profile"
@@ -194,7 +194,7 @@ profiles.ConfirmButton.DeleteSelectedProfiles: 프로필 삭제
 profiles.ConfirmButton.DeleteSelectedProfilesPlural: 프로필 삭제
 profiles.CreateNewProfile: 새 프로필 만들기
 profiles.ActiveProfile: 활성 프로필
-profiles.ImportProfile: 프로파일 가져오기
+profiles.ImportProfile: 프로필 가져오기
 profiles.ShareProfile: 프로필 공유
 profiles.SearchControllerProfiles: 검색 컨트롤러 프로필
 profiles.CopySettingsFromAnotherProfile: 다른 프로필에서 설정 복사
@@ -210,19 +210,19 @@ profiles.Type.Notification.Detail: 새 알림 프로필을 추가하여 사용�
 profiles.Type.Actions: 작업 프로필
 profiles.Type.Actions.Detail: 새 작업 프로필을 추가하여 사용자 지정하거나 편집을 눌러 삭제할 프로필을 여러 개 선택합니다.
 
-profiles.Type.Deadzone: 데드존 프로파일
+profiles.Type.Deadzone: 데드존 프로필
 profiles.Type.Deadzone.Detail: 새 데드존 프로필을 추가하여 사용자 지정하거나 편집을 눌러 삭제할 프로필을 여러 개 선택합니다.
 
 profiles.Type.Touchpad: 터치패드 프로필
 profiles.Type.Touchpad.Detail: 새 터치패드 프로필을 추가하여 사용자 지정하거나 편집을 눌러 삭제할 프로필을 여러 개 선택합니다.
 
-profiles.Type.Motion: 모션 프로파일
-profiles.Type.Motion.Detail: 새 모션 프로파일을 추가하여 사용자 정의하거나 편집을 눌러 삭제할 프로파일을 여러 개 선택합니다.
+profiles.Type.Motion: 모션 프로필
+profiles.Type.Motion.Detail: 새 모션 프로필을 추가하여 사용자 정의하거나 편집을 눌러 삭제할 프로필을 여러 개 선택합니다.
 
-profiles.Type.AdaptiveTriggers: 적응형 트리거 프로파일
+profiles.Type.AdaptiveTriggers: 적응형 트리거 프로필
 profiles.Type.AdaptiveTriggers.Detail: 새 적응형 트리거 프로필을 추가하여 사용자 지정하거나 편집을 눌러 삭제할 프로필을 여러 개 선택합니다.
 
-profiles.Type.HapticsRumble: 햅틱/럼블 프로파일
+profiles.Type.HapticsRumble: 햅틱/럼블 프로필
 profiles.Type.HapticsRumble.Detail: 새 햅틱/럼블 프로필을 추가하여 사용자 지정하거나 편집을 눌러 삭제할 프로필을 여러 개 선택합니다.
 
 
@@ -353,23 +353,23 @@ homePage.ControllerOptions: 컨트롤러 옵션
 profilesPage.DeviceName.Title: 장치 이름
 profilesPage.DeviceName.SubTitle: 이 장치에 사용할 별칭 이름입니다.
 
-profilesPage.ProfilesDirectory.Title: 프로파일 디렉토리
+profilesPage.ProfilesDirectory.Title: 프로필 디렉토리
 profilesPage.ProfilesDirectory.SubTitle: 이 컨트롤러에 대한 프로필이 저장된 위치를 봅니다.
 
-profilesPage.ResetController.Title: 컨트롤러 프로파일 시스템 재설정
+profilesPage.ResetController.Title: 컨트롤러 프로필 시스템 재설정
 profilesPage.ResetController.SubTitle: 이 장치에 대한 모든 관련 프로필을 삭제합니다.file작업, LED, 적응형 트리거 등과 같은.
 profilesPage.ResetController.Popup.LineOne: 이 작업은 취소할 수 없습니다!
 profilesPage.ResetController.Popup.LineTwo: '이 장치에 대한 모든 관련 프로필(예: 작업, LED, 적응형 트리거 등) 삭제됩니다.'
 profilesPage.ResetController.Popup.LineThree: 계속하시겠습니까?
 
-profilesPage.ProfileList.SubTitle: 다양한 프로파일 시스템에 대해 현재 활성화된 프로파일입니다.
+profilesPage.ProfileList.SubTitle: 다양한 프로필 시스템에 대해 현재 활성화된 프로필입니다.
 
 profilesPage.Action: 작업 프로필
 profilesPage.AdaptiveTriggers: 적응형 트리거 프로필
-profilesPage.Deadzone: 데드존 프로파일
+profilesPage.Deadzone: 데드존 프로필
 profilesPage.HapticsRumble: 햅틱/럼블 프로필
 profilesPage.LED: LED 프로필
-profilesPage.Motion: 모션 프로파일
+profilesPage.Motion: 모션 프로필
 profilesPage.Notification: 알림 프로필
 profilesPage.Touchpad: 터치패드 프로필
 
@@ -446,10 +446,10 @@ ctPage.TriggerPosition.Sub: L2에 대해 버튼을 시뮬레이션해야 하는 
 ctPage.ActionsProfileSwitchTo: 작업 프로필 다음으로 전환
 ctPage.AdaptiveTriggerProfileSwitchTo: 적응형 트리거 프로필 로 전환
 ctPage.ControllerProfileSwitchTo: 컨트롤러 프로필 다음으로 전환
-ctPage.DeadzoneProfileSwitchTo: 데드존 프로파일 다음으로 전환
-ctPage.HapticsRumbleProfileSwitchTo: 햅틱/럼블 프로파일 로 전환
+ctPage.DeadzoneProfileSwitchTo: 데드존 프로필 다음으로 전환
+ctPage.HapticsRumbleProfileSwitchTo: 햅틱/럼블 프로필 로 전환
 ctPage.LEDProfileSwitchTo: LED 프로필 로 전환
-ctPage.MotionProfileSwitchTo: 모션 프로파일 다음으로 전환
+ctPage.MotionProfileSwitchTo: 모션 프로필 다음으로 전환
 ctPage.NotificationsProfileSwitchTo: 알림 프로필 다음으로 전환
 ctPage.TouchpadProfileSwitchTo: 터치패드 프로필 스위치
 ctPage.ActivateNativeMode: 기본 모드 활성화(가상 장치 없음)
@@ -472,11 +472,11 @@ ctPage.IncreaseVolumeLevel: 볼륨 레벨 높이기
 ctPage.DecreaseVolumeLevel: 볼륨 레벨 낮추기
 ctPage.DeviceStatus: 장치 상태
 ctPage.ActiveActionProfile: 활성 작업 프로필
-ctPage.ActiveAdaptiveTriggerProfile: 액티브 적응형 트리거 프로파일
-ctPage.ActiveDeadzoneProfile: 활성 데드존 프로파일
-ctPage.ActiveHapticsRumbleProfile: 액티브 햅틱/럼블 프로파일
-ctPage.ActiveLEDProfile: 액티브 LED 프로파일
-ctPage.ActiveMotionProfile: 액티브 모션 프로파일
+ctPage.ActiveAdaptiveTriggerProfile: 액티브 적응형 트리거 프로필
+ctPage.ActiveDeadzoneProfile: 활성 데드존 프로필
+ctPage.ActiveHapticsRumbleProfile: 액티브 햅틱/럼블 프로필
+ctPage.ActiveLEDProfile: 액티브 LED 프로필
+ctPage.ActiveMotionProfile: 액티브 모션 프로필
 ctPage.ActiveNotificationProfile: 활성 알림 프로필
 ctPage.ActiveTouchpadProfile: 액티브 터치패드 프로필
 ctPage.LaunchExecutable: 실행 파일 시작
@@ -618,7 +618,7 @@ ctPage.MacrosUnderConstruction: 매크로는 개발 중입니다.
 ctPage.MotionUnderConstruction: 모션이 개발 중입니다.
 ctPage.RawTriggerData: 원시 트리거 데이터
 ctPage.RawTriggerDataDescription: 물리적 컨트롤러에서 오는 L2 및 R2 데이터에 대한 원시 정보입니다.
-ctPage.GeneralSettings.AutoIdleShutOff: 자동 공회전 차단
+ctPage.GeneralSettings.AutoIdleShutOff: 자동 유휴 종료
 ctPage.GeneralSettings.AutoIdleShutOffDescription: 활성화되면 DSX는 컨트롤러가 지정된 시간 동안 유휴 상태임을 감지하면 Bluetooth를 통해 컨트롤러의 전원을 자동으로 끕니다.
 ctPage.GeneralSettings.DisableAutoIdleShutOffDuringCharging: 충전 중 자동 유휴 차단 비활성화
 ctPage.GeneralSettings.DisableAutoIdleShutOffDuringChargingDescription: 이를 통해 장치가 충전되는 동안 자동 유휴 종료 기능을 방지하여 유휴 시간 초과로 인한 중단 없이 중단 없는 충전 세션을 보장할 수 있습니다.
@@ -863,9 +863,9 @@ atPage.Legacy.Mode.VibrateTriggerPulse.SubTitle: 이 효과는 주파수가 자�
 # LED Page
 # ------------------------------------------------------------------------------------------------
 
-ledPage.RGB: RGB를 선택합니다
-ledPage.LEDProfiles: LED 프로파일
-ledPage.AddEditLEDProfiles: 새 LED 프로파일을 추가하여 사용자 지정하거나 편집을 눌러 삭제할 프로파일을 다중 선택합니다.
+ledPage.RGB: RGB
+ledPage.LEDProfiles: LED 프로필
+ledPage.AddEditLEDProfiles: 새 LED 프로필을 추가하여 사용자 지정하거나 편집을 눌러 삭제할 프로필을 다중 선택합니다.
 ledPage.SearchControllerProfiles: 검색 컨트롤러 프로필
 ledPage.WarningLEDPassthroughEnabled: "경고: LED Passthrough 활성화"
 ledPage.LEDPassthroughDescription: LED Passthrough가 활성화되면 수동 LED 설정이 비활성화되어 게임에서 LED를 동적으로 제어할 수 있습니다. 이 기능은 아래에 설정된 모든 수동 구성을 재정의하여 게임이 LED 동작을 지시할 수 있도록 합니다.
@@ -891,7 +891,7 @@ ledPage.StaticColorDescription: 변경되지 않는 정적 색
 ledPage.SelectedColor: 선택한 색상
 ledPage.SelectedColorDescription: 정적 색상 효과가 활성화될 때 사용할 색상입니다.
 ledPage.MultiColor: 멀티 컬러
-ledPage.MultiColorDescription: HSL Color Spectrum 또는 사용자 지정 추가 색상 사이를 순환합니다.
+ledPage.MultiColorDescription: HSL 색상 스펙트럼 또는 사용자 정의 색상 사이를 순환합니다.
 ledPage.CycleSpeed: 싸이클 속도
 ledPage.CycleSpeedDescription: 색상 사이를 순환하는 속도입니다.
 ledPage.AutoReverseColor: 자동 반전 색상
@@ -1090,7 +1090,7 @@ installedGamesPage.TotalPlaytime: 총 플레이 시간
 installedGamesPage.PlaytimeRecent: 최근 플레이 시간(2주)
 installedGamesPage.InstallDirectory: 설치 디렉토리
 installedGamesPage.LibraryPath: 라이브러리 경로
-installedGamesPage.RunCommand: 명령 실행
+installedGamesPage.RunCommand: 실행 명령
 installedGamesPage.ExecutablePath: 실행 파일 경로(가장 근접한 일치)
 installedGamesPage.ControllerProfile: 컨트롤러 프로필
 installedGamesPage.ControllerProfileDescription: 이 게임에 사용할 컨트롤러 프로필입니다.
@@ -1103,7 +1103,7 @@ installedGamesPage.SelectedGame.AppID: 앱 ID
 installedGamesPage.SelectedGame.LastPlayed: 마지막 플레이
 installedGamesPage.SelectedGame.TotalPlaytime: 총 플레이 시간
 installedGamesPage.SelectedGame.PlaytimeRecent: 최근 플레이 시간(2주)
-installedGamesPage.SelectedGame.RunCommand: 명령 실행
+installedGamesPage.SelectedGame.RunCommand: 실행 명령
 installedGamesPage.SelectedGame.InstallDirectory: 설치 디렉토리
 installedGamesPage.SelectedGame.LibraryPath: 라이브러리 경로
 installedGamesPage.SelectedGame.ExePath: 실행 파일 경로(가장 가까운 일치)
@@ -1292,7 +1292,7 @@ settingsPage.Display.WindowSizeCard.Title: 응용 프로그램 창 크기
 settingsPage.Display.WindowSizeCard.SubTitle: 이 응용 프로그램은 창 크기가 조정될 때 마지막 너비와 높이를 로드합니다. 여기에서 크기를 기본값으로 재설정할 수 있습니다.
 settingsPage.Display.WindowSizeCard.ResetAppSize: 응용 프로그램 크기 재설정
 
-settingsPage.Display.WindowScaleCard.Title: 창 스케일 크기 조정(Adjust Window Scale Size)
+settingsPage.Display.WindowScaleCard.Title: 창 스케일 크기 조정
 settingsPage.Display.WindowScaleCard.SubTitle: 이 값을 수정하여 창 내용의 크기를 적절하게 조정합니다. 최적의 가시성을 위해 저해상도 환경에서 작업하는 경우 수를 줄이는 것이 좋습니다.
 settingsPage.Display.WindowScaleSlider.Title: 창 축척 크기(Window Scale Size)
 
@@ -1316,7 +1316,7 @@ settingsPage.Display.TaskbarPreferences.ShowConnectedControllers: 연결된 컨�
 # -------------------------------
 settingsPage.Behavior.StartUpWithWindowCard.Title: Windows에서 시작
 settingsPage.Behavior.StartUpWithWindowCard.SubTitle: "Windows에서 DSX가 자동으로 시작되도록 설정합니다."
-settingsPage.Behavior.StartUpWithWindowCard.Note: "Steam은 시작 시에도 실행됩니다."
+settingsPage.Behavior.StartUpWithWindowCard.Note: "Steam이 시작 시 자동으로 실행됩니다."
 
 settingsPage.Behavior.Launchv2Automatically.Title: DSX v2 자동 시작
 settingsPage.Behavior.Launchv2Automatically.SubTitle: 사용하도록 설정하면 DSX v2가 시작되고 v3이 종료됩니다.
@@ -1413,20 +1413,20 @@ aboutPage.DSXChangeLog: DSX 변경 로그
 aboutPage.NefariusDescription.1: 드라이버 엔지니어
 aboutPage.NefariusDescription.2: 하드웨어 & 호환성
 aboutPage.NefariusDescription.3: 성능 & 안정성
-aboutPage.NefariusDescription.4: 최적화 & 데브옵스
-aboutPage.NefariusDescription.5: 테크니컬 라이터
+aboutPage.NefariusDescription.4: 최적화 & DevOps
+aboutPage.NefariusDescription.5: 기술 문서 작성자
 
 aboutPage.PaliverseDescription.1: 설립자 & 핵심 개발자
 aboutPage.PaliverseDescription.2: 하드웨어 & 호환성
 aboutPage.PaliverseDescription.3: 유지 보수 및 성능
 aboutPage.PaliverseDescription.4: 관리 & 업데이트
-aboutPage.PaliverseDescription.5: UI/UX 및 테스팅
+aboutPage.PaliverseDescription.5: UI/UX & Testing
 
 aboutPage.RamDescription.1: 코어 & 로직 개발자
 aboutPage.RamDescription.2: 그래픽 디자이너
 aboutPage.RamDescription.3: 성능 & 안정성
 aboutPage.RamDescription.4: 품질 & 커뮤니티
-aboutPage.RamDescription.5: UI/UX 및 테스팅
+aboutPage.RamDescription.5: UI/UX 및 Testing
 
 
 aboutPage.DSX.SteamPage.Title: DSX Steam 웹페이지
@@ -1523,11 +1523,11 @@ p.StopRecording: 기록 중지
 p.DeleteSelectedActionProfile: 선택한 작업 프로필을 삭제하시겠습니까?
 p.DeleteSelectedActionProfiles: 선택한 작업 프로필을 삭제하시겠습니까?
 p.DeleteSelectedDeadzoneProfile: 선택한 데드존 프로필을 삭제하시겠습니까?
-p.DeleteSelectedDeadzoneProfiles: 선택한 데드존 프로파일을 삭제하시겠습니까?
+p.DeleteSelectedDeadzoneProfiles: 선택한 데드존 프로필을 삭제하시겠습니까?
 p.DeleteSelectedTouchpadProfile: 선택한 터치패드 프로필을 삭제하시겠습니까?
 p.DeleteSelectedTouchpadProfiles: 선택한 터치패드 프로필을 삭제하시겠습니까?
-p.DeleteSelectedMotionProfile: 선택한 모션 프로파일을 삭제하시겠습니까?
-p.DeleteSelectedMotionProfiles: 선택한 모션 프로파일을 삭제하시겠습니까?
+p.DeleteSelectedMotionProfile: 선택한 모션 프로필을 삭제하시겠습니까?
+p.DeleteSelectedMotionProfiles: 선택한 모션 프로필을 삭제하시겠습니까?
 p.DeleteProfile: 프로필 삭제
 p.DeleteProfiles: 프로필 삭제
 p.LeftMouseButton.Text: 마우스 왼쪽 버튼
@@ -1541,10 +1541,10 @@ p.ScrollWheelDown: 휠 아래로 스크롤
 p.DeviceStatus: 장치 상태
 p.ActiveActionProfile: 활성 작업 프로필
 p.ActiveAdaptiveTriggersProfile: 활성 적응형 트리거 프로필
-p.ActiveDeadzoneProfile: 활성 데드존 프로파일
-p.ActiveHapticsRumbleProfile: 액티브 햅틱/럼블 프로파일
-p.ActiveLEDProfile: 액티브 LED 프로파일
-p.ActiveMotionProfile: 액티브 모션 프로파일
+p.ActiveDeadzoneProfile: 활성 데드존 프로필
+p.ActiveHapticsRumbleProfile: 액티브 햅틱/럼블 프로필
+p.ActiveLEDProfile: 액티브 LED 프로필
+p.ActiveMotionProfile: 액티브 모션 프로필
 p.ActiveNotificationsProfile: 활성 알림 프로필
 p.ActiveTouchpadProfile: 액티브 터치패드 프로필
 
@@ -1646,7 +1646,7 @@ p.Shortcuts.OpenTaskbarSettingsOnTaskbarFocus: 작업 표시줄 설정 열기(�
 # Controller Page -> Touchpad Section
 
 ctPage.Touchpad.Mode.Title: 터치패드 모드
-ctPage.Touchpad.Mode.SubTitle: Passthrough(Passthrough), Touchpad To Mouse(터치패드에서 마우스로) 또는 Touchpad+(터치패드+) 중에서 선택하여 터치패드를 최대한 활용할 수 있습니다.
+ctPage.Touchpad.Mode.SubTitle: 터치패드를 완전히 활용하려면 Passthrough, 터치패드를 마우스로, 또는 터치패드+ 중에서 선택하세요.
 
 ctPage.TouchpadToMouse.Mode.Passthrough.Title: Passthrough
 ctPage.TouchpadToMouse.Mode.Passthrough.SubTitle: 터치패드 데이터는 DualShock 4 또는 DualSense 에뮬레이션을 통해 전달됩니다.
@@ -1683,7 +1683,7 @@ ctPage.TouchpadToMouse.ScrollInvert.SubTitle: 활성화하면 스크롤이 반�
 
 # --------------------
 
-settingsPage.Display.WindowBackgroundEffect.Title: 창 배경 효과(Window Background Effect)
+settingsPage.Display.WindowBackgroundEffect.Title: 창 배경 효과
 settingsPage.Display.WindowBackgroundEffect.SubTitle: 원하는 배경 효과를 선택합니다.
 
 settingsPage.Display.WindowBackgroundEffect.Mode.None.Title: 없음
@@ -1749,6 +1749,121 @@ ctPage.JoystickDeadzone.Range.SubTitle: 스틱이 이동할 수 있는 거리를
 ctPage.JoystickDeadzone.Sensitivity.Title: 민감
 ctPage.JoystickDeadzone.Sensitivity.SubTitle: 감도를 높이면 조이스틱의 반응성이 높아지므로 작은 움직임도 화면에 큰 영향을 미칩니다. 감도를 낮추면 그 반대로 화면에서 동일한 변경을 수행하기 위해 더 큰 조이스틱 움직임이 필요합니다.
 
+homepage.VirtualDevice.DSModeConfig.Title: 듀얼센스 모드 구성
+homepage.VirtualDevice.DSModeConfig.SubTitle: 듀얼센스 에뮬레이션이 활성화되면 아래에서 패스스루 옵션을 조정할 수 있습니다.
+
+app.LaunchV2Button: DSX v2 실행
+
+profiles.ResetProfile: 프로필 초기화
+profiles.RenameProfile: 프로필 이름 변경
+
+ctPage.ActiveMouseMappingsDescription: 활성화된 마우스 매핑 목록입니다.
+
+ctPage.selectedButton: 선택된 버튼
+ctPage.selectedButtons: 선택된 버튼들
+
+ctPage.Input: 입력
+ctPage.Output: 출력
+
+ctPage.Mouse.ScrollUp: 스크롤 휠 위로 (%i 포인트)
+ctPage.Mouse.ScrollDown: 스크롤 휠 아래로 (%i 포인트)
+
+ctPage.R2TriggerInputRange: R2 트리거 입력 범위
+
+notificationsPage.SystemNotification.Title: 시스템 알림
+notificationsPage.SystemNotification.SubTitle: DSX가 알림을 보내려면 권한이 필요합니다. 이미 활성화되어 있지 않다면 `알림 설정 열기`를 클릭하여 DSX가 알림을 보낼 수 있도록 허용하세요.
+notificationsPage.SystemNotification.Button.Title: 알림 설정 열기
+
+notificationsPage.LowBattery.Title: 배터리 부족
+notificationsPage.LowBattery.SubTitle: 충전 중이 아닐 때 배터리가 부족할 때 알림을 받습니다.
+
+notificationsPage.LowBattery.Percentage.Title: 배터리 퍼센트
+notificationsPage.LowBattery.Percentage.SubTitle: 지정된 배터리 퍼센트 이하로 떨어지면 언제 이 알림이 트리거될지 선택하세요.
+
+notificationsPage.LowBattery.Repeat.Title: 알림 반복
+notificationsPage.LowBattery.Repeat.SubTitle: 이 알림을 몇 번 반복할지 선택하세요.
+
+notificationsPage.LowBattery.Repeat.1: 1회 반복
+notificationsPage.LowBattery.Repeat.3: 3회 반복
+notificationsPage.LowBattery.Repeat.5: 5회 반복
+notificationsPage.LowBattery.Repeat.10: 10회 반복
+notificationsPage.LowBattery.Repeat.Forever: 계속 반복
+
+notificationsPage.LowBattery.Interval.Title: 알림 간격
+notificationsPage.LowBattery.Interval.SubTitle: 각 반복 간의 시간 간격을 선택하세요.
+
+notificationsPage.LowBattery.Interval.30Seconds: 30초 간격
+notificationsPage.LowBattery.Interval.1: 1분 간격
+notificationsPage.LowBattery.Interval.2: 2분 간격
+notificationsPage.LowBattery.Interval.5: 5분 간격
+notificationsPage.LowBattery.Interval.10: 10분 간격
+
+notificationsPage.ConnectionStatus.Title: 연결 상태
+notificationsPage.ConnectionStatus.SubTitle: 이 장치가 DSX에 연결되거나 연결이 끊어졌을 때, 또는 에뮬레이션 모드가 활성화될 때 알림을 받습니다.
+
+notificationsPage.ConnectionStatus.DeviceConnected.Title: 장치 연결됨
+notificationsPage.ConnectionStatus.DeviceConnected.SubTitle: 이 장치가 DSX에 연결될 때 알림을 받습니다.
+
+notificationsPage.ConnectionStatus.DeviceDisconnected.Title: 장치 연결 끊김
+notificationsPage.ConnectionStatus.DeviceDisconnected.SubTitle: 이 장치가 DSX에서 연결이 끊어질 때 알림을 받습니다.
+
+notificationsPage.ConnectionStatus.VirtualDevice.Title: 가상 장치 상태
+notificationsPage.ConnectionStatus.VirtualDevice.SubTitle: 가상 장치가 활성화될 때 알림을 받습니다.
+
+
+notificationsPage.ProfileSystem.SubTitle: 프로필이 활성화될 때 알림을 받습니다.
+
+colorPicker.InitialColor: 초기 색상
+colorPicker.SelectedColor: 선택된 색상
+
+color.Gradient: 그라데이션
+
+# %i is a number that is auto filled, also keep the translation inside the single quotes.
+installedGamesPage.TotalPlaytime.Day.single: '%i 일'
+installedGamesPage.TotalPlaytime.Day.plural: '%i 일'
+
+installedGamesPage.TotalPlaytime.Hour.single: '%i 시간'
+installedGamesPage.TotalPlaytime.Hour.plural: '%i 시간'
+
+installedGamesPage.TotalPlaytime.Minute.single: '%i 분'
+installedGamesPage.TotalPlaytime.Minute.plural: '%i 분'
+
+setupPage.DSXSetup.Title: DSX 설정
+
+setupPage.DSXSetup.AdaptiveTriggers.SubTitle: 완벽한 느낌을 위한 다양한 적응형 트리거 모드 및 구성.
+
+setupPage.DSXSetup.HapticFeedback.Title: 햅틱 피드백
+setupPage.DSXSetup.HapticFeedback.SubTitle: 오디오를 햅틱으로, 진동을 햅틱으로 등 더 몰입감 있는 진동 경험을 느껴보세요.
+
+setupPage.DSXSetup.MultipleController.Title: 다중 컨트롤러 지원
+setupPage.DSXSetup.MultipleController.SubTitle: PC가 처리할 수 있는 만큼 많은 컨트롤러를 연결하세요.
+
+setupPage.DSXSetup.ProfileSystem.SubTitle: 무제한 프로필을 추가하고 필요에 맞게 구성하세요.
+
+setupPage.DSXSetup.Actions.Title: 액션 시스템
+setupPage.DSXSetup.Actions.SubTitle: 게임패드 버튼 재설정, 바로 가기 할당, 매크로 추가, 키보드 매핑 설정 등을 수행하세요.
+
+setupPage.Finish.FeedbackSupport.Title: 피드백 및 지원
+setupPage.Finish.FeedbackSupport.SubTitle: 귀하의 피드백은 중요합니다. 디스코드 서버에 가입하여 버그를 신고하거나 지원을 받거나 제안을 제공하세요.
+
+app.LetsTakeYourSkills: 당신의 스킬을 한 단계 업그레이드하세요.
+
+virtualPad.SelfInstall.Title: VirtualPad 수동 설치
+virtualPad.SelfInstall.SubTitle: 드라이버를 수동으로 다운로드하여 수동 설치를 수행하세요.
+virtualPad.SelfInstall.SubTitle2: 수동 설치 후, DSX를 다시 시작하고 이 설정을 다시 진행하세요.
+
+virtualPad.SelfInstall.Button.Title: VirtualPad 다운로드
+
+ctPage.Passthrough.Title: Passthrough
+
+ctPage.GeneralSettings.Mute.Title: 마이크 음소거 토글
+ctPage.GeneralSettings.Mute.Subtitle: "활성화되면, DSX는 선택한 모드에 따라 마이크를 토글하여 장치의 음소거 버튼이 눌리면 선택한 마이크를 음소거하거나 음소거 해제합니다. 'PC 마이크 음소거/음소거 해제' 모드에서는 컨트롤러의 마이크뿐만 아니라 모든 PC 마이크에 영향을 미칩니다. '컨트롤러 마이크 음소거/음소거 해제 (USB)' 모드에서는 컨트롤러 마이크에만 영향을 미칩니다."
+
+ledPage.Mute: 마이크 음소거/음소거 해제
+ctPage.GeneralSettings.Mute.PC: PC 마이크 음소거/음소거 해제
+ctPage.GeneralSettings.Mute.Controller: 컨트롤러 마이크 음소거/음소거 해제 (USB)
+
+hidHidePage.InstallHidHide.Title: HidHide 설치
 
 
 
