@@ -922,7 +922,7 @@ ledPage.PlayerIndicator: Oyuncu Göstergesi
 ledPage.PlayerIndicatorDescription: Oyuncu LED'inde kaçıncı oyuncu olduğunu gösterir.
 ledPage.BatteryMode: Batarya Modu
 ledPage.Battery: Batarya
-ledPage.BatteryDescription: %0'dan %100'e kadar belirlenen gradyan renkler kullanılarak gösterilen batarya seviyesidir.
+ledPage.BatteryDescription: "%0'dan %100'e kadar belirlenen gradyan renkler kullanılarak gösterilen batarya seviyesidir."
 
 ledPage.NoPlayerIndicator: Oyuncu Yok Göstergesi
 ledPage.PlayerOne: Birinci Oyuncu
@@ -1377,11 +1377,11 @@ settingsPage.Networking.FirewallCard.Status.OutgoingDescr: Giden UDP bağlantı 
 settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: Güvenlik Duvarına Bağlantı Noktasını Ekle
 
 # Make sure the %i is in here as it represents a number. Example: Incoming UDP Port for 6969 is open.
-settingsPage.Networking.FirewallCard.Status.IncomingSuccess: %i için gelen UDP Bağlantı Noktası açık.
-settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: %i için giden UDP Bağlantı Noktası açık.
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: "%i için gelen UDP Bağlantı Noktası açık."
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: "%i için giden UDP Bağlantı Noktası açık."
 
-settingsPage.Networking.FirewallCard.Status.IncomingFailed: %i için giden UDP Bağlantı Noktası kapalı.
-settingsPage.Networking.FirewallCard.Status.OutgoingFailed: %i için giden UDP Bağlantı Noktası kapalı.
+settingsPage.Networking.FirewallCard.Status.IncomingFailed: "%i için giden UDP Bağlantı Noktası kapalı."
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed: "%i için giden UDP Bağlantı Noktası kapalı."
 
 settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: Gelen UDP Bağlantı Noktasını Windows Güvenlik Duvarına Ekle.
 settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Giden UDP Bağlantı Noktasını Windows Güvenlik Duvarına Ekle.
@@ -1700,9 +1700,6 @@ settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Title: Sekmeli
 settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Subtitle: Windows 11 duvar kağıdı bulanıklaştırma efekti.
 settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Warning.Title: ⚠️ Sadece Windows 11 Insider 10 (derleme 22523) ve sonrasında geçerlidir
 
-settingsPage.Display.FullDarkModeCard.Title: Tam Karanlık Modu
-settingsPage.Display.FullDarkModeCard.SubTitle: Karanlık Modu sevenler için arka planı siyah yapar.
-
 BatteryPowerState.Discharging: Şarj Kullanımda
 BatteryPowerState.Charging: Şarj Oluyor
 BatteryPowerState.Complete: Dolu
@@ -1863,7 +1860,3 @@ ctPage.GeneralSettings.Mute.Title: Mikrofonu Kapa
 ctPage.GeneralSettings.Mute.Subtitle: Ayar etkinken DSX, bilgisayarın mikrofonunu aygıtın üzerindeki mikrofon butonuna basıldığında açıp kapatabilir. Bu, aygıtın mikrofonunun yanında bilgisayardaki varsayılan mikrofonu da etkiler.
 
 ledPage.Mute: "Bilgisayar Mikrofonu Aç/Kapa"
-
-
-
-
