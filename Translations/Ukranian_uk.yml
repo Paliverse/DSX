@@ -1857,6 +1857,17 @@ virtualPad.SelfInstall.Button.Title: Завантажити
 ctPage.Passthrough.Title: Пройти через
 
 ctPage.GeneralSettings.Mute.Title: Перемикач звуку мікрофона
-ctPage.GeneralSettings.Mute.Subtitle: DSX буде перемикати мікрофон ПК - вимикати або вмикати його під час натискання кнопки вимкнення звуку на пристрої. Це впливає на вибраний мікрофон ПК, а не лише на мікрофон пристрою.
+ctPage.GeneralSettings.Mute.Subtitle: Якщо ввімкнено, DSX перемикатиме мікрофон на ПК, вимикаючи або вмикаючи його під час натискання кнопки вимкнення звуку на пристрої. Це впливає на вибраний мікрофон ПК, а не лише на мікрофон пристрою.
 
-ledPage.Mute: "Вимкнення/увімкнення мікрофона ПК"
+ledPage.Mute: Вимкнення/увімкнення мікрофона
+ctPage.GeneralSettings.Mute.PC: Вимкнення/увімкнення мікрофона ПК
+ctPage.GeneralSettings.Mute.Controller: Вимкнення/увімкнення мікрофона контролера (USB)
+
+hidHidePage.InstallHidHide.Title: Установити HidHide
+
+Default: За замовчуванням
+hapticsPage.AudioHaptics.OutputDevice.Title: Джерело звуку
+hapticsPage.AudioHaptics.OutputDevice.SubTitle: Джерело звуку надсилається до контролера.
+
+driverInstallation.VPad.LicenseStatus.Valid: Дійсний
+driverInstallation.VPad.LicenseStatus.Expired: Закінчився термін дії
