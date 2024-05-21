@@ -925,16 +925,16 @@ ledPage.Battery: Batarya
 ledPage.BatteryDescription: "%0'dan %100'e kadar belirlenen gradyan renkler kullanılarak gösterilen batarya seviyesidir."
 
 ledPage.NoPlayerIndicator: Oyuncu Yok Göstergesi
-ledPage.PlayerOne: Birinci Oyuncu
-ledPage.PlayerOneIndicator: Birinci Oyuncu Göstergesi
-ledPage.PlayerTwo: İkinci Oyuncu
-ledPage.PlayerTwoIndicator: İkinci Oyuncu Göstergesi
-ledPage.PlayerThree: Üçüncü Oyuncu
-ledPage.PlayerThreeIndicator: Üçüncü Oyuncu Göstergesi
-ledPage.PlayerFour: Dördüncü Oyuncu
-ledPage.PlayerFourIndicator: Dördüncü Oyuncu Göstergesi
-ledPage.PlayerFive: Beşinci Oyuncu
-ledPage.PlayerFiveIndicator: Beşinci Oyuncu Göstergesi
+ledPage.PlayerOne: Oyuncu 1
+ledPage.PlayerOneIndicator: Oyuncu 1 Göstergesi
+ledPage.PlayerTwo: Oyuncu 2
+ledPage.PlayerTwoIndicator: Oyuncu 2 Göstergesi
+ledPage.PlayerThree: Oyuncu 3
+ledPage.PlayerThreeIndicator: Oyuncu 3 Göstergesi
+ledPage.PlayerFour: Oyuncu 4
+ledPage.PlayerFourIndicator: Oyuncu 4 Göstergesi
+ledPage.PlayerFive: Oyuncu 5
+ledPage.PlayerFiveIndicator: Oyuncu 5 Göstergesi
 
 ledPage.BatteryModeDescription: Seçildiğinde batarya seviyesini oyuncu LED göstergesi üzerinde gösterecektir.
 ledPage.Battery0To20Percent: Batarya 0% - 20%
@@ -1377,21 +1377,21 @@ settingsPage.Networking.FirewallCard.Status.OutgoingDescr: Giden UDP bağlantı 
 settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: Güvenlik Duvarına Bağlantı Noktasını Ekle
 
 # Make sure the %i is in here as it represents a number. Example: Incoming UDP Port for 6969 is open.
-settingsPage.Networking.FirewallCard.Status.IncomingSuccess: "%i için gelen UDP Bağlantı Noktası açık."
-settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: "%i için giden UDP Bağlantı Noktası açık."
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: "%i için Gelen UDP Bağlantı Noktası açık."
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: "%i için Giden UDP Bağlantı Noktası açık."
 
-settingsPage.Networking.FirewallCard.Status.IncomingFailed: "%i için giden UDP Bağlantı Noktası kapalı."
-settingsPage.Networking.FirewallCard.Status.OutgoingFailed: "%i için giden UDP Bağlantı Noktası kapalı."
+settingsPage.Networking.FirewallCard.Status.IncomingFailed: "%i için Giden UDP Bağlantı Noktası kapalı."
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed: "%i için Giden UDP Bağlantı Noktası kapalı."
 
-settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: Gelen UDP Bağlantı Noktasını Windows Güvenlik Duvarına Ekle.
-settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Giden UDP Bağlantı Noktasını Windows Güvenlik Duvarına Ekle.
+settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: Gelen UDP Bağlantı Noktasını Windows Güvenlik Duvarı'na Ekle.
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Giden UDP Bağlantı Noktasını Windows Güvenlik Duvarı'na Ekle.
 
 # -------------------------------
 settingsPage.Driver.VirtualPadDriverCard.SubTitle: VirtualPad Sürücüsü, emülasyondaki kontrolcüyü takılıymış gibi göstererek sanal bir aygıtın fizikselmiş gibi kullanılabilmesini sağlar.
 settingsPage.Driver.HidHideCard.SubTitle: HidHide, sanal kontrolcü emülasyonu esnasında DSX'in fiziksel kontrolcüyü gizlemesine izin verir. Sanal ve fiziksel kontrolcünün aynı anda çalışır görünmesinden doğacak çift basışları engellemek için kullanılır ve oyunun ya da programın sadece sanal kontrolcüyü görmesini sağlar.
-settingsPage.Driver.NefariusCard.SubTitle: Nefarius, VirtualPad Sürücüsü ve HidHide Sürücüsünün geliştiricisidir; onun yazılımları olmadan bu uygulama asla mümkün olmazdı! Lütfen aşağıdaki geliştiriciyi destekleyin.
+settingsPage.Driver.NefariusCard.SubTitle: Nefarius, VirtualPad Sürücüsü ve HidHide Sürücüsünün geliştiricisidir; onun yazılımları olmadan bu uygulama asla mümkün olamazdı. Lütfen bu geliştiriciyi destekleyin.
 settingsPage.Driver.NefariusCard.GetInTouch: İletişime geçin
-settingsPage.Driver.NefariusCard.ShowSupport: Desteğinizi gösterin
+settingsPage.Driver.NefariusCard.ShowSupport: Destek verin
 
 # Used more than once:
 settingsPage.Driver.DriverName: Sürücü İsmi
@@ -1787,7 +1787,7 @@ notificationsPage.LowBattery.Repeat.1: Bir defa tekrarla
 notificationsPage.LowBattery.Repeat.3: Üç defa tekrarla
 notificationsPage.LowBattery.Repeat.5: Beş defa tekrarla
 notificationsPage.LowBattery.Repeat.10: On defa tekrarla
-notificationsPage.LowBattery.Repeat.Forever: Sonsuza kadar tekrarla
+notificationsPage.LowBattery.Repeat.Forever: Sonsuz tekrar
 
 notificationsPage.LowBattery.Interval.Title: Bildirimler Arası Süre
 notificationsPage.LowBattery.Interval.SubTitle: Her bir tekrar arasında ne kadar süre bekleneceğini ayarlayın.
@@ -1799,7 +1799,7 @@ notificationsPage.LowBattery.Interval.5: 5 Dakika Bekle
 notificationsPage.LowBattery.Interval.10: 10 Dakika Bekle
 
 notificationsPage.ConnectionStatus.Title: Bağlantı Durumu
-notificationsPage.ConnectionStatus.SubTitle: Bu aygıt DSX'e bağlandığında ya da bağlantısı kesildiğinde, veya bir emülasyon modu etkin hâle geldiğinde bildirim alın.
+notificationsPage.ConnectionStatus.SubTitle: Bu aygıt DSX'e bağlandığında/bağlantısı kesildiğinde veya bir emülasyon modu etkin hâle geldiğinde bildirim alın.
 
 notificationsPage.ConnectionStatus.DeviceConnected.Title: Aygıt Bağlandı
 notificationsPage.ConnectionStatus.DeviceConnected.SubTitle: Bu aygıt DSX'e bağlandığında bildirim alın.
@@ -1833,18 +1833,18 @@ setupPage.DSXSetup.Title: DSX Kurulumu
 setupPage.DSXSetup.AdaptiveTriggers.SubTitle: Geniş yelpazedeki Uyarlanabilir Tetik mod ve ayarlarıyla hissiyatınızı bir üst seviyeye taşıyın.
 
 setupPage.DSXSetup.HapticFeedback.Title: Dokunsal Geri Bildirim
-setupPage.DSXSetup.HapticFeedback.SubTitle: Daha derin bir oyun deneyimi için Sesten Dokunsal Geri Bildirime, Titreşimden Dokunsal Geri Bildirime gibi titreşim özelliklerini keşfedin.
+setupPage.DSXSetup.HapticFeedback.SubTitle: Daha derin bir oyun deneyimi için Sesten Dokunsal Geri Bildirim, Titreşimden Dokunsal Geri Bildirim gibi Geri Bildirim özelliklerini keşfedin.
 
 setupPage.DSXSetup.MultipleController.Title: Çoklu Kontrolcü Desteği
 setupPage.DSXSetup.MultipleController.SubTitle: Bilgisayarınıza dilediğiniz kadar kontrolcü bağlayın.
 
-setupPage.DSXSetup.ProfileSystem.SubTitle: Sonsuz sayıda profil ekleyin ve ihtiyaçlarınıza göre bu profilleri düzenleyin.
+setupPage.DSXSetup.ProfileSystem.SubTitle: Sınırsız sayıda profil ekleyin ve ihtiyaçlarınıza göre bu profilleri düzenleyin.
 
 setupPage.DSXSetup.Actions.Title: Eylemler Dizgesi
-setupPage.DSXSetup.Actions.SubTitle: Düğmeleri yeniden atamak, kısayollar belirlemek, makro ayarlamak, klavye tuşları atamak ve dahası...
+setupPage.DSXSetup.Actions.SubTitle: Düğmeleri yeniden atayın, kısayol belirleyin, makro ayarlayın, klavye tuşları atayın...
 
 setupPage.Finish.FeedbackSupport.Title: Geri Bildirim ve Destek
-setupPage.Finish.FeedbackSupport.SubTitle: Geri bildirimleriniz önemli, lütfen Discord sunucusuna katılarak uygulamadaki hataları bildirebilir, destek alabilir ya da öneride bulunabilirsiniz.
+setupPage.Finish.FeedbackSupport.SubTitle: Geri bildirimleriniz bizim için önemli; Discord sunucusuna katılarak uygulamadaki hataları bildirebilir, destek alabilir ya da önerilerde bulunabilirsiniz.
 
 app.LetsTakeYourSkills: Yeteneklerinizi bir üst seviyeye çıkaralım.
 
@@ -1857,6 +1857,17 @@ virtualPad.SelfInstall.Button.Title: VirtualPad'i İndir
 ctPage.Passthrough.Title: Aktarma
 
 ctPage.GeneralSettings.Mute.Title: Mikrofonu Kapa
-ctPage.GeneralSettings.Mute.Subtitle: Ayar etkinken DSX, bilgisayarın mikrofonunu aygıtın üzerindeki mikrofon butonuna basıldığında açıp kapatabilir. Bu, aygıtın mikrofonunun yanında bilgisayardaki varsayılan mikrofonu da etkiler.
+ctPage.GeneralSettings.Mute.Subtitle: Bu ayar etkinken DSX, aygıttaki Sessiz düğmesine basıldığında bilgisayarın mikrofonunu açar/kapatır. Bu ayar yalnızca aygıtın mikrofonunu değil, seçili bilgisayar mikrofonunu da etkiler.
 
-ledPage.Mute: "Bilgisayar Mikrofonu Aç/Kapa"
+ledPage.Mute: Mikrofonu Aç/Kapa
+ctPage.GeneralSettings.Mute.PC: Bilgisayar Mikrofonlarını Aç/Kapa
+
+ctPage.GeneralSettings.Mute.Controller: Kontrolcü Mikrofonunu Aç/Kapa (USB ile)
+hidHidePage.InstallHidHide.Title: HidHide'yi Yükle
+
+Default: Varsayılan
+hapticsPage.AudioHaptics.OutputDevice.Title: Ses Kaynağı
+hapticsPage.AudioHaptics.OutputDevice.SubTitle: Kontrolcüye gönderilen sesin kaynağı.
+
+driverInstallation.VPad.LicenseStatus.Valid: Geçerli
+driverInstallation.VPad.LicenseStatus.Expired: Süresi Dolmuş
