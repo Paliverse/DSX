@@ -1857,7 +1857,7 @@ virtualPad.SelfInstall.Button.Title: VirtualPad 다운로드
 ctPage.Passthrough.Title: Passthrough
 
 ctPage.GeneralSettings.Mute.Title: 마이크 음소거 토글
-ctPage.GeneralSettings.Mute.Subtitle: "활성화되면, DSX는 선택한 모드에 따라 마이크를 토글하여 장치의 음소거 버튼이 눌리면 선택한 마이크를 음소거하거나 음소거 해제합니다. 'PC 마이크 음소거/음소거 해제' 모드에서는 컨트롤러의 마이크뿐만 아니라 모든 PC 마이크에 영향을 미칩니다. '컨트롤러 마이크 음소거/음소거 해제 (USB)' 모드에서는 컨트롤러 마이크에만 영향을 미칩니다."
+ctPage.GeneralSettings.Mute.Subtitle: "DSX가 활성화되면, 장치의 음소거 버튼을 누를 때 PC의 마이크가 켜지거나 꺼집니다. 이는 장치의 마이크뿐만 아니라 선택된 PC 마이크에도 영향을 미칩니다."
 
 ledPage.Mute: 마이크 음소거/음소거 해제
 ctPage.GeneralSettings.Mute.PC: PC 마이크 음소거/음소거 해제
@@ -1865,8 +1865,9 @@ ctPage.GeneralSettings.Mute.Controller: 컨트롤러 마이크 음소거/음소�
 
 hidHidePage.InstallHidHide.Title: HidHide 설치
 
+Default: 기본값
+hapticsPage.AudioHaptics.OutputDevice.Title: 소리 소스
+hapticsPage.AudioHaptics.OutputDevice.SubTitle: 컨트롤러로 전송되는 소리 소스입니다.
 
-
-
-
-
+driverInstallation.VPad.LicenseStatus.Valid: 유효
+driverInstallation.VPad.LicenseStatus.Expired: 만료됨
