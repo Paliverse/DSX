@@ -1864,3 +1864,10 @@ ctPage.GeneralSettings.Mute.PC: Микрофон ПК Выкл/Вкл
 ctPage.GeneralSettings.Mute.Controller: Выкл/Вкл микрофон Контроллера (только USB)
 
 hidHidePage.InstallHidHide.Title: Установить HidHide
+
+Default: По умолчанию
+hapticsPage.AudioHaptics.OutputDevice.Title: Источник звука
+hapticsPage.AudioHaptics.OutputDevice.SubTitle: Звук из источника будет передан на Контроллер.
+
+driverInstallation.VPad.LicenseStatus.Valid: Действительна
+driverInstallation.VPad.LicenseStatus.Expired: Истекла
