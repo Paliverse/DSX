@@ -1,0 +1,1875 @@
+#
+# * Copyright (c) 2022-2023 Paliverse Apps LLC. All rights reserved.
+# *
+# * Proprietary and Confidential - This source code is the sole property of Paliverse Apps LLC.
+# * Reproduction or dissemination of this source code, in whole or in part, or the 
+# * production of derivative works therefrom without the express permission of Paliverse Apps LLC.
+# * is strictly forbidden.
+# *
+# * Written by Paliverse Apps LLC.
+
+# ------------------------------------------------------------------------------------------------
+# More info on how to use Yaml files: https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started
+# Yaml files must be Embedded Resource in the file properties in DSX, otherwise translation files can also be selected from user's PC
+# ------------------------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------------------------
+# EXAMPLES: 
+# ------------------------------------------------------------------------------------------------
+
+# Anything before the colon : is the key, anything after the colon is the translated text (Value)
+
+# to use a colon : in parts of the text on the right, put the text inside quotes like this:
+colon.Example: "this is a text : with a colon"
+# example usage: <TextBlock Text="{i18n:Translate String='colon.Example', UsedForXamlTemp='this is a text : with a colon'}" />
+# programmatically: var text = Translator.Instance.GetTranslation("colon.Example", "this is a text : with a colon");
+# ----Takes in (single key, fallback text)
+
+# ------------------------------------------------------------------------------------------------
+
+# Normal String:
+houseString.Example: 'This is a house string.'
+# example usage: <TextBlock Text="{i18n:Translate String='houseString.Example', UsedForXamlTemp='This is a house string.'}" />
+# programmatically: var text = Translator.Instance.GetTranslation("houseString.Example", "This is a house string.");
+# ----Takes in (single key, fallback text)
+
+# ------------------------------------------------------------------------------------------------
+
+# String with a number that changes:
+# %i will be replaced with the number provided in xaml
+houseNumber.Example: 'Current House Address is %i Paliverse St. Chicago, IL 60640'
+# example usage: <TextBlock Text="{i18n:Translate String='houseNumber.Example', UsedForXamlTemp='Current House Address is %i Paliverse St. Chicago, IL 60640', Number=1234}" />
+# programmatically: var textNumber = Translator.Instance.GetTranslation("houseNumber.Example", $"Current House Address is {Number} Paliverse St. Chicago, IL 60640", 1234);
+# ----Takes in (single key, fallback text, number)
+
+# The number can be binded itself: Number={Binding ViewModel.HouseAddressNumber}
+
+# ------------------------------------------------------------------------------------------------
+
+# Singular or Plural string:
+# %i will be replaced with the number provided in xaml
+houseExample.single: '%i house'
+houseExample.plural: '%i houses'
+# example usage: <TextBlock Text="{i18n:Translate String='houseExample.single', Plural=houseExample.plural, UsedForXamlTemp='%i houses.', Number=1}" />
+# programmatically: var textPlural = Translator.Instance.GetTranslation("houseExample.single", "houseExample.plural", $"{Number} houses.", 1234);
+# ----Takes in (single key, plural key, fallback text, number)
+
+# The number reflects whether to use House or Houses.
+# The number can be binded itself: Number={Binding ViewModel.Number}
+
+# ------------------------------------------------------------------------------------------------
+# EXAMPLES END 
+# ------------------------------------------------------------------------------------------------
+
+
+# Please make sure you read the above before modifying this file.
+# If you're unsure of a translation or the key etc.. Contact @paliverse on discord in the DSX Server:
+# Https://discord.gg/dsx
+
+# ------------------------------------------------------------------------------------------------
+# Common things - For one time usage or Used in more than one place
+# ------------------------------------------------------------------------------------------------
+NoControllerDetected.Title: 未檢測到控制器
+NoControllerDetected.ATMessage: 請透過有線或藍牙連接您的控制器以設定自適應扳機。
+NoControllerDetected.Subtitle: 請透過有線或藍牙連接兼容的控制器以存取其資訊。
+
+# ------------------------------------------------------------------------------------------------
+# Small generic words
+# ------------------------------------------------------------------------------------------------
+OFF: "關閉"
+NotAny: N/A
+Frequency: 頻率
+Cancel: 取消
+TryAgain: 再試一次
+# A period of time, obviously
+Period: 時間週期
+
+# ------------------------------------------------------------------------------------------------
+# DSX
+# ------------------------------------------------------------------------------------------------
+dsx.Initialization.Title: 讓我們發揮您的潛力。
+dsx.NoControllersDetected: 未檢測到控制器
+dsx.KindlyConnectController: 請透過有線或藍牙連接相容的控制器以存取其資訊。
+dsx.PlugInControllerToConfigure: 請透過有線或藍牙連接以設定震動或觸覺回饋。
+dsx.ConnectControllerToAccessInfo: 請透過有線或藍牙連接相容的控制器以存取其資訊。
+dsx.ConnectControllerToConfigureNotifications: 請透過有線或藍牙連接以設定您的通知。
+dsx.ConnectControllerToConfigureProfiles: 請透過有線或藍牙連接以設定您的設定檔。
+
+dsx.Initialization.Error.SteamIDNoMatch.Title: Steam ID 不符
+dsx.Initialization.Error.SteamIDNoMatch.Detail: Steam ID 與 Steam API 不符。請確認您登入的帳戶與安裝 DSX 的帳戶相同。
+
+dsx.Initialization.Error.ServerFailure.Title: 未知伺服器錯誤
+dsx.Initialization.Error.ServerFailure.Detail: 無法與 DSX 伺服器通訊以驗證所有權，請確認您的 Windows 防火牆允許 DSX 通過，然後再試一次。
+
+dsx.Initialization.Error.SteamApiServerFailure.Title: Steam API 伺服器錯誤
+dsx.Initialization.Error.SteamApiServerFailure.Detail: 無法與 Steam API 伺服器通訊，請檢查 Steam 的線上伺服器狀態是否正常，如果他們的伺服器運作異常，請稍後再試一次。
+
+dsx.Initialization.Error.VirtualPadError.Title: Nefarius 的 VirtualPad 驅動程式伺服器錯誤
+dsx.Initialization.Error.VirtualPadError.Detail: 無法與 VirtualPad 驅動程式伺服器通訊，如果問題持續存在，請在 DSX Discord 伺服器或 Steam 論壇上聯繫我們。
+
+dsx.Initialization.Error.InternetConnection.Title: 需要網際網路連線
+dsx.Initialization.Error.InternetConnection.Detail: 啟動 DSX 需要網際網路連線，請確認您的 Windows 防火牆允許 DSX 通過，然後再試一次。
+
+dsx.Initialization.Error.UnautorizedAccess.Title: 無法與伺服器通訊，因為存取未經授權
+dsx.Initialization.Error.UnautorizedAccess.DetailOne: 無法建立連線，因為您的電腦日期和時間
+dsx.Initialization.Error.UnautorizedAccess.DetailTwo: 不正確。
+
+dsx.Initialization.AppSettings: 正在載入應用程式設定...
+dsx.Initialization.AccentColor: 正在應用強調色彩...
+dsx.Initialization.Discord: 正在設定 Discord 遊戲狀態(Rich Presence)...
+dsx.Initialization.InternetCheck: 正在檢查網際網路連線...
+dsx.Initialization.SteamID: 正在檢查 Steam ID...
+dsx.Initialization.DSXOwnership: 正在向 Steam 伺服器檢查 DSX 所有權...
+dsx.Initialization.DLCOwnership: 正在向 Steam 伺服器檢查 DualSense Emulation DLC 所有權...
+dsx.Initialization.OwnershipResults: 正在檢查 DSX/DLC 所有權結果...
+dsx.Initialization.DSFirmware: 正在取得最新的 DualSense 固件版本...
+dsx.Initialization.VirtualPad: 正在檢查 Nefarius 的 VirtualPad 驅動程式更新...
+dsx.Initialization.VirtualPadResult: Nefarius 的 VirtualPad 驅動程式正在運行最新版本...
+dsx.Initialization.SetupPage: 正在準備設定頁面...
+dsx.Initialization.v3BetaInfo: 正在準備 v3 Beta 資訊頁面...
+dsx.Initialization.HomePage: 正在準備主頁...
+
+dsx.Initialization.VirtualPad.LicenseExpired: VirtualPad 驅動程式授權已過期。需要重新安裝或重新啟動。
+dsx.Initialization.VirtualPad.ServiceError: VirtualPad 驅動程式服務錯誤，需要重新安裝。
+dsx.Initialization.VirtualPad.UpdateAvailable.PartOne: VirtualPad 驅動程式版本
+dsx.Initialization.VirtualPad.UpdateAvailable.PartTwo: 可用
+dsx.Initialization.VirtualPad.NotInstalled: 未安裝 Nefarius 的 VirtualPad 驅動程式。
+
+dsx.ShutDown: 關閉 DSX
+dsx.ShutDown.PopupTitle: 關閉 DSX？
+dsx.ShutDown.Detail: 您確定要關閉 DSX 嗎？
+
+dsx.NavigationButtons.Home: 主頁
+dsx.NavigationButtons.Profiles: 設定檔
+dsx.NavigationButtons.Controller: 控制器
+dsx.NavigationButtons.Notifications: 通知
+dsx.NavigationButtons.DSEdgePSVR2: DS Edge | PSVR2
+dsx.NavigationButtons.AdaptiveTriggers: 自適應扳機
+dsx.NavigationButtons.ControllerLED: 控制器 LED
+dsx.NavigationButtons.HapticsRumble: 觸覺反饋 | 震動
+dsx.NavigationButtons.InstalledGames: 已安裝的遊戲
+dsx.NavigationButtons.HidHide: HidHide
+dsx.NavigationButtons.DSXLogs: DSX 記錄
+dsx.NavigationButtons.Settings: 設定
+dsx.NavigationButtons.About: 關於
+
+dsx.TaskbarIcon.QuitDSX: 退出 DSX
+
+dsx.UnexpectedError.Popup.Title: 發生未處理的 AppDomain 例外狀況 (Unhandled AppDomain exception occurred)
+dsx.UnexpectedError.Popup.TitleTwo: 發生未處理的 UI Thread 例外狀況 (Unhandled UI Thread exception occurred)
+
+dsx.UnexpectedError.Popup.LineOne: 發生意外錯誤，DSX v3 無法繼續執行。(An unexpected error occurred, DSX v3 can't continue.)
+dsx.UnexpectedError.Popup.LineTwo: 有關崩潰的詳細資訊可在位於 logs 子目錄中的檔案中找到。
+
+
+# ------------------------------------------------------------------------------------------------
+# Descriptions
+# ------------------------------------------------------------------------------------------------
+
+X360Gamepad.Title: 虛擬 Xbox 360 遊戲手把
+X360Gamepad.Description: 在任何支援 Xinput 的遊戲一起使用虛擬 Xbox 360 遊戲手把。
+
+DS4Gamepad.Title: 虛擬 DualShock 4 遊戲手把
+DS4Gamepad.Description: 在原生支援它的遊戲一起使用使用虛擬 DualShock 4 遊戲手把。
+
+DualSensePad.Title: 虛擬 DualSense 遊戲手把 (需要 DLC)
+DualSensePad.Description: 在原生支援它的遊戲一起使用虛擬 DualSense 遊戲手把。
+
+# ------------------------------------------------------------------------------------------------
+# Profile system
+# ------------------------------------------------------------------------------------------------
+profiles.CannotUndo: 這個動作無法復原。
+profiles.EnterProfileName: 輸入設定檔名稱
+profiles.ProfileName: 設定檔名稱
+profiles.ProfileSystem: 設定檔系統
+profiles.ProfileType: 設定檔類型
+profiles.EditProfiles: 編輯設定檔
+
+# Duplicate like the verb/action "I will duplicate the profile", not the noun/subject "a duplicate profile"
+profiles.DuplicateProfile: 複製設定檔
+profiles.DeleteSelectedProfiles: 刪除選定的設定檔
+profiles.DeleteSelectedProfilesPlural: 刪除選定的設定檔
+profiles.ConfirmButton.DeleteSelectedProfiles: 刪除設定檔
+profiles.ConfirmButton.DeleteSelectedProfilesPlural: 刪除設定檔
+profiles.CreateNewProfile: 建立新的設定檔
+profiles.ActiveProfile: 正在使用的設定檔
+profiles.ImportProfile: 匯入設定檔
+profiles.ShareProfile: 分享設定檔
+profiles.SearchControllerProfiles: 搜尋控制器設定檔
+profiles.CopySettingsFromAnotherProfile: 從其他設定檔複製設定
+
+profiles.Controller.Search: 搜尋控制器設定檔
+
+profiles.Type.ProfilesPage: 控制器設定檔
+profiles.Type.ProfilesPage.Detail: 新增新的控制器設定檔以自訂，或按編輯以多選設定檔進行刪除。
+
+profiles.Type.Notification: 通知設定檔
+profiles.Type.Notification.Detail: 新增新的通知設定檔以自訂，或按編輯以多選設定檔進行刪除。
+
+profiles.Type.Actions: 操作設定檔
+profiles.Type.Actions.Detail: 新增新的操作設定檔以自訂，或按編輯以多選設定檔進行刪除。
+
+profiles.Type.Deadzone: 死區設定檔
+profiles.Type.Deadzone.Detail: 新增新的死區設定檔以自訂，或按編輯以多選設定檔進行刪除。
+
+profiles.Type.Touchpad: 觸控板設定檔
+profiles.Type.Touchpad.Detail: 新增新的觸控板設定檔以自訂，或按編輯以多選設定檔進行刪除。
+
+profiles.Type.Motion: 動作設定檔
+profiles.Type.Motion.Detail: 新增新的動作設定檔以自訂，或按編輯以多選設定檔進行刪除。
+
+profiles.Type.AdaptiveTriggers: 自適應扳機設定檔
+profiles.Type.AdaptiveTriggers.Detail: 新增新的自適應扳機設定檔以自訂，或按編輯以多選設定檔進行刪除。
+
+profiles.Type.HapticsRumble: 觸覺/震動設定檔
+profiles.Type.HapticsRumble.Detail: 新增新的觸覺/震動設定檔以自訂，或按編輯以多選設定檔進行刪除。
+
+
+# ------------------------------------------------------------------------------------------------
+# Home Page
+# ----------------------------------------------------------------------------------------------R--
+
+homePage.Firmware.Info.Title: 硬體/韌體資訊
+
+homePage.Hardware.Info.Title: 硬體資訊
+homePage.Hardware.Info.SubTitle: 這個控制器的硬體資訊（哪個版本）。
+
+homePage.Hardware.Variation.Title: 硬體變化
+homePage.Hardware.Variation.SubTitle: 這個控制器的硬體變化。
+
+homePage.Hardware.Version.Title: 硬體版本
+homePage.Hardware.Version.SubTitle: 這個控制器的硬體版本。
+
+homePage.Firmware.Version.Title: 韌體版本
+homePage.Firmware.Version.SubTitle: 目前的韌體版本。
+
+homePage.Firmware.Type.Title: 韌體類型
+homePage.Firmware.Type.SubTitle: 這個控制器的韌體類型。
+
+homePage.Firmware.BuildDate: 韌體建立日期
+homePage.Firmware.BuildDate.SubTitle: 您韌體的生日！
+
+homePage.Firmware.MainVersion.Title: 主要韌體版本
+homePage.Firmware.MainVersion.SubTitle: 主要韌體版本。
+
+homePage.MAC.Title: MAC 地址
+homePage.MAC.SubTitle: 獨特的 MAC 地址識別碼。
+
+homePage.HWInfo.Export.Title: 匯出硬體/軟體資訊
+
+homePage.MoreDualSenseInfo.Title: 更多 DualSense 資訊
+homePage.MoreDualSenseInfo.SubTitle: DualSense 控制器的其餘硬體/軟體資訊。
+
+homePage.ExperienceTrueImmersionWith: 透過
+homePage.AdaptiveTriggers: 自適應扳機
+homePage.HapticFeedback: 觸覺回饋
+homePage.ConnectionMode: 連線模式
+homePage.ConnectionType.Detail: 連接到電腦所使用的連線類型。
+homePage.BatteryPercent: 電池百分比
+homePage.BatteryPercent.Detail: 控制器匯報的電池百分比。
+homePage.PowerState: 電源狀態
+homePage.PowerState.ToolTip: 控制器匯報的電池電源狀態。
+homePage.PollingRate: 輪詢率
+homePage.PollingRate.ToolTip: 控制器的輪詢率。
+homePage.PollingRate.JustNo: 不行，無法在 DSX 內更改。
+homePage.Firmware.UpdateAvailable: 有可用的韌體更新
+homePage.Firmware.UpdateAvailable.Detail: 透過更新韌體，提升您的 DualSense™ 無線控制器和 DualSense Edge™ 無線控制器的效能。
+homePage.Firmware.CurrentVersion: "目前的韌體版本："
+homePage.Firmware.LatestVersion: "最新的韌體版本："
+homePage.Firmware.UpdateNow: 立即更新
+
+homePage.ConstantDataCommunication.Title: 持續資料傳輸
+homePage.ConstantDataCommunication.Detail: 啟用時，DSX 會非常頻繁地更新此裝置，停用時，DSX 只會在有新的東西時更新此裝置。
+homePage.ConstantDataCommunication.Note: 如果無法將其他藍牙控制器連接到 DSX/PC，請停用此功能。
+
+homePage.VirtualDevice.Title: 虛擬裝置
+homePage.VirtualDevice.Detail: 虛擬裝置是電腦認為您正在使用的裝置，而不是您的實體控制器。
+
+homePage.VirtualDevice.Mode.Native.Title: 原生模式
+homePage.VirtualDevice.Mode.Native.Configuration.Title: 原生模式設定
+homePage.VirtualDevice.Mode.Native.Configuration.Detail: 選擇原生模式時，不會建立虛擬裝置，您可以選擇啟用或停用 DSX 資料傳輸，以使其更符合本機支援的遊戲。
+
+homePage.VirtualDevice.Mode.Native.Configuration.SendData.Title: 傳送資料至裝置
+homePage.VirtualDevice.Mode.Native.Configuration.SendData.Detail: 啟用時，DSX 將控制自適應扳機、LED、震動、觸覺反饋等等...停用以讓原生遊戲或其他程式控制此裝置。
+
+homePage.VirtualDevice.Mode.X360.Configuration.Title: Xbox 模式設定
+homePage.VirtualDevice.Mode.X360.Configuration.Detail: 啟用 Xbox 360 模擬時，您可以調整以下的直接傳輸選項。
+homePage.VirtualDevice.Mode.X360.Configuration.SubType: Xbox 360 子類型
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Detail: 選擇所需的 Xbox 360 子類型，以讓支援的遊戲識別。
+
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Gamepad: 遊戲手把
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.ArcadePad: 街機手把
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.ArcadeStick: 街機搖桿
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.DancePad: 舞蹈墊
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.DrumKit: 鼓套件
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.FlightStick: 飛行搖桿
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Guitar: 吉他
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.GuitarAlternate: 替代吉他
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.GuitarBass: 吉他貝斯
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Wheel: 方向盤
+
+homePage.VirtualDevice.Mode.X360.Configuration.RumblePassthrough.Title: 震動直傳
+homePage.VirtualDevice.Mode.X360.Configuration.RumblePassthrough.Detail: 啟用時，傳送至虛擬 Xbox 360 控制器的震動將傳遞到此裝置。
+
+homePage.VirtualDevice.Mode.DS4.Configuration.RumblePassthrough.Title: 震動直傳
+homePage.VirtualDevice.Mode.DS4.Configuration.RumblePassthrough.Detail: 啟用時，傳送至虛擬 DualShock 4 控制器的震動將傳遞到此裝置。
+
+homePage.VirtualDevice.Mode.DS4.Configuration.LEDPassthrough.Title: LED 直傳
+homePage.VirtualDevice.Mode.DS4.Configuration.LEDPassthrough.Detail: 啟用時，傳送至虛擬 DualShock 4 控制器的燈條顏色將傳遞到此裝置。
+
+homePage.VirtualDevice.Mode.DualSense.Configuration.RumblePassthrough.Title: 震動直傳
+homePage.VirtualDevice.Mode.DualSense.Configuration.RumblePassthrough.Detail: 啟用時，傳送至虛擬 DualSense 控制器的震動將傳遞到此裝置。
+
+homePage.VirtualDevice.Mode.DualSense.Configuration.ATPassthrough.Title: 自適應扳機直傳
+homePage.VirtualDevice.Mode.DualSense.Configuration.ATPassthrough.Detail: 啟用時，傳送至虛擬 DualSense 控制器的自適應扳機將傳遞到此裝置。
+
+homePage.VirtualDevice.Mode.DualSense.Configuration.LEDPassthrough.Title: LED 直傳
+homePage.VirtualDevice.Mode.DualSense.Configuration.LEDPassthrough.Detail: 啟用時，傳送至虛擬 DualSense 控制器的燈條顏色將傳遞到此裝置。
+
+homePage.VirtualDevice.Mode.X360.Title: Xbox 360 模擬
+homePage.VirtualDevice.Mode.DS4.Title: DualShock 4 模擬
+homePage.VirtualDevice.Mode.DualSense.Title: DualSense 模擬
+homePage.VirtualDevice.Mode.DualSense.Detail: 透過無線自適應扳機等功能進行增強
+homePage.VirtualDevice.Mode.Rev1: 修訂版 1
+homePage.VirtualDevice.Mode.Rev2: 修訂版 2
+
+homePage.VirtualDevice.Mode.DS4.Configuration.Title: DualShock 4 模擬模式設定
+homePage.VirtualDevice.Mode.DS4.Configuration.Detail: 啟用 DualShock 4 模擬時，您可以調整以下的直接傳輸選項。
+homePage.VirtualDevice.Mode.DS4.Configuration.SubType: DualShock 4 子類型
+homePage.VirtualDevice.Mode.DS4.Configuration.SubType.Detail: 選擇所需的 DualShock 4 子類型，以讓支援的遊戲識別。
+
+homePage.VirtualDevice.DS4.IssuesUnderInvestigation: DualShock 4 模擬問題調查中
+homePage.VirtualDevice.DS4.IssuesUnderInvestigation.Detail: 我們目前正在調查有關 DualShock 4 模擬的問題，使用此模式可能會導致意外的系統重新啟動。請自行承擔風險。請耐心等待，我們正在努力修復問題！
+
+homePage.VirtualDevice.DSDLC.Explore: 探索
+
+homePage.ControllerOptions: 控制器選項
+
+
+# ------------------------------------------------------------------------------------------------
+# Profiles Page
+# ------------------------------------------------------------------------------------------------
+
+profilesPage.DeviceName.Title: 裝置名稱
+profilesPage.DeviceName.SubTitle: 此裝置使用的別名。
+
+profilesPage.ProfilesDirectory.Title: 設定檔目錄
+profilesPage.ProfilesDirectory.SubTitle: 查看此控制器的設定檔儲存位置。
+
+profilesPage.ResetController.Title: 重設控制器設定檔系統
+profilesPage.ResetController.SubTitle: 刪除此裝置的所有相關設定檔，例如操作、LED、自適應扳機等。
+profilesPage.ResetController.Popup.LineOne: 這個動作無法復原！
+profilesPage.ResetController.Popup.LineTwo: 此裝置的所有相關設定檔，例如操作、LED、自適應扳機等，都將被刪除。
+profilesPage.ResetController.Popup.LineThree: 確定要繼續嗎？
+
+profilesPage.ProfileList.SubTitle: 各種設定檔系統的目前啟用設定檔。
+
+profilesPage.Action: 操作設定檔
+profilesPage.AdaptiveTriggers: 自適應扳機設定檔
+profilesPage.Deadzone: 死區設定檔
+profilesPage.HapticsRumble: 觸覺反饋/震動設定檔
+profilesPage.LED: LED 設定檔
+profilesPage.Motion: 動作設定檔
+profilesPage.Notification: 通知設定檔
+profilesPage.Touchpad: 觸控板設定檔
+
+
+# ------------------------------------------------------------------------------------------------
+# Controller Page
+# ------------------------------------------------------------------------------------------------
+ctPage.IdleShutoffInactiveDuringCharging: 充電期間閒置關閉功能停用
+ctPage.DurationSinceIdle: "閒置時間:" 
+ctPage.InputFeedback.Title: 輸入回饋
+ctPage.InputFeedback.Description: 查看實體輸入或模擬輸入。
+ctPage.Physical: 實體
+ctPage.Virtual: 虛擬 
+ctPage.LeftFN: 左 FN
+ctPage.RightFN: 右 FN
+ctPage.Actions.Title: 操作
+ctPage.Actions.Description: 創建按鈕映射、鍵盤映射、快捷方式、巨集等操作... 
+ctPage.KeyboardButtonDetector.Title: 鍵盤按鈕識別器
+ctPage.KeyboardButtonDetector.Description: DSX 可以模擬此文字框中識別的任何鍵盤按鈕。
+ctPage.KeyDetector.Placeholder: 當我處於啟用狀態時，按下鍵盤上的按鈕。
+ctPage.KeyDetector.ToolTip: 開啟螢幕鍵盤
+ctPage.KeyDetector.Detail: DSX 可以模擬此文字框中添加的任何文字。
+ctPage.KeyDetector.Input.Placeholder: 在此輸入任何內容以進行模擬。
+ctPage.ListOfAddedKeyboardMappings: 已添加的鍵盤映射列表
+ctPage.ListOfAddedKeyboardMappings.NoneAdded: 尚未添加任何鍵盤映射
+ctPage.ListOfAddedKeyboardMappings.Detail: 您的鍵盤映射列表將顯示在此處。
+ctPage.VirtualMouse.Detail: 當按下所選按鈕時，會將下面添加的虛擬滑鼠按鈕視為滑鼠按壓。
+ctPage.MouseButtonDetector: 滑鼠按鈕識別器
+ctPage.MouseButtonDetector.Detail: DSX 可以模擬此方塊識別的滑鼠按鈕點擊。將滑鼠懸停在方塊上，然後按下滑鼠上的按鈕。
+ctPage.MouseButtonDetector.Text: 當我被突顯時，按下滑鼠上的按鈕。
+ctPage.MouseButtons: 滑鼠按鈕
+ctPage.MouseButtons.Detail: DSX 可以模擬從此列表中添加的任何滑鼠按鈕。
+ctPage.LeftMouseButton: 滑鼠左鍵
+ctPage.RightMouseButton: 滑鼠右鍵
+ctPage.MiddleMouseButton: 滑鼠中鍵
+ctPage.ScrollWheelUp: 上滾輪
+ctPage.ScrollWheelDown: 下滾輪
+ctPage.BackMouseButton: 後側鍵
+ctPage.ForwardMouseButton: 前側鍵
+ctPage.ListOfAddedMouseMappings: 已添加的滑鼠映射列表
+ctPage.ListOfAddedMouseMappings.NoneAdded: 尚未添加滑鼠映射
+ctPage.ListOfAddedMouseMappings.NoneAdded.Sub: 尚未添加滑鼠映射
+ctPage.Shortcuts.Title: 捷徑
+ctPage.Shortcuts.Detail: 當按下所選按鈕時，會觸發下面添加的捷徑。
+ctPage.WindowsActionPresets.Title: Windows 動作預設值
+ctPage.AppSettings.Title: 應用程式設定
+ctPage.ChangeEmulationType: 更改模擬類型
+ctPage.ToggleTouchpadToMouse: 切換觸控板為滑鼠
+ctPage.GeneralSettings.Title: 一般設定
+
+ctPage.GeneralSettings.Description: 一般控制器設定，例如自動關閉等。
+ctPage.Deadzones.Title: 死區
+ctPage.Deadzones.Description: 調整扳機死區輸入範圍和搖桿死區以提高準確性。
+ctPage.Touchpad.Title: 觸控板
+ctPage.Touchpad.Description: 利用觸控板的全部範圍，輕鬆創建各種輸入。
+ctPage.Motion.Title: 動作
+ctPage.Motion.Description: 利用觸控板的全部範圍，輕鬆創建各種輸入。
+ctPage.RawFeedback.Title: 原始回饋
+ctPage.RawFeedback.Description: 查看直接來自您的遊戲手柄的各種信息，例如扳機、搖桿、觸控板和動作。
+ctPage.GamepadSkin.Title: 遊戲手柄外觀
+ctPage.GamepadSkin.Description: 選擇您想要在左側顯示的遊戲手柄外觀以進行回饋。
+ctPage.NoSelectedButtons.Title: 未選擇按鈕
+ctPage.NoSelectedButtons.Description: 請在左側選擇按鈕以開始。
+ctPage.RawPressureValue: 原始壓力值
+
+ctPage.InsertGamepadButton: 插入遊戲手柄按鈕
+ctPage.ButtonMappingsList: 已添加的按鈕映射列表
+ctPage.NoButtonMappingAdded: 尚未添加任何按鈕映射
+ctPage.NoButtonMappingAdded.Sub: 尚未添加任何按鈕映射
+
+ctPage.TriggerPosition.Title: 扳機位置
+ctPage.TriggerPosition.Sub: 設定 L2 | R2 按鈕的觸發值 (1-255)
+
+ctPage.ActionsProfileSwitchTo: 切換至操作設定檔
+ctPage.AdaptiveTriggerProfileSwitchTo: 切換至自適應扳機設定檔
+ctPage.ControllerProfileSwitchTo: 切換至控制器設定檔
+ctPage.DeadzoneProfileSwitchTo: 切換至死區設定檔
+ctPage.HapticsRumbleProfileSwitchTo: 切換至觸覺反饋/震動設定檔
+ctPage.LEDProfileSwitchTo: 切換至 LED 設定檔
+ctPage.MotionProfileSwitchTo: 切換至動作設定檔
+ctPage.NotificationsProfileSwitchTo: 切換至通知設定檔
+ctPage.TouchpadProfileSwitchTo: 切換至觸控板設定檔
+ctPage.ActivateNativeMode: 啟用原生模式（無虛擬裝置）
+ctPage.ActivateXbox360VirtualDevice: 啟用 Xbox 360 虛擬裝置
+ctPage.ActivateDualShock4VirtualDevice: 啟用 DualShock 4 虛擬裝置
+ctPage.ActivateDualSenseVirtualDevice: 啟用 DualSense 虛擬裝置
+ctPage.TurnControllerOff: 關閉控制器（僅限藍牙連接）
+ctPage.RestartController: 重新啟動控制器（僅限 USB 連接）（僅限 DualSense、DualSense Edge 和 PSVR Sense）
+ctPage.TurnControllerOff: 關閉控制器（僅限藍牙連接）
+ctPage.RestartController: 重新啟動控制器（僅限 USB 連接）（僅限 DualSense、DualSense Edge 和 PSVR Sense）
+ctPage.MediaAndSystemKeys: 媒體和系統按鍵
+ctPage.ToggleXboxGameBar: 切換 Xbox Game Bar
+ctPage.TakeSystemScreenshot: 截圖
+ctPage.IncreaseBrightnessLevel: 增加亮度
+ctPage.DecreaseBrightnessLevel: 降低亮度
+ctPage.ToggleMicrophoneMute: 切換麥克風靜音
+ctPage.PreviousTrack: 上一首
+ctPage.PlayPause: 播放/暫停
+ctPage.NextTrack: 下一首
+ctPage.ToggleVolumeMute: 切換音量靜音
+ctPage.IncreaseVolumeLevel: 增加音量
+ctPage.DecreaseVolumeLevel: 降低音量
+ctPage.DeviceStatus: 裝置狀態
+ctPage.ActiveActionProfile: 已啟用的操作設定檔
+ctPage.ActiveAdaptiveTriggerProfile: 已啟用的自適應扳機設定檔
+ctPage.ActiveDeadzoneProfile: 已啟用的死區設定檔
+ctPage.ActiveHapticsRumbleProfile: 已啟用的觸覺反饋/震動設定檔
+ctPage.ActiveLEDProfile: 已啟用的 LED 設定檔
+ctPage.ActiveMotionProfile: 已啟用的動作設定檔
+ctPage.ActiveNotificationProfile: 已啟用的通知設定檔
+ctPage.ActiveTouchpadProfile: 已啟用的觸控板設定檔
+ctPage.LaunchExecutable: 啟動可執行文件文件（.bat .exe 等）
+ctPage.FileDoesNotExist: 檔案不存在
+ctPage.EnterPathToExecutable: 輸入可執行文件的路徑（.bat .exe 等）
+ctPage.EnterLaunchArgsHere: 在此處輸入啟動引數
+ctPage.ListOfAddedShortcuts: 已添加的捷徑列表
+ctPage.NoShortcutsAdded: 尚未添加捷徑
+ctPage.ShortcutsListPlaceholder: 您的捷徑列表將顯示在此處。
+ctPage.VirtualDeviceOption: 虛擬裝置選項
+ctPage.WindowsActionPreset: Windows 動作預設值
+ctPage.GoBack: 返回
+ctPage.Macros: 宏
+ctPage.MacrosDescription: 模擬以下已添加的按鈕，以記錄的方式在按下選定的按鈕時觸發。
+ctPage.Notifications: 通知
+ctPage.MacroSettings: 宏設定
+ctPage.PlayOnce: 播放一次
+ctPage.ActionWillPlayOneTime: 該操作將只播放一次。
+ctPage.KeyDown: 按下按鍵
+ctPage.MacroEditing: 編輯宏
+ctPage.InsertGamepadButtonToList: 將遊戲手柄按鈕插入列表
+ctPage.ListOfAddedMacros: 已添加的宏列表
+ctPage.NoMacrosAdded: 尚未添加宏
+ctPage.MacrosListPlaceholder: 您的宏列表將顯示在此處。
+ctPage.Turbo: 快速連按
+ctPage.TurboDescription: 快速模擬按下並重複按下選定的按鈕。
+ctPage.WaitLengthDescription: 觸發後再次操作之前等待的時間。
+ctPage.Duration: 持續時間
+ctPage.DurationDescription: 按鈕處於按下狀態的持續時間。
+ctPage.Action: 操作
+ctPage.ActionDescription: 當此選項切換為 ON 時，下面啟用的類型將對此操作設定檔中選定的任何按鈕生效。如果切換為 OFF，則無論左側選定的按鈕如何，即使啟用了下面的選項，也不會發生任何事情。
+ctPage.ActivationMethod: 啟動方法
+ctPage.ActivationMethodDescription: 選擇是立即啟動此操作，還是在延遲後啟動。
+ctPage.ActionInstantActivation: 操作將立即啟動。
+ctPage.AfterDelay: 延遲後
+ctPage.AfterDelayDescription: 操作將在一定延遲後啟動。
+ctPage.MouseMapping.Title: 鼠標映射
+ctPage.MouseMapping.Description: 在按下選定的按鈕時，將添加的虛擬鼠標按鈕作為鼠標按下觸發。
+ctPage.Shortcuts.Description: 在按下選定的按鈕時，觸發添加的快捷方式。
+
+ctPage.ButtonMapping.Title: 按鈕映射
+ctPage.ButtonMapping.Description: 在按下選定的按鈕時，模擬以下已添加的遊戲手柄按鈕。
+ctPage.KeyboardMapping.Title: 鍵盤映射
+ctPage.KeyboardMapping.Description: 在按下選定的按鈕時，調用以下已添加的虛擬鍵或模擬文本。
+ctPage.ListOfActiveActions: 已啟用的操作列表
+ctPage.ActiveButtonMappingsDescription: 您已啟用的按鈕映射列表。 
+
+ctPage.KeyboardMappingList: 鍵盤映射
+ctPage.ActiveKeyboardMappingsDescription: 您已啟用的鍵盤映射列表。
+ctPage.ShortcutsList: 捷徑
+ctPage.ActiveShortcutsDescription: 您已啟用的捷徑。
+ctPage.ActiveTurbosDescription: 您已啟用的快速連按。
+
+ctPage.Delay: 延遲
+ctPage.DelayDescription: 觸發再次操作之前等待的時間。
+ctPage.NoActiveActions: 沒有已啟用的操作
+ctPage.YourListOfActiveActionsWillShowUpHere: 您已啟用的操作列表將顯示在此處。
+ctPage.L2TriggerInputRange:  L2 扳機輸入範圍
+ctPage.AdjustSlidersToUpdateTriggerDeadzone: 調整下面的滑塊以更新發送到模擬控制器的扳機死區。
+ctPage.L2TriggerDeadzone: L2 扳機死區
+ctPage.R2TriggerDeadzone.Title: R2 扳機死區
+ctPage.TriggerDeadzone.Description: 設定死區的範圍。
+ctPage.LeftTrigger: 左扳機
+ctPage.RightTrigger: 右扳機
+ctPage.PressureValue: 壓力值
+ctPage.PressureValueRange: 0 - 255
+ctPage.NoneMs: N/A ms
+ctPage.NotAny: N/A
+ctPage.RawJoystickData: 原始搖桿數據
+ctPage.RawJoystickDataDescription: 關於左右搖桿的原始信息
+ctPage.LeftStickXRaw: 左搖桿 X 軸原始值
+ctPage.LeftStickYRaw: 左搖桿 Y 軸原始值 
+
+ctPage.LeftStickXConvertedXbox: 轉換後的左搖桿 X 軸值（Xbox）
+ctPage.LeftStickYConvertedXbox: 轉換後的左搖桿 Y 軸值（Xbox）
+ctPage.LeftJoystick: 左搖桿
+ctPage.RightJoystick: 右搖桿
+ctPage.ControllerSkins.Title: 控制器外觀
+ctPage.To: 至
+ctPage.From: 從 
+ctPage.PhysicalAndVirtualDeviceOptions.Title: 實體和虛擬裝置選項
+ctPage.RawTouchpadData.Title: 原始觸控板數據
+ctPage.RawTouchpadData.Description: 包括第一和第二個手指的 X/Y 位置以及滑動手勢等各種觸控板信息。
+ctPage.TouchpadShowGrid: 顯示觸控板網格
+ctPage.CenterDarkSquareSafeZone: 中心黑色正方形是安全區域 
+ctPage.Finger1Data: 第一個手指數據
+ctPage.Finger1TouchCounter: "第一個手指觸摸計數器："
+ctPage.Finger1XPosition: "第一個手指 X 位置："
+ctPage.Finger1YPosition: "第一個手指 Y 位置："
+ctPage.Finger2Data: 第二個手指數據
+ctPage.Finger2TouchCounter: "第二個手指觸摸計數器："
+ctPage.Finger2XPosition: "第二個手指 X 位置："
+ctPage.Finger2YPosition: "第二個手指 Y 位置："
+ctPage.TouchPoints: 觸控點 
+ctPage.Finger1TouchPoints: 第一個手指觸控點
+ctPage.TouchPointsDescription: 觸控板上第一個手指的各種觸控點
+ctPage.TouchPointsTopLeftTouch: 左上角觸控
+ctPage.TouchPointsTopCenterTouch: 上中央觸控
+ctPage.TouchPointsTopRightTouch: 右上角觸控
+ctPage.TouchPointsCenterLeftTouch: 左中央觸控
+ctPage.TouchPointsCenterTouch: 中央觸控
+ctPage.TouchPointsCenterRightTouch: 右中央觸控
+ctPage.TouchPointsBottomLeftTouch: 左下角觸控
+ctPage.TouchPointsBottomCenterTouch: 下中央觸控
+ctPage.TouchPointsBottomRightTouch: 右下角觸控
+ctPage.Finger1SwipeGesturesDescription: 觸控板上第一個手指的各種滑動手勢 
+ctPage.LeftSideSwipe: 左側滑動
+ctPage.EntireTouchpad: 整個觸控板
+ctPage.RightSideSwipe: 右側滑動
+ctPage.SwipeRight: 向右滑動
+ctPage.SwipeLeft: 向左滑動 
+ctPage.LeftSideSwipeDetection: "左側滑動檢測像素距離："
+ctPage.EntireTouchpadSwipeDetection: "整個觸控板滑動檢測像素距離："
+ctPage.RightSideSwipeDetection: "右側滑動檢測像素距離："
+ctPage.Touchpad.SwipeGestures.LeftSideUp: 向上滑動
+ctPage.Touchpad.SwipeGestures.EntireTouchpad.Up: 向上滑動
+ctPage.Touchpad.SwipeGestures.RightSideUp: 向上滑動
+ctPage.Touchpad.SwipeGestures.LeftSideDown: 向下滑動
+ctPage.Touchpad.SwipeGestures.EntireTouchpad.Down: 向下滑動
+ctPage.Touchpad.SwipeGestures.RightSideDown: 向下滑動 
+
+ctPage.TouchpadButtonLatency: 觸控板按鈕延遲
+ctPage.TouchpadClick: 觸控板點擊
+ctPage.LeftSide: 左側
+ctPage.RightSide: 右側
+ctPage.TopLeftBox: 左上角方框
+ctPage.TopRightBox: 右上角方框
+ctPage.BottomLeftBox: 左下角方框
+ctPage.BottomRightBox: 右下角方框 
+
+ctPage.LeftJoystickDeadzoneUnderConstruction: 左搖桿死區設定中。
+ctPage.RightJoystickDeadzoneUnderConstruction: 右搖桿死區設定中。
+ctPage.LeftJoystickDeadzone: 左搖桿死區
+ctPage.ConfigureLeftJoystickDeadzone: 設定左搖桿死區。
+ctPage.RightJoystickDeadzone: 右搖桿死區
+ctPage.ConfigureRightJoystickDeadzone: 設定右搖桿死區。
+ctPage.TouchpadUnderConstruction: 觸控板設定中。
+ctPage.MacrosUnderConstruction: 宏設定中。
+ctPage.MotionUnderConstruction: 動作設定中。
+ctPage.RawTriggerData: 原始扳機數據
+ctPage.RawTriggerDataDescription: 來自實體控制器的 L2 和 R2 數據的原始信息。
+ctPage.GeneralSettings.AutoIdleShutOff: 自動閒置關閉
+ctPage.GeneralSettings.AutoIdleShutOffDescription: 啟用後，如果 DSX 檢測到控制器已閒置指定時間，它將自動通過藍牙關閉控制器電源。
+ctPage.GeneralSettings.DisableAutoIdleShutOffDuringCharging: 充電時禁用自動閒置關閉
+ctPage.GeneralSettings.DisableAutoIdleShutOffDuringChargingDescription: 這允許您在裝置充電時防止自動閒置關閉功能，確保不會因閒置超時而中斷充電。
+ctPage.InactivityDuration: 閒置時間
+ctPage.InactivityDurationDescription: 設定閒置多久會觸發此裝置的自動關閉。 
+ctPage.FiveMinutes: 5 分鐘
+ctPage.TenMinutes: 10 分鐘
+ctPage.FifteenMinutes: 15 分鐘
+ctPage.ThirtyMinutes: 30 分鐘
+ctPage.SixtyMinutes: 60 分鐘
+ctPage.OneHundredTwentyMinutes: 120 分鐘 
+ctPage.CustomMinutes: 自定義（分鐘）
+ctPage.Never: 永不
+ctPage.PressLatency: 按下延遲 
+
+ctPage.NoControllersDetected: 未檢測到控制器
+ctPage.ConnectController: 請透過有線或藍牙連接控制器以設定操作、死區等。 
+
+ctPage.RealTimeUpdate: 實時更新
+ctPage.UsesMoreGPU: （使用更多 GPU）
+ctPage.Finger1: 第一個手指
+ctPage.Finger2: 第二個手指
+ctPage.DirectionalButtons: 方向按鈕
+ctPage.CenterButtons: 中心按鈕
+ctPage.ActionButtons: 操作按鈕
+ctPage.BackLeftButtonTrigger: 左後按鈕和扳機
+ctPage.BackRightButtonTrigger: 右後按鈕和扳機
+ctPage.ActiveGridBasedOnFinger1Position: 基於第一個手指的 X/Y 位置，哪個網格處於已啟用的狀態
+
+ctPage.Actions: 操作
+ctPage.Deadzones: 死區
+ctPage.Touchpad: 觸控板
+ctPage.Motion: 動作
+ctPage.RawFeedback: 原始反饋
+ctPage.ControllerSkins: 控制器外觀
+ctPage.GeneralSettings: 通用設定
+
+ctPage.ButtonMapping: 按鈕映射
+ctPage.KeyboardMapping: 鍵盤映射
+ctPage.MouseMapping: 鼠標映射
+ctPage.Shortcuts: 捷徑
+
+ctPage.L2Trigger: L2 扳機
+ctPage.R2Trigger: R2 扳機
+ctPage.R2Position: R2 位置
+ctPage.ScrollDistance: 滾動距離（點）
+ctPage.Source: 來源
+ctPage.Activation: 啟動
+ctPage.DelayMilliseconds: 延遲（毫秒）
+ctPage.Repeats: 重複
+ctPage.PlayOnKey: 播放按鍵
+ctPage.InsertDelayToList: 將延遲（毫秒）插入列表
+ctPage.StartRecording: 開始錄製
+ctPage.Milliseconds: 毫秒
+ctPage.Seconds: 秒 
+
+ctPage.RawInfoJoystick: 左右搖桿的原始信息
+ctPage.SwipeGestures: 滑動手勢
+ctPage.GridPosition: 網格位置
+ctPage.TouchpadInfo: 各種觸控板信息，如第一個和第二個手指的 X/Y 位置和滑動手勢
+ctPage.GreenScreenEffect: 綠幕效果（供串流媒體使用）
+
+ctPage.GeneralSettings.InvertLeftX: 反轉左 X
+ctPage.GeneralSettings.InvertLeftX.Description: 啟用後，DSX 將反轉左搖桿的 X 軸，使向左移動相當於向右移動，反之亦然。
+ctPage.GeneralSettings.InvertLeftY: 反轉左 Y
+ctPage.GeneralSettings.InvertLeftY.Description: 啟用後，DSX 將反轉左搖桿的 Y 軸，使向上移動相當於向下移動，反之亦然。
+ctPage.GeneralSettings.InvertRightX: 反轉右 X
+ctPage.GeneralSettings.InvertRightX.Description: 啟用後，DSX 將反轉右搖桿的 X 軸，使向左移動相當於向右移動，反之亦然。
+ctPage.GeneralSettings.InvertRightY: 反轉右 Y
+ctPage.GeneralSettings.InvertRightY.Description: 啟用後，DSX 將反轉右搖桿的 Y 軸，使向上移動相當於向下移動，反之亦然。 
+
+
+btn.DpadUp: 十字鍵上
+btn.DpadDown: 十字鍵下
+btn.DpadLeft: 十字鍵左
+btn.DpadRight: 十字鍵右
+btn.Triangle: 三角形
+btn.Square: 方形
+btn.Circle: 圓形
+btn.Cross: 叉形
+btn.Share: 分享
+btn.Options: 選項
+btn.Mute: 靜音
+btn.PS: PS
+btn.Touchpad: 觸控板
+btn.L1: L1
+btn.L2: L2
+btn.L2Position: L2 位置
+btn.L3: L3
+btn.R1: R1
+btn.R2: R2
+btn.R3: R3 
+
+
+# ------------------------------------------------------------------------------------------------
+# Adaptive Triggers Page
+# ------------------------------------------------------------------------------------------------
+
+atPage.RightTrigger: 右扳機
+
+atPage.PassthroughWarning.Title: "警告：已啟用自適應扳機直傳"
+atPage.PassthroughWarning.Sub: 啟用自適應扳機直傳後，自適應扳機將變為非啟用狀態，從而實現遊戲的動態控制。此功能將覆蓋下面設定檔的任何手動設定，允許遊戲決定自適應扳機的行為。
+atPage.DisableATPassthrough: 禁用自適應扳機直傳
+atPage.LeftTrigger: 左扳機
+atPage.OfficialATModes: 官方自適應扳機模式
+
+atPage.ATEffectOff.Detail: 關閉自適應扳機效果，並將扳機恢復到正常狀態。 
+
+atPage.Sliders.StartPosition: 起始位置
+atPage.Sliders.EndPosition: 結束位置
+atPage.Sliders.Amplitude: 振幅
+atPage.Sliders.AmplitudeA: 振幅 A
+atPage.Sliders.AmplitudeB: 振幅 B
+atPage.Sliders.ResistanceStrength: 阻力強度
+atPage.Sliders.StartResistanceStrength: 起始阻力強度
+atPage.Sliders.EndResistanceStrength: 結束阻力強度
+atPage.Sliders.SnapForce: 吸附力
+atPage.Sliders.FirstFoot: 第一腳
+atPage.Sliders.SecondFoot: 第二腳 
+
+atPage.Sliders.Region1Resistance: 第 1 區域阻力強度
+atPage.Sliders.Region2Resistance: 第 2 區域阻力強度
+atPage.Sliders.Region3Resistance: 第 3 區域阻力強度
+atPage.Sliders.Region4Resistance: 第 4 區域阻力強度
+atPage.Sliders.Region5Resistance: 第 5 區域阻力強度
+atPage.Sliders.Region6Resistance: 第 6 區域阻力強度
+atPage.Sliders.Region7Resistance: 第 7 區域阻力強度
+atPage.Sliders.Region8Resistance: 第 8 區域阻力強度
+atPage.Sliders.Region9Resistance: 第 9 區域阻力強度
+atPage.Sliders.Region10Resistance: 第 10 區域阻力強度
+
+atPage.Sliders.Region1Amplitude: 第 1 區域振幅
+atPage.Sliders.Region2Amplitude: 第 2 區域振幅
+atPage.Sliders.Region3Amplitude: 第 3 區域振幅
+atPage.Sliders.Region4Amplitude: 第 4 區域振幅
+atPage.Sliders.Region5Amplitude: 第 5 區域振幅
+atPage.Sliders.Region6Amplitude: 第 6 區域振幅
+atPage.Sliders.Region7Amplitude: 第 7 區域振幅
+atPage.Sliders.Region8Amplitude: 第 8 區域振幅
+atPage.Sliders.Region9Amplitude: 第 9 區域振幅
+atPage.Sliders.Region10Amplitude: 第 10 區域振幅 
+
+
+atPage.Mode.Feedback.Title: 回饋
+atPage.Mode.Feedback.SubTitle: 扳機將抵抗超出起始位置的移動。
+
+atPage.Mode.Weapon.Title: 武器
+atPage.Mode.Weapon.SubTitle: 扳機將以彈簧式感覺抵抗。 
+
+atPage.Mode.Vibration.Title: 震動
+atPage.Mode.Vibration.SubTitle: 扳機將以輸入振幅和頻率震動超出起始位置。 
+
+atPage.Mode.Vibration.DynamicRumbleSync.Title: 動態震動同步
+atPage.Mode.Vibration.DynamicRumbleSync.Left.SubTitle: 啟用與虛擬裝置左震動馬達的動態同步，根據虛擬裝置的震動強度調整震動頻率。使用上面的滑桿自定義頻率，設定所需的最大震動頻率。
+atPage.Mode.Vibration.DynamicRumbleSync.Right.SubTitle: 啟用與虛擬裝置右震動馬達的動態同步，根據虛擬裝置的震動強度調整震動頻率。使用上面的滑桿自定義頻率，設定所需的最大震動頻率。 
+
+atPage.Mode.SlopeFeedback.Title: 斜坡回饋
+atPage.Mode.SlopeFeedback.SubTitle: 扳機將在一個線性強度範圍內抵抗移動。 
+
+atPage.Mode.MultiplePositionFeedback.Title: 多重位置回饋
+atPage.Mode.MultiplePositionFeedback.SubTitle: 扳機將在 10 個區域內以不同的強度抵抗移動。 
+
+atPage.Mode.MultiplePositionVibration.Title: 多位置震動
+atPage.Mode.MultiplePositionVibration.SubTitle: 扳機將在 10 個區域內以不同的振幅和一個頻率震動移動。
+
+atPage.Mode.GameCube.Title: GameCube
+atPage.Mode.GameCube.SubTitle: 效果類似於 GameCube 控制器的後按鈕壓下。
+
+atPage.Mode.Bow.Title: 弓箭
+atPage.Mode.Bow.SubTitle: 效果類似於上面的武器效果，但有一個彈回力量，試圖重置扳機。
+
+atPage.Mode.Galloping.Title: 馬跑
+atPage.Mode.Galloping.SubTitle: 扳機將以類似馬跑的節奏模式振動。請注意，該效果僅在低頻值下可辨識。
+
+atPage.Mode.Machine.Title: 機器
+atPage.Mode.Machine.SubTitle: 效果類似於上面的震動效果，但會在兩個振幅之間振盪。
+
+atPage.Mode.MotorWarning: "警告：扳機馬達可能造成損害。"
+atPage.UnofficialATModes: 非官方自適應扳機模式 
+
+atPage.Legacyv2Modes: DSX v2 遺留自適應扳機模式
+atPage.Legacyv2Modes.CustomTriggerValues.Title: 自定義扳機值（實驗性）
+atPage.Legacyv2Modes.CustomTriggerValues.SubTitle: 基於模式和值的實驗性扳機效果，將產生隨機效果。
+atPage.Legacyv2Modes.CustomTriggerValues.Mode: 自定義扳機值模式 
+
+atPage.Legacy.Slider.Rigid: 剛性
+atPage.Legacy.Slider.RigidA: 剛性 A
+atPage.Legacy.Slider.RigidB: 剛性 B
+atPage.Legacy.Slider.RigidAB: 剛性 AB
+
+atPage.Legacy.Slider.Pulse: 脈衝
+atPage.Legacy.Slider.PulseA: 脈衝 A
+atPage.Legacy.Slider.PulseB: 脈衝 B
+atPage.Legacy.Slider.PulseAB: 脈衝 AB 
+
+atPage.Legacy.Slider.VibrateResistance: 震動阻力
+atPage.Legacy.Slider.VibrateResistanceA: 震動阻力 A
+atPage.Legacy.Slider.VibrateResistanceB: 震動阻力 B
+atPage.Legacy.Slider.VibrateResistanceAB: 震動阻力 AB
+
+atPage.Legacy.Slider.VibratePulse: 震動脈衝
+atPage.Legacy.Slider.VibratePulseA: 震動脈衝 A
+atPage.Legacy.Slider.VibratePulseB: 震動脈衝 B
+atPage.Legacy.Slider.VibratePulseAB: 震動脈衝 AB
+
+atPage.Legacy.Slider.Force1: 力量 1
+atPage.Legacy.Slider.Force2: 力量 2
+atPage.Legacy.Slider.Force3: 力量 3
+atPage.Legacy.Slider.Force4: 力量 4
+atPage.Legacy.Slider.Force5: 力量 5
+atPage.Legacy.Slider.Force6: 力量 6
+atPage.Legacy.Slider.Force7: 力量 7 
+
+atPage.Legacy.Mode.Choppy.Title: 斷斷續續
+atPage.Legacy.Mode.Choppy.SubTitle: 效果類似於按下時強度不同的回饋模式。
+
+atPage.Legacy.Mode.VerySoft.Title: 非常柔軟
+atPage.Legacy.Mode.VerySoft.SubTitle: 效果類似於武器模式，強度非常柔軟。
+
+atPage.Legacy.Mode.Soft.Title: 柔軟
+atPage.Legacy.Mode.Soft.SubTitle: 效果類似於武器模式，強度柔軟。
+
+atPage.Legacy.Mode.Medium.Title: 中等
+atPage.Legacy.Mode.Medium.SubTitle: 效果類似於武器模式，強度中等。
+
+atPage.Legacy.Mode.Hard.Title: 堅硬
+atPage.Legacy.Mode.Hard.SubTitle: 效果類似於武器模式，強度堅硬。
+
+atPage.Legacy.Mode.VeryHard.Title: 非常堅硬
+atPage.Legacy.Mode.VeryHard.SubTitle: 效果類似於武器模式，強度非常堅硬。
+
+atPage.Legacy.Mode.Hardest.Title: 最堅硬
+atPage.Legacy.Mode.Hardest.SubTitle: 效果類似於武器模式，強度最堅硬。
+
+atPage.Legacy.Mode.Rigid.Title: 剛性
+atPage.Legacy.Mode.Rigid.SubTitle: 效果類似於武器模式，強度非常堅硬。
+
+atPage.Legacy.Mode.VibrateTriggerPulse.Title: 震動扳機脈衝
+atPage.Legacy.Mode.VibrateTriggerPulse.SubTitle: 效果類似於震動模式，頻率會自動變化。 
+
+# ------------------------------------------------------------------------------------------------
+# LED Page
+# ------------------------------------------------------------------------------------------------
+
+ledPage.RGB: RGB
+ledPage.LEDProfiles: LED 設定檔
+ledPage.AddEditLEDProfiles: 新增一個 LED 設定檔以自訂，或按編輯以多選設定檔進行刪除。
+ledPage.SearchControllerProfiles: 搜尋控制器設定檔
+ledPage.WarningLEDPassthroughEnabled: "警告：已啟用 LED 直傳"
+ledPage.LEDPassthroughDescription: 啟用 LED 直傳後，手動 LED 設定將變為無效，使遊戲能夠動態控制 LED。此功能將覆蓋下面設定的任何手動設定，允許遊戲決定 LED 行為。
+ledPage.DisableLEDPassthrough: 停用 LED 直傳
+ledPage.LightBarBrightness: 光柱亮度
+ledPage.LightBarBrightnessDescription: 控制器上的光柱應該有多亮。
+ledPage.BatteryLowFlashing: 低電量閃爍
+ledPage.BatteryLowFlashingDescription: 啟用後，當控制器電量低時，無論選擇了哪種光柱模式，都將生效。
+ledPage.BatteryLowFlashingPercentage: 低電量閃爍百分比
+ledPage.BatteryLowFlashingPercentageDescription: 啟用後，如果控制器的電池百分比低於設定的值，它將閃爍下面設定的顏色。
+ledPage.IgnoreFlashingWhileCharging: 充電時忽略閃爍
+ledPage.IgnoreFlashingWhileChargingDescription: 啟用後，如果控制器正在充電或已充滿電，它將不再閃爍，並恢復當前選擇的光柱模式。
+ledPage.LightBarFlash: 光柱閃爍
+ledPage.LightBarFlashDescription: 啟用後，DualShock™️ 4、DualSense™️ 或 DualSense Edge™️ 無線控制器上的光柱將閃爍。
+ledPage.PlayerLEDFlash: 玩家 LED 閃爍
+ledPage.PlayerLEDFlashDescription: 啟用後，DualSense™️ 或 DualSense Edge™️ 無線控制器上的玩家 LED 將閃爍。
+ledPage.MuteButtonLEDFlash: 靜音按鈕 LED 閃爍
+ledPage.MuteButtonLEDFlashDescription: 啟用後，DualSense™️ 或 DualSense Edge™️ 無線控制器上的靜音按鈕 LED 將閃爍。
+ledPage.BatteryLowFlashingColor: 低電量閃爍顏色
+ledPage.BatteryLowFlashingColorDescription: 當控制器電量低時，要使用的顏色以提醒您。
+ledPage.StaticColor: 靜態顏色
+ledPage.StaticColorDescription: 不變的靜態顏色
+ledPage.SelectedColor: 選擇的顏色
+ledPage.SelectedColorDescription: 靜態顏色效果啟用時要使用的顏色。
+ledPage.MultiColor: 多彩
+ledPage.MultiColorDescription: 在 HSL 顏色譜或自訂添加的顏色之間循環。
+ledPage.CycleSpeed: 循環速度
+ledPage.CycleSpeedDescription: 循環顏色的速度。
+ledPage.AutoReverseColor: 自動反轉顏色
+ledPage.AutoReverseColorDescription: 啟用後，HSL 顏色譜將從 0 到 360，然後從 360 返回到 0。禁用後，顏色譜將從 0 到 360，然後從 0 開始。
+ledPage.HSLColorSpectrum: HSL 顏色譜
+ledPage.HSLColorSpectrumDescription: 選擇後，將在 HSL 顏色譜之間循環。
+ledPage.CustomColors: 自訂顏色
+ledPage.CustomColorsDescription: 選擇後，將在您設定的添加顏色之間循環。
+ledPage.SelectedGradient: 選擇的漸變
+ledPage.SelectedGradientDescription: 要在其之間循環的顏色，最少需要 2 種顏色。
+ledPage.ResetToDefaults: 恢復預設設定
+ledPage.DeleteSelectedColor: 刪除所選顏色
+ledPage.AddNewGradientColor: 添加新的漸變顏色
+ledPage.Breathing: 呼吸
+ledPage.BreathingDescription: 從 0 亮度到上面指定的光柱亮度的呼吸效果。
+ledPage.BreathingSpeed: 呼吸速度
+ledPage.BreathingSpeedDescription: 顏色從 0 亮度到上面指定的光柱亮度的速度。
+ledPage.RandomColor: 隨機顏色
+ledPage.RandomColorDescription: 每次亮度降至 0 時都會選擇新顏色。
+ledPage.Strobing: 閃爍
+ledPage.StrobingDescription: 從 0 亮度到上面指定的光柱亮度的閃爍效果。
+ledPage.StrobingSpeed: 閃爍速度
+ledPage.StrobingSpeedDescription: 顏色閃爍的速度。
+ledPage.AnimateWhenCharging: 充電時動畫
+ledPage.AnimateWhenChargingDescription: 使用下面選擇的漸變顯示充電動畫，以展示控制器正在充電。 
+
+ledPage.PlayerIndicator: 玩家指示燈
+ledPage.PlayerIndicatorDescription: 在 LED 上顯示玩家編號。
+ledPage.BatteryMode: 電池模式
+ledPage.Battery: 電池
+ledPage.BatteryDescription: 使用指定的漸變顏色顯示 0% 到 100% 的電池電量。
+
+ledPage.NoPlayerIndicator: 無玩家指示燈
+ledPage.PlayerOne: 玩家一
+ledPage.PlayerOneIndicator: 玩家一指示燈
+ledPage.PlayerTwo: 玩家二
+ledPage.PlayerTwoIndicator: 玩家二指示燈
+ledPage.PlayerThree: 玩家三
+ledPage.PlayerThreeIndicator: 玩家三指示燈
+ledPage.PlayerFour: 玩家四
+ledPage.PlayerFourIndicator: 玩家四指示燈
+ledPage.PlayerFive: 玩家五
+ledPage.PlayerFiveIndicator: 玩家五指示燈 
+
+ledPage.BatteryModeDescription: 勾選時，將以玩家 LED 格式顯示電池電量。
+ledPage.Battery0To20Percent: 電池 0% - 20%
+ledPage.Battery20To40Percent: 電池 20% - 40%
+ledPage.Battery40To60Percent: 電池 40% - 60%
+ledPage.Battery60To80Percent: 電池 60% - 80%
+ledPage.Battery80To100Percent: 電池 80% - 100% 
+  
+ledPage.MuteIndicator: 靜音指示燈
+ledPage.MuteIndicatorDescription: 靜音按鈕 LED 狀態。
+
+ledPage.PlayerMuteBrightness: 玩家 / 靜音亮度
+ledPage.PlayerMuteBrightnessDescription: 影響玩家 LED 和靜音按鈕 LED 的亮度設定。
+
+ledPage.DualSenseFeatures: DualSense 功能
+
+ledPage.Off: "關閉"
+ledPage.On: "開啟"
+ledPage.Pulse: "脈衝"
+ledPage.Dim: 暗
+ledPage.Medium: 中等
+ledPage.Bright: 明亮
+ledPage.NoControllersDetected: 找不到控制器
+ledPage.PleasePlugInController: 請透過有線或藍牙連接您的控制器以設定燈條等。
+ledPage.LightBarConfiguration: 燈條設定
+ledPage.LightBarModes: 燈條模式 
+
+# ------------------------------------------------------------------------------------------------
+# HapticsRumble Page
+# ------------------------------------------------------------------------------------------------
+
+hapticsPage.RumbleModeCard.Title: 震動模式
+hapticsPage.RumbleModeCard.SubTitle: 勾選此項目後，標準震動將被發送到馬達。
+
+hapticsPage.HapticFeedbackModeCard.Title: 觸覺反饋模式
+hapticsPage.HapticFeedbackModeCard.SubTitle: 勾選此項目後，將應用其中一種觸覺反饋模式。
+
+hapticsPage.HapticFeedback.WarningCard.Title:  非 DualSense 控制器或無線連接不支援觸覺反饋模式
+hapticsPage.HapticFeedback.WarningCard.SubTitle: 只有通過 USB 連接的 DualSense 類型控制器才能使用觸覺反饋模式。
+
+hapticsPage.EnableRumbleCard.Title: 啟用震動
+hapticsPage.EnableRumbleCard.SubTitle: 啟用此項目後，震動將被發送到控制器。
+
+hapticsPage.EnhancedRumbleCard.Title: 增強震動體驗
+hapticsPage.EnhancedRumbleCard.SubTitle: 啟用此功能後，通過利用 DualSense™️ 或 DualSense Edge™️ 無線控制器的改進震動，增強經典震動體驗。
+
+hapticsPage.RumbleIntensityCard.Title: 震動強度
+hapticsPage.RumbleIntensityCard.SubTitle: 選擇整體馬達強度應該有多強。
+
+hapticsPage.MaxRumbleStrengthCard.Title: 最大震動強度
+hapticsPage.MaxRumbleStrengthCard.SubTitle: 震動不會發送到控制器高於右側指定的數字。
+hapticsPage.MaxRumbleStrengthCard.SubTitle2: 例如 - 如果設定為 200，則任何高於 200 的數字都將被忽略，並且只會將 200 發送到控制器。
+
+hapticsPage.HapticMode.Disabled: 已停用
+hapticsPage.HapticMode.AudioHaptics: 音訊觸覺反饋
+hapticsPage.HapticMode.RumbleHaptics: 震動觸覺反饋
+hapticsPage.HapticMode.ButtonHaptics: 按鈕觸覺反饋
+hapticsPage.HapticMode.TriggerHaptics: 扳機觸覺反饋
+hapticsPage.HapticMode.JoystickHaptics: 搖桿觸覺反饋
+
+hapticsPage.Disabled.Title: 觸覺反饋已停用
+hapticsPage.Disabled.SubTitle: 選擇此選項後，觸覺反饋將不會生效，請考慮改用震動模式。
+
+hapticsPage.AudioHapticsConfig.Title: 音訊觸覺反饋
+hapticsPage.AudioHapticsConfig.SubTitle: 將系統範圍的音訊發送到控制器並將其轉換為觸覺反饋。
+
+hapticsPage.RumbleHapticsConfig.Title: 震動觸覺反饋
+hapticsPage.RumbleHapticsConfig.SubTitle: 允許您將來自模擬裝置的震動值轉換為所需的聲波觸覺。
+
+hapticsPage.ButtonHapticsConfig.Title: 按鈕觸覺反饋
+hapticsPage.ButtonHapticsConfig.SubTitle: 允許您在按下 Cross、Square、Triangle、D-Pad 等按鈕時感受觸覺，並使用所需的聲波觸覺。
+
+hapticsPage.TriggerHapticsConfig.Title: 扳機觸覺反饋
+hapticsPage.TriggerHapticsConfig.SubTitle: 允許您將 L2/R2 壓力按下轉換為所需的聲波觸覺。這不是自適應扳機模式。
+
+hapticsPage.JoystickHapticsConfig.Title: 搖桿觸覺反饋
+hapticsPage.JoystickHapticsConfig.SubTitle: 允許您將左右搖桿運動轉換為所需的聲波觸覺。左搖桿控制左馬達，右搖桿控制右馬達。
+
+hapticsPage.RestartButton.Title: 重新啟動 
+
+hapticsPage.RumblePassthrough.Title: 震動直傳
+hapticsPage.RumblePassthrough.AudioHaptics.SubTitle: 如果啟用，發送到虛擬控制器的震動將應用於此實體控制器。如果未發送震動，則音訊觸覺將正常恢復。
+hapticsPage.RumblePassthrough.ButtonHaptics.SubTitle: 如果啟用，發送到虛擬控制器的震動將應用於此實體控制器。如果未發送震動，則按鈕觸覺將正常恢復。
+hapticsPage.RumblePassthrough.TriggerHaptics.SubTitle: 如果啟用，發送到虛擬控制器的震動將應用於此實體控制器。如果未發送震動，則扳機觸覺將正常恢復。
+hapticsPage.RumblePassthrough.JoystickHaptics.SubTitle: 如果啟用，發送到虛擬控制器的震動將應用於此實體控制器。如果未發送震動，則搖桿觸覺將正常恢復。
+
+hapticsPage.LeftMotorMaxIntensity.Title: 左馬達最大強度
+hapticsPage.LeftMotorMaxIntensity.SubTitle: 左馬達允許的最大強度。
+
+hapticsPage.RightMotorMaxIntensity.Title: 右馬達最大強度
+hapticsPage.RightMotorMaxIntensity.SubTitle: 右馬達允許的最大強度。
+
+hapticsPage.AudioHaptics.InternalSpeakerVolume.Title: 內部揚聲器音量
+hapticsPage.AudioHaptics.InternalSpeakerVolume.SubTitle: 發送到控制器的音訊音量。
+
+hapticsPage.AudioHaptics.InternalJackVolume.Title: 內部耳機插孔音量
+hapticsPage.AudioHaptics.InternalJackVolume.SubTitle: 發送到連接的耳機插孔的音訊音量。
+
+hapticsPage.JoystickHaptics.InnerDeadzone.Title: 搖桿內部死區
+hapticsPage.JoystickHaptics.InnerDeadzone.SubTitle: 移動搖桿從中心到邊緣時忽略發送的觸覺量。適用於兩個搖桿。
+
+hapticsPage.SoundWaveConfig.Title: 聲波設定 
+
+hapticsPage.SoundWave.Sine: 正弦波
+hapticsPage.SoundWave.Sqaure: 方波
+hapticsPage.SoundWave.Triangle: 三角波
+hapticsPage.SoundWave.WhiteNoise: 白噪聲
+hapticsPage.SoundWave.PinkNoise: 粉紅噪聲
+hapticsPage.SoundWave.Sweep: 掃描波 
+
+hapticsPage.SoundWave.Gain.Title: 增益
+hapticsPage.SoundWave.Gain.SubTitle: 對信號應用的放大量。
+
+hapticsPage.SoundWave.Frequency.Title: 頻率
+hapticsPage.SoundWave.Frequency.SubTitle: 每秒重複一次聲壓波的次數。大約在 60 Hz 是最強的。
+
+hapticsPage.SoundWave.Sweep.StartEndFreq.Title: 開始和結束頻率
+hapticsPage.SoundWave.Sweep.StartEndFreq.SubTitle: 確定所需頻率的開始和結束。
+hapticsPage.SoundWave.Sweep.StartFreq.Title: 開始頻率
+hapticsPage.SoundWave.Sweep.EndFreq.Title: 結束頻率
+
+hapticsPage.SoundWave.Sweep.Duration.Title: 持續時間
+hapticsPage.SoundWave.Sweep.Duration.Title2: 持續時間（秒）
+hapticsPage.SoundWave.Sweep.Duration.SubTitle: 從開始頻率到結束頻率所需的秒數。 
+
+# ------------------------------------------------------------------------------------------------
+# Installed Games Page
+# ------------------------------------------------------------------------------------------------
+
+installedGamesPage.Loading: 載入遊戲庫...
+installedGamesPage.GameFound: 找到遊戲。
+
+installedGamesPage.GamesList.Filter: 篩選
+
+installedGamesPage.GamesList.SortBy: 排序方式
+installedGamesPage.GamesList.SortBy.Name: 名稱
+installedGamesPage.GamesList.SortBy.RecentlyPlayed: 最近玩過
+installedGamesPage.GamesList.SortBy.Playtime: 遊戲時間
+
+installedGamesPage.GamesList.SortBy.Ascending: 升序
+installedGamesPage.GamesList.SortBy.Descending: 降序
+
+installedGamesPage.GamesList.RescanButton.Tooltip: 重新掃描遊戲庫 
+
+installedGamesPage.GamesList.Search.TextBoxPlaceholder: 搜尋遊戲
+installedGamesPage.NA: 無
+installedGamesPage.ViewSteamPage: 查看 Steam 頁面
+installedGamesPage.LaunchProgram: 啟動程式
+installedGamesPage.Category: 類別
+installedGamesPage.Platform: 平台
+installedGamesPage.LastPlayed: 上次遊玩時間
+installedGamesPage.TotalPlaytime: 總遊玩時間
+installedGamesPage.PlaytimeRecent: 近期遊玩時間（2 週內）
+installedGamesPage.InstallDirectory: 安裝目錄
+installedGamesPage.LibraryPath: 遊戲庫路徑
+installedGamesPage.RunCommand: 執行命令
+installedGamesPage.ExecutablePath: 執行檔路徑（最接近的匹配）
+installedGamesPage.ControllerProfile: 控制器設定檔
+installedGamesPage.ControllerProfileDescription: 用於此遊戲的控制器設定檔。 
+
+installedGamesPage.SelectedGame.PlayButton.Tooltip: 啟動程式
+installedGamesPage.SelectedGame.LinkButton.Tooltip: 查看 Steam 頁面
+installedGamesPage.SelectedGame.Category: 類別
+installedGamesPage.SelectedGame.Platform: 平台
+installedGamesPage.SelectedGame.AppID: App ID
+installedGamesPage.SelectedGame.LastPlayed: 上次遊玩時間
+installedGamesPage.SelectedGame.TotalPlaytime: 總遊玩時間
+installedGamesPage.SelectedGame.PlaytimeRecent: 近期遊玩時間（2 週內）
+installedGamesPage.SelectedGame.RunCommand: 執行命令
+installedGamesPage.SelectedGame.InstallDirectory: 安裝目錄
+installedGamesPage.SelectedGame.LibraryPath: 遊戲庫路徑
+installedGamesPage.SelectedGame.ExePath: 執行檔路徑（最接近的匹配） 
+
+installedGamesPage.Profile1: 設定檔 1
+installedGamesPage.Profile2: 設定檔 2
+installedGamesPage.Profile3: 設定檔 3
+installedGamesPage.RescanLibrary: 重新掃描遊戲庫
+installedGamesPage.NoGamesFound: 找不到任何遊戲。
+installedGamesPage.UpdateExecutablePath: 更新執行檔路徑
+installedGamesPage.ActiveProcesses: 已啟用的進程
+installedGamesPage.ListOfActiveProcesses: 已啟用的進程列表。
+installedGamesPage.Cancel: 取消
+installedGamesPage.SelectExecutablePath: 選擇執行檔路徑
+installedGamesPage.ManuallyChooseExecutable: 手動選擇執行檔
+installedGamesPage.Filter: 篩選
+installedGamesPage.Steam: Steam
+installedGamesPage.EpicStore: Epic Store
+installedGamesPage.SortBy: 排序方式
+installedGamesPage.Name: 名稱
+installedGamesPage.Ascending: 升序
+installedGamesPage.Descending: 降序
+installedGamesPage.RecentlyPlayed: 最近玩過
+installedGamesPage.Playtime: 遊戲時間
+installedGamesPage.AddLibrary: 新增遊戲庫
+installedGamesPage.NoGamesFound.Detail: 無法找到您系統上安裝的任何遊戲。 
+
+
+
+
+# ------------------------------------------------------------------------------------------------
+# HidHide Page
+# ------------------------------------------------------------------------------------------------
+
+hidHidePage.HidHideDriverInfo.Title: HidHide 驅動程式
+hidHidePage.HidHideDriverInfo.SubTitle: HidHide 允許應用程式在模擬虛擬裝置時隱藏實體控制器。它用於避免虛擬和實體控制器的雙重輸入，並讓遊戲或程式只看到虛擬控制器。
+
+hidHidePage.ActivateHidHide.Title: 啟用 HidHide
+hidHidePage.ActivateHidHide.SubTitle: 啟用後，HidHide 驅動程式將隱藏下面的隱藏裝置列表中的實體裝置。
+
+hidHidePage.ApplicationList.Title: 應用程式列表
+hidHidePage.HiddenDevicesList.Title: 隱藏裝置列表
+
+hidHidePage.ApplicationPath: 應用程式路徑
+hidHidePage.RefreshApplicationList: 刷新應用程式列表
+
+hidHidePage.RemoveSelectedApps.Title: 移除選定的應用程式
+hidHidePage.RemoveSelectedApps.SubTitle: 移除應用程式將使隱藏的裝置在該應用程式中不顯示。
+hidHidePage.RemoveSelectedApps.Button: 移除應用程式
+
+hidHidePage.AddApp.Title: 新增應用程式
+hidHidePage.AddApp.SubTitle: 將應用程式添加到列表中將使隱藏的裝置在該應用程式中顯示。
+hidHidePage.AddApp.TextBox.Placeholder: 輸入可執行文件的路徑（.bat .exe 等）
+hidHidePage.AddApp.Error.FileDoesntExist: 檔案不存在
+hidHidePage.AddApp.Warning.AlreadyAdded: 應用程式已經被添加
+
+hidHidePage.InverseCloak.Title: "TODO: 反向應用程式隱藏"
+hidHidePage.InverseCloak.SubTitle: 啟用後，列表中的應用程式將被阻止訪問隱藏裝置列表中的裝置。
+
+hidHidePage.DevicePath: 裝置路徑
+hidHidePage.RefreshHiddenDevicesList: 刷新隱藏裝置列表
+
+hidHidePage.RemoveSelectedDevices.Title: 移除選定的裝置
+hidHidePage.RemoveSelectedDevices.SubTitle: 從列表中移除裝置將停止該裝置隱藏，直到再次添加。
+hidHidePage.RemoveSelectedDevices.Button: 移除裝置
+
+hidHidePage.AddDevice.Title: 新增裝置
+hidHidePage.AddDevice.SubTitle: 將裝置添加到列表中將隱藏它，直到在左側的列表中添加應用程式。
+hidHidePage.AddDevice.TextBox.Placeholder: 輸入裝置實例 ID
+hidHidePage.AddDevice.Warning.AlreadyAdded: 裝置實例 ID 已經被添加 
+
+
+# ------------------------------------------------------------------------------------------------
+# DSX Logs Page
+# ------------------------------------------------------------------------------------------------
+
+logsPage.Title: DSX 日誌
+logsPage.CompressLogFiles.Button: 壓縮日誌檔案以進行分享
+logsPage.OpenLogsDirectory.Button: 開啟日誌目錄
+
+logsPage.LogCheckBox.ControllerLogs: 控制器日誌
+logsPage.LogCheckBox.ButtonPresses: 實體按鈕按下日誌
+logsPage.LogCheckBox.DebugLogs: 偵錯日誌
+
+logsPage.LogsViewTable.Title.Date: 日期
+logsPage.LogsViewTable.Title.Category: 類別
+logsPage.LogsViewTable.Title.Status: 狀態
+logsPage.LogsViewTable.Title.Message: 訊息
+
+logsPage.LogsViewTable.Status.Title.Information: 資訊
+logsPage.LogsViewTable.Status.Title.Debug: 偵錯
+logsPage.LogsViewTable.Status.Title.Warning: 警告
+logsPage.LogsViewTable.Status.Title.Error: 錯誤 
+
+# ------------------------------------------------------------------------------------------------
+# Settings Page
+# ------------------------------------------------------------------------------------------------
+settingsPage.Tabs.Display: 介面
+settingsPage.Tabs.Behavior: 行為
+settingsPage.Tabs.UDP: UDP 
+
+settingsPage.DriverInstallation.CompanyName: 公司名稱
+settingsPage.DriverInstallation.FileDescription: 檔案描述
+settingsPage.DriverInstallation.FileSize: 檔案大小
+settingsPage.DriverInstallation.FileVersion: 檔案版本
+settingsPage.DriverInstallation.LatestReleaseDate: 最新發佈日期
+settingsPage.DriverInstallation.ProductName: 產品名稱
+settingsPage.DriverInstallation.ProductVersion: 產品版本
+settingsPage.DriverInstallation.AcceptedLicense: 我已閱讀並接受許可協議的條款。
+settingsPage.DriverInstallation.FollowDriverSetupInstructions: 請按照屏幕上的說明完成驅動程式安裝。
+settingsPage.DriverInstallation.ProceedByClickingNextBelow: 完成後，請按下面的下一步繼續。
+settingsPage.DriverInstallation.InternetRequiredVPadDriver: 下載並安裝 Nefarius 的 VirtualPad 驅動程式需要網路連接。
+settingsPage.DriverInstallation.InternetRequiredHidHideDriver: 下載並安裝 HidHide 驅動程式需要網路連接。
+settingsPage.DriverInstallation.ProceedByClickingRetry: 連接到網路後，請按重試繼續。
+settingsPage.DriverInstallation.UnexpectedError: 安裝驅動程式期間發生意外錯誤。
+settingsPage.DriverInstallation.PleaseTryAgain: 請重試。
+settingsPage.DriverInstallation.LicenseStatus: 許可狀態
+settingsPage.DriverInstallation.DriverName: 驅動程式名稱
+settingsPage.DriverInstallation.DriverVersion: 驅動程式版本
+settingsPage.DriverInstallation.DriverSize: 驅動程式大小
+settingsPage.DriverInstallation.RuntimeAPIVersion: Runtime API 版本 
+
+settingsPage.DriverInstallation.Button.Next: 下一步
+settingsPage.DriverInstallation.Button.InstallDriver: 安裝驅動程式
+settingsPage.DriverInstallation.Button.Retry: 重試
+
+settingsPage.DriverInstallation.VPad.LicenseInfo: VirtualPad 驅動程式許可協議資訊
+settingsPage.DriverInstallation.VPad.LicenseIssuer: 許可協議發行者
+settingsPage.DriverInstallation.VPad.LicenseType: 許可協議類型
+settingsPage.DriverInstallation.VPad.LicenseExpiresAt: 許可協議到期日
+settingsPage.DriverInstallation.VPad.LicenseCreatedAt: 許可協議建立日期
+settingsPage.DriverInstallation.VPad.Installed: 已安裝 Nefarius 的 VirtualPad 驅動程式 
+
+settingsPage.HidHide.Title: 隱藏實體控制器
+settingsPage.HidHide.Details: 隱藏連接到電腦的實體控制器，以便沒有應用程式或遊戲可以看到它，最好與 DSX 創建的虛擬控制器結合使用。
+settingsPage.HidHide.HidePhysDevices: 隱藏實體裝置
+settingsPage.HidHide.HidePhysDevices.Details: 隱藏遊戲外設，例如滑鼠或鍵盤，以免應用程式和遊戲看到它們。
+settingsPage.HidHide.WhitelistApps: 白名單應用程式
+settingsPage.HidHide.WhitelistApps.Details: 選擇允許查看隱藏裝置的應用程式或遊戲。
+settingsPage.HidHide.ProductInfo: HidHide 產品資訊
+settingsPage.HidHide.Installed: 已安裝 HidHide 驅動程式
+settingsPage.HidHide.RebootPlease: 如果您剛安裝了驅動程式，請重新啟動電腦以便在安裝後使驅動程式生效。 
+
+settingsPage.Tabs.VirtualPadDriver: VirtualPad 驅動程式
+settingsPage.Tabs.VirtualPadDriverProductInfo: VirtualPad 驅動程式產品資訊
+settingsPage.VirtualPadDriverDescription: Nefarius Software Solutions e.U. 開發和創建的重新想像的 Windows 虛擬遊戲手柄使用的下一代驅動程式。
+
+settingsPage.Tabs.HidHideDriver: HidHide 驅動程式
+settingsPage.HidHideInfo: HidHide 允許 DSX 在模擬虛擬裝置時隱藏實體控制器。它用於避免虛擬和實體控制器的雙重輸入，並讓遊戲或程式只看到虛擬控制器；由 Nefarius Software Solutions e.U. 開發和維護。
+settingsPage.Tabs.DangerZone: 危險區域
+settingsPage.Tabs.DangerZone.Warning: 此操作無法撤消，應用程式設定、設定文件和所有內容都將重置為其默認狀態。
+settingsPage.Tabs.DangerZone.ResetAppSettings: 重置應用程式設定
+
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineOne: 儲存資料夾位置
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineTwo: 這個操作無法撤消！
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineThree: 您確定要繼續嗎？
+
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Title: 應用程式重置成功
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Detail: DSX 現在將重新啟動。
+
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Title: 錯誤
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Detail: 重置應用程式設定失敗。
+
+settingsPage.EnableDiagnostictracing: 啟用診斷追蹤
+settingsPage.EnableDiagnostictracing.Details: 這是由經驗豐富的開發人員用於追蹤某些事情，例如性能。 
+
+# -------------------------------
+settingsPage.Display.LanguageCard.Title: 語言
+settingsPage.Display.LanguageCard.SubTitle: 選擇應用程式的語言。
+settingsPage.Display.LanguageCard.SearchBar.PlaceHolder: 按語言名稱搜索
+
+settingsPage.Display.LightThemeCard.Title: 亮色主題
+settingsPage.Display.LightThemeCard.SubTitle: 啟用此切換開關以進行不可描述的暴行。
+
+settingsPage.Display.FullDarkModeCard.Title: 完整暗黑模式
+settingsPage.Display.FullDarkModeCard.SubTitle: 將背景設為黑色，適用於那些喜歡暗黑模式的人。
+
+settingsPage.Display.AccentColorCard.Title: 應用程式強調顏色
+settingsPage.Display.AccentColorCard.SubTitle: 選擇在 DSX 中使用的強調顏色。
+settingsPage.Display.AccentColorCard.Reset.Button: 重置為系統預設值
+
+settingsPage.Display.BatteryIconCard.Title: 實時電池圖示
+settingsPage.Display.BatteryIconCard.SubTitle: 在控制器選擇標籤中，打開或關閉電池狀態圖示的實時漸變色彩。
+
+settingsPage.Display.WindowSizeCard.Title: 應用程式視窗大小
+settingsPage.Display.WindowSizeCard.SubTitle: 當調整視窗大小時，此應用程式將載入上次的寬度和高度。您可以在此處將大小重置為默認值。
+settingsPage.Display.WindowSizeCard.ResetAppSize: 重置應用程式大小
+
+settingsPage.Display.WindowScaleCard.Title: 調整視窗縮放大小
+settingsPage.Display.WindowScaleCard.SubTitle: 修改此值以相應地縮放視窗內容。如果您在低分辨率環境中工作，建議您減少此數字以獲得最佳可見性。
+settingsPage.Display.WindowScaleSlider.Title: 視窗縮放大小
+
+settingsPage.Display.TaskbarPreferences.Title: 工作列偏好設定
+settingsPage.Display.TaskbarPreferences.Description: 自定義右鍵單擊工作列圖示時顯示的菜單項目。
+
+settingsPage.Display.TaskbarPreferences.HomePage: 主頁
+settingsPage.Display.TaskbarPreferences.ProfilesPage: 設定文件頁面
+settingsPage.Display.TaskbarPreferences.ControllerPage: 控制器頁面
+settingsPage.Display.TaskbarPreferences.NotificationsPage: 通知頁面
+settingsPage.Display.TaskbarPreferences.AdaptiveTriggersPage: 自適應扳機頁面
+settingsPage.Display.TaskbarPreferences.ControllerLEDPage: 控制器 LED 頁面
+settingsPage.Display.TaskbarPreferences.HapticsRumblePage: 觸覺 | 震動頁面
+settingsPage.Display.TaskbarPreferences.InstalledGamesPage: 已安裝遊戲頁面
+settingsPage.Display.TaskbarPreferences.HidHidePage: HidHide 頁面
+settingsPage.Display.TaskbarPreferences.DSXLogsPage: DSX 日誌頁面
+settingsPage.Display.TaskbarPreferences.SettingsPage: 設定頁面
+
+settingsPage.Display.TaskbarPreferences.ShowConnectedControllers: 顯示已連接的控制器
+
+# -------------------------------
+settingsPage.Behavior.StartUpWithWindowCard.Title: 隨 Windows 啟動
+settingsPage.Behavior.StartUpWithWindowCard.SubTitle: "設定 DSX 隨 Windows 自動啟動。"
+settingsPage.Behavior.StartUpWithWindowCard.Note: "Steam 也會在啟動時自動啟動。"
+
+settingsPage.Behavior.Launchv2Automatically.Title: 自動啟動 DSX v2
+settingsPage.Behavior.Launchv2Automatically.SubTitle: 啟用此選項後，DSX v2 將啟動，v3 將關閉。
+settingsPage.Behavior.Launchv2Automatically.Note: 在 DSX 啟動時按住 ESCAPE (esc) 鍵即可輕鬆返回 v3。一旦進入 v3，您可以在此處禁用此選項。
+
+settingsPage.Behavior.StartUpMinimizedCard.Title: 初始視窗狀態
+settingsPage.Behavior.StartUpMinimizedCard.SubTitle: "選擇 DSX 啟動時的外觀：正常、最小化或最大化。"
+
+settingsPage.Behavior.StartUpMinimizedCard.State.Normal: 正常
+settingsPage.Behavior.StartUpMinimizedCard.State.Maximized: 最大化
+settingsPage.Behavior.StartUpMinimizedCard.State.Minimized: 最小化
+settingsPage.Behavior.StartUpMinimizedCard.State.MinimizedToTray: 最小化到托盤
+
+settingsPage.Behavior.KeepAppInTrayCard.Title: 最小化到托盤
+settingsPage.Behavior.KeepAppInTrayCard.SubTitle: 當最小化時，DSX 將繼續在後台運行，可以通過托盤圖標訪問。
+
+settingsPage.Behavior.DisconnectControllersOnExit.Title: 退出時斷開控制器連接
+settingsPage.Behavior.DisconnectControllersOnExit.SubTitle: 啟用此選項將在 DSX 退出時斷開所有藍牙連接的控制器。
+
+settingsPage.Behavior.DiscordRPCard.Title: Discord Rich Presence
+settingsPage.Behavior.DiscordRPCard.SubTitle: 啟用 Discord 顯示詳細信息，例如所選頁面、控制器詳細信息和使用時間。
+settingsPage.Behavior.DiscordRPCard.Note: 更改可能需要幾秒鐘才會在 Discord 中顯示。
+
+settingsPage.Behavior.SteamNowPlayingStatus.Title: Steam 現正播放狀態
+settingsPage.Behavior.SteamNowPlayingStatus.SubTitle: 保持啟動器最小化，以在 Steam 上顯示 DSX 為“現正播放”狀態，同時跟踪遊戲時間。
+settingsPage.Behavior.SteamNowPlayingStatus.Note: 需要重新啟動 DSX 才能生效。 
+
+# -------------------------------
+settingsPage.Networking.IncomingUDP.Section: 傳入 UDP
+settingsPage.Networking.OutgoingUDP.Section: 傳出 UDP
+settingsPage.Networking.WindowsFireWall.Section: Windows 防火牆
+
+# Used more than once:
+settingsPage.Networking.ipAddress: IP 地址
+settingsPage.Networking.ipAddress.Description: 默認情況下，IP 地址是本地主機，即此 PC。
+settingsPage.Networking.portNumber: 端口號
+settingsPage.Networking.portNumber.Description: 用於與此 PC 上的 DSX 進行通信的端口號。
+settingsPage.Networking.ipAddressPort: IP 地址和端口設定。
+settingsPage.Networking.ipAddressPlaceholder: 本地主機 127.0.0.1 
+##
+
+settingsPage.Networking.IncomingUDPCard.SubTitle: 啟用此選項後，Mod 可以利用與 DualSense 控制器的通信來控制自適應扳機、LED 燈條、玩家 LED 和靜音 LED。
+settingsPage.Networking.IncomingUDPSettingsCard.Title: 傳入 UDP 設定
+
+settingsPage.Networking.OutgoingUDPCard.SubTitle: 啟用此選項後，DSX 可以向模擬器發送各種數據，例如運動數據。
+settingsPage.Networking.OutgoingUDPSettingsCard.Title: 傳出 UDP 設定
+
+settingsPage.Networking.FirewallCard.WinFirewall: Windows 防火牆
+settingsPage.Networking.FirewallCard.Title: 防火牆 UDP 檢查
+settingsPage.Networking.FirewallCard.SubTitle: 檢查上面指定的 UDP 端口是否在 Windows 防火牆設定中開放。
+settingsPage.Networking.FirewallCard.Status: 狀態
+settingsPage.Networking.FirewallCard.CheckPortStatus: 檢查端口狀態
+settingsPage.Networking.FirewallCard.Status.IncomingTitle: "進入 UDP 端口"
+settingsPage.Networking.FirewallCard.Status.IncomingDescr: 進入 UDP 端口是否已添加到您的 Windows 防火牆中的狀態。
+settingsPage.Networking.FirewallCard.Status.OutgoingTitle: "傳出 UDP 端口"
+settingsPage.Networking.FirewallCard.Status.OutgoingDescr: 傳出 UDP 端口是否已添加到您的 Windows 防火牆中的狀態。
+
+settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: 添加端口到防火牆
+
+# Make sure the %i is in here as it represents a number. Example: Incoming UDP Port for 6969 is open.
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: %i 的傳入 UDP 端口已開放。
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: %i 的傳出 UDP 端口已開放。
+
+settingsPage.Networking.FirewallCard.Status.IncomingFailed: %i 的傳入 UDP 端口已關閉。
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed: %i 的傳出 UDP 端口已關閉。
+
+settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: 添加傳入 UDP 端口到 Windows 防火牆。
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: 添加傳出 UDP 端口到 Windows 防火牆。
+
+# -------------------------------
+settingsPage.Driver.VirtualPadDriverCard.SubTitle: VirtualPad Driver 可以啟用一個虛擬裝置，使其模擬實體連接的原始裝置。
+settingsPage.Driver.HidHideCard.SubTitle: HidHide 允許應用程序在模擬虛擬裝置時隱藏實體控制器。它用於避免虛擬和實體控制器的雙重輸入，讓遊戲或程序只看到虛擬控制器。
+settingsPage.Driver.NefariusCard.SubTitle: Nefarius 是 VirtualPad Driver 和 HidHide Driver 的開發者，沒有他的工具，這個應用程序就不可能存在！請在下面支持作者。
+settingsPage.Driver.NefariusCard.GetInTouch: 聯繫我們
+settingsPage.Driver.NefariusCard.ShowSupport: 支持作者 
+
+# Used more than once:
+settingsPage.Driver.DriverName: 驅動程序名稱
+settingsPage.Driver.DriverVersion: 驅動程序版本
+settingsPage.Driver.DriverSize: 驅動程序大小
+settingsPage.Driver.DriverReleaseDate: 最新發布日期 
+##
+
+
+# -------------------------------
+
+# ------------------------------------------------------------------------------------------------
+# About Page
+# ------------------------------------------------------------------------------------------------
+
+aboutPage.DSXDevelopers: DSX 開發人員
+aboutPage.DSXChangeLog: DSX 更新日誌
+
+aboutPage.NefariusDescription.1: 驅動工程師
+aboutPage.NefariusDescription.2: 硬件和兼容性
+aboutPage.NefariusDescription.3: 性能和穩定性
+aboutPage.NefariusDescription.4: 優化和 DevOps
+aboutPage.NefariusDescription.5: 技術作家
+
+aboutPage.PaliverseDescription.1: 創始人和核心開發人員
+aboutPage.PaliverseDescription.2: 硬件和兼容性
+aboutPage.PaliverseDescription.3: 維護和性能
+aboutPage.PaliverseDescription.4: 管理和更新
+aboutPage.PaliverseDescription.5: UI/UX 和測試
+
+aboutPage.RamDescription.1: 核心和邏輯開發人員
+aboutPage.RamDescription.2: 圖形設計師
+aboutPage.RamDescription.3: 性能和穩定性
+aboutPage.RamDescription.4: 質量和社區
+aboutPage.RamDescription.5: UI/UX 和測試
+
+
+aboutPage.DSX.SteamPage.Title: DSX Steam 頁面
+aboutPage.DSX.SteamPage.SubTitle: 訪問 DSX Steam 頁面以獲取最新信息。
+aboutPage.DSX.SteamPage.Button: 在 Steam 上的 DSX
+
+aboutPage.DSX.DiscordServer.Title: DSX Discord 服務器
+aboutPage.DSX.DiscordServer.SubTitle: 加入 DSX Discord 服務器，以獲得任何問題的幫助，報告錯誤或故障。
+aboutPage.DSX.DiscordServer.Button: 加入 Discord 服務器
+
+aboutPage.DSX.LibrariesUsed.Title: DSX 使用的庫
+aboutPage.DSX.LibrariesUsed.SubTitle: 用於支持 DSX 的公共庫列表。 
+
+
+# Strings used programmatically
+p.Unavailable: 不可用
+p.NotInstalled: 未安裝
+p.Close: 關閉
+p.ViewDriverInfo: 查看驅動程序信息
+p.ViewFirmwareUpdaterTool: 查看固件更新工具 
+
+# Update notifications etc.
+p.MissingHidHideDriver.Title: 缺少 HidHide 驅動程序
+p.MissingHidHideDriver.Detail: "\n為了避免虛擬控制器與實體控制器產生雙重輸入，必須安裝 HidHide 驅動程序。"
+
+p.MissingVPadDriver.Title: 缺少 VirtualPad 驅動程序
+p.MissingVPadDriver.Detail: "\n由於缺少驅動程序，無法創建虛擬控制器。"
+
+p.CantStartVPadDriver.Title: 無法啟動 VirtualPad 驅動程序
+p.CantStartVPadDriver.Detail: "\n無法創建虛擬控制器。\n請重新安裝 VirtualPad 驅動程序，重新啟動，然後重試。"
+
+p.VPadError.Title: VirtualPad 驅動程序錯誤
+p.VPadError.Detail: "\n無法創建虛擬控制器。\n請重新啟動您的電腦，然後重試。"
+
+p.DriverError.Title: 缺少 VirtualPad 和 HidHide 驅動程序
+p.DriverError.Detail: "\n為了能夠模擬 Xbox 360 控制器或 DualShock 4 控制器，必須安裝 VirtualPad 驅動程序。\n\n為了避免虛擬控制器與實體控制器產生雙重輸入，必須安裝 HidHide 驅動程序。\n\n點擊“查看驅動程序信息”以查看缺少的驅動程序並安裝它們。"
+
+p.DriverUpdate.Title: VirtualPad 驅動程序或 HidHide 驅動程序更新
+p.DriverUpdate.Detail: "\nHidHide 驅動程序或 VirtualPad 驅動程序有更新。\n\n請單擊“查看驅動程序信息”以查看哪個需要更新。"
+
+p.DualSenseUpdate.Title: DualSense 控制器固件更新可用
+p.DualSenseUpdate.Detail: "\n您的 DualSense 控制器有新的固件版本可用。\n\n當前版本：0x00\n新版本：0x00\n\n您應該始終更新到最新版本，原因如下：\n- 修復 DualSense 電池讀取錯誤\n- 正常震動（適用於舊遊戲）\n- 各種修復和改進\n\n請安裝 Sony 的官方固件更新工具以更新您的控制器。\n\n注意：更新時，請確保 DSX 已關閉，以避免過程中出現任何問題。"
+
+p.UnknownHidHideStatus: 無法確定 HidHide 驅動程序狀態
+p.UnknownHidHideStatus.Detail: "\n請重新安裝 HidHide 驅動程序並在重新啟動後重試。" 
+
+# HidHide Card
+p.HidHide.HidHideIsInstalled: HidHide 驅動程序已安裝
+p.HidHide.HidHideIsNotInstalled: HidHide 驅動程序未安裝
+
+# Vpad Card
+p.VPad.VPadIsInstalled: VirtualPad 驅動程序已安裝（由 Nefarius 提供）
+p.VPad.VPadIsNotInstalled: VirtualPad 驅動程序未安裝（由 Nefarius 提供）
+
+p.Controllers.AccessController: Access™ 控制器
+p.Controllers.PSVR2SenseL: PS VR 2 Sense™ 控制器（左）
+p.Controllers.PSVR2SenseR: PS VR 2 Sense™ 控制器（右）
+p.Controllers.DualSense: DualSense™️ 無線控制器
+p.Controllers.DualSenseEdge: DualSense Edge™️ 無線控制器
+p.Controllers.DualShockv1: DualShock™️ 4 無線控制器 [v1]
+p.Controllers.DualShockv2: DualShock™️ 4 無線控制器 [v2]
+p.Controllers.DualShock4USBAdapter: DualShock™️ 4 USB 無線適配器 
+
+# DLC Info
+p.ViewDLCOnSteam: 在 Steam 上查看 DLC
+p.UnlockDualSenseEmulation: 解鎖 DualSense 模擬
+p.UnlockDualSenseEmulation.Detail: "您目前無法使用 DualSense 模擬。\n\n要使用此功能，請考慮購買 DualSense 模擬 DLC。您的支持有助於 VirtualPad 驅動程序的開發人員。\n\n您想在 Steam 上查看嗎？"
+
+# Macros
+p.MacrosActivation.PlayOnce.Title: 播放一次
+p.MacrosActivation.PlayOnce.Subtitle: 該操作將播放一次。
+p.MacrosActivation.PlayNTimes.Title: 播放 N 次
+p.MacrosActivation.PlayNTimes.Subtitle: 該操作將重複一定次數。
+p.MacrosActivation.RepeatWhilePressed.Title: 按住重複
+p.MacrosActivation.RepeatWhilePressed.Subtitle: 按住按鈕以自動重複操作。
+p.MacrosActivation.ToggleAutoRepeat.Title: 切換自動重複
+p.MacrosActivation.ToggleAutoRepeat.Subtitle: 按一次以開始自動重複操作，再次按下以停止。
+p.MacrosActivation.ToggleAutoRepeatContinuous.Title: 切換自動重複（連續）
+p.MacrosActivation.ToggleAutoRepeatContinuous.Subtitle: 按一次按鈕以開始連續播放操作，再次按下以停止。 
+
+p.MacrosDelay.Title: 延遲
+p.MacrosDelay.Subtitle: 重複之間的休息時間。
+
+p.MacrosRepeat.Title: 重複
+p.MacrosRepeat.Subtitle: 重複次數
+
+p.MacrosPlayOnKey.Title: 按鍵播放
+p.MacrosPlayOnKey.Subtitle: 選擇按下或釋放按鈕時是否啟用此宏。
+p.KeyDown: 按下按鍵
+p.KeyUp: 釋放按鍵
+p.StartRecording: 開始錄製
+p.StopRecording: 停止錄製
+
+p.DeleteSelectedActionProfile: 刪除所選操作設定檔？
+p.DeleteSelectedActionProfiles: 刪除所選操作設定檔？
+p.DeleteSelectedDeadzoneProfile: 刪除所選死區設定檔？
+p.DeleteSelectedDeadzoneProfiles: 刪除所選死區設定檔？
+p.DeleteSelectedTouchpadProfile: 刪除所選觸控板設定檔？
+p.DeleteSelectedTouchpadProfiles: 刪除所選觸控板設定檔？
+p.DeleteSelectedMotionProfile: 刪除所選運動設定檔？
+p.DeleteSelectedMotionProfiles: 刪除所選運動設定檔？
+p.DeleteProfile: 刪除設定檔
+p.DeleteProfiles: 刪除設定檔
+p.LeftMouseButton.Text: 左鍵
+p.RightMouseButton.Text: 右鍵
+p.MiddleMouseButton.Text: 中鍵
+p.BackMouseButton.Text: 後側鍵
+p.ForwardMouseButton.Text: 前側鍵
+p.ScrollWheelUp: 滾輪向上滾動
+p.ScrollWheelDown: 滾輪向下滾動
+
+p.DeviceStatus: 裝置狀態
+p.ActiveActionProfile: 已啟用的操作設定檔
+p.ActiveAdaptiveTriggersProfile: 已啟用的自適應扳機設定檔
+p.ActiveDeadzoneProfile: 已啟用的死區設定檔
+p.ActiveHapticsRumbleProfile: 已啟用的觸覺/震動設定檔
+p.ActiveLEDProfile: 已啟用的 LED 設定檔
+p.ActiveMotionProfile: 已啟用的運動設定檔
+p.ActiveNotificationsProfile: 已啟用的通知設定檔
+p.ActiveTouchpadProfile: 已啟用的觸控板設定檔
+
+p.Shortcuts.ToggleXboxGameBar: 切換 Xbox Game Bar
+p.Shortcuts.SystemScreenshot: 系統截圖
+p.Shortcuts.IncreaseBrightnessLevel: 增加亮度
+p.Shortcuts.DecreaseBrightnessLevel: 降低亮度
+p.Shortcuts.TogglePCMicMute: 切換 PC 麥克風靜音
+p.Shortcuts.PreviousTrack: 上一首
+p.Shortcuts.TogglePlayPause: 切換播放/暫停
+p.Shortcuts.NextTrack: 下一首
+p.Shortcuts.ToggleVolumeMute: 切換音量靜音
+p.Shortcuts.IncreaseVolumeLevel: 增加音量
+p.Shortcuts.DecreaseVolumeLevel: 降低音量
+
+p.Shortcuts.StartScreen: 顯示或隱藏開始畫面
+p.Shortcuts.QuickSettingsWin11: 打開快速設定（Windows 11）
+p.Shortcuts.QuickSettingsWin10: 打開操作中心（Windows 10）
+p.Shortcuts.FocusNotificationArea: 設定焦點在通知區域
+p.Shortcuts.ChatTeamsWin11: 從 Microsoft Teams 打開聊天（Windows 11）
+p.Shortcuts.CortanaWin10: 以聆聽模式打開 Cortana（Windows 10）
+p.Shortcuts.CharmsMenu: 打開魅力菜單
+p.Shortcuts.ColorFiltersWin11: 打開顏色濾鏡（首先在顏色濾鏡設定中啟用此快捷方式）（Windows 11）
+p.Shortcuts.ShowDesktop: 顯示和隱藏桌面
+p.Shortcuts.ShowDateAndTime: 在桌面上顯示和隱藏日期和時間
+p.Shortcuts.FileExplorer: 打開檔案總管
+p.Shortcuts.FeedbackHub: 打開意見反饋中心並截圖
+p.Shortcuts.XboxGameBar: 當遊戲開啟時打開 Xbox Game Bar
+p.Shortcuts.TurnHDROnOff: 打開或關閉 HDR
+p.Shortcuts.LaunchVoiceTypingWin11: 啟動語音輸入（Windows 11）
+p.Shortcuts.StartDictationWin10: 開始口述（Windows 10） 
+p.Shortcuts.OpenSettings: 打開設定
+p.Shortcuts.OpenCastWin11: 從快速設定中打開 Cast（Windows 11）
+p.Shortcuts.OpenConnectWin10: 打開連接快速操作（Windows 10）
+p.Shortcuts.ToggleMicrophoneMute: 在支持通話靜音的應用程式中切換麥克風靜音。從 Windows 11，版本 22H2 開始提供
+p.Shortcuts.LockPCSwitchAccounts: 鎖定您的 PC 或切換帳戶
+p.Shortcuts.MinimizeAllWindows: 最小化所有視窗
+p.Shortcuts.RestoreMinimizedWindows: 在桌面上還原最小化的視窗
+p.Shortcuts.LockDeviceOrientation: 鎖定裝置方向
+p.Shortcuts.ChoosePresentationDisplayMode: 選擇演示文稿顯示模式
+p.Shortcuts.OpenQuickAssist: 打開快速協助
+p.Shortcuts.OpenRunDialogBox: 打開執行對話方塊
+p.Shortcuts.RecordVideoGameWindowWin11: 錄製焦點中的遊戲視窗的視頻（使用 Xbox 遊戲列）（Windows 11）
+p.Shortcuts.OpenSearch: 打開搜尋
+p.Shortcuts.TakeScreenshotPartScreen: 擷取螢幕部分的截圖
+p.Shortcuts.CycleThroughAppsTaskbar: 在工作列上循環顯示應用程式
+p.Shortcuts.OpenAccessibilitySettings: 打開輔助功能設定
+p.Shortcuts.OpenClipboardHistoryWin11: 打開剪貼簿歷史記錄（如果在設定中啟用）
+p.Shortcuts.OpenClipboardWin10: 打開剪貼簿（如果在設定中啟用）
+p.Shortcuts.OpenClipboardHistoryBoth: 打開剪貼簿歷史記錄（Windows 11）| 打開剪貼簿（Windows 10）（如果在任一設定中啟用）
+p.Shortcuts.SetFocusNotificationWin11: 設定焦點在通知上
+p.Shortcuts.CycleThroughNotificationsWin10: 在通知上循環顯示
+p.Shortcuts.SetFocusNotificationBoth: 設定焦點在通知上（Windows 11）| 在通知上循環顯示（Windows 10）
+p.Shortcuts.OpenWidgetsWin11: 打開小工具
+p.Shortcuts.OpenWidgetsBoth: 打開小工具（Windows 11）
+p.Shortcuts.OpenQuickLinkMenu: 打開快速連結菜單
+p.Shortcuts.SwitchInputMixedReality: 在 Windows Mixed Reality 和桌面之間切換輸入
+p.Shortcuts.OpenSnapLayoutsWin11: 打開貼齊佈局（Windows 11）| 在全螢幕模式下顯示應用程式中可用的命令（Windows 10）
+p.Shortcuts.OpenEmojiPanel: 打開表情符號面板
+p.Shortcuts.PeekAtDesktop: 暫時查看桌面
+p.Shortcuts.OpenAboutPCWin11: 在設定中打開關於 PC（Windows 11）| 顯示系統內容對話方塊（Windows 10）
+p.Shortcuts.SearchForPCsNetwork: 搜尋 PC（如果您在網路上）
+p.Shortcuts.StartAppPinnedTaskbar: 開始或顯示釘在工作列位置 1 的應用程式
+p.Shortcuts.StartAppPinnedTaskbar2: 開始或顯示釘在工作列位置 2 的應用程式
+p.Shortcuts.StartAppPinnedTaskbar3: 開始或顯示釘在工作列位置 3 的應用程式
+p.Shortcuts.StartAppPinnedTaskbar4: 開始或顯示釘在工作列位置 4 的應用程式
+p.Shortcuts.StartAppPinnedTaskbar5: 開始或顯示釘在工作列位置 5 的應用程式
+p.Shortcuts.StartAppPinnedTaskbar6: 開始或顯示釘在工作列位置 6 的應用程式
+p.Shortcuts.StartAppPinnedTaskbar7: 開始或顯示釘在工作列位置 7 的應用程式
+p.Shortcuts.StartAppPinnedTaskbar8: 開始或顯示釘在工作列位置 8 的應用程式
+p.Shortcuts.StartAppPinnedTaskbar9: 開始或顯示釘在工作列位置 9 的應用程式
+p.Shortcuts.StartAppPinnedTaskbar10: 開始或顯示釘在工作列位置 10 的應用程式
+p.Shortcuts.OpenTaskView: 打開任務檢視
+p.Shortcuts.MaximizeWindow: 最大化視窗
+p.Shortcuts.SnapWindowTopHalfWin11: 將焦點中的視窗貼齊到螢幕上半部分（Windows 11）
+p.Shortcuts.RemoveAppScreen: 從螢幕中移除當前應用程式或最小化桌面視窗
+p.Shortcuts.SnapWindowBottomHalfWin11: 將焦點中的視窗貼齊到螢幕下半部分（Windows 11）
+p.Shortcuts.MaximizeLeftSideScreen: 將應用程式或桌面視窗最大化到螢幕左側
+p.Shortcuts.MaximizeRightSideScreen: 將應用程式或桌面視窗最大化到螢幕右側
+p.Shortcuts.MinimizeAllExceptActive: 最小化除了當前活動的桌面視窗以外的所有視窗（再次操作可恢復所有視窗）
+p.Shortcuts.StretchDesktopWindow: 將桌面視窗拉伸到螢幕的上方和下方
+p.Shortcuts.RestoreMinimizeActiveDesktopWindowsVertically: 垂直還原/最小化活動桌面視窗，保持寬度
+p.Shortcuts.MoveAppWindowBetweenMonitorsLeft: 將桌面中的應用程式或視窗從一個監視器移動到另一個監視器（向左）
+p.Shortcuts.MoveAppWindowBetweenMonitorsRight: 將桌面中的應用程式或視窗從一個監視器移動到另一個監視器（向右）
+p.Shortcuts.CycleBackwardsLanguageKeyboardLayoutWin11: 循環向後切換語言和鍵盤佈局（Windows 11）
+p.Shortcuts.SwitchInputLanguageKeyboardLayout: 切換輸入語言和鍵盤佈局
+p.Shortcuts.ChangeToPreviouslySelectedInput: 切換到先前選擇的輸入方式
+p.Shortcuts.TurnOnNarrator: 打開語音朗讀器
+p.Shortcuts.OpenMagnifierAndZoomIn: 打開放大鏡並放大
+p.Shortcuts.ZoomOutInMagnifier: 在放大鏡中縮小
+p.Shortcuts.CloseMagnifierWin11: 關閉放大鏡（Windows 11）
+p.Shortcuts.BeginIMEReconversion: 開始 IME 重新轉換
+p.Shortcuts.OpenShoulderTapsWin10: 打開肩部輕拍（Windows 10）
+p.Shortcuts.WakePCFromBlankOrBlackScreen: 從空白或黑屏中喚醒 PC
+p.Shortcuts.SaveScreenshotOfGameWindowToFile: 將焦點中的遊戲視窗的截圖保存到文件中（使用 Xbox 遊戲列）
+p.Shortcuts.OpenTaskbarSettingsOnTaskbarFocus: 在工作列上打開工作列設定
+
+
+# Controller Page -> Touchpad Section
+
+ctPage.Touchpad.Mode.Title: 觸控板模式
+ctPage.Touchpad.Mode.SubTitle: 選擇直傳、觸控板模擬滑鼠或觸控板+，以充分利用觸控板。
+
+ctPage.TouchpadToMouse.Mode.Passthrough.Title: 直傳
+ctPage.TouchpadToMouse.Mode.Passthrough.SubTitle: 觸控板數據將通過 DualShock 4 或 DualSense 模擬直傳。
+
+ctPage.TouchpadToMouse.Mode.Mouse.Title: 觸控板模擬滑鼠
+ctPage.TouchpadToMouse.Mode.Mouse.SubTitle: 觸控板將控制此電腦的滑鼠。
+
+ctPage.TouchpadToMouse.Mode.Plus.Title: 觸控板+
+ctPage.TouchpadToMouse.Mode.Plus.SubTitle: 觸控板輸入可用於重新映射和其他各種任務。
+
+ctPage.TouchpadToMouse.PressToLeftClick.Title: 按下進行左鍵點擊
+ctPage.TouchpadToMouse.PressToLeftClick.SubTitle: 啟用後，按壓觸控板將導致左鍵點擊。
+
+ctPage.TouchpadToMouse.TapToLeftClick.Title: 輕觸進行左鍵點擊
+ctPage.TouchpadToMouse.TapToLeftClick.SubTitle: 啟用後，輕觸觸控板將導致左鍵點擊。
+
+ctPage.TouchpadToMouse.TapToRightClick.Title: 輕觸進行右鍵點擊
+ctPage.TouchpadToMouse.TapToRightClick.SubTitle: 啟用後，用兩個手指輕觸觸控板將導致右鍵點擊。
+
+ctPage.TouchpadToMouse.NormalSensi.Title: 正常靈敏度速度
+ctPage.TouchpadToMouse.NormalSensi.SubTitle: 滑鼠移動的靈敏度速度。
+
+ctPage.TouchpadToMouse.PreciseSensi.Title: 精確靈敏度速度
+ctPage.TouchpadToMouse.PreciseSensi.SubTitle: 當按住此按鈕時，滑鼠將進入精確狀態，速度會減慢到此處設定的速度。
+
+ctPage.TouchpadToMouse.FastSensi.Title: 快速靈敏度速度
+ctPage.TouchpadToMouse.FastSensi.SubTitle: 當按住此按鈕時，滑鼠將進入快速狀態，速度會加快到此處設定的速度。
+
+ctPage.TouchpadToMouse.ScrollSensi.Title: 捲動靈敏度速度
+ctPage.TouchpadToMouse.ScrollSensi.SubTitle: 用兩個手指輕觸然後向任何方向拖動，即可開始捲動，就像按下中鍵並移動滑鼠一樣。
+
+ctPage.TouchpadToMouse.ScrollInvert.Title: 反轉捲動
+ctPage.TouchpadToMouse.ScrollInvert.SubTitle: 啟用後，捲動將被反轉。
+
+# --------------------
+
+settingsPage.Display.WindowBackgroundEffect.Title: 視窗背景效果
+settingsPage.Display.WindowBackgroundEffect.SubTitle: 選擇所需的背景效果。
+
+settingsPage.Display.WindowBackgroundEffect.Mode.None.Title: 無
+settingsPage.Display.WindowBackgroundEffect.Mode.None.Subtitle: 沒有背景效果。
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Acrylic.Title: 亞克力
+settingsPage.Display.WindowBackgroundEffect.Mode.Acrylic.Subtitle: Windows 亞克力效果。
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Title: 雲母
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Subtitle: Windows 11 雲母效果。
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Warning.Title: ⚠️ 適用於 Windows 11（Build 22000）或更新版本
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Title: 分頁
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Subtitle: Windows 11 桌面背景模糊效果。
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Warning.Title: ⚠️ 適用於 Windows 11 Insider 10（Build 22523）或更新版本
+
+BatteryPowerState.Discharging: 放電中
+BatteryPowerState.Charging: 充電中
+BatteryPowerState.Complete: 充電完成
+BatteryPowerState.AbnormalVoltage: 電壓異常
+BatteryPowerState.AbnormalTemperture: 溫度異常
+BatteryPowerState.ChargingError: 充電錯誤
+
+ToastNotifications.BatteryInfo: 電池信息
+ToastNotifications.BatteryLevelLow: 🪫⚠️ 電池電量低 ⚠️🪫
+ToastNotifications.DeviceConnected: ℹ️ 裝置已連接
+ToastNotifications.DeviceDisconnected: ⚠️ 裝置已斷開連接
+ToastNotifications.EmulationActivated: 已啟用
+ToastNotifications.ActiveProfile: 活動中
+ToastNotifications.IsActiveProfile: 正在活動中
+ToastNotifications.Activated: 已啟用
+
+aboutPage.DSX.Libraries.Title: DSX 使用的庫
+aboutPage.DSX.Libraries.Subtitle: 用於支持 DSX 的公共庫列表。
+
+ctPage.JoystickDeadzone.Left.Mode.Title: 左搖杆模式
+ctPage.JoystickDeadzone.Right.Mode.Title: 右搖杆模式
+ctPage.JoystickDeadzone.Mode.SubTitle: 選擇通過、簡單死區或高級死區以進行更精確的調整。
+
+ctPage.JoystickDeadzone.Mode.Passthrough.SubTitle: 搖杆數據無縫地通過 Xbox 360、DualShock 4 或 DualSense 模擬直傳。不應用任何調整或死區修改。
+
+ctPage.JoystickDeadzone.Mode.Simple.Title: 簡單死區
+ctPage.JoystickDeadzone.Mode.Simple.SubTitle: 選擇軸向和徑向死區模式可決定控制器的反應。軸向優先考慮每個方向的精確控制，非常適合平台遊戲或射擊遊戲，而徑向則確保統一的反應，非常適合賽車或飛行模擬器。
+
+ctPage.JoystickDeadzone.Mode.Advanced.Title: 高級死區
+ctPage.JoystickDeadzone.Mode.Advanced.SubTitle: 通過我們的高級死區模式微調您的搖杆體驗。調整靈敏度、死區和範圍設定，打造適合您的控制方案。
+
+ctPage.JoystickDeadzone.Simple.Mode.Title: 死區模式
+ctPage.JoystickDeadzone.Simple.Mode.Subtitle: 選擇軸向和徑向死區模式可決定控制器對微小移動的反應。軸向死區優先考慮個別方向的精確控制，非常適合平台遊戲或射擊遊戲。徑向死區確保在所有方向上統一的反應，減少意外移動，非常適合賽車或飛行模擬器。
+
+ctPage.JoystickDeadzone.SimpleMode.Axial.Title: 軸向
+ctPage.JoystickDeadzone.SimpleMode.Radial.Title: 徑向
+
+ctPage.JoystickDeadzone.Deadzone.Title: 死區
+ctPage.JoystickDeadzone.Deadzone.SubTitle: 表示搖杆的死區值。這是中心周圍的區域，在此區域內的輸入將被忽略。
+
+ctPage.JoystickDeadzone.Saturation.Title: 飽和度
+ctPage.JoystickDeadzone.Saturation.SubTitle: 控制搖杆的靈敏度。將其設定為小於1會使搖杆更靈敏，因此即使是微小的移動也會對您的遊戲或應用程序產生很大的影響。將其設定為1可以保持搖杆的正常靈敏度。調整飽和度可以讓您定制您的移動對屏幕產生的影響程度。
+
+ctPage.JoystickDeadzone.Range.Title: 範圍
+ctPage.JoystickDeadzone.Range.SubTitle: 調整搖杆的行程距離，決定影響屏幕操作的搖杆移動的最大範圍。
+
+ctPage.JoystickDeadzone.Sensitivity.Title: 靈敏度
+ctPage.JoystickDeadzone.Sensitivity.SubTitle: 增加靈敏度會使搖杆更靈敏，因此即使是微小的移動也會對屏幕產生很大的影響。降低靈敏度則相反，需要更大的搖杆移動才能在屏幕上進行相同的更改。
+
+homepage.VirtualDevice.DSModeConfig.Title: DualSense 模式設定
+homepage.VirtualDevice.DSModeConfig.SubTitle: 啟用 DualSense 模擬時，您可以調整以下通過選項。
+
+app.LaunchV2Button: 啟動 DSX v2
+
+profiles.ResetProfile: 重置設定文件
+profiles.RenameProfile: 重命名設定文件
+
+ctPage.ActiveMouseMappingsDescription: 您的活動滑鼠映射列表。
+
+ctPage.selectedButton: 選定的按鈕
+ctPage.selectedButtons: 選定的按鈕 ## Plural
+
+ctPage.Input: 輸入
+ctPage.Output: 輸出
+
+ctPage.Mouse.ScrollUp: 滾輪向上滾動（%i 點） # %i is a number that is auto filled so think of it like this: - Scroll Wheel Up (2 Points) -
+ctPage.Mouse.ScrollDown: 滾輪向下滾動（%i 點） # %i is a number that is auto filled so think of it like this: - Scroll Wheel Down (2 Points) -
+
+ctPage.R2TriggerInputRange: R2 扳機輸入範圍
+
+notificationsPage.SystemNotification.Title: 系統通知
+notificationsPage.SystemNotification.SubTitle: 為了讓 DSX 發送通知，DSX 需要權限。如果尚未啟用，請單擊“打開通知設定”以允許 DSX 發送通知。
+notificationsPage.SystemNotification.Button.Title: 打開通知設定 
+
+notificationsPage.LowBattery.Title: 電量低
+notificationsPage.LowBattery.SubTitle: 只有在電池未充電時才在電量低時收到通知。
+
+notificationsPage.LowBattery.Percentage.Title: 電池百分比
+notificationsPage.LowBattery.Percentage.SubTitle: 選擇當電池百分比低於指定值時觸發此通知的時間。
+
+notificationsPage.LowBattery.Repeat.Title: 通知重複
+notificationsPage.LowBattery.Repeat.SubTitle: 選擇此通知應重複多少次。
+
+notificationsPage.LowBattery.Repeat.1: 重複 1 次
+notificationsPage.LowBattery.Repeat.3: 重複 3 次
+notificationsPage.LowBattery.Repeat.5: 重複 5 次
+notificationsPage.LowBattery.Repeat.10: 重複 10 次
+notificationsPage.LowBattery.Repeat.Forever: 無限重複
+
+notificationsPage.LowBattery.Interval.Title: 通知間隔
+notificationsPage.LowBattery.Interval.SubTitle: 選擇每次重複之間的間隔時間。
+
+notificationsPage.LowBattery.Interval.30Seconds: 30 秒間隔
+notificationsPage.LowBattery.Interval.1: 1 分鐘間隔
+notificationsPage.LowBattery.Interval.2: 2 分鐘間隔
+notificationsPage.LowBattery.Interval.5: 5 分鐘間隔
+notificationsPage.LowBattery.Interval.10: 10 分鐘間隔
+
+notificationsPage.ConnectionStatus.Title: 連接狀態
+notificationsPage.ConnectionStatus.SubTitle: 當此裝置連接或斷開 DSX，或當模擬模式啟動時收到通知。
+
+notificationsPage.ConnectionStatus.DeviceConnected.Title: 裝置已連接
+notificationsPage.ConnectionStatus.DeviceConnected.SubTitle: 當此裝置連接到 DSX 時收到通知。
+
+notificationsPage.ConnectionStatus.DeviceDisconnected.Title: 裝置已斷開連接
+notificationsPage.ConnectionStatus.DeviceDisconnected.SubTitle: 當此裝置從 DSX 斷開連接時收到通知。
+
+notificationsPage.ConnectionStatus.VirtualDevice.Title: 虛擬裝置狀態
+notificationsPage.ConnectionStatus.VirtualDevice.SubTitle: 當虛擬裝置啟動時收到通知。
+
+notificationsPage.ProfileSystem.SubTitle: 當設定檔啟動時收到通知。
+
+colorPicker.InitialColor: 初始顏色
+colorPicker.SelectedColor: 選定的顏色
+
+color.Gradient: 漸變
+
+# %i is a number that is auto filled, also keep the translation inside the single quotes.
+installedGamesPage.TotalPlaytime.Day.single: '%i 天'
+installedGamesPage.TotalPlaytime.Day.plural: '%i 天'
+
+installedGamesPage.TotalPlaytime.Hour.single: '%i 小時'
+installedGamesPage.TotalPlaytime.Hour.plural: '%i 小時'
+
+installedGamesPage.TotalPlaytime.Minute.single: '%i 分鐘'
+installedGamesPage.TotalPlaytime.Minute.plural: '%i 分鐘'
+
+setupPage.DSXSetup.Title: DSX 設定
+
+setupPage.DSXSetup.AdaptiveTriggers.SubTitle: 提供廣泛的自適應扳機模式和設定，以獲得完美的感覺。
+
+setupPage.DSXSetup.HapticFeedback.Title: 觸覺反饋
+setupPage.DSXSetup.HapticFeedback.SubTitle: 通過音頻到觸覺、震動到觸覺等方式感受更沉浸式的震動體驗。
+
+setupPage.DSXSetup.MultipleController.Title: 多控制器支持
+setupPage.DSXSetup.MultipleController.SubTitle: 連接您的 PC 可以處理的所有控制器。
+
+setupPage.DSXSetup.ProfileSystem.SubTitle: 添加無限的設定檔，並將它們設定為適合您的需求。
+
+setupPage.DSXSetup.Actions.Title: 操作系統
+setupPage.DSXSetup.Actions.SubTitle: 重新綁定遊戲手柄按鈕、分配快捷方式、添加宏、設定鍵盤映射等等...
+
+setupPage.Finish.FeedbackSupport.Title: 反饋和支持
+setupPage.Finish.FeedbackSupport.SubTitle: 您的反饋非常重要，請加入 Discord 服務器報告錯誤、獲得支持或提供任何建議。
+
+app.LetsTakeYourSkills: 讓我們將您的技能提升到更高的水平。
+
+virtualPad.SelfInstall.Title: VirtualPad 自安裝
+virtualPad.SelfInstall.SubTitle: 手動下載驅動程序進行自安裝。
+virtualPad.SelfInstall.SubTitle2: 安裝完成後，重新啟動 DSX，然後再次進行此設定。
+
+virtualPad.SelfInstall.Button.Title: 下載 VirtualPad
+
+ctPage.Passthrough.Title: 直傳模式
+
+ctPage.GeneralSettings.Mute.Title: 切換麥克風靜音
+ctPage.GeneralSettings.Mute.Subtitle: 啟用後，DSX 將切換 PC 上的麥克風，按下裝置上的靜音按鈕時會將其靜音或取消靜音。這會影響所選擇的 PC 麥克風，而不僅僅是裝置的麥克風。
+
+ledPage.Mute: 麥克風靜音/取消靜音
+ctPage.GeneralSettings.Mute.PC: PC 麥克風靜音/取消靜音
+ctPage.GeneralSettings.Mute.Controller: 控制器麥克風靜音/取消靜音（USB）
+
+hidHidePage.InstallHidHide.Title: 安裝 HidHide
+
+Default: 默認
+hapticsPage.AudioHaptics.OutputDevice.Title: 音源
+hapticsPage.AudioHaptics.OutputDevice.SubTitle: 發送到控制器的音源。
+
+driverInstallation.VPad.LicenseStatus.Valid: 有效
+driverInstallation.VPad.LicenseStatus.Expired: 過期 
