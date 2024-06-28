@@ -1377,11 +1377,11 @@ settingsPage.Networking.FirewallCard.Status.OutgoingDescr: Status se a porta UDP
 settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: Adicionar porta ao firewall
 
 # Certifique-se de que %i esteja aqui, pois representa um número. Exemplo: A porta UDP de entrada para 6969 está aberta.
-settingsPage.Networking.FirewallCard.Status.IncomingSuccess: A porta UDP de entrada para %i está aberta.
-settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: A porta UDP de saída para %i está aberta.
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: 'A porta UDP de entrada para %i está aberta.'
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: 'A porta UDP de saída para %i está aberta.'
 
-settingsPage.Networking.FirewallCard.Status.IncomingFailed: A porta UDP de entrada para %i está fechada.
-settingsPage.Networking.FirewallCard.Status.OutgoingFailed: A porta UDP de saída para %i está fechada.
+settingsPage.Networking.FirewallCard.Status.IncomingFailed: 'A porta UDP de entrada para %i está fechada.'
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed: 'A porta UDP de saída para %i está fechada.'
 
 settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: Adicionar porta UDP de entrada ao Firewall do Windows.
 settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Adicionar porta UDP de saída ao Firewall do Windows.
@@ -1767,8 +1767,8 @@ ctPage.Input: Entrada
 ctPage.Output: Saída
 
  # %i é um número preenchido automaticamente, então pense assim: - Roda de rolagem para cima (2 pontos) -
-ctPage.Mouse.ScrollUp: Roda de rolagem para cima (%i pontos)
-ctPage.Mouse.ScrollDown: Roda de rolagem para baixo (%i pontos)
+ctPage.Mouse.ScrollUp: 'Roda de rolagem para cima (%i pontos)'
+ctPage.Mouse.ScrollDown: 'Roda de rolagem para baixo (%i pontos)'
 
 ctPage.R2TriggerInputRange: Faixa de entrada do acionador R2
 
