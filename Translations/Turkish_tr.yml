@@ -1760,13 +1760,14 @@ profiles.RenameProfile: Profili Yeniden Adlandır
 ctPage.ActiveMouseMappingsDescription: Aktif Fare Eşlemesi listesi.
 
 ctPage.selectedButton: Seçili Düğme
-ctPage.selectedButtons: Seçili Düğmeler ## Plural
+## Plural
+ctPage.selectedButtons: Seçili Düğmeler
 
 ctPage.Input: Girdi
 ctPage.Output: Çıktı
-
-ctPage.Mouse.ScrollUp: Fare Tekerleği Yukarı (%i Puan) # %i is a number that is auto filled so think of it like this: - Scroll Wheel Up (2 Points) -
-ctPage.Mouse.ScrollDown: Fare Tekerleği Aşağı (%i Puan) # %i is a number that is auto filled so think of it like this: - Scroll Wheel Down (2 Points) -
+# %i is a number that is auto filled so think of it like this: - Scroll Wheel Up/Down (2 Points) -
+ctPage.Mouse.ScrollUp: 'Fare Tekerleği Yukarı (%i Puan)'
+ctPage.Mouse.ScrollDown: 'Fare Tekerleği Aşağı (%i Puan)'
 
 ctPage.R2TriggerInputRange: R2 Tetik Girdi Aralığı
 
