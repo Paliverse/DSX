@@ -1380,11 +1380,11 @@ settingsPage.Networking.FirewallCard.Status.OutgoingDescr: 傳出 UDP 端口是�
 settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: 添加端口到防火牆
 
 # Make sure the %i is in here as it represents a number. Example: Incoming UDP Port for 6969 is open.
-settingsPage.Networking.FirewallCard.Status.IncomingSuccess: %i 的傳入 UDP 端口已開放。
-settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: %i 的傳出 UDP 端口已開放。
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: '%i 的傳入 UDP 端口已開放。'
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: '%i 的傳出 UDP 端口已開放。'
 
-settingsPage.Networking.FirewallCard.Status.IncomingFailed: %i 的傳入 UDP 端口已關閉。
-settingsPage.Networking.FirewallCard.Status.OutgoingFailed: %i 的傳出 UDP 端口已關閉。
+settingsPage.Networking.FirewallCard.Status.IncomingFailed: '%i 的傳入 UDP 端口已關閉。'
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed: '%i 的傳出 UDP 端口已關閉。'
 
 settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: 添加傳入 UDP 端口到 Windows 防火牆。
 settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: 添加傳出 UDP 端口到 Windows 防火牆。
@@ -1769,8 +1769,8 @@ ctPage.selectedButtons: 選定的按鈕
 ctPage.Input: 輸入
 ctPage.Output: 輸出
 # %i is a number that is auto filled so think of it like this: - Scroll Wheel Up/Down (2 Points) -
-ctPage.Mouse.ScrollUp: 滾輪向上滾動（%i 點）
-ctPage.Mouse.ScrollDown: 滾輪向下滾動（%i 點）
+ctPage.Mouse.ScrollUp: '滾輪向上滾動（%i 點）'
+ctPage.Mouse.ScrollDown: '滾輪向下滾動（%i 點）'
 
 ctPage.R2TriggerInputRange: R2 扳機輸入範圍
 
