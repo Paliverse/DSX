@@ -1371,11 +1371,11 @@ settingsPage.Networking.FirewallCard.Status.OutgoingDescr: Estado de si el puert
 settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: Agregar Puerto al Firewall
 
 # Asegurate de que el %i este ahi representando un numero. Ejemplo: Puerto UDP Entrante para 6969 esta abierto.
-settingsPage.Networking.FirewallCard.Status.IncomingSuccess: El puerto UDP entrante para %i está abierto.
-settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: El puerto UDP saliente para %i está abierto.
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: 'El puerto UDP entrante para %i está abierto.'
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: 'El puerto UDP saliente para %i está abierto.'
 
-settingsPage.Networking.FirewallCard.Status.IncomingFailed: El puerto UDP entrante para %i está cerrado.
-settingsPage.Networking.FirewallCard.Status.OutgoingFailed: El puerto UDP saliente para %i está cerrado.
+settingsPage.Networking.FirewallCard.Status.IncomingFailed: 'El puerto UDP entrante para %i está cerrado.'
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed: 'El puerto UDP saliente para %i está cerrado.'
 
 settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: Agregar puerto UDP entrante al Firewall de Windows.
 settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Agregar puerto UDP saliente al Firewall de Windows.
