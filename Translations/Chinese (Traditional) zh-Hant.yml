@@ -1763,13 +1763,14 @@ profiles.RenameProfile: 重命名設定文件
 ctPage.ActiveMouseMappingsDescription: 您的活動滑鼠映射列表。
 
 ctPage.selectedButton: 選定的按鈕
-ctPage.selectedButtons: 選定的按鈕 ## Plural
+## Plural
+ctPage.selectedButtons: 選定的按鈕 
 
 ctPage.Input: 輸入
 ctPage.Output: 輸出
-
-ctPage.Mouse.ScrollUp: 滾輪向上滾動（%i 點） # %i is a number that is auto filled so think of it like this: - Scroll Wheel Up (2 Points) -
-ctPage.Mouse.ScrollDown: 滾輪向下滾動（%i 點） # %i is a number that is auto filled so think of it like this: - Scroll Wheel Down (2 Points) -
+# %i is a number that is auto filled so think of it like this: - Scroll Wheel Up/Down (2 Points) -
+ctPage.Mouse.ScrollUp: 滾輪向上滾動（%i 點）
+ctPage.Mouse.ScrollDown: 滾輪向下滾動（%i 點）
 
 ctPage.R2TriggerInputRange: R2 扳機輸入範圍
 
