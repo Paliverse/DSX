@@ -1440,11 +1440,14 @@ profiles.ResetProfile: Reimposta profilo
 profiles.RenameProfile: Rinomina profilo
 ctPage.ActiveMouseMappingsDescription: La lista delle mappature del mouse attive.
 ctPage.selectedButton: Pulsante selezionato
-ctPage.selectedButtons: Pulsanti selezionati ## Plural
+## Plural
+ctPage.selectedButtons: Pulsanti selezionati
 ctPage.Input: Input
 ctPage.Output: Uscita
-ctPage.Mouse.ScrollUp: Rotellina del mouse su (%i punti) #%i is a number that is auto filled so think of it like this: - Scroll Wheel Up (2 Points) -
-ctPage.Mouse.ScrollDown: Rotellina del mouse giù (%i punti) #%i is a number that is auto filled so think of it like this: - Scroll Wheel Down (2 Points) -
+ #%i is a number that is auto filled so think of it like this: - Scroll Wheel Up/Down (2 Points) -
+ctPage.Mouse.ScrollUp: Rotellina del mouse su (%i punti)
+ctPage.Mouse.ScrollDown: Rotellina del mouse giù (%i punti)
+
 ctPage.R2TriggerInputRange: Intervallo di input del grilletto R2
 notificationsPage.SystemNotification.Title: Notifiche di sistema
 notificationsPage.SystemNotification.SubTitle: Per inviare le notifiche, DSX ha bisogno di autorizzazioni. Fare clic su "Apri impostazioni di notifica" per consentire a DSX di inviare notifiche, se non è già abilitato.
