@@ -1760,13 +1760,15 @@ profiles.RenameProfile: Renomear perfil
 ctPage.ActiveMouseMappingsDescription: sua lista de mapeamentos de mouse ativos.
 
 ctPage.selectedButton: botão selecionado
-ctPage.selectedButtons: Botões selecionados ## Plural
+## Plural
+ctPage.selectedButtons: Botões selecionados
 
 ctPage.Input: Entrada
 ctPage.Output: Saída
 
-ctPage.Mouse.ScrollUp: Roda de rolagem para cima (%i pontos) # %i é um número preenchido automaticamente, então pense assim: - Roda de rolagem para cima (2 pontos) -
-ctPage.Mouse.ScrollDown: Roda de rolagem para baixo (%i pontos) # %i é um número preenchido automaticamente, então pense assim: - Roda de rolagem para baixo (2 pontos) -
+ # %i é um número preenchido automaticamente, então pense assim: - Roda de rolagem para cima (2 pontos) -
+ctPage.Mouse.ScrollUp: Roda de rolagem para cima (%i pontos)
+ctPage.Mouse.ScrollDown: Roda de rolagem para baixo (%i pontos)
 
 ctPage.R2TriggerInputRange: Faixa de entrada do acionador R2
 
