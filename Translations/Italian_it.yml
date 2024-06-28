@@ -1132,10 +1132,10 @@ settingsPage.Networking.FirewallCard.Status.OutgoingTitle: "Porta UDP in uscita"
 settingsPage.Networking.FirewallCard.Status.OutgoingDescr: Stato dell'aggiunta della porta UDP in uscita al firewall di Windows.
 settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: Aggiungi porta al firewall
 #Make sure the %i is in here as it represents a number. Example: Incoming UDP Port for 6969 is open.
-settingsPage.Networking.FirewallCard.Status.IncomingSuccess: La porta UDP in entrata per %i è aperta.
-settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: La porta UDP in uscita per %i è aperta.
-settingsPage.Networking.FirewallCard.Status.IncomingFailed: La porta UDP in entrata per %i è chiusa.
-settingsPage.Networking.FirewallCard.Status.OutgoingFailed: La porta UDP in uscita per %i è chiusa.
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: 'La porta UDP in entrata per %i è aperta.'
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: 'La porta UDP in uscita per %i è aperta.'
+settingsPage.Networking.FirewallCard.Status.IncomingFailed: 'La porta UDP in entrata per %i è chiusa.'
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed: 'La porta UDP in uscita per %i è chiusa.'
 settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: Aggiungi porta UDP in arrivo a Windows Firewall.
 settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Aggiungi porta UDP in uscita a Windows Firewall.
 #-------------------------------
@@ -1445,8 +1445,8 @@ ctPage.selectedButtons: Pulsanti selezionati
 ctPage.Input: Input
 ctPage.Output: Uscita
  #%i is a number that is auto filled so think of it like this: - Scroll Wheel Up/Down (2 Points) -
-ctPage.Mouse.ScrollUp: Rotellina del mouse su (%i punti)
-ctPage.Mouse.ScrollDown: Rotellina del mouse giù (%i punti)
+ctPage.Mouse.ScrollUp: 'Rotellina del mouse su (%i punti)'
+ctPage.Mouse.ScrollDown: 'Rotellina del mouse giù (%i punti)'
 
 ctPage.R2TriggerInputRange: Intervallo di input del grilletto R2
 notificationsPage.SystemNotification.Title: Notifiche di sistema
