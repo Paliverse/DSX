@@ -1,15 +1,16 @@
-# DSX (Steam)
-<a href="https://store.steampowered.com/app/1812620/DSX/"><img src="https://github.com/Paliverse/DualSenseX/raw/main/imgs/AvailableOnSteam.png" width="300" height="auto"/></a>
-
-## Mod System
+# Mod System
 
 DSX v3.1+ will support Legacy v2 Mod System until a new Mod System is built for v3 with advanced features like APIs etc..
 
-[1. Lightbar LED](https://github.com/Paliverse/DualSenseX/edit/main/README.md#lightbar-led)
-[2. Player LED](https://github.com/Paliverse/DualSenseX/edit/main/README.md#player-led)
-[3. Mic LED](https://github.com/Paliverse/DualSenseX/edit/main/README.md#mic-led)
-[4. Trigger Threshold](https://github.com/Paliverse/DualSenseX/edit/main/README.md#trigger-threshold)
-[5. Adaptive Triggers](https://github.com/Paliverse/DualSenseX/edit/main/README.md#adaptive-triggers)
+[1. Lightbar LED](https://github.com/Paliverse/DSX/edit/main/Mod%20System%20(DSX%20v3)/README.md#lightbar-led)
+
+[2. Player LED](https://github.com/Paliverse/DSX/edit/main/Mod%20System%20(DSX%20v3)/README.md#player-led)
+
+[3. Mic LED](https://github.com/Paliverse/DSX/edit/main/Mod%20System%20(DSX%20v3)/README.md#mic-led)
+
+[4. Trigger Threshold](https://github.com/Paliverse/DSX/edit/main/Mod%20System%20(DSX%20v3)/README.md#trigger-threshold)
+
+[5. Adaptive Triggers](https://github.com/Paliverse/DSX/edit/main/Mod%20System%20(DSX%20v3)/README.md#adaptive-triggers)
 
 ### Usage:
 ___________________
