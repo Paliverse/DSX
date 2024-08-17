@@ -1377,11 +1377,11 @@ settingsPage.Networking.FirewallCard.Status.OutgoingDescr: Статус того
 settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: Додати порт до брандмауера
 
 # Make sure the %i is in here as it represents a number. Example: Incoming UDP Port for 6969 is open.
-settingsPage.Networking.FirewallCard.Status.IncomingSuccess: Вхідний порт UDP для %i is відкрито.
-settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: Вихідний порт UDP для %i is відкрито.
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: 'Вхідний порт UDP для %i is відкрито.'
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: 'Вихідний порт UDP для %i is відкрито.'
 
-settingsPage.Networking.FirewallCard.Status.IncomingFailed: Вхідний порт UDP для %i закрито.
-settingsPage.Networking.FirewallCard.Status.OutgoingFailed: Вихідний порт UDP для %i закрито.
+settingsPage.Networking.FirewallCard.Status.IncomingFailed: 'Вхідний порт UDP для %i закрито.'
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed: 'Вихідний порт UDP для %i закрито.'
 
 settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: Додайте вхідний порт UDP до брандмауера Windows.
 settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Додайте вихідний порт UDP до брандмауера Windows.
@@ -1760,13 +1760,14 @@ profiles.RenameProfile: Перейменувати профіль
 ctPage.ActiveMouseMappingsDescription: Ваш список активних розкладок миші.
 
 ctPage.selectedButton: Вибрана кнопка
-ctPage.selectedButtons: Вибрані кнопки ## Plural
+## Plural
+ctPage.selectedButtons: Вибрані кнопки
 
 ctPage.Input: Введення
 ctPage.Output: Виведення
-
-ctPage.Mouse.ScrollUp: Колесо прокрутки вгору (%i балів) # %i is a number that is auto filled so think of it like this: - Scroll Wheel Up (2 Points) -
-ctPage.Mouse.ScrollDown: Колесо прокрутки вниз (%i балів) # %i is a number that is auto filled so think of it like this: - Scroll Wheel Down (2 Points) -
+# %i is a number that is auto filled so think of it like this: - Scroll Wheel Up/Down (2 Points) -
+ctPage.Mouse.ScrollUp: 'Колесо прокрутки вгору (%i балів)'
+ctPage.Mouse.ScrollDown: 'Колесо прокрутки вниз (%i балів)'
 
 ctPage.R2TriggerInputRange: Діапазон введення тригера R2
 

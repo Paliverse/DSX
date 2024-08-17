@@ -1765,8 +1765,8 @@ ctPage.selectedButtons: 선택된 버튼들
 ctPage.Input: 입력
 ctPage.Output: 출력
 
-ctPage.Mouse.ScrollUp: 스크롤 휠 위로 (%i 포인트)
-ctPage.Mouse.ScrollDown: 스크롤 휠 아래로 (%i 포인트)
+ctPage.Mouse.ScrollUp: '스크롤 휠 위로 (%i 포인트)'
+ctPage.Mouse.ScrollDown: '스크롤 휠 아래로 (%i 포인트)'
 
 ctPage.R2TriggerInputRange: R2 트리거 입력 범위
 

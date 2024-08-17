@@ -1377,11 +1377,11 @@ settingsPage.Networking.FirewallCard.Status.OutgoingDescr: Status of whether the
 settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: Add Port To Firewall
 
 # Make sure the %i is in here as it represents a number. Example: Incoming UDP Port for 6969 is open.
-settingsPage.Networking.FirewallCard.Status.IncomingSuccess: Incoming UDP Port for %i is open.
-settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: Outgoing UDP Port for %i is open.
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: 'Incoming UDP Port for %i is open.'
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: 'Outgoing UDP Port for %i is open.'
 
-settingsPage.Networking.FirewallCard.Status.IncomingFailed: Incoming UDP Port for %i is closed.
-settingsPage.Networking.FirewallCard.Status.OutgoingFailed: Outgoing UDP Port for %i is closed.
+settingsPage.Networking.FirewallCard.Status.IncomingFailed: 'Incoming UDP Port for %i is closed.'
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed: 'Outgoing UDP Port for %i is closed.'
 
 settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: Add Incoming UDP Port to Windows Firewall.
 settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Add Outgoing UDP Port to Windows Firewall.
@@ -1760,13 +1760,14 @@ profiles.RenameProfile: Rename Profile
 ctPage.ActiveMouseMappingsDescription: Your list of active Mouse Mappings.
 
 ctPage.selectedButton: Selected Button
-ctPage.selectedButtons: Selected Buttons ## Plural
+# Plural: 
+ctPage.selectedButtons: Selected Buttons
 
 ctPage.Input: Input
 ctPage.Output: Output
-
-ctPage.Mouse.ScrollUp: Scroll Wheel Up (%i Points) # %i is a number that is auto filled so think of it like this: - Scroll Wheel Up (2 Points) -
-ctPage.Mouse.ScrollDown: Scroll Wheel Down (%i Points) # %i is a number that is auto filled so think of it like this: - Scroll Wheel Down (2 Points) -
+# %i is a number that is auto filled so think of it like this: - Scroll Wheel Up/Down (2 Points) -
+ctPage.Mouse.ScrollUp: 'Scroll Wheel Up (%i Points)'
+ctPage.Mouse.ScrollDown: 'Scroll Wheel Down (%i Points)'
 
 ctPage.R2TriggerInputRange: R2 Trigger Input Range
 

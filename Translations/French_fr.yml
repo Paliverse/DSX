@@ -1370,11 +1370,11 @@ settingsPage.Networking.FirewallCard.Status.OutgoingDescr: Statut de savoir si l
 settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: Ajouter le Port au Pare-feu
 
 # Assurez-vous que le %i est ici car il représente un nombre. Exemple : Port UDP entrant pour 6969 est ouvert.
-settingsPage.Networking.FirewallCard.Status.IncomingSuccess: Le port UDP entrant pour %i est ouvert.
-settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: Le port UDP sortant pour %i est ouvert.
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: 'Le port UDP entrant pour %i est ouvert.'
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: 'Le port UDP sortant pour %i est ouvert.'
 
-settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: Ajouter le port UDP entrant au Pare-feu Windows.
-settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Ajouter le port UDP sortant au Pare-feu Windows.
+settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: 'Ajouter le port UDP entrant au Pare-feu Windows.'
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: 'Ajouter le port UDP sortant au Pare-feu Windows.'
 
 # ------------------------------------------------------------------------------------------------
 # Carte Pilote

@@ -1377,11 +1377,11 @@ settingsPage.Networking.FirewallCard.Status.OutgoingDescr: Состояние т
 settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: Добавить порт в брандмауэр
 
 # Make sure the %i is in here as it represents a number. Example: Incoming UDP Port for 6969 is open.
-settingsPage.Networking.FirewallCard.Status.IncomingSuccess: Входящий UDP-порт %i доступен.
-settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: Исходящий UDP-порт %i доступен.
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: 'Входящий UDP-порт %i доступен.'
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: 'Исходящий UDP-порт %i доступен.'
 
-settingsPage.Networking.FirewallCard.Status.IncomingFailed: Входящий UDP-порт %i закрыт.
-settingsPage.Networking.FirewallCard.Status.OutgoingFailed: Исходящий UDP-порт %i закрыт.
+settingsPage.Networking.FirewallCard.Status.IncomingFailed: 'Входящий UDP-порт %i закрыт.'
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed: 'Исходящий UDP-порт %i закрыт.'
 
 settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: Добавить входящий UDP-порт в брандмауэр Windows.
 settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Добавить исходящий UDP-порт в брандмауэр Windows.
@@ -1760,13 +1760,15 @@ profiles.RenameProfile: Переименовать профиль
 ctPage.ActiveMouseMappingsDescription: Ваш список активных привязок с кнопками мыши.
 
 ctPage.selectedButton: Выбранная кнопка
-ctPage.selectedButtons: Выбранные кнопки ## Plural
+ ## Plural
+ctPage.selectedButtons: Выбранные кнопки
 
 ctPage.Input: Ввод
 ctPage.Output: Вывод
 
-ctPage.Mouse.ScrollUp: Прокрутить колесико вверх (%i Позиций) # %i is a number that is auto filled so think of it like this: - Scroll Wheel Up (2 Points) -
-ctPage.Mouse.ScrollDown: Прокрутить колесико вниз (%i Позиций) # %i is a number that is auto filled so think of it like this: - Scroll Wheel Down (2 Points) -
+# %i is a number that is auto filled so think of it like this: - Scroll Wheel Up/Down (2 Points) -
+ctPage.Mouse.ScrollUp: 'Прокрутить колесико вверх (%i Позиций)'
+ctPage.Mouse.ScrollDown: 'Прокрутить колесико вниз (%i Позиций)'
 
 ctPage.R2TriggerInputRange: Диапазон ввода триггера R2
 
