@@ -14,6 +14,23 @@ DSX v3.1+ will support Legacy v2 Mod System until a new Mod System is built for 
 
 ### Usage:
 ___________________
+#### Multiple Instructions Sent Together
+```cs
+// Usage ==============
+
+Packet packet = new Packet();
+int controllerIndex = 0;
+
+packet = AddRGBToPacket(packet, controllerIndex, 255, 255, 255, 255);
+packet = AddPlayerLEDToPacket(packet, controllerIndex, PlayerLEDNewRevision.One);
+packet = AddMicLEDToPacket(packet, controllerIndex, MicLEDMode.Pulse);
+packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Left, TriggerMode.GameCube, new List<int>());
+packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Right, TriggerMode.Resistance, new List<int> { 0, 8 });
+
+SendDataToDSX(packet);
+GetDataFromDSX();
+```
+___________________
 #### Lightbar LED
 ```cs
 // Needs 4 Params in List<int> (Red: 0-255) (Green: 0-255) (Blue: 0-255) (Brightness: 0-255)
