@@ -22,7 +22,7 @@ ___________________
 Packet packet = new Packet();
 int controllerIndex = 0;
 
-packet = AddPlayerLEDToPacket(packet, controllerIndex, PlayerLEDNewRevision.One);
+packet = AddRGBToPacket(packet, controllerIndex, 255, 255, 255, 255);
 
 SendDataToDSX(packet);
 GetDataFromDSX();
