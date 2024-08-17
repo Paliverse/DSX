@@ -72,9 +72,9 @@ namespace DSX_UDP_Example
         {
             try
             {
-                Console.WriteLine($"Connecting to Server on Port: {6975}\n");
+                Console.WriteLine($"Connecting to Server on Port: {6969}\n");
                 client = new UdpClient();
-                endPoint = new IPEndPoint(Triggers.localhost, Convert.ToInt32(7000));
+                endPoint = new IPEndPoint(Triggers.localhost, Convert.ToInt32(6969));
             }
             catch (Exception ex)
             {
