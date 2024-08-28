@@ -9,6 +9,26 @@
 - [Mic LED](#mic-led)
 - [Trigger Threshold](#trigger-threshold)
 - [Adaptive Triggers](#adaptive-triggers)
+  - [Reset To User Settings](#reset-to-user-settings)
+  - [Normal (OFF)](#normal-off)
+  - [GameCube](#gamecube)
+  - [VerySoft](#verysoft)
+  - [Soft](#soft)
+  - [Hard](#hard)
+  - [VeryHard](#veryhard)
+  - [Hardest](#hardest)
+  - [Rigid](#rigid)
+  - [VibrateTrigger](#vibratetrigger)
+  - [Choppy](#choppy)
+  - [Medium](#medium)
+  - [VibrateTriggerPulse](#vibratetriggerpulse)
+  - [CustomTriggerValue](#customtriggervalue)
+  - [Resistance](#resistance)
+  - [Bow](#bow)
+  - [Galloping](#galloping)
+  - [SemiAutomaticGun](#semiautomaticgun)
+  - [AutomaticGun](#automaticgun)
+  - [Machine](#machine)
 
 
 ### Usage:
@@ -66,7 +86,7 @@ GetDataFromDSX();
 ___________________
 #### Mic LED
 ```cs
-// Three modes: ON, PU;SE, or OFF
+// Three modes: ON, PULSE, or OFF
 // Needs 1 Param (MicLEDMode: Enum)
 // Usage ==============
 
