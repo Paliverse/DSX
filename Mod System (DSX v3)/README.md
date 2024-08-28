@@ -2,7 +2,7 @@
 
 **DSX v3.1+** supports the Legacy v2 Mod System while a new Mod System is being developed for v3. The upcoming Mod System will include advanced features like APIs and more.
 
-## Features
+## Quick Access
 
 - [Lightbar LED](#lightbar-led)
 - [Player LED](#player-led)
