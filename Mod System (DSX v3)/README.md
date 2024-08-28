@@ -1,16 +1,15 @@
-# Mod System
+# DSX Mod System
 
-DSX v3.1+ will support Legacy v2 Mod System until a new Mod System is built for v3 with advanced features like APIs etc..
+**DSX v3.1+** supports the Legacy v2 Mod System while a new Mod System is being developed for v3. The upcoming Mod System will include advanced features like APIs and more.
 
-[1. Lightbar LED](https://github.com/Paliverse/DSX/blob/main/Mod%20System%20(DSX%20v3)/README.md#lightbar-led)
+## Features
 
-[2. Player LED](https://github.com/Paliverse/DSX/blob/main/Mod%20System%20(DSX%20v3)/README.md#player-led)
+- [Lightbar LED](#lightbar-led)
+- [Player LED](#player-led)
+- [Mic LED](#mic-led)
+- [Trigger Threshold](#trigger-threshold)
+- [Adaptive Triggers](#adaptive-triggers)
 
-[3. Mic LED](https://github.com/Paliverse/DSX/blob/main/Mod%20System%20(DSX%20v3)/README.md#mic-led)
-
-[4. Trigger Threshold](https://github.com/Paliverse/DSX/blob/main/Mod%20System%20(DSX%20v3)/README.md#trigger-threshold)
-
-[5. Adaptive Triggers](https://github.com/Paliverse/DSX/blob/main/Mod%20System%20(DSX%20v3)/README.md#adaptive-triggers)
 
 ### Usage:
 ___________________
