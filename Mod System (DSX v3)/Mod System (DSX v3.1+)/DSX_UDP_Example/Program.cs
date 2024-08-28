@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -24,7 +25,7 @@ namespace DSX_UDP_Example
 
             while (true)
             {
-                if (devices.Count == 0)
+                if (!devices.Any())
                 {
                     GetConnectedDevicesFromDSX();
                 }
@@ -68,6 +69,10 @@ namespace DSX_UDP_Example
             }
         }
 
+        /// <summary>
+        /// Establishes a connection to the DSX server on a specified port.
+        /// Initializes the UDP client and endpoint for communication with the server.
+        /// </summary>
         static void Connect()
         {
             try
@@ -83,6 +88,11 @@ namespace DSX_UDP_Example
             
         }
 
+        /// <summary>
+        /// Sends a packet of data to the DSX server.
+        /// Converts the packet to a JSON string, sends it via UDP, and logs the time the data was sent.
+        /// </summary>
+        /// <param name="data">The packet of data to be sent to the DSX server.</param>
         static void SendDataToDSX(Packet data)
         {
             try
@@ -99,68 +109,104 @@ namespace DSX_UDP_Example
             
         }
 
+        /// <summary>
+        /// Receives and processes data from the DSX server.
+        /// Deserializes the JSON response from the server, logs the information about connected devices,
+        /// and updates the device list with the data received.
+        /// </summary>
         static void GetDataFromDSX()
         {
             Console.WriteLine("Waiting for Server Response...\n");
+
             try
             {
+                // Receive the response bytes from the server.
                 byte[] bytesReceivedFromServer = client.Receive(ref endPoint);
 
+                // Check if the server has sent a response.
                 if (bytesReceivedFromServer.Length > 0)
                 {
-                    ServerResponse ServerResponseJson = JsonConvert.DeserializeObject<ServerResponse>($"{Encoding.ASCII.GetString(bytesReceivedFromServer, 0, bytesReceivedFromServer.Length)}");
+                    // Deserialize the received JSON response into a ServerResponse object.
+                    ServerResponse ServerResponseJson = JsonConvert.DeserializeObject<ServerResponse>(
+                        Encoding.ASCII.GetString(bytesReceivedFromServer, 0, bytesReceivedFromServer.Length));
+
+                    // Print a visual separator in the console for better readability.
                     Console.WriteLine("===================================================================");
 
+                    // Capture the current time to calculate the response time.
                     DateTime CurrentTime = DateTime.Now;
                     TimeSpan Timespan = CurrentTime - TimeSent;
-                    // First send shows high Milliseconds response time for some reason
 
+                    // Log the status and response time from the server.
                     Console.WriteLine($"Status                  - {ServerResponseJson.Status}");
-                    Console.WriteLine($"Time Received           - {ServerResponseJson.TimeReceived}, took: {Timespan.TotalMilliseconds} to receive response from DSX");
+                    Console.WriteLine($"Time Received           - {ServerResponseJson.TimeReceived}, took: {Timespan.TotalMilliseconds} ms to receive response from DSX");
                     Console.WriteLine($"isControllerConnected   - {ServerResponseJson.isControllerConnected}");
                     Console.WriteLine($"BatteryLevel            - {ServerResponseJson.BatteryLevel}\n");
 
+                    // Log the number of devices connected to the server (DSX).
                     Console.WriteLine($"Devices Connected to DSX: {ServerResponseJson.Devices.Count}");
 
+                    // Clear the existing list of devices before populating it with new data.
                     devices.Clear();
+
+                    // Iterate through each device in the server's response and log its details.
                     foreach (Device device in ServerResponseJson.Devices)
                     {
+                        // Add the device to the devices list.
                         devices.Add(device);
 
+                        // Log the device's properties.
                         Console.WriteLine("-------------------------------");
-                        Console.WriteLine($"Controller Index    - {device.Index}");
-                        Console.WriteLine($"MacAddress          - {device.MacAddress}");
-                        Console.WriteLine($"DeviceType          - {device.DeviceType}");
-                        Console.WriteLine($"ConnectionType      - {device.ConnectionType}");
-                        Console.WriteLine($"BatteryLevel        - {device.BatteryLevel}");
-                        Console.WriteLine($"IsSupportAT         - {device.IsSupportAT}");
-                        Console.WriteLine($"IsSupportLightBar   - {device.IsSupportLightBar}");
-                        Console.WriteLine($"IsSupportPlayerLED  - {device.IsSupportPlayerLED}");
-                        Console.WriteLine($"IsSupportMicLED     - {device.IsSupportMicLED}");
+                        Console.WriteLine($"Controller Index        - {device.Index}");
+                        Console.WriteLine($"MacAddress              - {device.MacAddress}");
+                        Console.WriteLine($"DeviceType              - {device.DeviceType}");
+                        Console.WriteLine($"ConnectionType          - {device.ConnectionType}");
+                        Console.WriteLine($"BatteryLevel            - {device.BatteryLevel}");
+                        Console.WriteLine($"IsSupportAT             - {device.IsSupportAT}");
+                        Console.WriteLine($"IsSupportLightBar       - {device.IsSupportLightBar}");
+                        Console.WriteLine($"IsSupportPlayerLED      - {device.IsSupportPlayerLED}");
+                        Console.WriteLine($"IsSupportMicLED         - {device.IsSupportMicLED}");
                         Console.WriteLine("-------------------------------\n");
                     }
 
+                    // Print a closing visual separator for better readability.
                     Console.WriteLine("===================================================================\n");
                 }
             }
             catch (Exception ex)
             {
+                // Log any exceptions that occur during the process.
+                // Possible that DSX Server is not running, or DSX is not running at all.
                 Console.WriteLine(ex);
             }
         }
 
+        /// <summary>
+        /// Sends a request to the DSX server to retrieve information about connected devices.
+        /// Combines several steps: prepares the packet, sends it to the server, and then retrieves the data.
+        /// </summary>
         static void GetConnectedDevicesFromDSX()
         {
             // Get Data from DSX first about connected devices
             Packet packet = new Packet();
 
-            packet = AddResetToPacket(packet, 0);
+            packet = AddGetDSXStatusToPacket(packet);
 
             SendDataToDSX(packet);
 
             GetDataFromDSX();
         }
 
+        /// <summary>
+        /// Adds an adaptive trigger instruction to the packet for a specified controller index.
+        /// This instruction configures the trigger mode and parameters for the adaptive trigger.
+        /// </summary>
+        /// <param name="packet">The packet to which the instruction will be added.</param>
+        /// <param name="controllerIndex">The index of the controller to apply the trigger instruction.</param>
+        /// <param name="trigger">The trigger (e.g., left or right trigger) to be configured.</param>
+        /// <param name="triggerMode">The mode to set for the adaptive trigger.</param>
+        /// <param name="parameters">Additional parameters required by the trigger mode.</param>
+        /// <returns>Returns the packet with the adaptive trigger instruction added.</returns>
         static Packet AddAdaptiveTriggerToPacket(Packet packet, int controllerIndex, Trigger trigger, TriggerMode triggerMode, List<int> parameters)
         {
             int instCount;
@@ -196,8 +242,22 @@ namespace DSX_UDP_Example
 
             return packet;
         }
+
+        /// <summary>
+        /// Adds a custom adaptive trigger instruction to the packet for a specified controller index.
+        /// This allows for more complex trigger configurations, including a custom value mode and additional parameters.
+        /// </summary>
+        /// <param name="packet">The packet to which the instruction will be added.</param>
+        /// <param name="controllerIndex">The index of the controller to apply the trigger instruction.</param>
+        /// <param name="trigger">The trigger (e.g., left or right trigger) to be configured.</param>
+        /// <param name="triggerMode">The mode to set for the adaptive trigger.</param>
+        /// <param name="valueMode">The custom value mode for more detailed trigger control.</param>
+        /// <param name="parameters">Additional parameters required by the custom trigger mode.</param>
+        /// <returns>Returns the packet with the custom adaptive trigger instruction added.</returns>
         static Packet AddCustomAdaptiveTriggerToPacket(Packet packet, int controllerIndex, Trigger trigger, TriggerMode triggerMode, CustomTriggerValueMode valueMode, List<int> parameters)
         {
+            // This method is only for TriggerMode.CustomTriggerValue
+
             int instCount;
 
             if (packet.instructions == null)
@@ -232,6 +292,16 @@ namespace DSX_UDP_Example
 
             return packet;
         }
+
+        /// <summary>
+        /// Adds a trigger threshold instruction to the packet for a specified controller index.
+        /// This instruction sets the threshold for a trigger's actuation point.
+        /// </summary>
+        /// <param name="packet">The packet to which the instruction will be added.</param>
+        /// <param name="controllerIndex">The index of the controller to apply the threshold instruction.</param>
+        /// <param name="trigger">The trigger (e.g., left or right trigger) to be configured.</param>
+        /// <param name="threshold">The threshold value for the trigger.</param>
+        /// <returns>Returns the packet with the trigger threshold instruction added.</returns>
         static Packet AddTriggerThresholdToPacket(Packet packet, int controllerIndex, Trigger trigger, int threshold)
         {
             int instCount;
@@ -255,6 +325,18 @@ namespace DSX_UDP_Example
 
             return packet;
         }
+
+        /// <summary>
+        /// Adds an RGB update instruction to the packet for a specified controller index.
+        /// This instruction sets the color and brightness of the RGB LEDs on the controller.
+        /// </summary>
+        /// <param name="packet">The packet to which the instruction will be added.</param>
+        /// <param name="controllerIndex">The index of the controller to apply the RGB instruction.</param>
+        /// <param name="red">The red component of the color.</param>
+        /// <param name="green">The green component of the color.</param>
+        /// <param name="blue">The blue component of the color.</param>
+        /// <param name="brightness">The brightness level of the LEDs.</param>
+        /// <returns>Returns the packet with the RGB update instruction added.</returns>
         static Packet AddRGBToPacket(Packet packet, int controllerIndex, int red, int green, int blue, int brightness)
         {
             int instCount;
@@ -278,6 +360,15 @@ namespace DSX_UDP_Example
 
             return packet;
         }
+
+        /// <summary>
+        /// Adds a player LED update instruction to the packet for a specified controller index.
+        /// This instruction configures the player indicator LEDs on the controller.
+        /// </summary>
+        /// <param name="packet">The packet to which the instruction will be added.</param>
+        /// <param name="controllerIndex">The index of the controller to apply the player LED instruction.</param>
+        /// <param name="playerLED">The player LED configuration to apply.</param>
+        /// <returns>Returns the packet with the player LED update instruction added.</returns>
         static Packet AddPlayerLEDToPacket(Packet packet, int controllerIndex, PlayerLEDNewRevision playerLED)
         {
             int instCount;
@@ -301,6 +392,15 @@ namespace DSX_UDP_Example
 
             return packet;
         }
+
+        /// <summary>
+        /// Adds a microphone LED update instruction to the packet for a specified controller index.
+        /// This instruction configures the microphone mute/unmute LED on the controller.
+        /// </summary>
+        /// <param name="packet">The packet to which the instruction will be added.</param>
+        /// <param name="controllerIndex">The index of the controller to apply the microphone LED instruction.</param>
+        /// <param name="micLED">The microphone LED configuration to apply.</param>
+        /// <returns>Returns the packet with the microphone LED update instruction added.</returns>
         static Packet AddMicLEDToPacket(Packet packet, int controllerIndex, MicLEDMode micLED)
         {
             int instCount;
@@ -324,6 +424,14 @@ namespace DSX_UDP_Example
 
             return packet;
         }
+
+        /// <summary>
+        /// Adds a reset instruction to the packet for a specified controller index.
+        /// This instruction resets the controller's settings to the user's predefined settings from DSX.
+        /// </summary>
+        /// <param name="packet">The packet to which the instruction will be added.</param>
+        /// <param name="controllerIndex">The index of the controller to reset.</param>
+        /// <returns>Returns the packet with the reset instruction added.</returns>
         static Packet AddResetToPacket(Packet packet, int controllerIndex)
         {
             int instCount;
@@ -347,6 +455,37 @@ namespace DSX_UDP_Example
 
             return packet;
         }
+
+        /// <summary>
+        /// Adds a request to get the DSX status to the packet.
+        /// This instruction requests the current status of the DSX server with the list of devices.
+        /// </summary>
+        /// <param name="packet">The packet to which the status request will be added.</param>
+        /// <returns>Returns the packet with the status request instruction added.</returns>
+        static Packet AddGetDSXStatusToPacket(Packet packet)
+        {
+            int instCount;
+
+            if (packet.instructions == null)
+            {
+                packet.instructions = new Instruction[1];
+                instCount = 0;
+            }
+            else
+            {
+                instCount = packet.instructions.Length;
+                Array.Resize(ref packet.instructions, instCount + 1);
+            }
+
+            packet.instructions[instCount] = new Instruction
+            {
+                type = InstructionType.GetDSXStatus,
+                parameters = new object[] {  }
+            };
+
+            return packet;
+        }
+
 
         // All Configurations:
         // ----------------------------------------------------------------------------------------------------------------------------

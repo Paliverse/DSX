@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Net;
 
@@ -12,11 +13,29 @@ namespace DSX_UDP_Example
     {
         public static IPAddress localhost = new IPAddress(new byte[] { 127, 0, 0, 1 });
 
+        /// <summary>
+        /// Converts a Packet object to its JSON string representation.
+        /// </summary>
+        /// <param name="packet">The Packet object to serialize.</param>
+        /// <returns>A JSON string representing the Packet object.</returns>
         public static string PacketToJson(Packet packet)
         {
-            return JsonConvert.SerializeObject(packet);
+            try
+            {
+                return JsonConvert.SerializeObject(packet);
+            }
+            catch (JsonException ex)
+            {
+                Console.WriteLine($"Serialization error: {ex.Message}");
+                return string.Empty;
+            }
         }
 
+        /// <summary>
+        /// Deserializes a JSON string into a Packet object.
+        /// </summary>
+        /// <param name="json">The JSON string representing a Packet.</param>
+        /// <returns>A Packet object deserialized from the JSON string.</returns>
         public static Packet JsonToPacket(string json)
         {
             return JsonConvert.DeserializeObject<Packet>(json);
@@ -125,7 +144,7 @@ namespace DSX_UDP_Example
 
     public enum InstructionType
     {
-        Invalid,
+        GetDSXStatus,
         TriggerUpdate,
         RGBUpdate,
         PlayerLED,
