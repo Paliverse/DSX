@@ -95,7 +95,15 @@ namespace DSX_UDP_Example
         Galloping = 15,
         SemiAutomaticGun = 16,
         AutomaticGun = 17,
-        Machine = 18
+        Machine = 18,
+        VIBRATE_TRIGGER_10Hz = 19,
+        OFF = 20,
+        FEEDBACK = 21,
+        WEAPON = 22,
+        VIBRATION = 23,
+        SLOPE_FEEDBACK = 24,
+        MULIPLE_POSITION_FEEDBACK = 25,
+        MULIPLE_POSITION_VIBRATION = 26,
     }
 
     public enum CustomTriggerValueMode
