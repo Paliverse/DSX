@@ -10,29 +10,35 @@
 - [Trigger Threshold](#trigger-threshold)
 - [Adaptive Triggers](#adaptive-triggers)
   - [Reset To User Settings](#reset-to-user-settings)
-  - [OFF](#off)
-  - [FEEDBACK](#feedback)
-  - [WEAPON](#weapon)
-  - [VIBRATION](#vibration)
-  - [Normal (OFF)](#normal-off)
-  - [GameCube](#gamecube)
-  - [VerySoft](#verysoft)
-  - [Soft](#soft)
-  - [Hard](#hard)
-  - [VeryHard](#veryhard)
-  - [Hardest](#hardest)
-  - [Rigid](#rigid)
-  - [VibrateTrigger](#vibratetrigger)
-  - [Choppy](#choppy)
-  - [Medium](#medium)
-  - [VibrateTriggerPulse](#vibratetriggerpulse)
-  - [CustomTriggerValue](#customtriggervalue)
-  - [Resistance](#resistance)
-  - [Bow](#bow)
-  - [Galloping](#galloping)
-  - [SemiAutomaticGun](#semiautomaticgun)
-  - [AutomaticGun](#automaticgun)
-  - [Machine](#machine)
+    - DSX v3.0+ Adaptive Trigger Modes
+      - [OFF](#off)
+      - [FEEDBACK](#feedback)
+      - [WEAPON](#weapon)
+      - [VIBRATION](#vibration)
+      - [SLOPE_FEEDBACK](#slope_feedback)
+      - [MULTIPLE_POSITION_FEEDBACK](#multiple_position_feedback)
+      - [MULTIPLE_POSITION_VIBRATION](#multiple_position_vibration)
+    - DSX v2 Adaptive Trigger Modes (Legacy)
+      - [Normal](#normal)
+      - [GameCube](#gamecube)
+      - [VerySoft](#verysoft)
+      - [Soft](#soft)
+      - [Hard](#hard)
+      - [VeryHard](#veryhard)
+      - [Hardest](#hardest)
+      - [Rigid](#rigid)
+      - [VibrateTrigger](#vibratetrigger)
+      - [Choppy](#choppy)
+      - [Medium](#medium)
+      - [VibrateTriggerPulse](#vibratetriggerpulse)
+      - [CustomTriggerValue](#customtriggervalue)
+      - [Resistance](#resistance)
+      - [Bow](#bow)
+      - [Galloping](#galloping)
+      - [SemiAutomaticGun](#semiautomaticgun)
+      - [AutomaticGun](#automaticgun)
+      - [Machine](#machine)
+      - [VIBRATE_TRIGGER_10Hz](#vibrate_trigger_10hz)
 
 
 ### Usage:
@@ -218,7 +224,7 @@ GetDataFromDSX();
 ```
 ___________________
 
-#### MULIPLE_POSITION_FEEDBACK
+#### MULTIPLE_POSITION_FEEDBACK
 ```cs
 // Needs 10 Params in List<int> 10 Region Resistance Strength: (Region 1: 0-8) -> (Region 2: 0-8) -> (Region 3: 0-8) -> (Region 4: 0-8) -> (Region 5: 0-8) -> (Region 6: 0-8) -> (Region 7: 0-8) -> (Region 8: 0-8) -> (Region 9: 0-8) -> (Region 10: 0-8)
 // Usage ==============
@@ -226,15 +232,15 @@ ___________________
 Packet packet = new Packet();
 int controllerIndex = 0;
 
-packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Left, TriggerMode.MULIPLE_POSITION_FEEDBACK, new List<int> { 8, 8, 8, 0, 0, 0, 8, 8, 0, 0 });
-packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Right, TriggerMode.MULIPLE_POSITION_FEEDBACK, new List<int> { 8, 8, 8, 0, 0, 0, 8, 8, 0, 0 });
+packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Left, TriggerMode.MULTIPLE_POSITION_FEEDBACK, new List<int> { 8, 8, 8, 0, 0, 0, 8, 8, 0, 0 });
+packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Right, TriggerMode.MULTIPLE_POSITION_FEEDBACK, new List<int> { 8, 8, 8, 0, 0, 0, 8, 8, 0, 0 });
 
 SendDataToDSX(packet);
 GetDataFromDSX();
 ```
 ___________________
 
-#### MULIPLE_POSITION_VIBRATION
+#### MULTIPLE_POSITION_VIBRATION
 ```cs
 // Needs 11 Params in List<int> (Frequency: 1-40) -> 10 Region Amplitude: (Region 1: 0-8) -> (Region 2: 0-8) -> (Region 3: 0-8) -> (Region 4: 0-8) -> (Region 5: 0-8) -> (Region 6: 0-8) -> (Region 7: 0-8) -> (Region 8: 0-8) -> (Region 9: 0-8) -> (Region 10: 0-8)
 // Usage ==============
@@ -242,8 +248,8 @@ ___________________
 Packet packet = new Packet();
 int controllerIndex = 0;
 
-packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Left, TriggerMode.MULIPLE_POSITION_VIBRATION, new List<int> { 10, 8, 8, 8, 8, 8, 0, 0, 0, 8, 8 });
-packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Right, TriggerMode.MULIPLE_POSITION_VIBRATION, new List<int> { 10, 8, 8, 8, 8, 8, 0, 0, 0, 8, 8 });
+packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Left, TriggerMode.MULTIPLE_POSITION_VIBRATION, new List<int> { 10, 8, 8, 8, 8, 8, 0, 0, 0, 8, 8 });
+packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Right, TriggerMode.MULTIPLE_POSITION_VIBRATION, new List<int> { 10, 8, 8, 8, 8, 8, 0, 0, 0, 8, 8 });
 
 SendDataToDSX(packet);
 GetDataFromDSX();
