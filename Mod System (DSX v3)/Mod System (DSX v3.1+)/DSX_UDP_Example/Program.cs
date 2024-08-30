@@ -527,17 +527,17 @@ namespace DSX_UDP_Example
         // packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Left, TriggerMode.SLOPE_FEEDBACK, new List<int> { 1, 9, 8, 1 });
         // packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Right, TriggerMode.SLOPE_FEEDBACK, new List<int> { 1, 9, 8, 1 });
 
-        // MULIPLE_POSITION_FEEDBACK:
+        // MULTIPLE_POSITION_FEEDBACK:
         // Needs 10 Params in List<int> 10 Region Resistance Strength: (Region 1: 0-8) -> (Region 2: 0-8) -> (Region 3: 0-8) -> (Region 4: 0-8) -> (Region 5: 0-8) -> (Region 6: 0-8) -> (Region 7: 0-8) -> (Region 8: 0-8) -> (Region 9: 0-8) -> (Region 10: 0-8)
         // Usage ==============
-        // packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Left, TriggerMode.MULIPLE_POSITION_FEEDBACK, new List<int> { 8, 8, 8, 0, 0, 0, 8, 8, 0, 0 });
-        // packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Right, TriggerMode.MULIPLE_POSITION_FEEDBACK, new List<int> { 8, 8, 8, 0, 0, 0, 8, 8, 0, 0 });
+        // packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Left, TriggerMode.MULTIPLE_POSITION_FEEDBACK, new List<int> { 8, 8, 8, 0, 0, 0, 8, 8, 0, 0 });
+        // packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Right, TriggerMode.MULTIPLE_POSITION_FEEDBACK, new List<int> { 8, 8, 8, 0, 0, 0, 8, 8, 0, 0 });
 
-        // MULIPLE_POSITION_VIBRATION:
+        // MULTIPLE_POSITION_VIBRATION:
         // Needs 11 Params in List<int> (Frequency: 1-40) -> 10 Region Amplitude: (Region 1: 0-8) -> (Region 2: 0-8) -> (Region 3: 0-8) -> (Region 4: 0-8) -> (Region 5: 0-8) -> (Region 6: 0-8) -> (Region 7: 0-8) -> (Region 8: 0-8) -> (Region 9: 0-8) -> (Region 10: 0-8)
         // Usage ==============
-        // packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Left, TriggerMode.MULIPLE_POSITION_VIBRATION, new List<int> { 10, 8, 8, 8, 8, 8, 0, 0, 0, 8, 8 });
-        // packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Right, TriggerMode.MULIPLE_POSITION_VIBRATION, new List<int> { 10, 8, 8, 8, 8, 8, 0, 0, 0, 8, 8 });
+        // packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Left, TriggerMode.MULTIPLE_POSITION_VIBRATION, new List<int> { 10, 8, 8, 8, 8, 8, 0, 0, 0, 8, 8 });
+        // packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Right, TriggerMode.MULTIPLE_POSITION_VIBRATION, new List<int> { 10, 8, 8, 8, 8, 8, 0, 0, 0, 8, 8 });
 
         // Normal:
         // Usage ==============
