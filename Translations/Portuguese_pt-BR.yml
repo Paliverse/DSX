@@ -1,0 +1,1866 @@
+#
+# * Copyright (c) 2022-2023 Paliverse Apps LLC. Todos os direitos reservados.
+# *
+# * Proprietário e confidencial - Este código-fonte é propriedade exclusiva da Paliverse Apps LLC.
+# *Reprodução ou divulgação deste código-fonte, no todo ou em parte, ou o
+# * produção de trabalhos derivados sem a permissão expressa da Paliverse Apps LLC.
+# * é estritamente proibido.
+# *
+# * Escrito por Paliverse Apps LLC.
+
+# ------------------------------------------------- -----------------------------------------------
+# Mais informações sobre como usar arquivos Yaml: https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started
+# Os arquivos Yaml devem ser Embedded Resource nas propriedades do arquivo no DSX, caso contrário, os arquivos de tradução também podem ser selecionados no PC do usuário
+# ------------------------------------------------- -----------------------------------------------
+
+
+# ------------------------------------------------- -----------------------------------------------
+# EXEMPLOS:
+# ------------------------------------------------- -----------------------------------------------
+
+# Qualquer coisa antes dos dois pontos: é a chave, qualquer coisa depois dos dois pontos é o texto traduzido (Valor)
+
+# para usar dois pontos: em partes do texto à direita, coloque o texto entre aspas assim:
+dois pontos.Exemplo: "este é um texto: com dois pontos"
+# exemplo de uso: <TextBlock Text="{i18n:Translate String='dois pontos.Example', UsedForXamlTemp='este é um texto: com dois pontos'}" />
+# programaticamente: var text = Translator.Instance.GetTranslation("dois pontos.Example", "este é um texto: com dois pontos");
+# ---- Recebe (tecla única, texto substituto)
+
+# ------------------------------------------------- -----------------------------------------------
+
+#Sequência normal:
+houseString.Example: 'Esta é uma string de casa.'
+# exemplo de uso: <TextBlock Text="{i18n:Translate String='houseString.Example', UsedForXamlTemp='Esta é uma string de casa.'}" />
+# programaticamente: var text = Translator.Instance.GetTranslation("houseString.Example", "Esta é uma string de casa.");
+# ---- Recebe (tecla única, texto substituto)
+
+# ------------------------------------------------- -----------------------------------------------
+
+# String com um número que muda:
+# %i será substituído pelo número fornecido em xaml
+houseNumber.Example: 'Endereço atual da casa é %i Paliverse St. Chicago, IL 60640'
+# exemplo de uso: <TextBlock Text="{i18n:Translate String='houseNumber.Example', UsedForXamlTemp='Endereço atual da casa é %i Paliverse St. Chicago, IL 60640', Number=1234}" />
+# programaticamente: var textNumber = Translator.Instance.GetTranslation("houseNumber.Example", $"Endereço atual da casa é {Number} Paliverse St. Chicago, IL 60640", 1234);
+# ---- Recebe (tecla única, texto substituto, número)
+
+# O próprio número pode ser vinculado: Number={Binding ViewModel.HouseAddressNumber}
+
+# ------------------------------------------------- -----------------------------------------------
+
+# Sequência singular ou plural:
+# %i será substituído pelo número fornecido em xaml
+houseExample.single: '%i casa'
+houseExample.plural: '%i casas'
+# exemplo de uso: <TextBlock Text="{i18n:Translate String='houseExample.single', Plural=houseExample.plural, UsedForXamlTemp='%i casas.', Number=1}" />
+# programaticamente: var textPlural = Translator.Instance.GetTranslation("houseExample.single", "houseExample.plural", $"{Number} casas.", 1234);
+# ---- Recebe (chave única, chave plural, texto substituto, número)
+
+# O número reflete se deve usar Casa ou Casas.
+# O próprio número pode ser vinculado: Number={Binding ViewModel.Number}
+
+# ------------------------------------------------- -----------------------------------------------
+# EXEMPLOS FIM
+# ------------------------------------------------- -----------------------------------------------
+
+
+# Por favor, certifique-se de ler o texto acima antes de modificar este arquivo.
+# Se você não tiver certeza sobre a tradução ou a chave, etc. Entre em contato com @paliverse no discord no servidor DSX:
+# https://discord.gg/dsx
+
+# ------------------------------------------------- -----------------------------------------------
+# Coisas comuns - Para uso único ou usadas em mais de um lugar
+# ------------------------------------------------- -----------------------------------------------
+NoControllerDetected.Title: Nenhum controle detectado
+NoControllerDetected.ATMessage: Conecte seu controle ou conecte-o via Bluetooth para configurar gatilhos adaptativos.
+NoControllerDetected.Subtitle: Conecte um controle compatível por meio de uma conexão com fio ou via Bluetooth para acessar suas informações.
+
+# ------------------------------------------------- -----------------------------------------------
+# Pequenas palavras genéricas
+# ------------------------------------------------- -----------------------------------------------
+OFF: "DESLIGADO"
+NotAny: N/A
+Frequency: Frequência
+Cancel: Cancelar
+TryAgain: tente novamente
+#Um período de tempo, obviamente
+Period: Período
+
+# ------------------------------------------------- -----------------------------------------------
+#DSX
+# ------------------------------------------------- -----------------------------------------------
+dsx.Initialization.Title: Vamos desbloquear seu potencial.
+dsx.NoControllersDetected: Nenhum controle detectado
+dsx.KindlyConnectController: Conecte um controle compatível por meio de uma conexão com fio ou via Bluetooth para acessar suas informações.
+dsx.PlugInControllerToConfigure: Conecte seu controle ou conecte-o via Bluetooth para configurar Rumble ou Haptics.
+dsx.ConnectControllerToAccessInfo: Conecte um controle compatível por meio de uma conexão com fio ou via Bluetooth para acessar suas informações.
+dsx.ConnectControllerToConfigureNotifications: Conecte seu controle ou conecte-o via Bluetooth para configurar suas notificações.
+dsx.ConnectControllerToConfigureProfiles: Conecte seu controle ou conecte-o via Bluetooth para configurar seus perfis.
+
+dsx.Initialization.Error.SteamIDNoMatch.Title: Steam ID não corresponde
+dsx.Initialization.Error.SteamIDNoMatch.Detail: O Steam ID não corresponde ao da API Steam. Certifique-se de estar conectado à mesma conta usada para instalar o DSX.
+
+dsx.Initialization.Error.ServerFailure.Title: Falha de servidor desconhecida
+dsx.Initialization.Error.ServerFailure.Detail: Não é possível se comunicar com os servidores DSX para verificar a propriedade. Certifique-se de que o DSX seja permitido no firewall do Windows e tente novamente.
+
+dsx.Initialization.Error.SteamApiServerFailure.Title: Falha no servidor da API Steam
+dsx.Initialization.Error.SteamApiServerFailure.Detail: Não é possível se comunicar com os servidores Steam API, verifique o status do servidor Steam online para verificar se ele está inativo, se seus servidores estiverem inativos, tente novamente mais tarde.
+
+dsx.Initialization.Error.VirtualPadError.Title: Driver VirtualPad por falha do servidor Nefarius
+dsx.Initialization.Error.VirtualPadError.Detail: Não é possível se comunicar com o servidor VirtualPad Driver. Se o problema persistir, entre em contato conosco no servidor DSX Discord ou nos fóruns Steam.
+
+dsx.Initialization.Error.InternetConnection.Title: Conexão com a Internet necessária
+dsx.Initialization.Error.InternetConnection.Detail: Para iniciar o DSX, é necessária uma conexão com a Internet durante a inicialização, certifique-se de que o DSX seja permitido no firewall do Windows e tente novamente.
+
+dsx.Initialization.Error.UnautorizedAccess.Title: Não é possível comunicar-se com o servidor devido a acesso não autorizado
+dsx.Initialization.Error.UnautorizedAccess.DetailOne: Uma conexão não pode ser estabelecida porque a data e hora do seu PC
+dsx.Initialization.Error.UnautorizedAccess.DetailTwo: estão incorretos.
+
+dsx.Initialization.AppSettings: Carregando configurações do aplicativo...
+dsx.Initialization.AccentColor: Aplicando cor de destaque...
+dsx.Initialization.Discord: Configurando Discord Rich Presence...
+dsx.Initialization.InternetCheck: Verificando a conexão com a Internet...
+dsx.Initialization.SteamID: Verificando o ID do Steam...
+dsx.Initialization.DSXOwnership: Verificando a propriedade do DSX com servidores Steam...
+dsx.Initialization.DLCOwnership: Verificando a propriedade do DLC de emulação DualSense com servidores Steam...
+dsx.Initialization.OwnershipResults: Verificando os resultados de propriedade do DSX/DLC...
+dsx.Initialization.DSFirmware: Obtendo a versão mais recente do firmware DualSense...
+dsx.Initialization.VirtualPad: Verificando o driver VirtualPad da Nefarius para atualizações...
+dsx.Initialization.VirtualPadResult: VirtualPad Driver da Nefarius está executando a versão mais recente...
+dsx.Initialization.SetupPage: Preparando página de configuração...
+dsx.Initialization.v3BetaInfo: Preparando a página de informações do v3 Beta...
+dsx.Initialization.HomePage: Preparando a página inicial...
+
+dsx.Initialization.VirtualPad.LicenseExpired: Licença de driver do VirtualPad expirada. É necessário reinstalar ou reiniciar.
+dsx.Initialization.VirtualPad.ServiceError: Erro de serviço do driver VirtualPad, é necessária reinstalação.
+dsx.Initialization.VirtualPad.UpdateAvailable.PartOne: Versão do driver VirtualPad
+dsx.Initialization.VirtualPad.UpdateAvailable.PartTwo: Disponível
+dsx.Initialization.VirtualPad.NotInstalled: Driver VirtualPad da Nefarius não instalado.
+
+dsx.ShutDown: Desligar o DSX
+dsx.ShutDown.PopupTitle: Desligar o DSX?
+dsx.ShutDown.Detail: Tem certeza de que deseja encerrar o DSX?
+
+dsx.NavigationButtons.Home: Página inicial
+dsx.NavigationButtons.Profiles: Perfis
+dsx.NavigationButtons.Controller: controle
+dsx.NavigationButtons.Notifications: Notificações
+dsx.NavigationButtons.DSEdgePSVR2: DS Edge | PSVR2
+dsx.NavigationButtons.AdaptiveTriggers: gatilhos adaptativos
+dsx.NavigationButtons.ControllerLED: LED do controle
+dsx.NavigationButtons.HapticsRumble: Haptics | Estrondo
+dsx.NavigationButtons.InstalledGames: jogos instalados
+dsx.NavigationButtons.HidHide: HidHide
+dsx.NavigationButtons.DSXLogs: registros DSX
+dsx.NavigationButtons.Settings: Configurações
+dsx.NavigationButtons.About: Sobre
+
+dsx.TaskbarIcon.QuitDSX: Sair do DSX
+
+dsx.UnexpectedError.Popup.Title: Ocorreu uma exceção de AppDomain não tratada
+dsx.UnexpectedError.Popup.TitleTwo: Ocorreu uma exceção de thread de UI não tratada
+
+dsx.UnexpectedError.Popup.LineOne: Ocorreu um erro inesperado, o DSX v3 não pode continuar.
+dsx.UnexpectedError.Popup.LineTwo: Detalhes sobre a falha podem ser encontrados no subdiretório logs localizado em
+
+
+# ------------------------------------------------- -----------------------------------------------
+# Descrições
+# ------------------------------------------------- -----------------------------------------------
+
+X360Gamepad.Title: Virtual Xbox 360 Gamepad
+X360Gamepad.Description: Use um gamepad virtual do Xbox 360 com qualquer jogo habilitado para Xinput.
+
+DS4Gamepad.Title: Virtual DualShock 4 Gamepad
+DS4Gamepad.Description: Use um gamepad virtual DualShock 4 com jogos que o suportem nativamente.
+
+DualSensePad.Title: Virtual DualSense Gamepad (DLC necessário)
+DualSensePad.Description: Use um gamepad DualSense virtual com jogos que o suportam nativamente.
+
+# ------------------------------------------------- -----------------------------------------------
+# Sistema de perfil
+# ------------------------------------------------- -----------------------------------------------
+profiles.CannotUndo: Esta ação não pode ser desfeita.
+profiles.EnterProfileName: insira o nome do perfil
+profiles.ProfileName: Nome do perfil
+profiles.ProfileSystem: Sistema de perfil
+profiles.ProfileType: Tipo de perfil
+profiles.EditProfiles: Editar perfis
+
+# Duplicar como o verbo/ação "Vou duplicar o perfil", não o substantivo/sujeito "um perfil duplicado"
+profiles.DuplicateProfile: perfil duplicado
+profiles.DeleteSelectedProfiles: Excluir perfil selecionado
+profiles.DeleteSelectedProfilesPlural: Excluir perfis selecionados
+profiles.ConfirmButton.DeleteSelectedProfiles: Excluir perfil
+profiles.ConfirmButton.DeleteSelectedProfilesPlural: Excluir perfis
+profiles.CreateNewProfile: Criar novo perfil
+profiles.ActiveProfile: Perfil ativo
+profiles.ImportProfile: Importar perfil
+profiles.ShareProfile: Compartilhar perfil
+profiles.SearchControllerProfiles: perfis do controle de pesquisa
+profiles.CopySettingsFromAnotherProfile: Copiar configurações de outro perfil
+
+profiles.Controller.Search: Pesquisar perfis do controle
+
+profiles.Type.ProfilesPage: Perfis do controle
+profiles.Type.ProfilesPage.Detail: adicione um novo perfil de controle para personalizar ou pressione editar para selecionar vários perfis para exclusão.
+
+profiles.Type.Notification: Perfis de notificação
+profiles.Type.Notification.Detail: adicione um novo perfil de notificação para personalizar ou pressione editar para selecionar vários perfis para exclusão.
+
+profiles.Type.Actions: Perfis de ação
+profiles.Type.Actions.Detail: adicione um novo perfil de ação para personalizar ou pressione editar para selecionar vários perfis para exclusão.
+
+profiles.Type.Deadzone: Perfis de zona morta
+profiles.Type.Deadzone.Detail: Adicione um novo perfil de zona morta para personalizar ou pressione editar para selecionar vários perfis para exclusão.
+
+profiles.Type.Touchpad: Perfis do Touchpad
+profiles.Type.Touchpad.Detail: Adicione um novo perfil do Touchpad para personalizar ou pressione editar para selecionar vários perfis para exclusão.
+
+profiles.Type.Motion: Perfis de movimento
+profiles.Type.Motion.Detail: adicione um novo perfil de movimento para personalizar ou pressione editar para selecionar vários perfis para exclusão.
+
+profiles.Type.AdaptiveTriggers: Perfis de gatilho adaptáveis
+profiles.Type.AdaptiveTriggers.Detail: Adicione um novo perfil Adaptive Trigger para personalizar ou pressione editar para selecionar vários perfis para exclusão.
+
+profiles.Type.HapticsRumble: Perfis Haptics/Rumble
+profiles.Type.HapticsRumble.Detail: Adicione um novo perfil Haptics/Rumble para personalizar ou pressione editar para selecionar vários perfis para exclusão.
+
+
+# ------------------------------------------------- -----------------------------------------------
+# Pagina inicial
+# ------------------------------------------------- --------------------------------------------------------R--
+
+homePage.Firmware.Info.Title: Informações de hardware/firmware
+
+homePage.Hardware.Info.Title: Informações de hardware
+homePage.Hardware.Info.SubTitle: As informações de hardware (qual revisão) deste controle.
+
+homePage.Hardware.Variation.Title: Variação de Hardware
+homePage.Hardware.Variation.SubTitle: A variação de hardware deste controle.
+
+homePage.Hardware.Version.Title: Versão do hardware
+homePage.Hardware.Version.SubTitle: A versão de hardware deste controle.
+
+homePage.Firmware.Version.Title: Versão do firmware
+homePage.Firmware.Version.SubTitle: A versão atual do firmware.
+
+homePage.Firmware.Type.Title: Tipo de firmware
+homePage.Firmware.Type.SubTitle: O tipo de firmware para este controle.
+
+homePage.Firmware.BuildDate: Data de construção do firmware
+homePage.Firmware.BuildDate.SubTitle: Aniversário do seu firmware!
+
+homePage.Firmware.MainVersion.Title: Versão principal do firmware
+homePage.Firmware.MainVersion.SubTitle: A versão principal do firmware.
+
+homePage.MAC.Title: Endereço MAC
+homePage.MAC.SubTitle: O identificador de endereço MAC exclusivo.
+
+homePage.HWInfo.Export.Title: Exportar informações de hardware/software
+
+homePage.MoreDualSenseInfo.Title: Mais informações sobre DualSense
+homePage.MoreDualSenseInfo.SubTitle: O restante das informações de hardware/software de um controle DualSense.
+
+homePage.ExperienceTrueImmersionWith: Experimente a verdadeira imersão com
+homePage.AdaptiveTriggers: gatilhos adaptativos
+homePage.HapticFeedback: Feedback tátil!
+homePage.ConnectionMode: Modo de conexão
+homePage.ConnectionType.Detail: O tipo de conexão usada para conectar ao PC.
+homePage.BatteryPercent: Porcentagem da bateria
+homePage.BatteryPercent.Detail: A porcentagem da bateria relatada pelo controle.
+homePage.PowerState: Estado de energia
+homePage.PowerState.ToolTip: O estado de energia da bateria relatado pelo controle.
+homePage.PollingRate: Taxa de votação
+homePage.PollingRate.ToolTip: A taxa de pesquisa do controle.
+homePage.PollingRate.JustNo: Não, não pode ser alterado no DSX.
+homePage.Firmware.UpdateAvailable: Atualização de firmware disponível
+homePage.Firmware.UpdateAvailable.Detail: Melhore o desempenho do seu controle sem fio DualSense™ e do controle sem fio DualSense Edge™ atualizando o firmware.
+homePage.Firmware.CurrentVersion: "Versão atual do firmware:"
+homePage.Firmware.LatestVersion: "Versão mais recente do firmware:"
+homePage.Firmware.UpdateNow: Atualizar agora
+
+homePage.ConstantDataCommunication.Title: Comunicação de dados constante
+homePage.ConstantDataCommunication.Detail: Quando ativado, o DSX atualizará este dispositivo com muita frequência; quando desativado, o DSX atualizará este dispositivo apenas quando houver algo novo.
+homePage.ConstantDataCommunication.Note: Desative isto se não for possível conectar outros controlees BT ao DSX/PC
+
+homePage.VirtualDevice.Title: Dispositivo Virtual
+homePage.VirtualDevice.Detail: O dispositivo virtual é o que o computador pensará que você está usando em vez do controle físico.
+
+homePage.VirtualDevice.Mode.Native.Title: Modo nativo
+homePage.VirtualDevice.Mode.Native.Configuration.Title: Configuração do modo nativo
+homePage.VirtualDevice.Mode.Native.Configuration.Detail: Quando o modo nativo é selecionado, nenhum dispositivo virtual é criado, você pode escolher se deseja ativar o envio de dados ou desativá-lo para torná-lo mais compatível com jogos com suporte nativo.
+
+homePage.VirtualDevice.Mode.Native.Configuration.SendData.Title: Enviar dados para o dispositivo
+homePage.VirtualDevice.Mode.Native.Configuration.SendData.Detail: Quando ativado, o DSX controlará coisas como Adaptive Triggers, LED, Rumble, Haptics etc... Desative para permitir que jogos nativos ou outros programas controlem este dispositivo.
+
+homePage.VirtualDevice.Mode.X360.Configuration.Title: Configuração do modo Xbox
+homePage.VirtualDevice.Mode.X360.Configuration.Detail: Quando a emulação do Xbox 360 está ativa, você pode ajustar as opções de passagem abaixo.
+homePage.VirtualDevice.Mode.X360.Configuration.SubType: Subtipo Xbox 360
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Detail: Escolha o subtipo Xbox 360 desejado que os jogos suportados reconheceriam.
+
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Gamepad: Gamepad
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.ArcadePad: Arcade Pad
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.ArcadeStick: Arcade Stick
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.DancePad: Tapete de dança
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.DrumKit: Kit de bateria
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.FlightStick: Flight Stick
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Guitar: Guitarra
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.GuitarAlternate: Alternativa de guitarra
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.GuitarBass: Baixo de guitarra
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Wheel: Roda
+
+homePage.VirtualDevice.Mode.X360.Configuration.RumblePassthrough.Title: Rumble Passthrough
+homePage.VirtualDevice.Mode.X360.Configuration.RumblePassthrough.Detail: Quando ativado, a vibração enviada ao controle virtual do Xbox 360 será passada para este dispositivo.
+
+homePage.VirtualDevice.Mode.DS4.Configuration.RumblePassthrough.Title: Rumble Passthrough
+homePage.VirtualDevice.Mode.DS4.Configuration.RumblePassthrough.Detail: Quando ativado, a vibração enviada ao controle DualShock 4 virtual será passada para este dispositivo.
+
+homePage.VirtualDevice.Mode.DS4.Configuration.LEDPassthrough.Title: Passagem de LED
+homePage.VirtualDevice.Mode.DS4.Configuration.LEDPassthrough.Detail: Quando ativado, as cores da barra de luz enviadas ao controle DualShock 4 virtual serão passadas para este dispositivo.
+
+homePage.VirtualDevice.Mode.DualSense.Configuration.RumblePassthrough.Title: Rumble Passthrough
+homePage.VirtualDevice.Mode.DualSense.Configuration.RumblePassthrough.Detail: Quando ativado, a vibração enviada ao controle DualSense virtual será passada para este dispositivo.
+
+homePage.VirtualDevice.Mode.DualSense.Configuration.ATPassthrough.Title: Passagem de gatilhos adaptáveis
+homePage.VirtualDevice.Mode.DualSense.Configuration.ATPassthrough.Detail: Quando habilitado, os gatilhos adaptativos enviados ao controle DualSense virtual serão passados ​​para este dispositivo.
+
+homePage.VirtualDevice.Mode.DualSense.Configuration.LEDPassthrough.Title: Passagem de LED
+homePage.VirtualDevice.Mode.DualSense.Configuration.LEDPassthrough.Detail: Quando ativado, as cores da barra de luz enviadas ao controle DualSense virtual serão passadas para este dispositivo.
+
+homePage.VirtualDevice.Mode.X360.Title: Emulação Xbox 360
+homePage.VirtualDevice.Mode.DS4.Title: Emulação DualShock 4
+homePage.VirtualDevice.Mode.DualSense.Title: Emulação DualSense
+homePage.VirtualDevice.Mode.DualSense.Detail: Aprimore com Wireless AT e mais
+homePage.VirtualDevice.Mode.Rev1: Revisão 1
+homePage.VirtualDevice.Mode.Rev2: Revisão 2
+
+homePage.VirtualDevice.Mode.DS4.Configuration.Title: Configuração do modo DualShock 4
+homePage.VirtualDevice.Mode.DS4.Configuration.Detail: Quando a emulação DualShock 4 está ativa, você pode ajustar as opções de passagem abaixo.
+homePage.VirtualDevice.Mode.DS4.Configuration.SubType: Subtipo DualShock 4
+homePage.VirtualDevice.Mode.DS4.Configuration.SubType.Detail: Escolha o subtipo DualShock 4 desejado que os jogos suportados reconheceriam.
+
+homePage.VirtualDevice.DS4.IssuesUnderInvestigation: Problemas de emulação do DualShock 4 sob investigação
+homePage.VirtualDevice.DS4.IssuesUnderInvestigation.Detail: No momento, estamos investigando problemas relacionados à emulação do DualShock 4. O uso deste modo pode resultar na reinicialização inesperada do sistema. Use por sua conta e risco. Aguente firme enquanto trabalhamos em uma solução!
+homePage.VirtualDevice.DSDLC.Explore: EXPLORE
+
+homePage.ControllerOptions: Opções do controle
+
+
+# ------------------------------------------------- -----------------------------------------------
+# Página de perfis
+# ------------------------------------------------- -----------------------------------------------
+
+profilesPage.DeviceName.Title: Nome do dispositivo
+profilesPage.DeviceName.SubTitle: o nome do alias a ser usado para este dispositivo.
+
+profilesPage.ProfilesDirectory.Title: Diretório de perfis
+profilesPage.ProfilesDirectory.SubTitle: Visualize o local onde os perfis são salvos para este controle.
+
+profilesPage.ResetController.Title: Redefinir sistema de perfil do controle
+profilesPage.ResetController.SubTitle: Exclui todos os perfis associados a este dispositivo, como Ações, LED, Gatilhos Adaptáveis, etc.
+profilesPage.ResetController.Popup.LineOne: ISTO NÃO PODE SER DESFEITO!
+profilesPage.ResetController.Popup.LineTwo: Todos os perfis associados a este dispositivo, como Ações, LED, Gatilhos Adaptáveis, etc., serão excluídos.
+profilesPage.ResetController.Popup.LineThree: Tem certeza de que deseja continuar?
+
+profilesPage.ProfileList.SubTitle: O perfil atualmente ativo para os vários sistemas de perfil.
+
+profilesPage.Action: Perfil de ação
+profilesPage.AdaptiveTriggers: perfil de gatilhos adaptáveis
+profilesPage.Deadzone: Perfil de zona morta
+profilesPage.HapticsRumble: Perfil Haptics/Rumble
+profilesPage.LED: Perfil de LED
+profilesPage.Motion: Perfil de movimento
+profilesPage.Notification: Perfil de notificação
+profilesPage.Touchpad: Perfil do Touchpad
+
+
+# ------------------------------------------------- -----------------------------------------------
+# Página do controle
+# ------------------------------------------------- -----------------------------------------------
+ctPage.IdleShutoffInactiveDuringCharging: desligamento inativo inativo durante o carregamento
+ctPage.DurationSinceIdle: "Duração desde a inatividade:"
+ctPage.InputFeedback.Title: Feedback de entrada
+ctPage.InputFeedback.Description: Visualize entrada física (real) ou entrada virtual (emulada).
+ctPage.Physical: FÍSICO
+ctPage.Virtual: VIRTUAL
+ctPage.LeftFN: FN ESQUERDO
+ctPage.RightFN: DIREITO FN
+ctPage.Actions.Title: Ações
+ctPage.Actions.Description: Crie uma ação para mapeamento de botões, mapeamento de teclado, atalhos, macros e muito mais...
+ctPage.KeyboardButtonDetector.Title: Reconhecedor de botão do teclado
+ctPage.KeyboardButtonDetector.Description: O DSX pode digitar (simular) qualquer botão do teclado que seja reconhecido nesta caixa de texto.
+ctPage.KeyDetector.Placeholder: pressione uma tecla no teclado quando estiver ativo.
+ctPage.KeyDetector.ToolTip: Abra o teclado na tela
+ctPage.KeyDetector.Detail: O DSX pode digitar (simular) qualquer texto adicionado a esta caixa de texto.
+ctPage.KeyDetector.Input.Placeholder: Digite qualquer coisa aqui para simular.
+ctPage.ListOfAddedKeyboardMappings: lista de mapeamentos de teclado adicionados
+ctPage.ListOfAddedKeyboardMappings.NoneAdded: nenhum mapeamento de teclado adicionado
+ctPage.ListOfAddedKeyboardMappings.Detail: Sua lista de mapeamentos de teclado aparecerá aqui.
+ctPage.VirtualMouse.Detail: invoca os botões do mouse virtual adicionados abaixo conforme o mouse pressiona os botões selecionados quando pressionados.
+ctPage.MouseButtonDetector: Reconhecedor de botão do mouse
+ctPage.MouseButtonDetector.Detail: o DSX pode simular cliques de botão do mouse que são reconhecidos por esta caixa. Passe o mouse sobre a caixa e pressione um botão do mouse.
+ctPage.MouseButtonDetector.Text: Pressione um botão no mouse quando estiver destacado.
+ctPage.MouseButtons: botões do mouse
+ctPage.MouseButtons.Detail: O DSX pode simular qualquer um dos botões do mouse adicionados nesta lista.
+ctPage.LeftMouseButton: botão esquerdo do mouse
+ctPage.RightMouseButton: botão direito do mouse
+ctPage.MiddleMouseButton: botão do meio do mouse
+ctPage.ScrollWheelUp: Roda de rolagem para cima
+ctPage.ScrollWheelDown: roda de rolagem para baixo
+ctPage.BackMouseButton: botão Voltar do mouse
+ctPage.ForwardMouseButton: botão avançar do mouse
+ctPage.ListOfAddedMouseMappings: lista de mapeamentos de mouse adicionados
+ctPage.ListOfAddedMouseMappings.NoneAdded: lista de mapeamentos de mouse adicionados
+ctPage.ListOfAddedMouseMappings.NoneAdded.Sub: lista de mapeamentos de mouse adicionados
+ctPage.Shortcuts.Title: Atalhos
+ctPage.Shortcuts.Detail: Aciona os atalhos adicionados abaixo para os botões selecionados quando pressionados.
+ctPage.WindowsActionPresets.Title: Predefinições de ação do Windows
+ctPage.AppSettings.Title: Configurações do aplicativo
+ctPage.ChangeEmulationType: Alterar tipo de emulação
+ctPage.ToggleTouchpadToMouse: alterna o touchpad para o mouse
+ctPage.GeneralSettings.Title: Configurações Gerais
+
+ctPage.GeneralSettings.Description: Configurações gerais do controle, como desligamento automático, etc.
+ctPage.Deadzones.Title: Zonas mortas
+ctPage.Deadzones.Description: Ajuste a faixa de entrada da zona morta do acionador e a zona morta do joystick para melhorar sua precisão.
+ctPage.Touchpad.Title: Touchpad
+ctPage.Touchpad.Description: Utilize toda a gama do touchpad para criar várias entradas com o toque de um dedo.
+ctPage.Motion.Title: Movimento
+ctPage.Motion.Description: Utilize toda a gama do touchpad para criar várias entradas com o toque de um dedo.
+ctPage.RawFeedback.Title: Feedback bruto
+ctPage.RawFeedback.Description: Visualize várias informações provenientes diretamente do seu gamepad, como gatilhos, joystick, touchpad e movimento.
+ctPage.GamepadSkin.Title: Capa do Gamepad
+ctPage.GamepadSkin.Description: Escolha qual skin do gamepad você deseja que fique visível para feedback à esquerda.
+ctPage.NoSelectedButtons.Title: Nenhum botão(s) selecionado(s)
+ctPage.NoSelectedButtons.Description: Selecione um botão à esquerda para começar.
+ctPage.RawPressureValue: valor da pressão bruta
+
+ctPage.InsertGamepadButton: Inserir botão do gamepad
+ctPage.ButtonMappingsList: lista de mapeamentos de botões adicionados
+ctPage.NoButtonMappingAdded: nenhum mapeamento de botão adicionado
+ctPage.NoButtonMappingAdded.Sub: nenhum mapeamento de botão adicionado
+
+ctPage.TriggerPosition.Title: Posição do gatilho
+ctPage.TriggerPosition.Sub: Configure quando um botão deve ser simulado para L2 | R2 (1-255)
+
+ctPage.ActionsProfileSwitchTo: Perfil de ações alternado para
+ctPage.AdaptiveTriggerProfileSwitchTo: Perfil de gatilho adaptável alterna para
+ctPage.ControllerProfileSwitchTo: Perfil do controle alterna para
+ctPage.DeadzoneProfileSwitchTo: Perfil de zona morta muda para
+ctPage.HapticsRumbleProfileSwitchTo: Perfil Haptics/Rumble alterna para
+ctPage.LEDProfileSwitchTo: Perfil de LED alterna para
+ctPage.MotionProfileSwitchTo: Perfil de movimento alterna para
+ctPage.NotificationsProfileSwitchTo: Perfil de notificações alternado para
+ctPage.TouchpadProfileSwitchTo: Perfil do Touchpad alterna para
+ctPage.ActivateNativeMode: ativa o modo nativo (sem dispositivo virtual)
+ctPage.ActivateXbox360VirtualDevice: Ativar dispositivo virtual Xbox 360
+ctPage.ActivateDualShock4VirtualDevice: ativa o dispositivo virtual DualShock 4
+ctPage.ActivateDualSenseVirtualDevice: ativa o dispositivo virtual DualSense
+ctPage.TurnControllerOff: DESLIGUE o controle (somente conexão Bluetooth)
+ctPage.RestartController: Reiniciar controle (somente conexão USB) (somente DualSense, DualSense Edge e PSVR Sense)
+ctPage.MediaAndSystemKeys: chaves de mídia e sistema
+ctPage.ToggleXboxGameBar: Alternar barra de jogo do Xbox
+ctPage.TakeSystemScreenshot: faça uma captura de tela do sistema
+ctPage.IncreaseBrightnessLevel: Aumenta o nível de brilho
+ctPage.DecreaseBrightnessLevel: Diminui o nível de brilho
+ctPage.ToggleMicrophoneMute: Alternar microfone mudo
+ctPage.PreviousTrack: faixa anterior
+ctPage.PlayPause: Reproduzir/Pausar
+ctPage.NextTrack: Próxima faixa
+ctPage.ToggleVolumeMute: Alternar volume mudo
+ctPage.IncreaseVolumeLevel: Aumenta o nível de volume
+ctPage.DecreaseVolumeLevel: Diminui o nível de volume
+ctPage.DeviceStatus: Status do dispositivo
+ctPage.ActiveActionProfile: Perfil de ação ativa
+ctPage.ActiveAdaptiveTriggerProfile: perfil de gatilho adaptável ativo
+ctPage.ActiveDeadzoneProfile: Perfil de zona morta ativa
+ctPage.ActiveHapticsRumbleProfile: Perfil Haptics/Rumble ativo
+ctPage.ActiveLEDProfile: Perfil de LED ativo
+ctPage.ActiveMotionProfile: perfil de movimento ativo
+ctPage.ActiveNotificationProfile: Perfil de notificação ativo
+ctPage.ActiveTouchpadProfile: Perfil ativo do Touchpad
+ctPage.LaunchExecutable: inicia o executável
+ctPage.FileDoesNotExist: arquivo não existe
+ctPage.EnterPathToExecutable: Digite o caminho para o arquivo executável (.bat .exe etc.)
+ctPage.EnterLaunchArgsHere: Insira Args de lançamento aqui
+ctPage.ListOfAddedShortcuts: lista de atalhos adicionados
+ctPage.NoShortcutsAdded: nenhum atalho adicionado
+ctPage.ShortcutsListPlaceholder: Sua lista de atalhos aparecerá aqui.
+ctPage.VirtualDeviceOption: opção de dispositivo virtual
+ctPage.WindowsActionPreset: predefinição de ação do Windows
+ctPage.GoBack: Voltar
+ctPage.Macros: Macros
+ctPage.MacrosDescription: Simula os botões adicionados abaixo de forma gravada para o(s) botão(s) selecionado(s) quando pressionados.
+ctPage.Notificações: Notificações
+ctPage.MacroSettings: Configurações de macro
+ctPage.PlayOnce: Jogue uma vez
+ctPage.ActionWillPlayOneTime: A ação será reproduzida uma vez.
+ctPage.KeyDown: tecla para baixo
+ctPage.MacroEditing: Edição de macros
+ctPage.InsertGamepadButtonToList: Insira o botão Gamepad na lista
+ctPage.ListOfAddedMacros: lista de macros adicionadas
+ctPage.NoMacrosAdded: nenhuma macro adicionada
+ctPage.MacrosListPlaceholder: Sua lista de macros aparecerá aqui.
+ctPage.Turbo: Turbo
+ctPage.TurboDescription: Simula o pressionamento rápido e a repetição de um pressionamento de botão para o(s) botão(s) selecionado(s) quando pressionado.
+ctPage.WaitLengthDescription: Tempo de espera antes de disparar novamente.
+ctPage.Duration: Duração
+ctPage.DurationDescription: Duração do botão no estado pressionado.
+ctPage.Action: Ação
+ctPage.ActionDescription: Quando estiver ativado, os tipos habilitados abaixo estarão em vigor para qualquer botão selecionado para este perfil de ação. Se estiver desligado, não importa os botões selecionados à esquerda e mesmo se o abaixo estiver habilitado, nada acontecerá.
+ctPage.ActivationMethod: Método de ativação
+ctPage.ActivationMethodDescription: Escolha se deseja ativar esta ação instantaneamente ou após um atraso.
+ctPage.ActionInstantActivation: A ação será ativada instantaneamente.
+ctPage.AfterDelay: após um atraso
+ctPage.AfterDelayDescription: A ação será ativada após um certo atraso.
+ctPage.MouseMapping.Title: Mapeamento do mouse
+ctPage.MouseMapping.Description: invoca os botões do mouse virtual adicionados à medida que o mouse pressiona os botões selecionados quando pressionados.
+ctPage.Shortcuts.Description: Aciona os atalhos adicionados para os botões selecionados quando pressionados.
+
+ctPage.ButtonMapping.Title: Mapeamento de botões
+ctPage.ButtonMapping.Description: Simula os botões do Gamepad adicionados abaixo para o(s) botão(s) selecionado(s) quando pressionados.
+ctPage.KeyboardMapping.Title: Mapeamento de teclado
+ctPage.KeyboardMapping.Description: invoca as teclas virtuais adicionadas ou texto simulado abaixo para o(s) botão(s) selecionado(s) quando pressionado.
+ctPage.ListOfActiveActions: Lista de ações ativas
+ctPage.ActiveButtonMappingsDescription: sua lista de mapeamentos de botões ativos.
+
+ctPage.KeyboardMappingList: Mapeamento de teclado
+ctPage.ActiveKeyboardMappingsDescription: Sua lista de mapeamentos de teclado ativos.
+ctPage.ShortcutsList: Atalhos
+ctPage.ActiveShortcutsDescription: Sua lista de atalhos ativos.
+ctPage.ActiveTurbosDescription: Sua lista de Turbos ativos.
+
+ctPage.Delay: Atraso
+ctPage.DelayDescription: Tempo de espera antes de disparar novamente.
+ctPage.NoActiveActions: Nenhuma ação ativa
+ctPage.YourListOfActiveActionsWillShowUpHere: Sua lista de ações ativas aparecerá aqui.
+ctPage.L2TriggerInputRange: Faixa de entrada do acionador L2
+ctPage.AdjustSlidersToUpdateTriggerDeadzone: Ajuste os controles deslizantes abaixo para atualizar a zona morta do gatilho enviada ao controle emulado.
+ctPage.L2TriggerDeadzone: Zona morta do gatilho L2
+ctPage.R2TriggerDeadzone.Title: Zona morta do gatilho R2
+ctPage.TriggerDeadzone.Description: Configure o intervalo para a zona morta.
+ctPage.LeftTrigger: gatilho esquerdo
+ctPage.RightTrigger: gatilho direito
+ctPage.PressureValue: valor de pressão
+ctPage.PressureValueRange: 0 - 255
+ctPage.NoneMs: N/A ms
+ctPage.NotAny: N/A
+ctPage.RawJoystickData: dados brutos do joystick
+ctPage.RawJoystickDataDescription: informações brutas sobre o joystick esquerdo e direito
+ctPage.LeftStickXRaw: controle esquerdo X Raw
+ctPage.LeftStickYRaw: Controle esquerdo Y Raw
+
+ctPage.LeftStickXConvertedXbox: controle esquerdo X convertido (xbox)
+ctPage.LeftStickYConvertedXbox: controle esquerdo Y convertido (xbox)
+ctPage.LeftJoystick: Joystick esquerdo
+ctPage.RightJoystick: Joystick direito
+ctPage.ControllerSkins.Title: Skins do controle
+ctPage.To: Para
+ctPage.From: De
+ctPage.PhysicalAndVirtualDeviceOptions.Title: Opções de dispositivos físicos e virtuais
+ctPage.RawTouchpadData.Title: dados brutos do touchpad
+ctPage.RawTouchpadData.Description: Várias informações do touchpad, como posições dos dedos 1 e 2 X/Y e gestos de deslizar.
+ctPage.TouchpadShowGrid: Mostrar grade do Touchpad
+ctPage.CenterDarkSquareSafeZone: Center Dark Square é uma zona segura
+ctPage.Finger1Data: dados do dedo 1
+ctPage.Finger1TouchCounter: "Contador de toque do dedo 1:"
+ctPage.Finger1XPosition: "Posição do dedo 1 X:"
+ctPage.Finger1YPosition: "Posição do dedo 1 Y:"
+ctPage.Finger2Data: dados do dedo 2
+ctPage.Finger2TouchCounter: "Contador de toque do dedo 2:"
+ctPage.Finger2XPosition: "Posição do dedo 2 X:"
+ctPage.Finger2YPosition: "Posição Y do dedo 2:"
+ctPage.TouchPoints: pontos de contato
+ctPage.Finger1TouchPoints: pontos de toque do dedo 1
+ctPage.TouchPointsDescription: Dedo 1 vários pontos de toque no touchpad
+ctPage.TouchPointsTopLeftTouch: toque superior esquerdo
+ctPage.TouchPointsTopCenterTouch: toque central superior
+ctPage.TouchPointsTopRightTouch: toque superior direito
+ctPage.TouchPointsCenterLeftTouch: Toque central esquerdo
+ctPage.TouchPointsCenterTouch: Toque central
+ctPage.TouchPointsCenterRightTouch: toque centralizado à direita
+ctPage.TouchPointsBottomLeftTouch: toque inferior esquerdo
+ctPage.TouchPointsBottomCenterTouch: Toque central inferior
+ctPage.TouchPointsBottomRightTouch: toque inferior direito
+ctPage.Finger1SwipeGesturesDescription: Dedo 1 vários gestos de deslizar no touchpad
+ctPage.LeftSideSwipe: deslizamento do lado esquerdo
+ctPage.EntireTouchpad: Touchpad inteiro
+ctPage.RightSideSwipe: deslizar para a direita
+ctPage.SwipeRight: deslizar para a direita
+ctPage.SwipeLeft: deslizar para a esquerda
+ctPage.LeftSideSwipeDetection: "Distância do pixel do lado esquerdo para detecção de deslizamento:"
+ctPage.EntireTouchpadSwipeDetection: "Distância inteira de pixels do Touchpad para detecção de deslizamento:"
+ctPage.RightSideSwipeDetection: "Distância do pixel do lado direito para detecção de deslizamento:"
+ctPage.Touchpad.SwipeGestures.LeftSideUp: deslizar para cima
+ctPage.Touchpad.SwipeGestures.EntireTouchpad.Up: deslizar para cima
+ctPage.Touchpad.SwipeGestures.RightSideUp: deslizar para cima
+ctPage.Touchpad.SwipeGestures.LeftSideDown: deslizar para baixo
+ctPage.Touchpad.SwipeGestures.EntireTouchpad.Down: Deslize para baixo
+ctPage.Touchpad.SwipeGestures.RightSideDown: deslizar para baixo
+
+ctPage.TouchpadButtonLatency: latência do botão do touchpad
+ctPage.TouchpadClick: Clique no Touchpad
+ctPage.LeftSide: Lado Esquerdo
+ctPage.RightSide: lado direito
+ctPage.TopLeftBox: caixa superior esquerda
+ctPage.TopRightBox: caixa superior direita
+ctPage.BottomLeftBox: caixa inferior esquerda
+ctPage.BottomRightBox: caixa inferior direita
+
+ctPage.LeftJoystickDeadzoneUnderConstruction: A zona morta do joystick esquerdo está em construção.
+ctPage.RightJoystickDeadzoneUnderConstruction: A zona morta do joystick direito está em construção.
+ctPage.LeftJoystickDeadzone: zona morta do joystick esquerdo
+ctPage.ConfigureLeftJoystickDeadzone: Configure a zona morta do joystick esquerdo.
+ctPage.RightJoystickDeadzone: zona morta do joystick direito
+ctPage.ConfigureRightJoystickDeadzone: Configure a zona morta direita do joystick.
+ctPage.TouchpadUnderConstruction: O touchpad está em construção.
+ctPage.MacrosUnderConstruction: Macros estão em construção.
+ctPage.MotionUnderConstruction: o movimento está em construção.
+ctPage.RawTriggerData: dados brutos do gatilho
+ctPage.RawTriggerDataDescription: informações brutas sobre dados L2 e R2 provenientes do controle físico.
+ctPage.GeneralSettings.AutoIdleShutOff: desligamento automático de inatividade
+ctPage.GeneralSettings.AutoIdleShutOffDescription: Quando ativado, o DSX desligará automaticamente o controle via Bluetooth se detectar que o controle esteve inativo pelo período especificado.
+ctPage.GeneralSettings.DisableAutoIdleShutOffDuringCharging: Desativa o desligamento automático de inatividade durante o carregamento
+ctPage.GeneralSettings.DisableAutoIdleShutOffDuringChargingDescription: Isso permite evitar a função de desligamento automático de inatividade enquanto o dispositivo está carregando, garantindo sessões de carregamento ininterruptas, sem interrupções devido a tempos limite de inatividade.
+ctPage.InactivityDuration: Duração da inatividade
+ctPage.InactivityDurationDescription: Qual a duração da inatividade que aciona o desligamento automático deste dispositivo.
+ctPage.FiveMinutes: 5 minutos
+ctPage.TenMinutes: 10 minutos
+ctPage.FifteenMinutes: 15 minutos
+ctPage.ThirtyMinutes: 30 minutos
+ctPage.SixtyMinutes: 60 minutos
+ctPage.OneHundredTwentyMinutes: 120 minutos
+ctPage.CustomMinutes: Personalizado (minutos)
+ctPage.Never: Nunca
+ctPage.PressLatency: Latência de imprensa
+
+ctPage.NoControllersDetected: Nenhum controle detectado
+ctPage.ConnectController: Conecte seu controle ou conecte-o via Bluetooth para configurar ações, zonas mortas, etc.
+
+ctPage.RealTimeUpdate: atualização em tempo real
+ctPage.UsesMoreGPU: (usa mais GPU)
+ctPage.Finger1: Dedo 1
+ctPage.Finger2: Dedo 2
+ctPage.DirectionalButtons: botões direcionais
+ctPage.CenterButtons: botões centrais
+ctPage.ActionButtons: botões de ação
+ctPage.BackLeftButtonTrigger: botão Voltar esquerdo e gatilho
+ctPage.BackRightButtonTrigger: botão Voltar direito e gatilho
+ctPage.ActiveGridBasedOnFinger1Position: Qual grade está ativa com base na posição X/Y do dedo 1
+
+ctPage.Actions: Ações
+ctPage.Deadzones: zonas mortas
+ctPage.Touchpad: Touchpad
+ctPage.Motion: Movimento
+ctPage.RawFeedback: Feedback bruto
+ctPage.ControllerSkins: skins do controle
+ctPage.GeneralSettings: Configurações Gerais
+
+ctPage.ButtonMapping: Mapeamento de botões
+ctPage.KeyboardMapping: Mapeamento de teclado
+ctPage.MouseMapping: Mapeamento do mouse
+ctPage.Shortcuts: Atalhos
+
+ctPage.L2Trigger: Gatilho L2
+ctPage.R2Trigger: Gatilho R2
+ctPage.R2Position: Posição R2
+ctPage.ScrollDistance: distância de rolagem (pontos)
+ctPage.Fonte: Fonte
+ctPage.Activation: Ativação
+ctPage.DelayMilliseconds: Atraso (ms)
+ctPage.Repeats: Repete
+ctPage.PlayOnKey: Tocar no tom
+ctPage.InsertDelayToList: Inserir atraso (ms) na lista
+ctPage.StartRecording: inicia a gravação
+ctPage.Milliseconds: milissegundos
+ctPage.Seconds: Segundos
+
+ctPage.RawInfoJoystick: informações brutas sobre o joystick esquerdo e direito
+ctPage.SwipeGestures: gestos de deslizar
+ctPage.GridPosition: posição da grade
+ctPage.TouchpadInfo: Várias informações do touchpad, como posições dos dedos 1 e 2 X/Y e gestos de deslizar
+ctPage.GreenScreenEffect: efeito de tela verde (para streamers)
+
+ctPage.GeneralSettings.InvertLeftX: Inverter X Esquerdo
+ctPage.GeneralSettings.InvertLeftX.Description: Quando ativado, o DSX inverterá o eixo X do joystick esquerdo de forma que ir para a esquerda funcionará como ir para a direita e vice-versa.
+ctPage.GeneralSettings.InvertLeftY: Inverter Y para a esquerda
+ctPage.GeneralSettings.InvertLeftY.Description: Quando ativado, o DSX inverterá o eixo Y do joystick esquerdo de forma que subir funcionará como descer e vice-versa.
+ctPage.GeneralSettings.InvertRightX: Inverter X para a direita
+ctPage.GeneralSettings.InvertRightX.Description: Quando ativado, o DSX inverterá o eixo X do joystick direito de forma que ir para a esquerda funcionará como ir para a direita e vice-versa.
+ctPage.GeneralSettings.InvertRightY: Inverter Y para a direita
+ctPage.GeneralSettings.InvertRightY.Description: Quando ativado, o DSX inverterá o eixo Y do joystick direito de forma que subir funcionará como descer e vice-versa.
+
+
+btn.DpadUp: D-PAD CIMA
+btn.DpadDown: D-PAD BAIXO
+btn.DpadLeft: D-PAD ESQUERDA
+btn.DpadRight: D-PAD DIREITA
+btn.Triangle: TRIÂNGULO
+btn.Square: QUADRADO
+btn.Circle: CÍRCULO
+btn.Cross: XIS
+btn.Share: COMPARTILHAR
+btn.Options: OPÇÕES
+btn.Mute: MUTE
+btn.PS: PS
+btn.Touchpad: TOUCHPAD
+botão.L1: L1
+botão.L2: L2
+btn.L2Position: Posição L2
+botão.L3: L3
+botão.R1: R1
+btn.R2: R2
+botão.R3: R3
+
+
+# ------------------------------------------------- -----------------------------------------------
+# Página de gatilhos adaptativos
+# ------------------------------------------------- -----------------------------------------------
+
+atPage.RightTrigger: gatilho direito
+
+atPage.PassthroughWarning.Title: "Aviso: passagem de gatilhos adaptativos habilitada"
+atPage.PassthroughWarning.Sub: Quando Adaptive Triggers Passthrough está habilitado, Adaptive Triggers se tornam inativos, permitindo o controle dinâmico pelo jogo. Este recurso substitui quaisquer configurações manuais definidas abaixo, permitindo que o jogo dite o comportamento dos Adaptive Triggers.
+atPage.DisableATPassthrough: Desativa a passagem de gatilhos adaptativos
+atPage.LeftTrigger: gatilho esquerdo
+atPage.OfficialATModes: modos de gatilho adaptativos oficiais
+
+atPage.ATEffectOff.Detail: desliga o efeito Adaptive Trigger e retorna o trigger ao normal.
+
+atPage.Sliders.StartPosition: posição inicial
+atPage.Sliders.EndPosition: posição final
+atPage.Sliders.Amplitude: Amplitude
+atPage.Sliders.AmplitudeA: Amplitude A
+atPage.Sliders.AmplitudeB: Amplitude B
+atPage.Sliders.ResistanceStrength: Força de resistência
+atPage.Sliders.StartResistanceStrength: Força de resistência inicial
+atPage.Sliders.EndResistanceStrength: Força da resistência final
+atPage.Sliders.SnapForce: Força de snap
+atPage.Sliders.FirstFoot: primeiro pé
+atPage.Sliders.SecondFoot: segundo pé
+
+atPage.Sliders.Region1Resistance: Força de resistência da região 1
+atPage.Sliders.Region2Resistance: Força de resistência da região 2
+atPage.Sliders.Region3Resistance: Força de resistência da região 3
+atPage.Sliders.Region4Resistance: Força de resistência da região 4
+atPage.Sliders.Region5Resistance: Força de resistência da região 5
+atPage.Sliders.Region6Resistance: Força de resistência da região 6
+atPage.Sliders.Region7Resistance: Força de resistência da região 7
+atPage.Sliders.Region8Resistance: Força de resistência da região 8
+atPage.Sliders.Region9Resistance: Força de resistência da região 9
+atPage.Sliders.Region10Resistance: Força de resistência da região 10
+
+atPage.Sliders.Region1Amplitude: Amplitude da região 1
+atPage.Sliders.Region2Amplitude: Amplitude da região 2
+atPage.Sliders.Region3Amplitude: Amplitude da região 3
+atPage.Sliders.Region4Amplitude: Amplitude da região 4
+atPage.Sliders.Region5Amplitude: Amplitude da região 5
+atPage.Sliders.Region6Amplitude: Amplitude da região 6
+atPage.Sliders.Region7Amplitude: Amplitude da região 7
+atPage.Sliders.Region8Amplitude: Amplitude da região 8
+atPage.Sliders.Region9Amplitude: Amplitude da região 9
+atPage.Sliders.Region10Amplitude: Amplitude da região 10
+
+
+atPage.Mode.Feedback.Title: Comentários
+atPage.Mode.Feedback.SubTitle: O gatilho resistirá ao movimento além da posição inicial.
+
+atPage.Mode.Weapon.Title: Arma
+atPage.Mode.Weapon.SubTitle: O Trigger resistirá com uma sensação de snap.
+
+atPage.Mode.Vibration.Title: Vibração
+atPage.Mode.Vibration.SubTitle: O gatilho vibrará com a amplitude e frequência de entrada além da posição inicial.
+
+atPage.Mode.Vibration.DynamicRumbleSync.Title: Sincronização dinâmica de Rumble
+atPage.Mode.Vibration.DynamicRumbleSync.Left.SubTitle: habilita a sincronização dinâmica com o motor de vibração esquerdo do dispositivo virtual, ajustando a frequência de vibração com base na intensidade de vibração do dispositivo virtual. Personalize a frequência usando o controle deslizante acima, definindo a frequência de vibração máxima desejada.
+atPage.Mode.Vibration.DynamicRumbleSync.Right.SubTitle: habilita a sincronização dinâmica com o motor de vibração direito do dispositivo virtual, ajustando a frequência de vibração com base na intensidade de vibração do dispositivo virtual. Personalize a frequência usando o controle deslizante acima, definindo a frequência de vibração máxima desejada.
+
+atPage.Mode.SlopeFeedback.Title: Feedback de inclinação
+atPage.Mode.SlopeFeedback.SubTitle: O gatilho resistirá ao movimento em uma faixa linear de forças.
+
+atPage.Mode.MultiplePositionFeedback.Title: Feedback de múltiplas posições
+atPage.Mode.MultiplePositionFeedback.SubTitle: O gatilho resistirá ao movimento em intensidades variadas em 10 regiões.
+
+atPage.Mode.MultiplePositionVibration.Title: Vibração de múltiplas posições
+atPage.Mode.MultiplePositionVibration.SubTitle: O Trigger vibrará o movimento em amplitudes variadas e uma frequência em 10 regiões.
+
+atPage.Mode.GameCube.Title: GameCube
+atPage.Mode.GameCube.SubTitle: O efeito lembra o pressionamento do botão traseiro do controle GameCube.
+
+atPage.Mode.Bow.Title: Arco
+atPage.Mode.Bow.SubTitle: O efeito se assemelha ao efeito Arma acima, porém há uma força de retorno que tenta reiniciar o gatilho.
+
+atPage.Mode.Galloping.Title: Galopando
+atPage.Mode.Galloping.SubTitle: O Trigger irá oscilar em um padrão rítmico semelhante ao galope. Observe que o efeito só é discernível em valores de baixa frequência.
+
+atPage.Mode.Machine.Title: Máquina
+atPage.Mode.Machine.SubTitle: O efeito se assemelha ao efeito Vibração acima, mas oscilará entre duas amplitudes.
+
+atPage.Mode.MotorWarning: "AVISO: Danos potenciais ao motor de disparo."
+atPage.UnofficialATModes: modos de gatilho adaptativos não oficiais
+
+atPage.Legacyv2Modes: Modos de acionamento adaptáveis ​​legados do DSX v2
+atPage.Legacyv2Modes.CustomTriggerValues.Title: Valores de gatilho personalizados (experimental)
+atPage.Legacyv2Modes.CustomTriggerValues.SubTitle: Efeitos de gatilho experimentais baseados em um modo e valores que terão um efeito aleatório.
+atPage.Legacyv2Modes.CustomTriggerValues.Mode: modo de valor de gatilho personalizado
+
+atPage.Legacy.Slider.Rigid: Rígido
+atPage.Legacy.Slider.RigidA: Rígido A
+atPage.Legacy.Slider.RigidB: Rígido B
+atPage.Legacy.Slider.RigidAB: AB rígido
+
+atPage.Legacy.Slider.Pulse: Pulso
+atPage.Legacy.Slider.PulseA: Pulso A
+atPage.Legacy.Slider.PulseB: Pulso B
+atPage.Legacy.Slider.PulseAB: Pulso AB
+
+atPage.Legacy.Slider.VibrateResistance: VibrateResistance
+atPage.Legacy.Slider.VibrateResistanceA: VibrateResistance A
+atPage.Legacy.Slider.VibrateResistanceB: VibrarResistance B
+atPage.Legacy.Slider.VibrateResistanceAB: VibrateResistance AB
+
+atPage.Legacy.Slider.VibratePulse: vibrar pulso
+atPage.Legacy.Slider.VibratePulseA: vibrar pulso A
+atPage.Legacy.Slider.VibratePulseB: vibrar pulso B
+atPage.Legacy.Slider.VibratePulseAB: Vibrar pulso AB
+
+atPage.Legacy.Slider.Force1: Força 1
+atPage.Legacy.Slider.Force2: Força 2
+atPage.Legacy.Slider.Force3: Força 3
+atPage.Legacy.Slider.Force4: Força 4
+atPage.Legacy.Slider.Force5: Força 5
+atPage.Legacy.Slider.Force6: Força 6
+atPage.Legacy.Slider.Force7: Força 7
+
+atPage.Legacy.Mode.Choppy.Title: Agitado
+atPage.Legacy.Mode.Choppy.SubTitle: O efeito se assemelha ao modo Feedback com intensidades variadas conforme você pressiona.
+
+atPage.Legacy.Mode.VerySoft.Title: Muito suave
+atPage.Legacy.Mode.VerySoft.SubTitle: O efeito lembra o modo Arma com uma intensidade muito suave.
+
+atPage.Legacy.Mode.Soft.Title: Suave
+atPage.Legacy.Mode.Soft.SubTitle: O efeito lembra o modo Arma com uma intensidade suave.
+
+atPage.Legacy.Mode.Medium.Title: Leve
+atPage.Legacy.Mode.Medium.SubTitle: O efeito lembra o modo Arma com intensidade média.
+
+atPage.Legacy.Mode.Hard.Title: Pesado
+atPage.Legacy.Mode.Hard.SubTitle: O efeito lembra o modo Arma com uma intensidade forte.
+
+atPage.Legacy.Mode.VeryHard.Title: Muito Pesado
+atPage.Legacy.Mode.VeryHard.SubTitle: O efeito lembra o modo Arma com uma intensidade muito forte.
+
+atPage.Legacy.Mode.Hardest.Title: Super Pesado
+atPage.Legacy.Mode.Hardest.SubTitle: O efeito lembra o modo Arma com a intensidade mais forte.
+
+atPage.Legacy.Mode.Rigid.Title: Rígido
+atPage.Legacy.Mode.Rigid.SubTitle: O efeito lembra o modo Arma com uma intensidade Extremamente forte.
+
+atPage.Legacy.Mode.VibrateTriggerPulse.Title: Pulso de gatilho vibratório
+atPage.Legacy.Mode.VibrateTriggerPulse.SubTitle: O efeito se assemelha ao modo Vibração com uma frequência que muda automaticamente.
+
+# ------------------------------------------------- -----------------------------------------------
+#Página LED
+# ------------------------------------------------- -----------------------------------------------
+
+ledPágina.RGB: RGB
+ledPage.LEDProfiles: Perfis de LED
+ledPage.AddEditLEDProfiles: Adicione um novo perfil de LED para personalizar ou pressione editar para selecionar vários perfis para exclusão.
+ledPage.SearchControllerProfiles: perfis do controle de pesquisa
+ledPage.WarningLEDPassthroughEnabled: "Aviso: passagem de LED habilitada"
+ledPage.LEDPassthroughDescription: Quando a passagem de LED está habilitada, as configurações manuais de LED ficam inativas, permitindo que o jogo controle os LEDs dinamicamente. Este recurso substitui qualquer configuração manual definida abaixo, permitindo que o jogo dite o comportamento do LED.
+ledPage.DisableLEDPassthrough: Desativa a passagem de LED
+ledPage.LightBarBrightness: Brilho da barra de luz
+ledPage.LightBarBrightnessDescription: Quão brilhante deve ser a barra de luz no controle.
+ledPage.BatteryLowFlashing: Bateria fraca piscando
+ledPage.BatteryLowFlashingDescription: Quando habilitado, entrará em vigor quando o controle estiver com bateria fraca, independentemente do modo de barra de luz selecionado.
+ledPage.BatteryLowFlashingPercentage: Porcentagem de intermitência de bateria fraca
+ledPage.BatteryLowFlashingPercentageDescription: Quando habilitado, caso o percentual de bateria do controle esteja abaixo do valor configurado, ele piscará na cor configurada abaixo.
+ledPage.IgnoreFlashingWhileCharging: ignora piscar durante o carregamento
+ledPage.IgnoreFlashingWhileChargingDescription: Quando ativado, se o controle estiver carregando ou totalmente carregado, ele não piscará mais e retomará o modo Light Bar atualmente selecionado.
+ledPage.LightBarFlash: Flash da barra de luz
+ledPage.LightBarFlashDescription: Quando ativada, a barra de luz em um controle sem fio DualShock™️ 4, DualSense™️ ou DualSense Edge™️ piscará.
+ledPage.PlayerLEDFlash: Flash LED do player
+ledPage.PlayerLEDFlashDescription: Quando ativado, os LEDs do Player em um controle sem fio DualSense™️ ou DualSense Edge™️ piscarão.
+ledPage.MuteButtonLEDFlash: Flash LED do botão Mudo
+ledPage.MuteButtonLEDFlashDescription: Quando ativado, o LED do botão Mute em um controle sem fio DualSense™️ ou DualSense Edge™️ piscará.
+ledPage.BatteryLowFlashingColor: Cor piscante de bateria fraca
+ledPage.BatteryLowFlashingColorDescription: A cor a ser usada quando a bateria do controle está fraca para alertá-lo.
+ledPage.StaticColor: cor estática
+ledPage.StaticColorDescription: cor estática que não muda
+ledPage.SelectedColor: Cor selecionada
+ledPage.SelectedColorDescription: A cor a ser usada quando o efeito de cor estática está ativo.
+ledPage.MultiColor: Multicor
+ledPage.MultiColorDescription: alterna entre o espectro de cores HSL ou as cores personalizadas adicionadas.
+ledPage.CycleSpeed: Velocidade do ciclo
+ledPage.CycleSpeedDescription: Quão rápido alternar entre as cores.
+ledPage.AutoReverseColor: Cor de reversão automática
+ledPage.AutoReverseColorDescription: Quando ativado, o espectro de cores HSL irá de 0 a 360 e depois 360 de volta a 0. Quando desativado, o espectro irá de 0 a 360 e começará novamente em 0.
+ledPage.HSLColorSpectrum: espectro de cores HSL
+ledPage.HSLColorSpectrumDescription: Quando escolhido, ele alternará entre o espectro de cores HSL.
+ledPage.CustomColors: Cores personalizadas
+ledPage.CustomColorsDescription: Quando escolhido, ele alternará entre as cores adicionadas que você definir.
+ledPage.SelectedGradient: Gradiente selecionado
+ledPage.SelectedGradientDescription: As cores para alternar, são necessárias no mínimo 2 cores.
+ledPage.ResetToDefaults: redefinir para os padrões
+ledPage.DeleteSelectedColor: Excluir cor selecionada
+ledPage.AddNewGradientColor: Adicionar nova cor gradiente
+ledPage.Breathing: Respiração
+ledPage.BreathingDescription: Efeito de respiração que vai do brilho 0 até o brilho da barra de luz especificado acima.
+ledPage.BreathingSpeed: Velocidade de respiração
+ledPage.BreathingSpeedDescription: Quão rápido a cor deve ir do brilho 0 até o brilho da barra de luz especificado acima.
+ledPage.RandomColor: cor aleatória
+ledPage.RandomColorDescription: Uma nova cor será escolhida cada vez que o brilho chegar a 0.
+ledPage.Strobing: Estroboscópio
+ledPage.StrobingDescription: Efeito estroboscópico piscando de brilho 0 até o brilho da barra de luz especificado acima.
+ledPage.StrobingSpeed: Velocidade estroboscópica
+ledPage.StrobingSpeedDescription: A rapidez com que a cor pisca.
+ledPage.AnimateWhenCharging: anima ao carregar
+ledPage.AnimateWhenChargingDescription: exibe uma animação de carregamento usando o gradiente selecionado abaixo para mostrar que o controle está sendo carregado.
+
+ledPage.PlayerIndicator: Indicador do jogador
+ledPage.PlayerIndicatorDescription: O número do jogador mostrado no LED.
+ledPage.BatteryMode: Modo de bateria
+ledPage.Battery: Bateria
+ledPage.BatteryDescription: Nível da bateria usando cores gradientes especificadas para exibir 0% a 100%.
+
+ledPage.NoPlayerIndicator: Nenhum indicador de jogador
+ledPage.PlayerOne: Jogador Um
+ledPage.PlayerOneIndicator: Indicador do jogador um
+ledPage.PlayerTwo: Jogador Dois
+ledPage.PlayerTwoIndicator: indicador do jogador dois
+ledPage.PlayerThree: Jogador Três
+ledPage.PlayerThreeIndicator: Indicador do Jogador Três
+ledPage.PlayerFour: Jogador Quatro
+ledPage.PlayerFourIndicator: Indicador do jogador quatro
+ledPage.PlayerFive: Jogador Cinco
+ledPage.PlayerFiveIndicator: Indicador do jogador cinco
+
+ledPage.BatteryModeDescription: Quando marcado, exibirá o nível da bateria no formato Player LED.
+ledPage.Battery0To20Percent: Bateria 0% - 20%
+ledPage.Battery20To40Percent: Bateria 20% - 40%
+ledPage.Battery40To60Percent: Bateria 40% - 60%
+ledPage.Battery60To80Percent: Bateria 60% - 80%
+ledPage.Battery80To100Percent: Bateria 80% - 100%
+ 
+ledPage.MuteIndicator: Indicador de mudo
+ledPage.MuteIndicatorDescription: O status do LED do botão Mudo.
+
+ledPage.PlayerMuteBrightness: Brilho do player / mudo
+ledPage.PlayerMuteBrightnessDescription: O brilho a ser definido que afeta o LED do player e o LED do botão Mute.
+
+ledPage.DualSenseFeatures: Recursos DualSense
+
+ledPage.Off: "DESLIGADO"
+ledPage.On: "LIGADO"
+ledPage.Pulse: "PULSO"
+ledPage.Dim: DIM
+ledPage.Medium: MÉDIO
+ledPage.Bright: BRILHANTE
+ledPage.NoControllersDetected: Nenhum controle detectado
+ledPage.PleasePlugInController: Conecte seu controle ou conecte-o via Bluetooth para configurar a barra de luz e muito mais.
+ledPage.LightBarConfiguration: configuração da barra de luz
+ledPage.LightBarModes: Modos de barra de luz
+
+# ------------------------------------------------- -----------------------------------------------
+# Página HapticsRumble
+# ------------------------------------------------- -----------------------------------------------
+
+hapticsPage.RumbleModeCard.Title: Modo Rumble
+hapticsPage.RumbleModeCard.SubTitle: Quando esta opção estiver marcada, o ruído padrão será enviado aos motores.
+
+hapticsPage.HapticFeedbackModeCard.Title: Modo de feedback tátil
+hapticsPage.HapticFeedbackModeCard.SubTitle: Quando esta opção estiver marcada, um dos modos táteis aplicados estará em vigor.
+
+hapticsPage.HapticFeedback.WarningCard.Title: Modo de feedback tátil indisponível para controlees não DualSense ou conexões sem fio
+hapticsPage.HapticFeedback.WarningCard.SubTitle: O modo de feedback tátil só é acessível quando o dispositivo conectado é um controle do tipo DualSense e somente quando conectado via USB.
+
+hapticsPage.EnableRumbleCard.Title: Habilitar Rumble
+hapticsPage.EnableRumbleCard.SubTitle: Quando habilitado, o ruído será enviado ao controle.
+
+hapticsPage.EnhancedRumbleCard.Title: Experiência Rumble aprimorada
+hapticsPage.EnhancedRumbleCard.SubTitle: Quando ativado, esse recurso aprimora a experiência de vibração clássica, utilizando o ruído aprimorado introduzido em um firmware mais recente para controlees sem fio DualSense™️ ou DualSense Edge™️.
+
+hapticsPage.RumbleIntensityCard.Title: Intensidade de Rumble
+hapticsPage.RumbleIntensityCard.SubTitle: Escolha quão forte deve ser a força geral do motor.
+
+hapticsPage.MaxRumbleStrengthCard.Title: Força máxima do Rumble
+hapticsPage.MaxRumbleStrengthCard.SubTitle: Rumble não será enviado ao controle com número superior ao especificado à direita.
+hapticsPage.MaxRumbleStrengthCard.SubTitle2: Exemplo - Se 200 for definido, qualquer coisa acima de 200 será ignorada e enviará apenas 200 para o controle.
+
+hapticsPage.HapticMode.Disabled: Desativado
+hapticsPage.HapticMode.AudioHaptics: Áudio para Haptics
+hapticsPage.HapticMode.RumbleHaptics: Rumble para Haptics
+hapticsPage.HapticMode.ButtonHaptics: Botão para Haptics
+hapticsPage.HapticMode.TriggerHaptics: aciona a sensação tátil
+hapticsPage.HapticMode.JoystickHaptics: Joystick para Haptics
+
+hapticsPage.Disabled.Title: Feedback tátil desativado
+hapticsPage.Disabled.SubTitle: Quando esta opção estiver selecionada, o feedback tátil não terá efeito, considere usar o modo Rumble.
+
+hapticsPage.AudioHapticsConfig.Title: Configuração de áudio para Haptics
+hapticsPage.AudioHapticsConfig.SubTitle: Envia o áudio de todo o sistema para o controle e o transforma em Haptics.
+
+hapticsPage.RumbleHapticsConfig.Title: Configuração Rumble para Haptics
+hapticsPage.RumbleHapticsConfig.SubTitle: permite transformar valores de vibração recebidos de um dispositivo de emulação e traduzi-los em sensação tátil com a onda sonora desejada.
+
+hapticsPage.ButtonHapticsConfig.Title: Botão para configuração tátil
+hapticsPage.ButtonHapticsConfig.SubTitle: Permite que você sinta a sensação tátil ao pressionar botões como Cruz, Quadrado, Triângulo, D-Pad etc. com a onda sonora desejada.
+
+hapticsPage.TriggerHapticsConfig.Title: Aciona a configuração Haptics
+hapticsPage.TriggerHapticsConfig.SubTitle: permite traduzir pressões de pressão L2/R2 em sensação tátil com a onda sonora desejada. Este NÃO é um modo de disparo adaptativo.
+
+hapticsPage.JoystickHapticsConfig.Title: Aciona a configuração Haptics
+hapticsPage.JoystickHapticsConfig.SubTitle: permite traduzir os movimentos do stick esquerdo e direito em sensação tátil com a onda sonora desejada. O controle esquerdo controla o motor esquerdo, o controle direito controla o motor direito.
+
+hapticsPage.RestartButton.Title: Reiniciar
+
+hapticsPage.RumblePassthrough.Title: Rumble Passthrough
+hapticsPage.RumblePassthrough.AudioHaptics.SubTitle: Se habilitado, o Rumble enviado ao controle virtual será aplicado a este controle físico. Se nenhum ruído for enviado, o Audio Haptics será retomado normalmente.
+hapticsPage.RumblePassthrough.ButtonHaptics.SubTitle: Se habilitado, o Rumble enviado ao controle virtual será aplicado a este controle físico. Se nenhum ruído for enviado, o Button Haptics será retomado normalmente.
+hapticsPage.RumblePassthrough.TriggerHaptics.SubTitle: Se habilitado, o Rumble enviado ao controle virtual será aplicado a este controle físico. Se nenhum ruído for enviado, o Trigger Haptics será retomado normalmente.
+hapticsPage.RumblePassthrough.JoystickHaptics.SubTitle: Se habilitado, o Rumble enviado ao controle virtual será aplicado a este controle físico. Se nenhum ruído for enviado, o Joystick Haptics será retomado normalmente.
+
+hapticsPage.LeftMotorMaxIntensity.Title: Intensidade máxima do motor esquerdo
+hapticsPage.LeftMotorMaxIntensity.SubTitle: A força máxima permitida para o motor esquerdo.
+
+hapticsPage.RightMotorMaxIntensity.Title: Intensidade máxima do motor direito
+hapticsPage.RightMotorMaxIntensity.SubTitle: A força máxima permitida para o motor certo.
+
+hapticsPage.AudioHaptics.InternalSpeakerVolume.Title: Volume do alto-falante interno
+hapticsPage.AudioHaptics.InternalSpeakerVolume.SubTitle: O volume do áudio que está sendo enviado ao controle.
+
+hapticsPage.AudioHaptics.InternalJackVolume.Title: Volume interno do conector do fone de ouvido
+hapticsPage.AudioHaptics.InternalJackVolume.SubTitle: O volume do áudio que está sendo enviado para o fone de ouvido conectado.
+
+hapticsPage.JoystickHaptics.InnerDeadzone.Title: Zona morta interna do joystick
+hapticsPage.JoystickHaptics.InnerDeadzone.SubTitle: quanto ignorar a sensação tátil enviada ao mover os joysticks do centro para a borda. Aplica-se a ambos os bastões.
+
+hapticsPage.SoundWaveConfig.Title: Configuração da onda sonora
+
+hapticsPage.SoundWave.Sine: onda senoidal
+hapticsPage.SoundWave.Sqaure: onda quadrada
+hapticsPage.SoundWave.Triangle: onda triangular
+hapticsPage.SoundWave.WhiteNoise: ruído branco
+hapticsPage.SoundWave.PinkNoise: ruído rosa
+hapticsPage.SoundWave.Sweep: Varredura de onda
+
+hapticsPage.SoundWave.Gain.Title: Ganho
+hapticsPage.SoundWave.Gain.SubTitle: A quantidade de amplificação aplicada a um sinal.
+
+hapticsPage.SoundWave.Frequency.Title: Frequência
+hapticsPage.SoundWave.Frequency.SubTitle: O número de vezes por segundo que uma onda de pressão sonora se repete. Cerca de 60 Hz é o mais forte.
+
+hapticsPage.SoundWave.Sweep.StartEndFreq.Title: Frequências inicial e final
+hapticsPage.SoundWave.Sweep.StartEndFreq.SubTitle: Determine o início e o fim das frequências desejadas.
+hapticsPage.SoundWave.Sweep.StartFreq.Title: Frequência inicial
+hapticsPage.SoundWave.Sweep.EndFreq.Title: Frequência final
+
+hapticsPage.SoundWave.Sweep.Duration.Title: Duração
+hapticsPage.SoundWave.Sweep.Duration.Title2: Duração (segundos)
+hapticsPage.SoundWave.Sweep.Duration.SubTitle: Quanto tempo leva para ir da frequência inicial à frequência final em segundos.
+
+# ------------------------------------------------- -----------------------------------------------
+# Página de jogos instalados
+# ------------------------------------------------- -----------------------------------------------
+
+instaladoGamesPage.Loading: Carregando bibliotecas de jogos...
+instaladoGamesPage.GameFound: Jogo encontrado.
+
+instaladoGamesPage.GamesList.Filter: Filtro
+
+instaladoGamesPage.GamesList.SortBy: Classificar por
+instaladoGamesPage.GamesList.SortBy.Name: Nome
+instaladoGamesPage.GamesList.SortBy.RecentlyPlayed: reproduzidos recentemente
+instaladoGamesPage.GamesList.SortBy.Playtime: Tempo de jogo
+
+instaladoGamesPage.GamesList.SortBy.Ascending: Crescente
+instaladoGamesPage.GamesList.SortBy.Descendente: Decrescente
+
+instaladoGamesPage.GamesList.RescanButton.Tooltip: Rescan Biblioteca
+
+instaladoGamesPage.GamesList.Search.TextBoxPlaceholder: Pesquisar jogo
+installGamesPage.NA: N/A
+instaladoGamesPage.ViewSteamPage: Ver página do Steam
+instaladoGamesPage.LaunchProgram: Programa de inicialização
+instaladoGamesPage.Category: Categoria
+instaladoGamesPage.Platform: Plataforma
+instaladoGamesPage.LastPlayed: último jogo
+instaladoGamesPage.TotalPlaytime: Tempo total de reprodução
+instaladoGamesPage.PlaytimeRecent: Tempo de jogo recente (2 semanas)
+instaladoGamesPage.InstallDirectory: Diretório de instalação
+instaladoGamesPage.LibraryPath: caminho da biblioteca
+instaladoGamesPage.RunCommand: Executar comando
+instaladoGamesPage.ExecutablePath: Caminho executável (correspondência mais próxima)
+instaladoGamesPage.ControllerProfile: Perfil do controle
+instaladoGamesPage.ControllerProfileDescription: O perfil do controle a ser usado neste jogo.
+
+instaladoGamesPage.SelectedGame.PlayButton.Tooltip: Iniciar programa
+instaladoGamesPage.SelectedGame.LinkButton.Tooltip: Ver página do Steam
+instaladoGamesPage.SelectedGame.Category: Categoria
+instaladoGamesPage.SelectedGame.Platform: Plataforma
+instaladoGamesPage.SelectedGame.AppID: ID do aplicativo
+instaladoGamesPage.SelectedGame.LastPlayed: último jogado
+instaladoGamesPage.SelectedGame.TotalPlaytime: Tempo total de jogo
+instaladoGamesPage.SelectedGame.PlaytimeRecent: Tempo de jogo recente (2 semanas)
+instaladoGamesPage.SelectedGame.RunCommand: Executar comando
+instaladoGamesPage.SelectedGame.InstallDirectory: Diretório de instalação
+instaladoGamesPage.SelectedGame.LibraryPath: caminho da biblioteca
+instaladoGamesPage.SelectedGame.ExePath: caminho executável (correspondência mais próxima)
+
+instaladoGamesPage.Profile1: Perfil 1
+instaladoGamesPage.Profile2: Perfil 2
+instaladoGamesPage.Profile3: Perfil 3
+instaladoGamesPage.RescanLibrary: Rescan Biblioteca
+instaladoGamesPage.NoGamesFound: Nenhum jogo encontrado.
+instaladoGamesPage.UpdateExecutablePath: Atualizar caminho executável
+instaladoGamesPage.ActiveProcesses: Processos ativos
+instaladoGamesPage.ListOfActiveProcesses: Lista de processos ativos.
+instaladoGamesPage.Cancel: Cancelar
+instaladoGamesPage.SelectExecutablePath: Selecione o caminho executável
+instaladoGamesPage.ManuallyChooseExecutable: Escolha manualmente o executável
+instaladoGamesPage.Filter: Filtro
+instaladoGamesPage.Steam: Steam
+instaladoGamesPage.EpicStore: Epic Store
+instaladoGamesPage.SortBy: Classificar por
+installGamesPage.Name: Nome
+instaladoGamesPage.Ascendente: Crescente
+instaladoGamesPage.Descendente: Descendente
+instaladoGamesPage.RecentlyPlayed: jogado recentemente
+instaladoGamesPage.Playtime: Playtime
+instaladoGamesPage.AddLibrary: Adicionar biblioteca
+instaladoGamesPage.NoGamesFound.Detail: Não foi possível localizar nenhum jogo instalado em seu sistema.
+
+
+
+
+# ------------------------------------------------- -----------------------------------------------
+# OcultarOcultar página
+# ------------------------------------------------- -----------------------------------------------
+
+hidHidePage.HidHideDriverInfo.Title: Driver HidHide
+hidHidePage.HidHideDriverInfo.SubTitle: HidHide permite que o aplicativo oculte o controle físico ao emular um dispositivo virtual. É usado para evitar entradas duplas do controle virtual e físico e permite que um jogo ou programa veja apenas o controle virtual.
+
+hidHidePage.ActivateHidHide.Title: Ativar HidHide
+hidHidePage.ActivateHidHide.SubTitle: Quando habilitado, o Driver HidHide ocultará os dispositivos físicos que estão na Lista de Dispositivos Ocultos abaixo.
+
+hidHidePage.ApplicationList.Title: Lista de aplicativos
+hidHidePage.HiddenDevicesList.Title: Lista de dispositivos ocultos
+
+hidHidePage.ApplicationPath: Caminho do aplicativo
+hidHidePage.RefreshApplicationList: Atualizar lista de aplicativos
+
+hidHidePage.RemoveSelectedApps.Title: Remover aplicativos selecionados
+hidHidePage.RemoveSelectedApps.SubTitle: A remoção de um aplicativo fará com que os dispositivos ocultos não apareçam nesses aplicativos.
+hidHidePage.RemoveSelectedApps.Button: Remover aplicativos
+
+hidHidePage.AddApp.Title: Adicionar aplicativo
+hidHidePage.AddApp.SubTitle: Adicionar um aplicativo à lista fará com que os dispositivos ocultos apareçam nesse aplicativo.
+hidHidePage.AddApp.TextBox.Placeholder: Digite o caminho para o arquivo executável (.bat .exe etc.)
+hidHidePage.AddApp.Error.FileDoesntExist: O arquivo não existe
+hidHidePage.AddApp.Warning.AlreadyAdded: O aplicativo já foi adicionado
+
+hidHidePage.InverseCloak.Title: "TODO: Inverse Application Cloak"
+hidHidePage.InverseCloak.SubTitle: Quando ativado, os aplicativos da lista serão impedidos de acessar os dispositivos na lista de Dispositivos Ocultos.
+
+hidHidePage.DevicePath: caminho do dispositivo
+hidHidePage.RefreshHiddenDevicesList: Atualizar lista de dispositivos ocultos
+
+hidHidePage.RemoveSelectedDevices.Title: Remover dispositivos selecionados
+hidHidePage.RemoveSelectedDevices.SubTitle: Remover um dispositivo da lista impedirá que o dispositivo seja ocultado até ser adicionado novamente.
+hidHidePage.RemoveSelectedDevices.Button: Remover dispositivos
+
+hidHidePage.AddDevice.Title: Adicionar dispositivo
+hidHidePage.AddDevice.SubTitle: Adicionar um dispositivo à lista irá ocultá-lo dos aplicativos não adicionados à lista à esquerda.
+hidHidePage.AddDevice.TextBox.Placeholder: Insira o ID da instância do dispositivo
+hidHidePage.AddDevice.Warning.AlreadyAdded: o ID da instância do dispositivo já foi adicionado
+
+
+# ------------------------------------------------- -----------------------------------------------
+# Página de registros do DSX
+# ------------------------------------------------- -----------------------------------------------
+
+logsPage.Title: REGISTROS DSX
+logsPage.CompressLogFiles.Button: compactar arquivos de log para compartilhamento
+logsPage.OpenLogsDirectory.Button: Abrir diretório de logs
+
+logsPage.LogCheckBox.ControllerLogs: Logs do controle
+logsPage.LogCheckBox.ButtonPresses: registros de pressionamentos de botão físico
+logsPage.LogCheckBox.DebugLogs: logs de depuração
+
+logsPage.LogsViewTable.Title.Date: DATA
+logsPage.LogsViewTable.Title.Category: CATEGORIA
+logsPage.LogsViewTable.Title.Status: STATUS
+logsPage.LogsViewTable.Title.Message: MENSAGEM
+
+logsPage.LogsViewTable.Status.Title.Information: Informações
+logsPage.LogsViewTable.Status.Title.Debug: Depurar
+logsPage.LogsViewTable.Status.Title.Warning: Aviso
+logsPage.LogsViewTable.Status.Title.Error: Erro
+
+# ------------------------------------------------- -----------------------------------------------
+# Página de configurações
+# ------------------------------------------------- -----------------------------------------------
+settingsPage.Tabs.Display: Interface
+settingsPage.Tabs.Behavior: Comportamento
+configuraçõesPage.Tabs.UDP: UDP
+
+settingsPage.DriverInstallation.CompanyName: Nome da empresa
+settingsPage.DriverInstallation.FileDescription: Descrição do arquivo
+settingsPage.DriverInstallation.FileSize: Tamanho do arquivo
+settingsPage.DriverInstallation.FileVersion: versão do arquivo
+settingsPage.DriverInstallation.LatestReleaseDate: última data de lançamento
+settingsPage.DriverInstallation.ProductName: Nome do produto
+settingsPage.DriverInstallation.ProductVersion: versão do produto
+settingsPage.DriverInstallation.AcceptedLicense: Li o contrato de licença e aceito suas condições.
+settingsPage.DriverInstallation.FollowDriverSetupInstructions: Siga as instruções na tela para concluir a instalação do driver.
+settingsPage.DriverInstallation.ProceedByClickingNextBelow: Depois de concluído, prossiga clicando em próximo abaixo.
+settingsPage.DriverInstallation.InternetRequiredVPadDriver: É necessária uma conexão com a Internet para baixar e instalar o driver VirtualPad da Nefarius.
+settingsPage.DriverInstallation.InternetRequiredHidHideDriver: É necessária uma conexão com a Internet para baixar e instalar o driver HidHide.
+settingsPage.DriverInstallation.ProceedByClickingRetry: Assim que estiver conectado à Internet, prossiga clicando em tentar novamente abaixo.
+settingsPage.DriverInstallation.UnexpectedError: Ocorreu um erro inesperado durante a instalação do driver.
+settingsPage.DriverInstallation.PleaseTryAgain: tente novamente.
+settingsPage.DriverInstallation.LicenseStatus: Status da licença
+settingsPage.DriverInstallation.DriverName: Nome do driver
+settingsPage.DriverInstallation.DriverVersion: Versão do driver
+settingsPage.DriverInstallation.DriverSize: Tamanho do driver
+settingsPage.DriverInstallation.RuntimeAPIVersion: versão da API de tempo de execução
+
+settingsPage.DriverInstallation.Button.Next: Próximo
+settingsPage.DriverInstallation.Button.InstallDriver: Instalar driver
+settingsPage.DriverInstallation.Button.Retry: Tentar novamente
+
+settingsPage.DriverInstallation.VPad.LicenseInfo: informações da carteira de motorista do VirtualPad
+settingsPage.DriverInstallation.VPad.LicenseIssuer: Emissor de licença
+settingsPage.DriverInstallation.VPad.LicenseType: Tipo de licença
+settingsPage.DriverInstallation.VPad.LicenseExpiresAt: a licença expira em
+settingsPage.DriverInstallation.VPad.LicenseCreatedAt: Licença criada em
+settingsPage.DriverInstallation.VPad.Installed: Driver VirtualPad da Nefarius instalado
+
+settingsPage.HidHide.Title: Ocultar controle físico
+settingsPage.HidHide.Details: encobre seu controle físico conectado ao PC para que nenhum aplicativo ou jogo possa vê-lo, melhor usado em combinação com um controle virtual criado pelo DSX.
+settingsPage.HidHide.HidePhysDevices: ocultar dispositivos físicos
+settingsPage.HidHide.HidePhysDevices.Details: Proteja seus periféricos de jogos, como mouse ou teclado, de aplicativos e jogos.
+settingsPage.HidHide.WhitelistApps: lista de permissões de aplicativos
+settingsPage.HidHide.WhitelistApps.Details: Escolha quais aplicativos ou jogos têm permissão para visualizar os dispositivos ocultos.
+settingsPage.HidHide.ProductInfo: Informações do produto HidHide
+settingsPage.HidHide.Installed: Driver HidHide instalado
+settingsPage.HidHide.RebootPlease: Se você acabou de instalar o driver, reinicie o seu PC para que o driver entre em vigor após a instalação.
+
+settingsPage.Tabs.VirtualPadDriver: Driver VirtualPad
+settingsPage.Tabs.VirtualPadDriverProductInfo: Informações do produto do driver VirtualPad
+settingsPage.VirtualPadDriverDescription: A próxima geração de uso de gamepads virtuais no Windows reimaginada, desenvolvida e criada pela Nefarius Software Solutions eU
+
+settingsPage.Tabs.HidHideDriver: Driver HidHide
+settingsPage.HidHideInfo: HidHide permite que o DSX oculte o controle físico ao emular um dispositivo virtual. É usado para evitar entradas duplas do controle virtual e físico e permite que um jogo ou programa veja apenas o controle virtual; desenvolvido e mantido por Nefarius Software Solutions eU
+settingsPage.Tabs.DangerZone: Zona de perigo
+settingsPage.Tabs.DangerZone.Warning: Esta ação não pode ser desfeita, configurações de aplicativos, perfis e tudo será redefinido para seu estado padrão.
+settingsPage.Tabs.DangerZone.ResetAppSettings: Redefinir configurações do aplicativo
+
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineOne: Salvar local da pasta
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineTwo: ISSO NÃO PODE SER DESFEITO!
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineThree: Tem certeza de que deseja continuar?
+
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Title: Sucesso na redefinição do aplicativo
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Detail: O DSX será reiniciado agora.
+
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Title: Erro
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Detail: Falha ao redefinir as configurações do aplicativo.
+
+settingsPage.EnableDiagnostictracing: Habilitar rastreamento de diagnóstico
+settingsPage.EnableDiagnostictracing.Details: deve ser usado para rastrear certas coisas, como desempenho de desenvolvedores experientes.
+
+#-------------------------------
+settingsPage.Display.LanguageCard.Title: Idioma
+settingsPage.Display.LanguageCard.SubTitle: Selecione o idioma do aplicativo.
+settingsPage.Display.LanguageCard.SearchBar.PlaceHolder: Pesquise por nome do idioma
+
+settingsPage.Display.LightThemeCard.Title: Tema claro
+settingsPage.Display.LightThemeCard.SubTitle: Cometa atrocidades profanas ativando esta alternância.
+
+settingsPage.Display.FullDarkModeCard.Title: Modo totalmente escuro
+settingsPage.Display.FullDarkModeCard.SubTitle: Torna o fundo preto e para os amantes do modo escuro.
+
+settingsPage.Display.AccentColorCard.Title: Cor de destaque do aplicativo
+settingsPage.Display.AccentColorCard.SubTitle: escolha a cor de destaque usada em todo o DSX.
+settingsPage.Display.AccentColorCard.Reset.Button: Redefinir para o padrão do sistema
+
+settingsPage.Display.BatteryIconCard.Title: Ícones de bateria ativa
+settingsPage.Display.BatteryIconCard.SubTitle: ativa ou desativa os tons gradientes da bateria ao vivo para o ícone de status da bateria na guia de seleção do controle.
+
+settingsPage.Display.WindowSizeCard.Title: Tamanho da janela do aplicativo
+settingsPage.Display.WindowSizeCard.SubTitle: Este aplicativo carregará a última largura e altura quando a janela for redimensionada. Você pode redefinir o tamanho para o padrão aqui.
+settingsPage.Display.WindowSizeCard.ResetAppSize: Redefinir tamanho do aplicativo
+
+settingsPage.Display.WindowScaleCard.Title: Ajustar o tamanho da escala da janela
+settingsPage.Display.WindowScaleCard.SubTitle: Modifique este valor para dimensionar o conteúdo da janela de acordo. Recomenda-se reduzir o número se você estiver trabalhando em um ambiente de baixa resolução para obter visibilidade ideal.
+settingsPage.Display.WindowScaleSlider.Title: Tamanho da escala da janela
+
+settingsPage.Display.TaskbarPreferences.Title: Preferências da barra de tarefas
+settingsPage.Display.TaskbarPreferences.Description: Personalize quais itens de menu aparecem ao clicar com o botão direito no ícone da barra de tarefas.
+
+settingsPage.Display.TaskbarPreferences.HomePage: página inicial
+settingsPage.Display.TaskbarPreferences.ProfilesPage: página de perfis
+settingsPage.Display.TaskbarPreferences.ControllerPage: Página do controle
+settingsPage.Display.TaskbarPreferences.NotificationsPage: página de notificações
+settingsPage.Display.TaskbarPreferences.AdaptiveTriggersPage: página de gatilhos adaptáveis
+settingsPage.Display.TaskbarPreferences.ControllerLEDPage: Página de LED do controle
+settingsPage.Display.TaskbarPreferences.HapticsRumblePage: Haptics | Página de tumulto
+settingsPage.Display.TaskbarPreferences.InstalledGamesPage: página de jogos instalados
+settingsPage.Display.TaskbarPreferences.HidHidePage: Página HidHide
+settingsPage.Display.TaskbarPreferences.DSXLogsPage: página de registros DSX
+settingsPage.Display.TaskbarPreferences.SettingsPage: página de configurações
+
+settingsPage.Display.TaskbarPreferences.ShowConnectedControllers: Mostrar controlees conectados
+
+#-------------------------------
+settingsPage.Behavior.StartUpWithWindowCard.Title: Iniciar com Windows
+settingsPage.Behavior.StartUpWithWindowCard.SubTitle: "Configura o DSX para iniciar automaticamente com o Windows."
+settingsPage.Behavior.StartUpWithWindowCard.Note: "O Steam também será iniciado na inicialização."
+
+settingsPage.Behavior.Launchv2Automaticamente.Title: Iniciar o DSX v2 automaticamente
+settingsPage.Behavior.Launchv2Automaticamente.SubTitle: quando ativado, o DSX v2 será iniciado e o v3 será encerrado.
+settingsPage.Behavior.Launchv2Automaticamente.Nota: Retorne facilmente para v3 mantendo pressionada a tecla ESCAPE (esc) na inicialização do DSX. Uma vez na v3, você pode desativar esta opção aqui.
+
+settingsPage.Behavior.StartUpMinimizedCard.Title: Estado inicial da janela
+settingsPage.Behavior.StartUpMinimizedCard.SubTitle: "Escolha como o DSX aparece ao iniciar: Normal, Minimizado ou Maximizado."
+
+settingsPage.Behavior.StartUpMinimizedCard.State.Normal: Normal
+settingsPage.Behavior.StartUpMinimizedCard.State.Maximized: Maximizado
+settingsPage.Behavior.StartUpMinimizedCard.State.Minimized: Minimizado
+settingsPage.Behavior.StartUpMinimizedCard.State.MinimizedToTray: Minimizado para a bandeja
+
+settingsPage.Behavior.KeepAppInTrayCard.Title: Minimizar para a bandeja
+settingsPage.Behavior.KeepAppInTrayCard.SubTitle: Quando minimizado, o DSX continuará sendo executado em segundo plano, acessível por meio do ícone da bandeja.
+
+settingsPage.Behavior.DisconnectControllersOnExit.Title: Desconectar controlees ao sair
+settingsPage.Behavior.DisconnectControllersOnExit.SubTitle: Habilitar isso desconectará todos os controlees conectados por Bluetooth quando o DSX sair.
+
+settingsPage.Behavior.DiscordRPCard.Title: Discord Rich Presence
+settingsPage.Behavior.DiscordRPCard.SubTitle: permite que o Discord mostre informações detalhadas, como a página selecionada, detalhes do controle e tempo de uso.
+settingsPage.Behavior.DiscordRPCard.Note: As alterações podem levar alguns segundos para aparecer no Discord.
+
+settingsPage.Behavior.SteamNowPlayingStatus.Title: Status de reprodução do Steam agora
+settingsPage.Behavior.SteamNowPlayingStatus.SubTitle: Mantém o inicializador minimizado em segundo plano para exibir DSX como o status 'em execução' no Steam, que também rastreia o tempo de reprodução.
+settingsPage.Behavior.SteamNowPlayingStatus.Note: Requer reinicialização do DSX para ter efeito.
+
+#-------------------------------
+settingsPage.Networking.IncomingUDP.Section: UDP de entrada
+settingsPage.Networking.OutgoingUDP.Section: UDP de saída
+settingsPage.Networking.WindowsFireWall.Section: Firewall do Windows
+
+# Usado mais de uma vez:
+settingsPage.Networking.ipAddress: Endereço IP
+settingsPage.Networking.ipAddress.Description: Por padrão, o endereço IP é localhost, que é este PC.
+settingsPage.Networking.portNumber: número da porta
+settingsPage.Networking.portNumber.Description: O número da porta que será usada para comunicações com o DSX neste PC.
+settingsPage.Networking.ipAddressPort: Endereço IP e configurações de porta.
+settingsPage.Networking.ipAddressPlaceholder: Localhost 127.0.0.1
+##
+
+settingsPage.Networking.IncomingUDPCard.SubTitle: Quando habilitado, os Mods são capazes de utilizar a comunicação com um controle DualSense para controlar gatilhos adaptativos, barra de luz LED, LEDs do player e LED mudo.
+settingsPage.Networking.IncomingUDPSettingsCard.Title: Configurações UDP de entrada
+
+settingsPage.Networking.OutgoingUDPCard.SubTitle: Quando ativado, o DSX é capaz de enviar vários dados para emuladores como Motion Data.
+settingsPage.Networking.OutgoingUDPSettingsCard.Title: Configurações UDP de saída
+
+settingsPage.Networking.FirewallCard.WinFirewall: Firewall do Windows
+settingsPage.Networking.FirewallCard.Title: Verificação UDP do firewall
+settingsPage.Networking.FirewallCard.SubTitle: Verifique se as portas UDP especificadas acima estão abertas nas configurações do firewall do Windows.
+settingsPage.Networking.FirewallCard.Status: Status
+settingsPage.Networking.FirewallCard.CheckPortStatus: verificar o status da porta
+settingsPage.Networking.FirewallCard.Status.IncomingTitle: "Porta UDP de entrada"
+settingsPage.Networking.FirewallCard.Status.IncomingDescr: Status se a porta UDP de entrada foi adicionada ao firewall do Windows.
+settingsPage.Networking.FirewallCard.Status.OutgoingTitle: "Porta UDP de saída"
+settingsPage.Networking.FirewallCard.Status.OutgoingDescr: Status se a porta UDP de saída foi adicionada ao firewall do Windows.
+
+settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: Adicionar porta ao firewall
+
+# Certifique-se de que %i esteja aqui, pois representa um número. Exemplo: A porta UDP de entrada para 6969 está aberta.
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: 'A porta UDP de entrada para %i está aberta.'
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: 'A porta UDP de saída para %i está aberta.'
+
+settingsPage.Networking.FirewallCard.Status.IncomingFailed: 'A porta UDP de entrada para %i está fechada.'
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed: 'A porta UDP de saída para %i está fechada.'
+
+settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: Adicionar porta UDP de entrada ao Firewall do Windows.
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Adicionar porta UDP de saída ao Firewall do Windows.
+
+#-------------------------------
+settingsPage.Driver.VirtualPadDriverCard.SubTitle: VirtualPad Driver permite o uso de um dispositivo virtual que imita o original como se estivesse conectado fisicamente.
+settingsPage.Driver.HidHideCard.SubTitle: HidHide permite que o aplicativo oculte o controle físico ao emular um dispositivo virtual. É usado para evitar entradas duplas do controle virtual e físico e permite que um jogo ou programa veja apenas o controle virtual.
+settingsPage.Driver.NefariusCard.SubTitle: Nefarius é o desenvolvedor do VirtualPad Driver e do HidHide Driver, sem suas ferramentas, este aplicativo não seria possível! Por favor, apoie o autor abaixo.
+settingsPage.Driver.NefariusCard.GetInTouch: Entre em contato
+settingsPage.Driver.NefariusCard.ShowSupport: Mostre seu apoio
+
+# Usado mais de uma vez:
+settingsPage.Driver.DriverName: Nome do driver
+settingsPage.Driver.DriverVersion: Versão do driver
+settingsPage.Driver.DriverSize: Tamanho do driver
+settingsPage.Driver.DriverReleaseDate: última data de lançamento
+##
+
+
+#-------------------------------
+
+# ------------------------------------------------- -----------------------------------------------
+# Sobre a página
+# ------------------------------------------------- -----------------------------------------------
+
+aboutPage.DSXDevelopers: Desenvolvedores DSX
+aboutPage.DSXChangeLog: Log de alterações do DSX
+
+aboutPage.NefariusDescription.1: Engenheiro de driver
+aboutPage.NefariusDescription.2: Hardware e compatibilidade
+aboutPage.NefariusDescription.3: Desempenho e estabilidade
+aboutPage.NefariusDescription.4: Otimização e DevOps
+aboutPage.NefariusDescription.5: redator técnico
+
+aboutPage.PaliverseDescription.1: Fundador e desenvolvedor principal
+aboutPage.PaliverseDescription.2: Hardware e compatibilidade
+aboutPage.PaliverseDescription.3: Manutenção e desempenho
+aboutPage.PaliverseDescription.4: Administração e atualizações
+aboutPage.PaliverseDescription.5: UI/UX e testes
+
+aboutPage.RamDescription.1: Desenvolvedor principal e lógico
+aboutPage.RamDescription.2: Designer Gráfico
+aboutPage.RamDescription.3: Desempenho e estabilidade
+aboutPage.RamDescription.4: Qualidade e comunidade
+aboutPage.RamDescription.5: UI/UX e testes
+
+
+aboutPage.DSX.SteamPage.Title: Página DSX Steam
+aboutPage.DSX.SteamPage.SubTitle: Visite DSX no Steam para obter as informações mais recentes.
+aboutPage.DSX.SteamPage.Button: DSX no Steam
+
+aboutPage.DSX.DiscordServer.Title: Servidor DSX Discord
+aboutPage.DSX.DiscordServer.SubTitle: Junte-se ao DSX Discord Server para obter ajuda com quaisquer problemas, relatar bugs ou falhas.
+aboutPage.DSX.DiscordServer.Button: Junte-se ao servidor Discord
+
+aboutPage.DSX.LibrariesUsed.Title: Bibliotecas usadas no DSX
+aboutPage.DSX.LibrariesUsed.SubTitle: A lista de bibliotecas públicas usadas para alimentar o DSX.
+
+
+# Strings usadas programaticamente
+p.Unavailable: Indisponível
+p.NotInstalled: Não instalado
+p.Close: Fechar
+p.ViewDriverInfo: Ver informações do driver
+p.ViewFirmwareUpdaterTool: Visualizar ferramenta de atualização de firmware
+
+# Atualizar notificações etc.
+p.MissingHidHideDriver.Title: Driver HidHide ausente
+p.MissingHidHideDriver.Detail: "\nPara ocultar o controle físico para evitar entrada dupla junto com o controle virtual, o driver HidHide deve ser instalado."
+
+p.MissingVPadDriver.Title: Driver VirtualPad ausente
+p.MissingVPadDriver.Detail: "\nNão foi possível criar um controle virtual devido à falta de drivers."
+
+p.CantStartVPadDriver.Title: Não é possível iniciar o driver VirtualPad
+p.CantStartVPadDriver.Detail: "\nNão foi possível criar um controle virtual.\nReinstale o driver VirtualPad, reinicie e tente novamente."
+
+p.VPadError.Title: Erro do driver VirtualPad
+p.VPadError.Detail: "\nNão foi possível criar um controle virtual.\nReinicie o seu PC e tente novamente."
+
+p.DriverError.Title: Driver VirtualPad e driver HidHide ausentes
+p.DriverError.Detail: "\nPara poder emular um controle Xbox 360 ou um controle DualShock 4, o driver VirtualPad deve ser instalado.\n\nPara ocultar o controle físico para evitar entrada dupla junto com o controle virtual , o driver HidHide deve estar instalado. \n\nClique em Exibir informações do driver para ver os drivers ausentes para instalá-los."
+
+p.DriverUpdate.Title: Atualização do driver VirtualPad ou driver HidHide
+p.DriverUpdate.Detail: "\nHá uma atualização do driver HidHide ou uma atualização do driver VirtualPad.\n\nClique em Exibir informações do driver para descobrir qual precisa ser atualizado."
+
+p.DualSenseUpdate.Title: Atualização de firmware DualSense disponível
+p.DualSenseUpdate.Detail: "\nHá uma nova versão de firmware disponível para o seu controle DualSense.\n\nVersão atual: 0x00\nNova versão: 0x00\n\nVocê deve sempre atualizar para a versão mais recente por estes motivos:\n- Correção Bug de leitura da bateria DualSense\n- Normal Rumble (para jogos antigos)\n- Várias correções e melhorias\n\nInstale a ferramenta oficial de atualização de firmware da Sony para atualizar seu controle.\n\nNOTA: Ao atualizar, certifique-se de que o DSX esteja fechado para evitar problemas durante o processo."
+
+p.UnknownHidHideStatus: Não é possível determinar o status do driver HidHide
+p.UnknownHidHideStatus.Detail: "\nPor favor, reinstale o driver HidHide e reinicie depois."
+
+# Ocultar cartão
+p.HidHide.HidHideIsInstalled: O driver HidHide está instalado
+p.HidHide.HidHideIsNotInstalled: Driver HidHide não instalado
+
+# Cartão Vpad
+p.VPad.VPadIsInstalled: VirtualPad Driver da Nefarius está instalado
+p.VPad.VPadIsNotInstalled: Driver VirtualPad da Nefarius não instalado
+
+p.Controllers.AccessController: controle Access™
+p.Controllers.PSVR2SenseL: controle PS VR 2 Sense™ (L)
+p.Controllers.PSVR2SenseR: controle PS VR 2 Sense™ (R)
+p.Controllers.DualSense: controle sem fio DualSense™️
+p.Controllers.DualSenseEdge: controle sem fio DualSense Edge™️
+p.Controllers.DualShockv1: controle sem fio DualShock™️ 4 [v1]
+p.Controllers.DualShockv2: controle sem fio DualShock™️ 4 [v2]
+p.controlees.DualShock4USBAdaptador: Adaptador sem fio DualShock™️ 4 USB
+
+# Informações do DLC
+p.ViewDLCOnSteam: Ver DLC na Steam
+p.UnlockDualSenseEmulation: Desbloqueie a emulação DualSense
+p.UnlockDualSenseEmulation.Detail: "Atualmente você não tem acesso à emulação DualSense.\n\nPara aproveitar esse recurso, considere adquirir o DLC de emulação DualSense. Seu suporte ajuda o desenvolvedor do driver VirtualPad.\n\nVocê gostaria de visualizá-lo no Steam?"
+
+#Macros
+p.MacrosActivation.PlayOnce.Title: Reproduzir uma vez
+p.MacrosActivation.PlayOnce.Subtitle: A ação será reproduzida uma vez.
+p.MacrosActivation.PlayNTimes.Title: Reproduzir N vezes
+p.MacrosActivation.PlayNTimes.Subtitle: A ação será repetida um determinado número de vezes.
+p.MacrosActivation.RepeatWhilePressed.Title: Repetir enquanto pressionado
+p.MacrosActivation.RepeatWhilePressed.Subtitle: Pressione e segure o botão para repetir automaticamente uma ação.
+p.MacrosActivation.ToggleAutoRepeat.Title: Alternar repetição automática
+p.MacrosActivation.ToggleAutoRepeat.Subtitle: Pressione uma vez para começar a repetir automaticamente a ação e pressione novamente para parar.
+p.MacrosActivation.ToggleAutoRepeatContinuous.Title: Alternar repetição automática (contínua)
+p.MacrosActivation.ToggleAutoRepeatContinuous.Subtitle: Pressione o botão uma vez para começar a reproduzir a ação continuamente e pressione-o novamente para parar.
+
+p.MacrosDelay.Title: Atraso
+p.MacrosDelay.Subtitle: O tempo de descanso entre as repetições.
+
+p.MacrosRepeat.Title: Repetir
+p.MacrosRepeat.Subtitle: O número de repetições
+
+p.MacrosPlayOnKey.Title: Tocar no tom
+p.MacrosPlayOnKey.Subtitle: Escolha se deseja ativar esta macro ao pressionar ou soltar o botão.
+p.KeyDown: tecla para baixo
+p.KeyUp: Tecla para cima
+p.StartRecording: iniciar a gravação
+p.StopRecording: Parar a gravação
+
+p.DeleteSelectedActionProfile: Excluir perfil de ação selecionado?
+p.DeleteSelectedActionProfiles: Excluir perfis de ação selecionados?
+p.DeleteSelectedDeadzoneProfile: Excluir perfil de zona morta selecionado?
+p.DeleteSelectedDeadzoneProfiles: Excluir perfis de zona morta selecionados?
+p.DeleteSelectedTouchpadProfile: Excluir perfil selecionado do touchpad?
+p.DeleteSelectedTouchpadProfiles: Excluir perfis de touchpad selecionados?
+p.DeleteSelectedMotionProfile: Excluir perfil de movimento selecionado?
+p.DeleteSelectedMotionProfiles: Excluir perfis de movimento selecionados?
+p.DeleteProfile: Excluir perfil
+p.DeleteProfiles: Excluir perfis
+p.LeftMouseButton.Text: botão esquerdo do mouse
+p.RightMouseButton.Text: botão direito do mouse
+p.MiddleMouseButton.Text: botão do meio do mouse
+p.BackMouseButton.Text: botão Voltar do mouse
+p.ForwardMouseButton.Text: botão avançar do mouse
+p.ScrollWheelUp: Roda de rolagem para cima
+p.ScrollWheelDown: Roda de rolagem para baixo
+
+p.DeviceStatus: Status do dispositivo
+p.ActiveActionProfile: perfil de ação ativa
+p.ActiveAdaptiveTriggersProfile: perfil de gatilhos adaptativos ativos
+p.ActiveDeadzoneProfile: Perfil de zona morta ativa
+p.ActiveHapticsRumbleProfile: Perfil Haptics/Rumble ativo
+p.ActiveLEDProfile: Perfil de LED ativo
+p.ActiveMotionProfile: Perfil de movimento ativo
+p.ActiveNotificationsProfile: perfil de notificações ativas
+p.ActiveTouchpadProfile: Perfil ativo do Touchpad
+
+p.Shortcuts.ToggleXboxGameBar: Alternar barra de jogo do Xbox
+p.Shortcuts.SystemScreenshot: Captura de tela do sistema
+p.Shortcuts.IncreaseBrightnessLevel: Aumenta o nível de brilho
+p.Shortcuts.DecreaseBrightnessLevel: Diminui o nível de brilho
+p.Shortcuts.TogglePCMicMute: Alternar mudo do microfone do PC
+p.Shortcuts.PreviousTrack: faixa anterior
+p.Shortcuts.TogglePlayPause: Alternar reprodução/pausa
+p.Shortcuts.NextTrack: Próxima faixa
+p.Shortcuts.ToggleVolumeMute: Alternar volume mudo
+p.Shortcuts.IncreaseVolumeLevel: Aumenta o nível de volume
+p.Shortcuts.DecreaseVolumeLevel: Diminui o nível de volume
+
+p.Shortcuts.StartScreen: exibe ou oculta a tela inicial
+p.Shortcuts.QuickSettingsWin11: Abra Configurações rápidas (Windows 11)
+p.Shortcuts.QuickSettingsWin10: Abra o Action Center (Windows 10)
+p.Shortcuts.FocusNotificationArea: Defina o foco na área de notificação
+p.Shortcuts.ChatTeamsWin11: Abra o bate-papo do Microsoft Teams (Windows 11)
+p.Shortcuts.CortanaWin10: Abra a Cortana no modo de escuta (Windows 10)
+p.Shortcuts.CharmsMenu: Abra o menu de botões
+p.Shortcuts.ColorFiltersWin11: Ative os filtros de cores (habilite este atalho primeiro nas configurações do Filtro de cores) (Windows 11)
+p.Shortcuts.ShowDesktop: exibe e oculta a área de trabalho
+p.Shortcuts.ShowDateAndTime: exibe e oculta a data e hora na área de trabalho
+p.Shortcuts.FileExplorer: Abra o Explorador de Arquivos
+p.Shortcuts.FeedbackHub: Abra o Feedback Hub e faça uma captura de tela
+p.Shortcuts.XboxGameBar: Abra a Barra de Jogo Xbox quando um jogo estiver aberto
+p.Shortcuts.TurnHDROnOff: ativa ou desativa o HDR
+p.Shortcuts.LaunchVoiceTypingWin11: inicia a digitação por voz (Windows 11)
+p.Shortcuts.StartDictationWin10: Iniciar ditado (Windows 10)
+p.Shortcuts.OpenSettings: Abra Configurações
+p.Shortcuts.OpenCastWin11: Abra o Cast nas configurações rápidas (Windows 11)
+p.Shortcuts.OpenConnectWin10: Abra a ação rápida Conectar (Windows 10)
+p.Shortcuts.ToggleMicrophoneMute: Alterna o microfone mudo em aplicativos compatíveis com Call Mute. Disponível a partir do Windows 11, versão 22H2
+p.Shortcuts.LockPCSwitchAccounts: bloqueie seu PC ou troque de conta
+p.Shortcuts.MinimizeAllWindows: Minimize todas as janelas
+p.Shortcuts.RestoreMinimizedWindows: Restaure janelas minimizadas na área de trabalho
+p.Shortcuts.LockDeviceOrientation: Bloqueia a orientação do dispositivo
+p.Shortcuts.ChoosePresentationDisplayMode: Escolha um modo de exibição da apresentação
+p.Shortcuts.OpenQuickAssist: Abra o Quick Assist
+p.Shortcuts.OpenRunDialogBox: Abra a caixa de diálogo Executar
+p.Shortcuts.RecordVideoGameWindowWin11: Grave vídeo da janela do jogo em foco (usando a Barra de Jogo Xbox) (Windows 11)
+p.Shortcuts.OpenSearch: Abrir pesquisa
+p.Shortcuts.TakeScreenshotPartScreen: Faça uma captura de tela de parte da tela
+p.Shortcuts.CycleThroughAppsTaskbar: Percorrer aplicativos na barra de tarefas
+p.Shortcuts.OpenAccessibilitySettings: Abra as configurações de acessibilidade
+p.Shortcuts.OpenClipboardHistoryWin11: Abra o histórico da área de transferência (se ativado nas configurações)
+p.Shortcuts.OpenClipboardWin10: Abra a área de transferência (se ativada nas configurações)
+p.Shortcuts.OpenClipboardHistoryBoth: Abrir histórico da área de transferência (Windows 11) | Abra a área de transferência (Windows 10) se estiver ativada nas configurações de
+p.Shortcuts.SetFocusNotificationWin11: Defina o foco para uma notificação
+p.Shortcuts.CycleThroughNotificationsWin10: Percorrer notificações
+p.Shortcuts.SetFocusNotificationBoth: definir o foco para uma notificação (Windows 11) | Percorrer notificações (Windows 10)
+p.Shortcuts.OpenWidgetsWin11: Abrir widgets
+p.Shortcuts.OpenWidgetsBoth: Abrir widgets (Windows 11)
+p.Shortcuts.OpenQuickLinkMenu: Abra o menu Quick Link
+p.Shortcuts.SwitchInputMixedReality: alterne a entrada entre o Windows Mixed Reality e sua área de trabalho
+p.Shortcuts.OpenSnapLayoutsWin11: Abra os layouts de snap (Windows 11) | Mostrar os comandos disponíveis em um aplicativo em modo de tela inteira (Windows 10)
+p.Shortcuts.OpenEmojiPanel: Abra o painel de emojis
+p.Shortcuts.PeekAtDesktop: espiar temporariamente a área de trabalho
+p.Shortcuts.OpenAboutPCWin11: Abra Sobre o PC nas configurações (Windows 11) | Exibir a caixa de diálogo Propriedades do sistema (Windows 10)
+p.Shortcuts.SearchForPCsNetwork: Procure PCs (se você estiver em uma rede)
+p.Shortcuts.StartAppPinnedTaskbar: inicia ou mostra o aplicativo fixado na barra de tarefas na posição 1
+p.Shortcuts.StartAppPinnedTaskbar2: inicia ou mostra o aplicativo fixado na barra de tarefas na posição 2
+p.Shortcuts.StartAppPinnedTaskbar3: inicia ou mostra o aplicativo fixado na barra de tarefas na posição 3
+p.Shortcuts.StartAppPinnedTaskbar4: inicia ou mostra o aplicativo fixado na barra de tarefas na posição 4
+p.Shortcuts.StartAppPinnedTaskbar5: inicia ou mostra o aplicativo fixado na barra de tarefas na posição 5
+p.Shortcuts.StartAppPinnedTaskbar6: inicia ou mostra o aplicativo fixado na barra de tarefas na posição 6
+p.Shortcuts.StartAppPinnedTaskbar7: inicia ou mostra o aplicativo fixado na barra de tarefas na posição 7
+p.Shortcuts.StartAppPinnedTaskbar8: inicia ou mostra o aplicativo fixado na barra de tarefas na posição 8
+p.Shortcuts.StartAppPinnedTaskbar9: inicia ou mostra o aplicativo fixado na barra de tarefas na posição 9
+p.Shortcuts.StartAppPinnedTaskbar10: inicia ou mostra o aplicativo fixado na barra de tarefas na posição 10
+p.Shortcuts.OpenTaskView: Abrir visualização de tarefas
+p.Shortcuts.MaximizeWindow: Maximize a janela
+p.Shortcuts.SnapWindowTopHalfWin11: Ajusta a janela em foco na metade superior da tela (Windows 11)
+p.Shortcuts.RemoveAppScreen: Remova o aplicativo atual da tela ou minimize a janela da área de trabalho
+p.Shortcuts.SnapWindowBottomHalfWin11: Ajusta a janela em foco na metade inferior da tela (Windows 11)
+p.Shortcuts.MaximizeLeftSideScreen: Maximize a janela do aplicativo ou da área de trabalho no lado esquerdo da tela
+p.Shortcuts.MaximizeRightSideScreen: Maximize a janela do aplicativo ou da área de trabalho no lado direito da tela
+p.Shortcuts.MinimizeAllExceptActive: Minimiza tudo, exceto a janela ativa da área de trabalho (restaura todas as janelas no segundo toque)
+p.Shortcuts.StretchDesktopWindow: Estique a janela da área de trabalho até a parte superior e inferior da tela
+p.Shortcuts.RestoreMinimizeActiveDesktopWindowsVerticalmente: restaura/minimiza janelas ativas da área de trabalho verticalmente, mantendo a largura
+p.Shortcuts.MoveAppWindowBetweenMonitorsLeft: mova um aplicativo ou janela na área de trabalho de um monitor para outro (para a esquerda)
+p.Shortcuts.MoveAppWindowBetweenMonitorsRight: mova um aplicativo ou janela na área de trabalho de um monitor para outro (para a direita)
+p.Shortcuts.CycleBackwardsLanguageKeyboardLayoutWin11: retroceder no idioma e no layout do teclado (Windows 11)
+p.Shortcuts.SwitchInputLanguageKeyboardLayout: Alternar idioma de entrada e layout do teclado
+p.Shortcuts.ChangeToPreviouslySelectedInput: Mude para uma entrada selecionada anteriormente
+p.Shortcuts.TurnOnNarrator: ativar o Narrador
+p.Shortcuts.OpenMagnifierAndZoomIn: Abra a Lupa e amplie
+p.Shortcuts.ZoomOutInMagnifier: Diminuir o zoom na Lupa
+p.Shortcuts.CloseMagnifierWin11: Fechar Lupa (Windows 11)
+p.Shortcuts.BeginIMEReconversion: inicia a reconversão do IME
+p.Shortcuts.OpenShoulderTapsWin10: Toques de ombro abertos (Windows 10)
+p.Shortcuts.WakePCFromBlankOrBlackScreen: Desperte o PC de uma tela em branco ou preta
+p.Shortcuts.SaveScreenshotOfGameWindowToFile: Salva a captura de tela da janela do jogo em foco em um arquivo (usando a Barra de Jogo Xbox)
+p.Shortcuts.OpenTaskbarSettingsOnTaskbarFocus: Abra as configurações da barra de tarefas (no foco da barra de tarefas)
+
+
+# Página do controle -> Seção Touchpad
+
+ctPage.Touchpad.Mode.Title: Modo Touchpad
+ctPage.Touchpad.Mode.SubTitle: Escolha entre Passthrough, Touchpad To Mouse ou Touchpad+ para utilizar totalmente o touchpad.
+
+ctPage.TouchpadToMouse.Mode.Passthrough.Title: Passagem
+ctPage.TouchpadToMouse.Mode.Passthrough.SubTitle: Os dados do touchpad serão transmitidos através do DualShock 4 ou DualSense Emulation.
+
+ctPage.TouchpadToMouse.Mode.Mouse.Title: Touchpad para mouse
+ctPage.TouchpadToMouse.Mode.Mouse.SubTitle: O Touchpad controlará o mouse deste PC.
+
+ctPage.TouchpadToMouse.Mode.Plus.Title: Touchpad+
+ctPage.TouchpadToMouse.Mode.Plus.SubTitle: A entrada do touchpad pode ser usada para remapeamento e outras tarefas diversas.
+
+ctPage.TouchpadToMouse.PressToLeftClick.Title: Pressione para clicar com o botão esquerdo
+ctPage.TouchpadToMouse.PressToLeftClick.SubTitle: Quando ativado, pressionar o touchpad resultará em um clique esquerdo do mouse
+
+ctPage.TouchpadToMouse.TapToLeftClick.Title: Toque para clicar com o botão esquerdo
+ctPage.TouchpadToMouse.TapToLeftClick.SubTitle: Quando ativado, tocar no touchpad resultará em um clique esquerdo do mouse
+
+ctPage.TouchpadToMouse.TapToRightClick.Title: Toque para clicar com o botão direito
+ctPage.TouchpadToMouse.TapToRightClick.SubTitle: Quando ativado, tocar no touchpad com dois dedos resultará em um clique com o botão direito do mouse
+
+ctPage.TouchpadToMouse.NormalSensi.Title: Velocidade de sensibilidade normal
+ctPage.TouchpadToMouse.NormalSensi.SubTitle: A velocidade de sensibilidade para o mouse se mover.
+
+ctPage.TouchpadToMouse.PreciseSensi.Title: Velocidade de sensibilidade precisa
+ctPage.TouchpadToMouse.PreciseSensi.SubTitle: Enquanto este botão for pressionado, o mouse entrará em um estado preciso onde será desacelerado para o que está definido aqui.
+
+ctPage.TouchpadToMouse.FastSensi.Title: Velocidade de sensibilidade rápida
+ctPage.TouchpadToMouse.FastSensi.SubTitle: Enquanto este botão for pressionado, o mouse entrará em um estado rápido, onde acelerará de acordo com o que está definido aqui.
+
+ctPage.TouchpadToMouse.ScrollSensi.Title: Velocidade de sensibilidade de rolagem
+ctPage.TouchpadToMouse.ScrollSensi.SubTitle: Toque com 2 dedos e arraste em qualquer direção para iniciar a rolagem, como pressionar o botão do meio do mouse e mover o mouse.
+
+ctPage.TouchpadToMouse.ScrollInvert.Title: Inverter rolagem
+ctPage.TouchpadToMouse.ScrollInvert.SubTitle: Quando ativado, a rolagem será invertida.
+
+# --------------------
+
+settingsPage.Display.WindowBackgroundEffect.Title: Efeito de fundo da janela
+settingsPage.Display.WindowBackgroundEffect.SubTitle: Escolha o efeito de fundo desejado.
+
+settingsPage.Display.WindowBackgroundEffect.Mode.None.Title: Nenhum
+settingsPage.Display.WindowBackgroundEffect.Mode.None.Subtitle: Sem efeito de pano de fundo.
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Acrylic.Title: Acrílico
+settingsPage.Display.WindowBackgroundEffect.Mode.Acrylic.Subtitle: Efeito acrílico do Windows.
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Title: Mica
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Subtitle: Efeito Mica do Windows 11.
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Warning.Title: ⚠️ Disponível para Windows 11 (Build 22000) ou mais recente
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Title: com guias
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Subtitle: efeito de desfoque de papel de parede do Windows 11.
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Warning.Title: ⚠️ Disponível para Windows 11 Insider 10 (Build 22523) ou mais recente
+
+BatteryPowerState.Discharging: Descarregando
+BatteryPowerState.Charging: Carregando
+BatteryPowerState.Complete: Completo
+BatteryPowerState.AbnormalVoltage: Tensão anormal
+BatteryPowerState.AbnormalTemperture: Temperatura anormal
+BatteryPowerState.ChargingError: Erro de carregamento
+
+ToastNotifications.BatteryInfo: informações da bateria
+ToastNotifications.BatteryLevelLow: 🪫⚠️ Nível de bateria baixo ⚠️🪫
+ToastNotifications.DeviceConnected: ℹ️ Dispositivo conectado
+ToastNotifications.DeviceDisconnected: ⚠️ Dispositivo desconectado
+ToastNotifications.EmulationActivated: ativado
+ToastNotifications.ActiveProfile: Ativo
+ToastNotifications.IsActiveProfile: está ativo
+ToastNotifications.Activated: ativado
+
+aboutPage.DSX.Libraries.Title: Bibliotecas usadas no DSX
+aboutPage.DSX.Libraries.Subtitle: A lista de bibliotecas públicas usadas para alimentar o DSX.
+
+ctPage.JoystickDeadzone.Left.Mode.Title: Modo Joystick Esquerdo
+ctPage.JoystickDeadzone.Right.Mode.Title: Modo Joystick direito
+ctPage.JoystickDeadzone.Mode.SubTitle: Escolha entre Passthrough, Simple Deadzone ou Advanced Deadzone para um ajuste mais preciso.
+
+ctPage.JoystickDeadzone.Mode.Passthrough.SubTitle: Os dados do joystick passam perfeitamente pelo Xbox 360, DualShock 4 ou DualSense Emulation. Nenhum ajuste ou modificação de zona morta é aplicado.
+
+ctPage.JoystickDeadzone.Mode.Simple.Title: Zona morta simples
+ctPage.JoystickDeadzone.Mode.Simple.SubTitle: A escolha entre os modos de zona morta axial e radial determina a resposta do seu controle. Axial prioriza controle preciso por direção, ideal para jogos de plataforma ou atiradores, enquanto radial garante resposta uniforme, ótima para simuladores de corrida ou vôo.
+
+ctPage.JoystickDeadzone.Mode.Advanced.Title: Zona morta avançada
+ctPage.JoystickDeadzone.Mode.Advanced.SubTitle: Ajuste sua experiência com o joystick com nosso modo Advanced Deadzone. Ajuste as configurações de sensibilidade, zona morta e alcance para criar um esquema de controle que se adapte perfeitamente a você.
+
+ctPage.JoystickDeadzone.Simple.Mode.Title: Modo zona morta
+ctPage.JoystickDeadzone.Simple.Mode.Subtitle: A escolha entre os modos de zona morta axial e radial determina como seu controle reage a pequenos movimentos. As zonas mortas axiais priorizam o controle preciso em direções individuais, ótimas para jogos de plataforma ou jogos de tiro. As zonas mortas radiais garantem uma resposta uniforme em todas as direções, reduzindo movimentos não intencionais, ideais para corridas ou simulações de voo.
+
+ctPage.JoystickDeadzone.SimpleMode.Axial.Title: Axial
+ctPage.JoystickDeadzone.SimpleMode.Radial.Title: Radial
+
+ctPage.JoystickDeadzone.Deadzone.Title: Zona morta
+ctPage.JoystickDeadzone.Deadzone.SubTitle: Representa o valor da zona morta do joystick. É a área ao redor do centro onde a entrada é ignorada.
+
+ctPage.JoystickDeadzone.Saturation.Title: Saturação
+ctPage.JoystickDeadzone.Saturation.SubTitle: Controla a sensibilidade do seu joystick. Definir abaixo de 1 torna o joystick mais responsivo, de modo que mesmo pequenos movimentos têm um grande efeito no seu jogo ou aplicativo. Configurá-lo como 1 mantém o joystick em sua sensibilidade normal. Ajustar a saturação permite personalizar o quanto seus movimentos afetam a tela.
+
+ctPage.JoystickDeadzone.Range.Title: Intervalo
+ctPage.JoystickDeadzone.Range.SubTitle: ajusta a distância que o stick pode percorrer, determinando a extensão máxima do movimento do joystick que afeta as ações na tela.
+
+ctPage.JoystickDeadzone.Sensitivity.Title: Sensibilidade
+ctPage.JoystickDeadzone.Sensitivity.SubTitle: Aumentar a sensibilidade torna o joystick mais responsivo, portanto, mesmo pequenos movimentos têm um grande efeito na tela. Diminuir a sensibilidade faz o oposto, necessitando de movimentos maiores do joystick para fazer as mesmas alterações na tela.
+
+homepage.VirtualDevice.DSModeConfig.Title: Configuração do modo DualSense
+homepage.VirtualDevice.DSModeConfig.SubTitle: Quando a emulação DualSense está ativa, você pode ajustar as opções de passagem abaixo.
+
+app.LaunchV2Button: iniciar o DSX v2
+
+profiles.ResetProfile: Redefinir perfil
+profiles.RenameProfile: Renomear perfil
+
+ctPage.ActiveMouseMappingsDescription: sua lista de mapeamentos de mouse ativos.
+
+ctPage.selectedButton: botão selecionado
+## Plural
+ctPage.selectedButtons: Botões selecionados
+
+ctPage.Input: Entrada
+ctPage.Output: Saída
+
+ # %i é um número preenchido automaticamente, então pense assim: - Roda de rolagem para cima (2 pontos) -
+ctPage.Mouse.ScrollUp: 'Roda de rolagem para cima (%i pontos)'
+ctPage.Mouse.ScrollDown: 'Roda de rolagem para baixo (%i pontos)'
+
+ctPage.R2TriggerInputRange: Faixa de entrada do acionador R2
+
+notificaçõesPage.SystemNotification.Title: Notificações do sistema
+notificaçõesPage.SystemNotification.SubTitle: para que o DSX envie notificações, o DSX precisa de permissões. Clique em `Abrir configurações de notificação` para permitir que o DSX envie notificações se ainda não estiver ativado.
+notificaçõesPage.SystemNotification.Button.Title: Abra as configurações de notificação
+
+notificaçõesPage.LowBattery.Title: Bateria fraca
+notificaçõesPage.LowBattery.SubTitle: Seja notificado quando a bateria ficar fraca somente quando não estiver carregando.
+
+notificaçõesPage.LowBattery.Percentage.Title: Porcentagem da bateria
+notificaçõesPage.LowBattery.Percentage.SubTitle: escolha quando esta notificação deve ser acionada quando ficar abaixo da porcentagem de bateria especificada.
+
+notificaçõesPage.LowBattery.Repeat.Title: Repetição de notificação
+notificaçõesPage.LowBattery.Repeat.SubTitle: Escolha quantas vezes esta notificação deve ser repetida.
+
+notificaçõesPage.LowBattery.Repeat.1: Repetir 1 vez
+notificaçõesPage.LowBattery.Repeat.3: Repita 3 vezes
+notificaçõesPage.LowBattery.Repeat.5: Repita 5 vezes
+notificaçõesPage.LowBattery.Repeat.10: Repita 10 vezes
+notificaçõesPage.LowBattery.Repeat.Forever: Repetir para sempre
+
+notificaçõesPage.LowBattery.Interval.Title: intervalo de notificação
+notificaçõesPage.LowBattery.Interval.SubTitle: Escolha o intervalo de tempo entre cada repetição.
+
+notificaçõesPage.LowBattery.Interval.30Seconds: intervalos de 30 segundos
+notificaçõesPage.LowBattery.Interval.1: intervalos de 1 minuto
+notificaçõesPage.LowBattery.Interval.2: intervalos de 2 minutos
+notificaçõesPage.LowBattery.Interval.5: intervalos de 5 minutos
+notificaçõesPage.LowBattery.Interval.10: intervalos de 10 minutos
+
+notificaçõesPage.ConnectionStatus.Title: Status da conexão
+notificaçõesPage.ConnectionStatus.SubTitle: seja notificado quando este dispositivo estiver conectado ou desconectado do DSX ou quando um modo de emulação se tornar ativo.
+
+notificaçõesPage.ConnectionStatus.DeviceConnected.Title: Dispositivo conectado
+notificaçõesPage.ConnectionStatus.DeviceConnected.SubTitle: seja notificado quando este dispositivo se conectar ao DSX.
+
+notificaçõesPage.ConnectionStatus.DeviceDisconnected.Title: Dispositivo desconectado
+notificaçõesPage.ConnectionStatus.DeviceDisconnected.SubTitle: seja notificado quando este dispositivo se desconectar do DSX.
+
+notificaçõesPage.ConnectionStatus.VirtualDevice.Title: Status do dispositivo virtual
+notificaçõesPage.ConnectionStatus.VirtualDevice.SubTitle: seja notificado quando um dispositivo virtual se tornar ativo.
+
+
+notificaçõesPage.ProfileSystem.SubTitle: seja notificado quando um perfil se tornar ativo.
+
+colorPicker.InitialColor: cor inicial
+colorPicker.SelectedColor: cor selecionada
+
+cor.Gradiente: Gradiente
+
+# %i é um número que é preenchido automaticamente, também mantenha a tradução entre aspas simples.
+instaladoGamesPage.TotalPlaytime.Day.single: '%i dia'
+instaladoGamesPage.TotalPlaytime.Day.plural: '%i dias'
+
+instaladoGamesPage.TotalPlaytime.Hour.single: '%i Hora'
+instaladoGamesPage.TotalPlaytime.Hour.plural: '%i horas'
+
+instaladoGamesPage.TotalPlaytime.Minute.single: '%i Minuto'
+instaladoGamesPage.TotalPlaytime.Minute.plural: '%i minutos'
+
+setupPage.DSXSetup.Title: Configuração do DSX
+
+setupPage.DSXSetup.AdaptiveTriggers.SubTitle: Ampla gama de modos e configurações de Adaptive Trigger para obter a sensação perfeita.
+
+setupPage.DSXSetup.HapticFeedback.Title: Feedback tátil
+setupPage.DSXSetup.HapticFeedback.SubTitle: Sinta uma experiência de vibração mais envolvente com Audio To Haptics, Rumble To Haptics e muito mais.
+
+setupPage.DSXSetup.MultipleController.Title: Suporte a vários controlees
+setupPage.DSXSetup.MultipleController.SubTitle: Conecte quantos controlees seu PC puder suportar.
+
+setupPage.DSXSetup.ProfileSystem.SubTitle: Adicione perfis ilimitados e configure-os para atender às suas necessidades.
+
+setupPage.DSXSetup.Actions.Title: Sistema de ações
+setupPage.DSXSetup.Actions.SubTitle: Revincule botões do gamepad, atribua atalhos, adicione macros, defina mapeamentos de teclado e muito mais...
+
+setupPage.Finish.FeedbackSupport.Title: Feedback e suporte
+setupPage.Finish.FeedbackSupport.SubTitle: Seu feedback é importante, entre no Discord Server para relatar bugs, obter suporte ou fornecer sugestões.
+
+app.LetsTakeYourSkills: vamos levar suas habilidades para o próximo nível.
+
+virtualPad.SelfInstall.Title: Auto-instalação do VirtualPad
+virtualPad.SelfInstall.SubTitle: Baixe manualmente o driver para fazer uma auto-instalação.
+virtualPad.SelfInstall.SubTitle2: Depois de instalado manualmente, reinicie o DSX e prossiga com esta configuração novamente.
+
+virtualPad.SelfInstall.Button.Title: Baixar VirtualPad
+
+ctPage.Passthrough.Title: Passagem
+
+ctPage.GeneralSettings.Mute.Title: Alternar microfone mudo
+ctPage.GeneralSettings.Mute.Subtitle: Quando ativado, o DSX alternará o microfone no PC, silenciando ou ativando o som ao pressionar o botão Mudo no dispositivo. Isso afeta o microfone do PC selecionado, não apenas o microfone do dispositivo.
+
+ledPage.Mute: "Desativar/ativar som do microfone do PC"
+
+

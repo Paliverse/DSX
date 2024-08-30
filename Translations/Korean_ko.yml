@@ -1,0 +1,1873 @@
+#
+# * Copyright (c) 2022-2023 Paliverse Apps LLC. All rights reserved.
+# *
+# * Proprietary and Confidential - This source code is the sole property of Paliverse Apps LLC.
+# * Reproduction or dissemination of this source code, in whole or in part, or the 
+# * production of derivative works therefrom without the express permission of Paliverse Apps LLC.
+# * is strictly forbidden.
+# *
+# * Written by Paliverse Apps LLC.
+
+# ------------------------------------------------------------------------------------------------
+# More info on how to use Yaml files: https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started
+# Yaml files must be Embedded Resource in the file properties in DSX, otherwise translation files can also be selected from user's PC
+# ------------------------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------------------------
+# EXAMPLES: 
+# ------------------------------------------------------------------------------------------------
+
+# Anything before the colon : is the key, anything after the colon is the translated text (Value)
+
+# to use a colon : in parts of the text on the right, put the text inside quotes like this:
+colon.Example: "이것은 텍스트입니다 : 콜론 포함"
+# example usage: <TextBlock Text="{i18n:Translate String='colon.Example', UsedForXamlTemp='this is a text : with a colon'}" />
+# programmatically: var text = Translator.Instance.GetTranslation("colon.Example", "this is a text : with a colon");
+# ----Takes in (single key, fallback text)
+
+# ------------------------------------------------------------------------------------------------
+
+# Normal String:
+houseString.Example: '이것은 집 끈입니다.'
+# example usage: <TextBlock Text="{i18n:Translate String='houseString.Example', UsedForXamlTemp='This is a house string.'}" />
+# programmatically: var text = Translator.Instance.GetTranslation("houseString.Example", "This is a house string.");
+# ----Takes in (single key, fallback text)
+
+# ------------------------------------------------------------------------------------------------
+
+# String with a number that changes:
+# %i will be replaced with the number provided in xaml
+houseNumber.Example: '현재 집 주소는 %i Paliverse St. Chicago, IL 60640입니다.'
+# example usage: <TextBlock Text="{i18n:Translate String='houseNumber.Example', UsedForXamlTemp='Current House Address is %i Paliverse St. Chicago, IL 60640', Number=1234}" />
+# programmatically: var textNumber = Translator.Instance.GetTranslation("houseNumber.Example", $"Current House Address is {Number} Paliverse St. Chicago, IL 60640", 1234);
+# ----Takes in (single key, fallback text, number)
+
+# The number can be binded itself: Number={Binding ViewModel.HouseAddressNumber}
+
+# ------------------------------------------------------------------------------------------------
+
+# Singular or Plural string:
+# %i will be replaced with the number provided in xaml
+houseExample.single: '%i 집'
+houseExample.plural: '%i개 하우스'
+# example usage: <TextBlock Text="{i18n:Translate String='houseExample.single', Plural=houseExample.plural, UsedForXamlTemp='%i houses.', Number=1}" />
+# programmatically: var textPlural = Translator.Instance.GetTranslation("houseExample.single", "houseExample.plural", $"{Number} houses.", 1234);
+# ----Takes in (single key, plural key, fallback text, number)
+
+# The number reflects whether to use House or Houses.
+# The number can be binded itself: Number={Binding ViewModel.Number}
+
+# ------------------------------------------------------------------------------------------------
+# EXAMPLES END 
+# ------------------------------------------------------------------------------------------------
+
+
+# Please make sure you read the above before modifying this file.
+# If you're unsure of a translation or the key etc.. Contact @paliverse on discord in the DSX Server:
+# Https://discord.gg/dsx
+
+# ------------------------------------------------------------------------------------------------
+# Common things - For one time usage or Used in more than one place
+# ------------------------------------------------------------------------------------------------
+NoControllerDetected.Title: 감지된 컨트롤러 없음
+NoControllerDetected.ATMessage: 컨트롤러를 연결하거나 Bluetooth를 통해 연결하여 적응형 트리거를 구성하십시오.
+NoControllerDetected.Subtitle: 유선 연결 또는 Bluetooth를 통해 호환되는 컨트롤러를 연결하여 정보에 액세스하십시오.
+
+# ------------------------------------------------------------------------------------------------
+# Small generic words
+# ------------------------------------------------------------------------------------------------
+OFF: "OFF"
+NotAny: 해당 없음
+Frequency: 빈도
+Cancel: 취소
+TryAgain: 다시 한 번 시도해 보세요
+# A period of time, obviously
+Period: 마침표
+
+# ------------------------------------------------------------------------------------------------
+# DSX
+# ------------------------------------------------------------------------------------------------
+dsx.Initialization.Title: 잠재력을 발휘해 봅시다.
+dsx.NoControllersDetected: 감지된 컨트롤러 없음
+dsx.KindlyConnectController: 유선 연결 또는 Bluetooth를 통해 호환되는 컨트롤러를 연결하여 정보에 액세스하십시오.
+dsx.PlugInControllerToConfigure: 컨트롤러를 연결하거나 Bluetooth를 통해 연결하여 럼블 또는 햅틱을 구성하십시오.
+dsx.ConnectControllerToAccessInfo: 유선 연결 또는 Bluetooth를 통해 호환되는 컨트롤러를 연결하여 정보에 액세스하십시오.
+dsx.ConnectControllerToConfigureNotifications: 컨트롤러를 연결하거나 Bluetooth를 통해 연결하여 알림을 구성하십시오.
+dsx.ConnectControllerToConfigureProfiles: 컨트롤러를 연결하거나 Bluetooth를 통해 연결하여 프로필을 구성하십시오.
+
+dsx.Initialization.Error.SteamIDNoMatch.Title: Steam ID가 일치하지 않습니다.
+dsx.Initialization.Error.SteamIDNoMatch.Detail: Steam ID가 Steam API의 ID와 일치하지 않습니다. DSX를 설치하는 데 사용한 것과 동일한 계정으로 로그인했는지 확인하십시오.
+
+dsx.Initialization.Error.ServerFailure.Title: 알 수 없는 서버 오류
+dsx.Initialization.Error.ServerFailure.Detail: 소유권을 확인하기 위해 DSX 서버와 통신할 수 없는 경우 Windows 방화벽에서 DSX가 허용되는지 확인하고 다시 시도하십시오.
+
+dsx.Initialization.Error.SteamApiServerFailure.Title: Steam API 서버 오류
+dsx.Initialization.Error.SteamApiServerFailure.Detail: Steam API 서버와 통신할 수 없는 경우 Steam의 서버 상태를 온라인으로 확인하여 다운되었는지 확인하고, 서버가 다운된 경우 나중에 다시 시도하세요.
+
+dsx.Initialization.Error.VirtualPadError.Title: Nefarius의 VirtualPad 드라이버 서버 오류
+dsx.Initialization.Error.VirtualPadError.Detail: VirtualPad 드라이버 서버와 통신할 수 없는 경우 이 문제가 지속되면 DSX Discord 서버 또는 Steam 포럼에서 문의하십시오.
+
+dsx.Initialization.Error.InternetConnection.Title: 인터넷 연결 필요
+dsx.Initialization.Error.InternetConnection.Detail: DSX를 시작하려면 초기화하는 동안 인터넷 연결이 필요하므로 DSX가 Windows 방화벽에서 허용되는지 확인하고 다시 시도하십시오.
+
+dsx.Initialization.Error.UnautorizedAccess.Title: 무단 액세스로 인해 서버와 통신할 수 없습니다.
+dsx.Initialization.Error.UnautorizedAccess.DetailOne: PC의 날짜 및 시간 때문에 연결을 설정할 수 없습니다.
+dsx.Initialization.Error.UnautorizedAccess.DetailTwo: 올바르지 않습니다.
+
+dsx.Initialization.AppSettings: 앱 설정 불러오는 중...
+dsx.Initialization.AccentColor: 강조색 적용 중...
+dsx.Initialization.Discord: Discord Rich Presence 설정...
+dsx.Initialization.InternetCheck: 인터넷 연결 확인 중...
+dsx.Initialization.SteamID: Steam ID 확인 중...
+dsx.Initialization.DSXOwnership: Steam 서버로 DSX 소유권 확인 중...
+dsx.Initialization.DLCOwnership: Steam 서버로 DualSense 에뮬레이션 DLC 소유권 확인...
+dsx.Initialization.OwnershipResults: DSX/DLC 소유권 결과 확인 중...
+dsx.Initialization.DSFirmware: 최신 DualSense 펌웨어 버전 다운로드 중...
+dsx.Initialization.VirtualPad: Nefarius의 VirtualPad 드라이버 업데이트 확인 중...
+dsx.Initialization.VirtualPadResult: Nefarius의 VirtualPad 드라이버가 최신 버전을 실행 중입니다...
+dsx.Initialization.SetupPage: 설정 페이지 준비 중...
+dsx.Initialization.v3BetaInfo: v3 베타 정보 페이지 준비 중...
+dsx.Initialization.HomePage: 홈페이지 준비 중...
+
+dsx.Initialization.VirtualPad.LicenseExpired: VirtualPad 드라이버 라이센스가 만료되었습니다. 재설치 또는 재부팅이 필요합니다.
+dsx.Initialization.VirtualPad.ServiceError: VirtualPad 드라이버 서비스 오류, 재설치가 필요합니다.
+dsx.Initialization.VirtualPad.UpdateAvailable.PartOne: VirtualPad 드라이버 버전
+dsx.Initialization.VirtualPad.UpdateAvailable.PartTwo: 이용할 수 있는
+dsx.Initialization.VirtualPad.NotInstalled: Nefarius의 VirtualPad 드라이버가 설치되지 않았습니다.
+
+dsx.ShutDown: DSX 종료
+dsx.ShutDown.PopupTitle: DSX를 종료하시겠습니까?
+dsx.ShutDown.Detail: DSX를 종료하시겠습니까?
+
+dsx.NavigationButtons.Home: Home
+dsx.NavigationButtons.Profiles: 프로필
+dsx.NavigationButtons.Controller: 컨트롤러
+dsx.NavigationButtons.Notifications: 알림
+dsx.NavigationButtons.DSEdgePSVR2: DS 엣지 | PSVR2 시리즈
+dsx.NavigationButtons.AdaptiveTriggers: 적응형 트리거
+dsx.NavigationButtons.ControllerLED: 컨트롤러 LED
+dsx.NavigationButtons.HapticsRumble: 햅틱 | 럼블
+dsx.NavigationButtons.InstalledGames: 설치된 게임
+dsx.NavigationButtons.HidHide: HidHide
+dsx.NavigationButtons.DSXLogs: DSX 로그
+dsx.NavigationButtons.Settings: 설정
+dsx.NavigationButtons.About: 소개
+
+dsx.TaskbarIcon.QuitDSX: DSX 종료
+
+dsx.UnexpectedError.Popup.Title: 처리되지 않은 AppDomain 예외가 발생했습니다.
+dsx.UnexpectedError.Popup.TitleTwo: 처리되지 않은 UI 스레드 예외가 발생했습니다.
+
+dsx.UnexpectedError.Popup.LineOne: 예기치 않은 오류가 발생하여 DSX v3을 계속할 수 없습니다.
+dsx.UnexpectedError.Popup.LineTwo: 충돌에 대한 자세한 내용은 다음 위치에 있는 logs 하위 디렉터리에서 찾을 수 있습니다.
+
+
+# ------------------------------------------------------------------------------------------------
+# Descriptions
+# ------------------------------------------------------------------------------------------------
+
+X360Gamepad.Title: 가상 Xbox 360 게임패드
+X360Gamepad.Description: Xinput 지원 게임에서 가상 Xbox 360 게임 패드를 사용합니다.
+
+DS4Gamepad.Title: 가상 DualShock 4 게임패드
+DS4Gamepad.Description: 가상 DualShock 4 게임패드를 기본적으로 지원하는 게임과 함께 사용하십시오.
+
+DualSensePad.Title: 가상 DualSense 게임패드(DLC 필요)
+DualSensePad.Description: 가상 DualSense 게임패드를 기본적으로 지원하는 게임과 함께 사용하세요.
+
+# ------------------------------------------------------------------------------------------------
+# Profile system
+# ------------------------------------------------------------------------------------------------
+profiles.CannotUndo: 이 작업은 취소할 수 없습니다.
+profiles.EnterProfileName: 프로필 이름 입력
+profiles.ProfileName: 프로필 이름
+profiles.ProfileSystem: 프로필 시스템
+profiles.ProfileType: 프로필 유형
+profiles.EditProfiles: 프로필 편집
+
+# Duplicate like the verb/action "I will duplicate the profile", not the noun/subject "a duplicate profile"
+profiles.DuplicateProfile: 중복 프로필
+profiles.DeleteSelectedProfiles: 선택한 프로필 삭제
+profiles.DeleteSelectedProfilesPlural: 선택한 프로필 삭제
+profiles.ConfirmButton.DeleteSelectedProfiles: 프로필 삭제
+profiles.ConfirmButton.DeleteSelectedProfilesPlural: 프로필 삭제
+profiles.CreateNewProfile: 새 프로필 만들기
+profiles.ActiveProfile: 활성 프로필
+profiles.ImportProfile: 프로필 가져오기
+profiles.ShareProfile: 프로필 공유
+profiles.SearchControllerProfiles: 검색 컨트롤러 프로필
+profiles.CopySettingsFromAnotherProfile: 다른 프로필에서 설정 복사
+
+profiles.Controller.Search: 검색 컨트롤러 프로필
+
+profiles.Type.ProfilesPage: 컨트롤러 프로필
+profiles.Type.ProfilesPage.Detail: 새 컨트롤러 프로필을 추가하여 사용자 지정하거나 편집을 눌러 삭제할 프로필을 여러 개 선택합니다.
+
+profiles.Type.Notification: 알림 프로필
+profiles.Type.Notification.Detail: 새 알림 프로필을 추가하여 사용자 지정하거나 편집을 눌러 삭제할 프로필을 여러 개 선택합니다.
+
+profiles.Type.Actions: 작업 프로필
+profiles.Type.Actions.Detail: 새 작업 프로필을 추가하여 사용자 지정하거나 편집을 눌러 삭제할 프로필을 여러 개 선택합니다.
+
+profiles.Type.Deadzone: 데드존 프로필
+profiles.Type.Deadzone.Detail: 새 데드존 프로필을 추가하여 사용자 지정하거나 편집을 눌러 삭제할 프로필을 여러 개 선택합니다.
+
+profiles.Type.Touchpad: 터치패드 프로필
+profiles.Type.Touchpad.Detail: 새 터치패드 프로필을 추가하여 사용자 지정하거나 편집을 눌러 삭제할 프로필을 여러 개 선택합니다.
+
+profiles.Type.Motion: 모션 프로필
+profiles.Type.Motion.Detail: 새 모션 프로필을 추가하여 사용자 정의하거나 편집을 눌러 삭제할 프로필을 여러 개 선택합니다.
+
+profiles.Type.AdaptiveTriggers: 적응형 트리거 프로필
+profiles.Type.AdaptiveTriggers.Detail: 새 적응형 트리거 프로필을 추가하여 사용자 지정하거나 편집을 눌러 삭제할 프로필을 여러 개 선택합니다.
+
+profiles.Type.HapticsRumble: 햅틱/럼블 프로필
+profiles.Type.HapticsRumble.Detail: 새 햅틱/럼블 프로필을 추가하여 사용자 지정하거나 편집을 눌러 삭제할 프로필을 여러 개 선택합니다.
+
+
+# ------------------------------------------------------------------------------------------------
+# Home Page
+# ----------------------------------------------------------------------------------------------R--
+
+homePage.Firmware.Info.Title: 하드웨어/펌웨어 정보
+
+homePage.Hardware.Info.Title: 하드웨어 정보
+homePage.Hardware.Info.SubTitle: 이 컨트롤러의 하드웨어 정보(수정 버전)입니다.
+
+homePage.Hardware.Variation.Title: 하드웨어 변형
+homePage.Hardware.Variation.SubTitle: 이 컨트롤러의 하드웨어 변형입니다.
+
+homePage.Hardware.Version.Title: 하드웨어 버전
+homePage.Hardware.Version.SubTitle: 이 컨트롤러의 하드웨어 버전입니다.
+
+homePage.Firmware.Version.Title: 펌웨어 버전
+homePage.Firmware.Version.SubTitle: 현재 펌웨어 버전입니다.
+
+homePage.Firmware.Type.Title: 펌웨어 유형
+homePage.Firmware.Type.SubTitle: 이 컨트롤러의 펌웨어 유형입니다.
+
+homePage.Firmware.BuildDate: 펌웨어 빌드 날짜
+homePage.Firmware.BuildDate.SubTitle: 펌웨어의 출시일!
+
+homePage.Firmware.MainVersion.Title: 기본 펌웨어 버전
+homePage.Firmware.MainVersion.SubTitle: 기본 펌웨어 버전입니다.
+
+homePage.MAC.Title: MAC 주소
+homePage.MAC.SubTitle: 고유한 MAC 주소 식별자입니다.
+
+homePage.HWInfo.Export.Title: 하드웨어/소프트웨어 정보 내보내기
+
+homePage.MoreDualSenseInfo.Title: DualSense 정보 더 보기
+homePage.MoreDualSenseInfo.SubTitle: DualSense 컨트롤러의 나머지 하드웨어/소프트웨어 정보입니다.
+
+homePage.ExperienceTrueImmersionWith: 진정한 몰입감을 경험하세요
+homePage.AdaptiveTriggers: 적응형 트리거
+homePage.HapticFeedback: 햅틱 피드백!
+homePage.ConnectionMode: 연결 모드
+homePage.ConnectionType.Detail: PC에 연결하는 데 사용되는 연결 유형입니다.
+homePage.BatteryPercent: 배터리
+homePage.BatteryPercent.Detail: 컨트롤러 배터리 퍼센트 입니다.
+homePage.PowerState: 전원 상태
+homePage.PowerState.ToolTip: 컨트롤러에서 보고한 배터리의 전원 상태입니다.
+homePage.PollingRate: Polling Rate
+homePage.PollingRate.ToolTip: 컨트롤러의 Polling Rate 속도 입니다.
+homePage.PollingRate.JustNo: DSX 내에서는 변경할 수 없습니다.
+homePage.Firmware.UpdateAvailable: 펌웨어 업데이트 사용 가능
+homePage.Firmware.UpdateAvailable.Detail: 펌웨어를 업데이트하여 DualSense 무선 컨트롤러와 DualSense™ Edge™ 무선 컨트롤러의 성능을 개선하세요.
+homePage.Firmware.CurrentVersion: "현재 펌웨어 버전:"
+homePage.Firmware.LatestVersion: "최신 펌웨어 버전:"
+homePage.Firmware.UpdateNow: 지금 업데이트
+
+homePage.ConstantDataCommunication.Title: 지속적인 데이터 통신
+homePage.ConstantDataCommunication.Detail: 활성화하면 DSX가 이 장치를 매우 자주 업데이트하고, 비활성화하면 DSX는 새로운 것이 있을 때만 이 장치를 업데이트합니다.
+homePage.ConstantDataCommunication.Note: 다른 BT 컨트롤러를 DSX/PC에 연결할 수 없는 경우 이 기능을 비활성화합니다.
+
+homePage.VirtualDevice.Title: 가상 장치
+homePage.VirtualDevice.Detail: 가상 장치는 컴퓨터가 물리적 컨트롤러 대신 가상의 장치를 인식합니다.
+
+homePage.VirtualDevice.Mode.Native.Title: 기본 모드
+homePage.VirtualDevice.Mode.Native.Configuration.Title: 기본 모드 구성
+homePage.VirtualDevice.Mode.Native.Configuration.Detail: 기본 모드를 선택하면 가상 장치가 생성되지 않으며, 기본적으로 지원되는 게임과의 호환성을 높이기 위해 데이터 보내기를 활성화할지 또는 비활성화할지 선택할 수 있습니다.
+
+homePage.VirtualDevice.Mode.Native.Configuration.SendData.Title: 장치로 데이터 보내기
+homePage.VirtualDevice.Mode.Native.Configuration.SendData.Detail: 활성화되면 DSX는 적응형 트리거, LED, 럼블, 햅틱 등과 같은 것을 제어합니다. 기본 게임 또는 기타 프로그램이 이 장치를 제어할 수 있도록 비활성화합니다.
+
+homePage.VirtualDevice.Mode.X360.Configuration.Title: Xbox 모드 구성
+homePage.VirtualDevice.Mode.X360.Configuration.Detail: Xbox 360 에뮬레이션이 활성화되면 아래의 Passthrough 옵션을 조정할 수 있습니다.
+homePage.VirtualDevice.Mode.X360.Configuration.SubType: Xbox 360 하위 유형
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Detail: 지원되는 게임이 인식할 수 있는 원하는 Xbox 360 하위 유형을 선택합니다.
+
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Gamepad: 게임패드
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.ArcadePad: 아케이드 패드
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.ArcadeStick: 아케이드 스틱
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.DancePad: 댄스 패드
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.DrumKit: 드럼 키트
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.FlightStick: 플라이트 스틱
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Guitar: 기타
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.GuitarAlternate: 기타 대체
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.GuitarBass: 기타베이스
+homePage.VirtualDevice.Mode.X360.Configuration.SubType.Type.Wheel: 휠
+
+homePage.VirtualDevice.Mode.X360.Configuration.RumblePassthrough.Title: 럼블 Passthrough
+homePage.VirtualDevice.Mode.X360.Configuration.RumblePassthrough.Detail: 활성화하면 가상 Xbox 360 컨트롤러로 전송된 진동이 이 장치로 전달됩니다.
+
+homePage.VirtualDevice.Mode.DS4.Configuration.RumblePassthrough.Title: 럼블 Passthrough
+homePage.VirtualDevice.Mode.DS4.Configuration.RumblePassthrough.Detail: 활성화하면 가상 DualShock 4 컨트롤러로 전송된 진동이 이 장치로 전달됩니다.
+
+homePage.VirtualDevice.Mode.DS4.Configuration.LEDPassthrough.Title: LED Passthrough
+homePage.VirtualDevice.Mode.DS4.Configuration.LEDPassthrough.Detail: 활성화하면 가상 DualShock 4 컨트롤러로 전송된 라이트 바 색상이 이 장치로 전달됩니다.
+
+homePage.VirtualDevice.Mode.DualSense.Configuration.RumblePassthrough.Title: 럼블 Passthrough
+homePage.VirtualDevice.Mode.DualSense.Configuration.RumblePassthrough.Detail: 활성화하면 가상 DualSense 컨트롤러로 전송된 진동이 이 기기로 전달됩니다.
+
+homePage.VirtualDevice.Mode.DualSense.Configuration.ATPassthrough.Title: 적응형 트리거 Passthrough
+homePage.VirtualDevice.Mode.DualSense.Configuration.ATPassthrough.Detail: 활성화하면 가상 DualSense 컨트롤러로 전송된 적응형 트리거가 이 기기로 전달됩니다.
+
+homePage.VirtualDevice.Mode.DualSense.Configuration.LEDPassthrough.Title: LED Passthrough
+homePage.VirtualDevice.Mode.DualSense.Configuration.LEDPassthrough.Detail: 활성화하면 가상 DualSense 컨트롤러로 전송된 라이트 바 색상이 이 기기로 전달됩니다.
+
+homePage.VirtualDevice.Mode.X360.Title: Xbox 360 에뮬레이션
+homePage.VirtualDevice.Mode.DS4.Title: DualShock 4 에뮬레이션
+homePage.VirtualDevice.Mode.DualSense.Title: DualSense 에뮬레이션
+homePage.VirtualDevice.Mode.DualSense.Detail: Wireless AT & More를 통한 향상
+homePage.VirtualDevice.Mode.Rev1: 버전 1
+homePage.VirtualDevice.Mode.Rev2: 버전 2
+
+homePage.VirtualDevice.Mode.DS4.Configuration.Title: DualShock 4 모드 구성
+homePage.VirtualDevice.Mode.DS4.Configuration.Detail: DualShock 4 에뮬레이션이 활성화되면 아래의 Passthrough 옵션을 조정할 수 있습니다.
+homePage.VirtualDevice.Mode.DS4.Configuration.SubType: DualShock 4 하위 유형
+homePage.VirtualDevice.Mode.DS4.Configuration.SubType.Detail: 지원되는 게임이 인식할 수 있는 원하는 DualShock 4 하위 유형을 선택합니다.
+
+homePage.VirtualDevice.DS4.IssuesUnderInvestigation: 조사 중인 DualShock 4 에뮬레이션 문제
+homePage.VirtualDevice.DS4.IssuesUnderInvestigation.Detail: 현재 DualShock 4 에뮬레이션과 관련된 문제를 조사하고 있으며, 이 모드를 사용하면 시스템이 예기치 않게 다시 시작될 수 있습니다. 자신의 책임하에 사용하십시오. 수정 작업을 하는 동안 꽉 잡아주세요!
+homePage.VirtualDevice.DSDLC.Explore: EXPLORE
+
+homePage.ControllerOptions: 컨트롤러 옵션
+
+
+# ------------------------------------------------------------------------------------------------
+# Profiles Page
+# ------------------------------------------------------------------------------------------------
+
+profilesPage.DeviceName.Title: 장치 이름
+profilesPage.DeviceName.SubTitle: 이 장치에 사용할 별칭 이름입니다.
+
+profilesPage.ProfilesDirectory.Title: 프로필 디렉토리
+profilesPage.ProfilesDirectory.SubTitle: 이 컨트롤러에 대한 프로필이 저장된 위치를 봅니다.
+
+profilesPage.ResetController.Title: 컨트롤러 프로필 시스템 재설정
+profilesPage.ResetController.SubTitle: 이 장치에 대한 모든 관련 프로필을 삭제합니다.file작업, LED, 적응형 트리거 등과 같은.
+profilesPage.ResetController.Popup.LineOne: 이 작업은 취소할 수 없습니다!
+profilesPage.ResetController.Popup.LineTwo: '이 장치에 대한 모든 관련 프로필(예: 작업, LED, 적응형 트리거 등) 삭제됩니다.'
+profilesPage.ResetController.Popup.LineThree: 계속하시겠습니까?
+
+profilesPage.ProfileList.SubTitle: 다양한 프로필 시스템에 대해 현재 활성화된 프로필입니다.
+
+profilesPage.Action: 작업 프로필
+profilesPage.AdaptiveTriggers: 적응형 트리거 프로필
+profilesPage.Deadzone: 데드존 프로필
+profilesPage.HapticsRumble: 햅틱/럼블 프로필
+profilesPage.LED: LED 프로필
+profilesPage.Motion: 모션 프로필
+profilesPage.Notification: 알림 프로필
+profilesPage.Touchpad: 터치패드 프로필
+
+
+# ------------------------------------------------------------------------------------------------
+# Controller Page
+# ------------------------------------------------------------------------------------------------
+ctPage.IdleShutoffInactiveDuringCharging: Idle Shut-Off 충전 중 비활성화
+ctPage.DurationSinceIdle: "유휴 이후 기간:"
+ctPage.InputFeedback.Title: 입력 피드백
+ctPage.InputFeedback.Description: 물리적(실제) 입력 또는 가상(에뮬레이션된) 입력을 봅니다.
+ctPage.Physical: 실제
+ctPage.Virtual: 가상
+ctPage.LeftFN: 왼쪽 FN
+ctPage.RightFN: 오른쪽 FN
+ctPage.Actions.Title: 액션
+ctPage.Actions.Description: 버튼 매핑, 키보드 매핑, 단축키, 매크로 등을 위한 동작 만들기...
+ctPage.KeyboardButtonDetector.Title: 키보드 단추 인식기
+ctPage.KeyboardButtonDetector.Description: DSX는 이 텍스트 상자에서 인식되는 모든 키보드 단추를 입력(시뮬레이션)할 수 있습니다.
+ctPage.KeyDetector.Placeholder: 내가 활동 중일 때 키보드의 키를 누릅니다.
+ctPage.KeyDetector.ToolTip: 화상 키보드 열기
+ctPage.KeyDetector.Detail: DSX는 이 텍스트 상자에 추가되는 모든 텍스트를 입력(시뮬레이션)할 수 있습니다.
+ctPage.KeyDetector.Input.Placeholder: 여기에 시뮬레이션할 항목을 입력합니다.
+ctPage.ListOfAddedKeyboardMappings: 추가된 키보드 매핑 목록
+ctPage.ListOfAddedKeyboardMappings.NoneAdded: 키보드 매핑이 추가되지 않음
+ctPage.ListOfAddedKeyboardMappings.Detail: 키보드 매핑 목록이 여기에 표시됩니다.
+ctPage.VirtualMouse.Detail: 아래에 추가된 Virtual Mouse 버튼을 호출하면 선택된 버튼(들)에 대해 마우스가 눌립니다.
+ctPage.MouseButtonDetector: 마우스 단추 인식기
+ctPage.MouseButtonDetector.Detail: DSX는 이 상자에서 인식하는 마우스 버튼 클릭을 시뮬레이션할 수 있습니다. 상자 위로 마우스를 가져간 다음 마우스의 버튼을 누릅니다.
+ctPage.MouseButtonDetector.Text: 내가 강조 표시될 때 마우스의 버튼을 누릅니다.
+ctPage.MouseButtons: 마우스 버튼
+ctPage.MouseButtons.Detail: DSX는 이 목록에서 추가된 모든 마우스 단추를 시뮬레이션할 수 있습니다.
+ctPage.LeftMouseButton: 마우스 왼쪽 버튼
+ctPage.RightMouseButton: 마우스 오른쪽 버튼
+ctPage.MiddleMouseButton: 가운데 마우스 버튼
+ctPage.ScrollWheelUp: 휠 위로 스크롤
+ctPage.ScrollWheelDown: 휠 아래로 스크롤
+ctPage.BackMouseButton: 뒤로 가기 마우스 버튼
+ctPage.ForwardMouseButton: 앞으로 마우스 버튼
+ctPage.ListOfAddedMouseMappings: 추가된 마우스 매핑 목록
+ctPage.ListOfAddedMouseMappings.NoneAdded: 추가된 마우스 매핑 목록
+ctPage.ListOfAddedMouseMappings.NoneAdded.Sub: 추가된 마우스 매핑 목록
+ctPage.Shortcuts.Title: 바로 가기
+ctPage.Shortcuts.Detail: 눌렀을 때 선택한 버튼에 대해 아래에 추가된 단축키를 트리거합니다.
+ctPage.WindowsActionPresets.Title: Windows 작업 사전 설정
+ctPage.AppSettings.Title: 앱 설정
+ctPage.ChangeEmulationType: 에뮬레이션 유형 변경
+ctPage.ToggleTouchpadToMouse: 터치패드를 마우스로 전환(Toggle Touchpad To Mouse)
+ctPage.GeneralSettings.Title: 일반 설정
+
+ctPage.GeneralSettings.Description: 자동 종료 등과 같은 일반 컨트롤러 설정.
+ctPage.Deadzones.Title: 데드존
+ctPage.Deadzones.Description: 트리거 데드존 입력 범위와 조이스틱 데드존을 조정하여 정확도를 높입니다.
+ctPage.Touchpad.Title: 터치패드
+ctPage.Touchpad.Description: 터치패드의 전체 범위를 활용하여 손가락 터치로 다양한 입력을 생성할 수 있습니다.
+ctPage.Motion.Title: 움직임
+ctPage.Motion.Description: 터치패드의 전체 범위를 활용하여 손가락 터치로 다양한 입력을 생성할 수 있습니다.
+ctPage.RawFeedback.Title: 원시 피드백
+ctPage.RawFeedback.Description: 트리거, 조이스틱, 터치패드 및 모션과 같은 게임패드에서 직접 들어오는 다양한 정보를 볼 수 있습니다.
+ctPage.GamepadSkin.Title: 게임패드 스킨
+ctPage.GamepadSkin.Description: 왼쪽에서 피드백을 위해 표시할 게임패드 스킨을 선택합니다.
+ctPage.NoSelectedButtons.Title: 선택한 버튼 없음
+ctPage.NoSelectedButtons.Description: 시작하려면 왼쪽의 버튼을 선택하십시오.
+ctPage.RawPressureValue: 원시 압력 값
+
+ctPage.InsertGamepadButton: 게임패드 삽입 버튼
+ctPage.ButtonMappingsList: 추가된 버튼 매핑 목록
+ctPage.NoButtonMappingAdded: 버튼 매핑이 추가되지 않았습니다.
+ctPage.NoButtonMappingAdded.Sub: 버튼 매핑이 추가되지 않았습니다.
+
+ctPage.TriggerPosition.Title: 트리거 위치
+ctPage.TriggerPosition.Sub: L2에 대해 버튼을 시뮬레이션해야 하는 경우 구성 | 재질 보기 R2 (1-255)
+
+ctPage.ActionsProfileSwitchTo: 작업 프로필 다음으로 전환
+ctPage.AdaptiveTriggerProfileSwitchTo: 적응형 트리거 프로필 로 전환
+ctPage.ControllerProfileSwitchTo: 컨트롤러 프로필 다음으로 전환
+ctPage.DeadzoneProfileSwitchTo: 데드존 프로필 다음으로 전환
+ctPage.HapticsRumbleProfileSwitchTo: 햅틱/럼블 프로필 로 전환
+ctPage.LEDProfileSwitchTo: LED 프로필 로 전환
+ctPage.MotionProfileSwitchTo: 모션 프로필 다음으로 전환
+ctPage.NotificationsProfileSwitchTo: 알림 프로필 다음으로 전환
+ctPage.TouchpadProfileSwitchTo: 터치패드 프로필 스위치
+ctPage.ActivateNativeMode: 기본 모드 활성화(가상 장치 없음)
+ctPage.ActivateXbox360VirtualDevice: Xbox 360 가상 장치 정품 인증
+ctPage.ActivateDualShock4VirtualDevice: DualShock 4 가상 장치 활성화
+ctPage.ActivateDualSenseVirtualDevice: DualSense 가상 기기 활성화하기
+ctPage.TurnControllerOff: 컨트롤러 끄기(Bluetooth 연결 전용)
+ctPage.RestartController: 컨트롤러 다시 시작(USB 연결 전용)(DualSense, DualSense Edge 및 PSVR Sense만 해당)
+ctPage.MediaAndSystemKeys: 미디어 및 시스템 키
+ctPage.ToggleXboxGameBar: Xbox Game Bar 전환
+ctPage.TakeSystemScreenshot: 시스템 스크린 샷 찍기
+ctPage.IncreaseBrightnessLevel: 밝기 수준 높이기
+ctPage.DecreaseBrightnessLevel: 밝기 수준 낮추기
+ctPage.ToggleMicrophoneMute: 마이크 음소거 토글
+ctPage.PreviousTrack: 이전 트랙
+ctPage.PlayPause: 재생/일시정지
+ctPage.NextTrack: 다음 트랙
+ctPage.ToggleVolumeMute: 볼륨 음소거 토글
+ctPage.IncreaseVolumeLevel: 볼륨 레벨 높이기
+ctPage.DecreaseVolumeLevel: 볼륨 레벨 낮추기
+ctPage.DeviceStatus: 장치 상태
+ctPage.ActiveActionProfile: 활성 작업 프로필
+ctPage.ActiveAdaptiveTriggerProfile: 액티브 적응형 트리거 프로필
+ctPage.ActiveDeadzoneProfile: 활성 데드존 프로필
+ctPage.ActiveHapticsRumbleProfile: 액티브 햅틱/럼블 프로필
+ctPage.ActiveLEDProfile: 액티브 LED 프로필
+ctPage.ActiveMotionProfile: 액티브 모션 프로필
+ctPage.ActiveNotificationProfile: 활성 알림 프로필
+ctPage.ActiveTouchpadProfile: 액티브 터치패드 프로필
+ctPage.LaunchExecutable: 실행 파일 시작
+ctPage.FileDoesNotExist: 파일이 존재하지 않습니다.
+ctPage.EnterPathToExecutable: 실행 파일의 경로를 입력합니다(.bat .exe 등).
+ctPage.EnterLaunchArgsHere: 여기에 Launch Args를 입력하십시오.
+ctPage.ListOfAddedShortcuts: 추가된 단축키 목록
+ctPage.NoShortcutsAdded: 단축키가 추가되지 않음
+ctPage.ShortcutsListPlaceholder: 단축키 목록이 여기에 표시됩니다.
+ctPage.VirtualDeviceOption: Virtual Device Option(가상 장치 옵션)
+ctPage.WindowsActionPreset: Windows 작업 사전 설정
+ctPage.GoBack: 돌아가기
+ctPage.Macros: 매크로
+ctPage.MacrosDescription: 아래에 추가된 버튼을 눌렀을 때 선택한 버튼에 대해 기록된 방식으로 시뮬레이션합니다.
+ctPage.Notifications: 알림
+ctPage.MacroSettings: 매크로 설정
+ctPage.PlayOnce: 한 번 플레이
+ctPage.ActionWillPlayOneTime: 액션은 한 번 재생됩니다.
+ctPage.KeyDown: 키 누름
+ctPage.MacroEditing: 매크로 편집
+ctPage.InsertGamepadButtonToList: 목록에 게임패드 버튼 삽입
+ctPage.ListOfAddedMacros: 추가된 매크로 목록
+ctPage.NoMacrosAdded: 매크로가 추가되지 않았습니다.
+ctPage.MacrosListPlaceholder: 매크로 목록이 여기에 표시됩니다.
+ctPage.Turbo: 터보
+ctPage.TurboDescription: 눌렀을 때 선택한 버튼에 대해 버튼을 빠르게 누르고 반복하는 것을 시뮬레이션합니다.
+ctPage.WaitLengthDescription: 다시 트리거하기 전에 대기할 길이입니다.
+ctPage.Duration: 기간
+ctPage.DurationDescription: 누른 상태의 단추 지속 시간입니다.
+ctPage.Action: 액션
+ctPage.ActionDescription: 이 옵션을 ON으로 전환하면 아래의 활성화된 유형이 이 작업 프로필에 대해 선택한 모든 버튼에 적용됩니다. OFF로 전환하면 왼쪽에서 선택한 버튼과 아래를 활성화해도 아무 일도 일어나지 않습니다.
+ctPage.ActivationMethod: 활성화 방법
+ctPage.ActivationMethodDescription: 이 작업을 즉시 활성화할지 또는 지연 후에 활성화할지 선택합니다.
+ctPage.ActionInstantActivation: 작업이 즉시 활성화됩니다.
+ctPage.AfterDelay: 지연 후
+ctPage.AfterDelayDescription: 작업은 일정 지연 후에 활성화됩니다.
+ctPage.MouseMapping.Title: 마우스 매핑
+ctPage.MouseMapping.Description: 추가된 가상 마우스 버튼을 눌렀을 때 선택된 버튼(들)에 대해 마우스가 누를 때 호출합니다.
+ctPage.Shortcuts.Description: 눌렀을 때 선택한 버튼에 대해 추가된 단축키를 트리거합니다.
+
+ctPage.ButtonMapping.Title: 버튼 매핑
+ctPage.ButtonMapping.Description: 눌렀을 때 선택한 버튼(들)에 대해 아래에 추가된 게임패드 버튼을 시뮬레이션합니다.
+ctPage.KeyboardMapping.Title: 키보드 매핑
+ctPage.KeyboardMapping.Description: 눌렀을 때 선택된 버튼(들)에 대해 추가된 가상 키 또는 아래에 시뮬레이션된 텍스트를 호출합니다.
+ctPage.ListOfActiveActions: 활성 작업 목록
+ctPage.ActiveButtonMappingsDescription: 활성 버튼 매핑 목록입니다.
+
+ctPage.KeyboardMappingList: 키보드 매핑
+ctPage.ActiveKeyboardMappingsDescription: 활성 키보드 매핑 목록입니다.
+ctPage.ShortcutsList: 바로 가기
+ctPage.ActiveShortcutsDescription: 활성 단축키 목록입니다.
+ctPage.ActiveTurbosDescription: 활성 터보 목록.
+
+ctPage.Delay: 지연
+ctPage.DelayDescription: 다시 트리거하기 전에 대기할 길이입니다.
+ctPage.NoActiveActions: 활성 작업 없음
+ctPage.YourListOfActiveActionsWillShowUpHere: 활성 작업 목록이 여기에 표시됩니다.
+ctPage.L2TriggerInputRange: L2 트리거 입력 범위
+ctPage.AdjustSlidersToUpdateTriggerDeadzone: 아래 슬라이더를 조정하여 에뮬레이트된 컨트롤러로 전송된 트리거 데드존을 업데이트합니다.
+ctPage.L2TriggerDeadzone: L2 트리거 데드존
+ctPage.R2TriggerDeadzone.Title: R2 트리거 데드존
+ctPage.TriggerDeadzone.Description: 데드존의 범위를 설정합니다.
+ctPage.LeftTrigger: 왼쪽 트리거
+ctPage.RightTrigger: 오른쪽 트리거
+ctPage.PressureValue: 압력 값
+ctPage.PressureValueRange: 0 - 255
+ctPage.NoneMs: N/A ms
+ctPage.NotAny: 해당 없음
+ctPage.RawJoystickData: 원시 조이스틱 데이터
+ctPage.RawJoystickDataDescription: 왼쪽 및 오른쪽 조이스틱에 대한 원시 정보
+ctPage.LeftStickXRaw: 왼쪽 스틱 X Raw
+ctPage.LeftStickYRaw: 왼쪽 스틱 Y Raw
+
+ctPage.LeftStickXConvertedXbox: 왼쪽 스틱 X 변환됨(xbox)
+ctPage.LeftStickYConvertedXbox: 왼쪽 스틱 Y 변환됨(xbox)
+ctPage.LeftJoystick: 왼쪽 조이스틱
+ctPage.RightJoystick: 오른쪽 조이스틱
+ctPage.ControllerSkins.Title: 컨트롤러 스킨
+ctPage.To: To
+ctPage.From: From
+ctPage.PhysicalAndVirtualDeviceOptions.Title: 물리적 및 가상 장치 옵션
+ctPage.RawTouchpadData.Title: 원시 터치패드 데이터
+ctPage.RawTouchpadData.Description: 손가락 1 및 2 X/Y 위치, 스와이프 제스처와 같은 다양한 터치패드 정보.
+ctPage.TouchpadShowGrid: 터치패드 그리드 표시(Show Touchpad Grid)
+ctPage.CenterDarkSquareSafeZone: 중앙 다크 스퀘어는 안전 영역입니다.
+ctPage.Finger1Data: 손가락 1 데이터
+ctPage.Finger1TouchCounter: "손가락 1 터치 카운터:"
+ctPage.Finger1XPosition: "손가락 1 x 위치:"
+ctPage.Finger1YPosition: "손가락 1 Y 위치:"
+ctPage.Finger2Data: 손가락 2 데이터
+ctPage.Finger2TouchCounter: "손가락 2 터치 카운터:"
+ctPage.Finger2XPosition: "손가락 2 x 위치:"
+ctPage.Finger2YPosition: "손가락 2 Y 위치:"
+ctPage.TouchPoints: 터치 포인트
+ctPage.Finger1TouchPoints: 손가락 1 터치 포인트
+ctPage.TouchPointsDescription: '손가락 1: 터치패드의 다양한 터치 포인트'
+ctPage.TouchPointsTopLeftTouch: 왼쪽 상단 터치
+ctPage.TouchPointsTopCenterTouch: 상단 중앙 터치
+ctPage.TouchPointsTopRightTouch: 오른쪽 상단 터치
+ctPage.TouchPointsCenterLeftTouch: 가운데 왼쪽 터치
+ctPage.TouchPointsCenterTouch: 센터 터치
+ctPage.TouchPointsCenterRightTouch: 가운데 오른쪽 터치
+ctPage.TouchPointsBottomLeftTouch: 왼쪽 하단 터치
+ctPage.TouchPointsBottomCenterTouch: 하단 중앙 터치
+ctPage.TouchPointsBottomRightTouch: 오른쪽 하단 터치
+ctPage.Finger1SwipeGesturesDescription: '손가락 1: 터치패드에서 다양한 스와이프 제스처'
+ctPage.LeftSideSwipe: 왼쪽 스와이프
+ctPage.EntireTouchpad: 전체 터치패드
+ctPage.RightSideSwipe: 오른쪽 스와이프
+ctPage.SwipeRight: 오른쪽으로 스와이프
+ctPage.SwipeLeft: 왼쪽으로 스와이프
+ctPage.LeftSideSwipeDetection: "스와이프 감지를 위한 왼쪽 픽셀 거리:"
+ctPage.EntireTouchpadSwipeDetection: "스와이프 감지를 위한 전체 터치패드 픽셀 거리:"
+ctPage.RightSideSwipeDetection: "스와이프 감지를 위한 오른쪽 픽셀 거리:"
+ctPage.Touchpad.SwipeGestures.LeftSideUp: 위로 스와이프
+ctPage.Touchpad.SwipeGestures.EntireTouchpad.Up: 위로 스와이프
+ctPage.Touchpad.SwipeGestures.RightSideUp: 위로 스와이프
+ctPage.Touchpad.SwipeGestures.LeftSideDown: 아래로 스와이프
+ctPage.Touchpad.SwipeGestures.EntireTouchpad.Down: 아래로 스와이프
+ctPage.Touchpad.SwipeGestures.RightSideDown: 아래로 스와이프
+
+ctPage.TouchpadButtonLatency: 터치패드 버튼 지연 시간
+ctPage.TouchpadClick: 터치패드 클릭
+ctPage.LeftSide: 왼쪽
+ctPage.RightSide: 오른쪽
+ctPage.TopLeftBox: 왼쪽 상단 상자
+ctPage.TopRightBox: 오른쪽 상단 상자
+ctPage.BottomLeftBox: 왼쪽 하단 상자
+ctPage.BottomRightBox: 오른쪽 하단 상자
+
+ctPage.LeftJoystickDeadzoneUnderConstruction: 왼쪽 조이스틱 데드존이 개발 중입니다.
+ctPage.RightJoystickDeadzoneUnderConstruction: 오른쪽 조이스틱 데드존이 개발 중입니다.
+ctPage.LeftJoystickDeadzone: 왼쪽 조이스틱 데드존
+ctPage.ConfigureLeftJoystickDeadzone: 왼쪽 조이스틱 데드존을 구성합니다.
+ctPage.RightJoystickDeadzone: 오른쪽 조이스틱 데드존
+ctPage.ConfigureRightJoystickDeadzone: 오른쪽 조이스틱 데드존을 구성합니다.
+ctPage.TouchpadUnderConstruction: 터치패드는 개발 중입니다.
+ctPage.MacrosUnderConstruction: 매크로는 개발 중입니다.
+ctPage.MotionUnderConstruction: 모션이 개발 중입니다.
+ctPage.RawTriggerData: 원시 트리거 데이터
+ctPage.RawTriggerDataDescription: 물리적 컨트롤러에서 오는 L2 및 R2 데이터에 대한 원시 정보입니다.
+ctPage.GeneralSettings.AutoIdleShutOff: 자동 유휴 종료
+ctPage.GeneralSettings.AutoIdleShutOffDescription: 활성화되면 DSX는 컨트롤러가 지정된 시간 동안 유휴 상태임을 감지하면 Bluetooth를 통해 컨트롤러의 전원을 자동으로 끕니다.
+ctPage.GeneralSettings.DisableAutoIdleShutOffDuringCharging: 충전 중 자동 유휴 차단 비활성화
+ctPage.GeneralSettings.DisableAutoIdleShutOffDuringChargingDescription: 이를 통해 장치가 충전되는 동안 자동 유휴 종료 기능을 방지하여 유휴 시간 초과로 인한 중단 없이 중단 없는 충전 세션을 보장할 수 있습니다.
+ctPage.InactivityDuration: 비활성 기간
+ctPage.InactivityDurationDescription: 이 장치의 자동 종료를 트리거하는 비활성 기간입니다.
+ctPage.FiveMinutes: 5분
+ctPage.TenMinutes: 10분
+ctPage.FifteenMinutes: 15분
+ctPage.ThirtyMinutes: 30분
+ctPage.SixtyMinutes: 60분
+ctPage.OneHundredTwentyMinutes: 120분
+ctPage.CustomMinutes: 사용자 지정(분)
+ctPage.Never: 결코
+ctPage.PressLatency: 보도 대기 시간
+
+ctPage.NoControllersDetected: 감지된 컨트롤러 없음
+ctPage.ConnectController: 컨트롤러를 연결하거나 Bluetooth를 통해 연결하여 Actions, Deadzone 등을 구성하십시오.
+
+ctPage.RealTimeUpdate: 실시간 업데이트
+ctPage.UsesMoreGPU: (더 많은 GPU 사용)
+ctPage.Finger1: 손가락 1
+ctPage.Finger2: 손가락 2
+ctPage.DirectionalButtons: 방향성 버튼
+ctPage.CenterButtons: 중앙 버튼
+ctPage.ActionButtons: 작업 버튼
+ctPage.BackLeftButtonTrigger: 뒤로 왼쪽 버튼 및 트리거
+ctPage.BackRightButtonTrigger: 뒤로 오른쪽 버튼 및 트리거
+ctPage.ActiveGridBasedOnFinger1Position: 손가락 1 X/Y 위치를 기준으로 활성화되는 그리드
+
+ctPage.Actions: 작업
+ctPage.Deadzones: 데드존
+ctPage.Touchpad: 터치패드
+ctPage.Motion: 모션
+ctPage.RawFeedback: 원시 피드백
+ctPage.ControllerSkins: 컨트롤러 스킨
+ctPage.GeneralSettings: 일반 설정
+
+ctPage.ButtonMapping: 버튼 매핑
+ctPage.KeyboardMapping: 키보드 매핑
+ctPage.MouseMapping: 마우스 매핑
+ctPage.Shortcuts: 바로 가기
+
+ctPage.L2Trigger: L2 트리거
+ctPage.R2Trigger: R2 트리거
+ctPage.R2Position: R2 위치
+ctPage.ScrollDistance: 스크롤 거리(포인트)
+ctPage.Source: Source
+ctPage.Activation: 활성화
+ctPage.DelayMilliseconds: 지연(ms)
+ctPage.Repeats: 반복
+ctPage.PlayOnKey: 키에서 재생
+ctPage.InsertDelayToList: 목록에 지연(ms) 삽입
+ctPage.StartRecording: 기록 시작
+ctPage.Milliseconds: 밀리초
+ctPage.Seconds: 초
+
+ctPage.RawInfoJoystick: 왼쪽 및 오른쪽 조이스틱에 대한 원시 정보
+ctPage.SwipeGestures: 스와이프 제스처
+ctPage.GridPosition: 그리드 위치
+ctPage.TouchpadInfo: 손가락 1 및 2 X/Y 위치, 스와이프 제스처와 같은 다양한 터치패드 정보
+ctPage.GreenScreenEffect: 그린 스크린 효과(스트리머용)
+
+ctPage.GeneralSettings.InvertLeftX: 왼쪽 X 반전
+ctPage.GeneralSettings.InvertLeftX.Description: 활성화되면 DSX는 왼쪽 조이스틱의 X축을 반전시켜 왼쪽으로 가면 오른쪽으로 가고, 그 반대의 경우도 마찬가지입니다.
+ctPage.GeneralSettings.InvertLeftY: 왼쪽 Y 반전
+ctPage.GeneralSettings.InvertLeftY.Description: 활성화되면 DSX는 왼쪽 조이스틱의 Y축을 반전시켜 위로 올라가면 아래로 내려가는 것처럼 작동하고 그 반대의 경우도 마찬가지입니다.
+ctPage.GeneralSettings.InvertRightX: 오른쪽 X 반전
+ctPage.GeneralSettings.InvertRightX.Description: 활성화되면 DSX는 오른쪽 조이스틱의 X축을 반전시켜 왼쪽으로 가면 오른쪽으로 가는 것처럼 작동하고 그 반대의 경우도 마찬가지입니다.
+ctPage.GeneralSettings.InvertRightY: 오른쪽 Y 반전
+ctPage.GeneralSettings.InvertRightY.Description: 활성화되면 DSX는 오른쪽 조이스틱의 Y축을 반전시켜 올라가면 내려가는 것처럼 작동하고 그 반대의 경우도 마찬가지입니다.
+
+
+btn.DpadUp: D-PAD UP
+btn.DpadDown: D-PAD DOWN
+btn.DpadLeft: D-PAD LEFT
+btn.DpadRight: D-PAD RIGHT
+btn.Triangle: TRIANGLE
+btn.Square: SQUARE
+btn.Circle: CIRCLE
+btn.Cross: CROSS
+btn.Share: SHARE
+btn.Options: OPTIONS
+btn.Mute: MUTE
+btn.PS: PS
+btn.Touchpad: TOUCHPAD
+btn.L1: L1
+btn.L2: L2
+btn.L2Position: L2 Position
+btn.L3: L3
+btn.R1: R1
+btn.R2: R2
+btn.R3: R3
+
+
+# ------------------------------------------------------------------------------------------------
+# Adaptive Triggers Page
+# ------------------------------------------------------------------------------------------------
+
+atPage.RightTrigger: 오른쪽 트리거
+
+atPage.PassthroughWarning.Title: "경고: 적응형 트리거 Passthrough 사용"
+atPage.PassthroughWarning.Sub: 적응형 트리거 Passthrough가 활성화되면 적응형 트리거가 비활성화되어 게임에서 동적 제어를 사용할 수 있습니다. 이 기능은 아래에 설정된 수동 구성을 재정의하여 게임이 적응형 트리거 동작을 지시할 수 있도록 합니다.
+atPage.DisableATPassthrough: 적응형 트리거 Passthrough 비활성화
+atPage.LeftTrigger: 왼쪽 트리거
+atPage.OfficialATModes: 공식 적응형 트리거 모드
+
+atPage.ATEffectOff.Detail: 적응형 트리거 효과를 끄고 트리거를 정상으로 되돌립니다.
+
+atPage.Sliders.StartPosition: 시작 위치
+atPage.Sliders.EndPosition: 끝 위치
+atPage.Sliders.Amplitude: 진폭
+atPage.Sliders.AmplitudeA: 진폭 A
+atPage.Sliders.AmplitudeB: 진폭 B
+atPage.Sliders.ResistanceStrength: 저항 강도
+atPage.Sliders.StartResistanceStrength: 시작 저항 강도
+atPage.Sliders.EndResistanceStrength: 끝 저항 힘
+atPage.Sliders.SnapForce: 스냅 포스
+atPage.Sliders.FirstFoot: 첫 번째 발
+atPage.Sliders.SecondFoot: 두 번째 발
+
+atPage.Sliders.Region1Resistance: 영역 1 저항 강도
+atPage.Sliders.Region2Resistance: 지역 2 저항 강도
+atPage.Sliders.Region3Resistance: 영역 3 저항 강도
+atPage.Sliders.Region4Resistance: 지역 4 저항 강도
+atPage.Sliders.Region5Resistance: 지역 5 저항 강도
+atPage.Sliders.Region6Resistance: 지역 6 저항 강도
+atPage.Sliders.Region7Resistance: 지역 7 저항 강도
+atPage.Sliders.Region8Resistance: 지역 8 저항 강도
+atPage.Sliders.Region9Resistance: 지역 9 저항 강도
+atPage.Sliders.Region10Resistance: 지역 10 저항 강도
+
+atPage.Sliders.Region1Amplitude: 영역 1 진폭
+atPage.Sliders.Region2Amplitude: 영역 2 진폭
+atPage.Sliders.Region3Amplitude: 영역 3 진폭
+atPage.Sliders.Region4Amplitude: 영역 4 진폭
+atPage.Sliders.Region5Amplitude: 지역 5 진폭
+atPage.Sliders.Region6Amplitude: 영역 6 진폭
+atPage.Sliders.Region7Amplitude: 지역 7 진폭
+atPage.Sliders.Region8Amplitude: 영역 8 진폭
+atPage.Sliders.Region9Amplitude: 지역 9 진폭
+atPage.Sliders.Region10Amplitude: 지역 10 진폭
+
+
+atPage.Mode.Feedback.Title: 피드백
+atPage.Mode.Feedback.SubTitle: 트리거는 시작 위치를 넘어서는 움직임에 저항합니다.
+
+atPage.Mode.Weapon.Title: 무기
+atPage.Mode.Weapon.SubTitle: 트리거는 방아쇠 느낌으로 저항합니다.
+
+atPage.Mode.Vibration.Title: 진동
+atPage.Mode.Vibration.SubTitle: 트리거는 시작 위치를 넘어 입력 진폭 및 주파수로 진동합니다.
+
+atPage.Mode.Vibration.DynamicRumbleSync.Title: 다이나믹 럼블 싱크
+atPage.Mode.Vibration.DynamicRumbleSync.Left.SubTitle: 가상 장치 왼쪽 럼블 모터와의 동적 동기화를 활성화하여 가상 장치의 럼블 강도에 따라 진동 주파수를 조정합니다. 위의 슬라이더를 사용하여 주파수를 사용자 지정하고 원하는 최대 진동 주파수를 설정합니다.
+atPage.Mode.Vibration.DynamicRumbleSync.Right.SubTitle: 가상 장치 오른쪽 럼블 모터와의 동적 동기화를 활성화하여 가상 장치의 럼블 강도에 따라 진동 주파수를 조정합니다. 위의 슬라이더를 사용하여 주파수를 사용자 지정하고 원하는 최대 진동 주파수를 설정합니다.
+
+atPage.Mode.SlopeFeedback.Title: 슬로프 피드백
+atPage.Mode.SlopeFeedback.SubTitle: 방아쇠는 선형 강도 범위에서의 움직임에 저항합니다.
+
+atPage.Mode.MultiplePositionFeedback.Title: 다중 위치 피드백
+atPage.Mode.MultiplePositionFeedback.SubTitle: 방아쇠는 10개 영역에서 다양한 강도로 움직임에 저항합니다.
+
+atPage.Mode.MultiplePositionVibration.Title: 다중 위치 진동
+atPage.Mode.MultiplePositionVibration.SubTitle: 트리거는 다양한 진폭과 10개 영역의 한 주파수에서 움직임을 진동시킵니다.
+
+atPage.Mode.GameCube.Title: 게임큐브
+atPage.Mode.GameCube.SubTitle: 이 효과는 GameCube 컨트롤러 후면 버튼 누름과 유사합니다.
+
+atPage.Mode.Bow.Title: 활
+atPage.Mode.Bow.SubTitle: 이펙트는 위의 무기 이펙트와 비슷하지만, 트리거를 리셋하려는 스냅백 포스가 있습니다.
+
+atPage.Mode.Galloping.Title: 급속도
+atPage.Mode.Galloping.SubTitle: 트리거는 질주와 유사한 리드미컬한 패턴으로 진동합니다. 이 효과는 저주파 값에서만 식별할 수 있습니다.
+
+atPage.Mode.Machine.Title: 기계
+atPage.Mode.Machine.SubTitle: 이 효과는 위의 진동 효과와 비슷하지만 두 진폭 사이에서 진동합니다.
+
+atPage.Mode.MotorWarning: "경고 : 방아쇠 모터에 잠재적인 해를 끼칠 수 있습니다."
+atPage.UnofficialATModes: 비공식 적응형 트리거 모드
+
+atPage.Legacyv2Modes: DSX v2 레거시 적응형 트리거 모드
+atPage.Legacyv2Modes.CustomTriggerValues.Title: 사용자 지정 트리거 값(실험적)
+atPage.Legacyv2Modes.CustomTriggerValues.SubTitle: 실험적 트리거 효과는 무작위 효과를 갖는 모드와 값을 기반으로 합니다.
+atPage.Legacyv2Modes.CustomTriggerValues.Mode: 사용자 지정 트리거 값 모드
+
+atPage.Legacy.Slider.Rigid: 딱딱한
+atPage.Legacy.Slider.RigidA: 리지드 A
+atPage.Legacy.Slider.RigidB: 리지드 B
+atPage.Legacy.Slider.RigidAB: 리지드 AB
+
+atPage.Legacy.Slider.Pulse: 맥박
+atPage.Legacy.Slider.PulseA: 펄스 A
+atPage.Legacy.Slider.PulseB: 펄스 B
+atPage.Legacy.Slider.PulseAB: 펄스 AB
+
+atPage.Legacy.Slider.VibrateResistance: 진동 저항
+atPage.Legacy.Slider.VibrateResistanceA: 진동 저항 A
+atPage.Legacy.Slider.VibrateResistanceB: 진동 저항 B
+atPage.Legacy.Slider.VibrateResistanceAB: 진동 저항 AB
+
+atPage.Legacy.Slider.VibratePulse: 진동 펄스
+atPage.Legacy.Slider.VibratePulseA: 진동 펄스 A
+atPage.Legacy.Slider.VibratePulseB: 진동 펄스 B
+atPage.Legacy.Slider.VibratePulseAB: 진동 펄스 AB
+
+atPage.Legacy.Slider.Force1: 힘 1
+atPage.Legacy.Slider.Force2: 힘 2
+atPage.Legacy.Slider.Force3: 힘 3
+atPage.Legacy.Slider.Force4: 힘 4
+atPage.Legacy.Slider.Force5: 힘 5
+atPage.Legacy.Slider.Force6: 힘 6
+atPage.Legacy.Slider.Force7: 힘 7
+
+atPage.Legacy.Mode.Choppy.Title: 고르지
+atPage.Legacy.Mode.Choppy.SubTitle: 이 효과는 피드백 모드와 유사하며 누를 때마다 강도가 달라집니다.
+
+atPage.Legacy.Mode.VerySoft.Title: 매우 부드러움
+atPage.Legacy.Mode.VerySoft.SubTitle: 이 효과는 매우 부드러운 강도의 무기 모드와 유사합니다.
+
+atPage.Legacy.Mode.Soft.Title: 부드러운
+atPage.Legacy.Mode.Soft.SubTitle: 이 효과는 무기 모드와 비슷하며 부드러운 강도를 가지고 있습니다.
+
+atPage.Legacy.Mode.Medium.Title: 보통
+atPage.Legacy.Mode.Medium.SubTitle: 이 효과는 중간 강도의 무기 모드와 비슷합니다.
+
+atPage.Legacy.Mode.Hard.Title: 힘들다
+atPage.Legacy.Mode.Hard.SubTitle: 이 효과는 강렬한 강도의 무기 모드와 비슷합니다.
+
+atPage.Legacy.Mode.VeryHard.Title: 매우 어려움
+atPage.Legacy.Mode.VeryHard.SubTitle: 이 효과는 매우 강렬한 강도의 무기 모드와 유사합니다.
+
+atPage.Legacy.Mode.Hardest.Title: 어려운
+atPage.Legacy.Mode.Hardest.SubTitle: 이 효과는 가장 강도 높은 무기 모드와 비슷합니다.
+
+atPage.Legacy.Mode.Rigid.Title: 딱딱한
+atPage.Legacy.Mode.Rigid.SubTitle: 이 효과는 매우 강렬한 강도의 무기 모드와 유사합니다.
+
+atPage.Legacy.Mode.VibrateTriggerPulse.Title: 진동 트리거 펄스
+atPage.Legacy.Mode.VibrateTriggerPulse.SubTitle: 이 효과는 주파수가 자동으로 변경되는 진동 모드와 유사합니다.
+
+# ------------------------------------------------------------------------------------------------
+# LED Page
+# ------------------------------------------------------------------------------------------------
+
+ledPage.RGB: RGB
+ledPage.LEDProfiles: LED 프로필
+ledPage.AddEditLEDProfiles: 새 LED 프로필을 추가하여 사용자 지정하거나 편집을 눌러 삭제할 프로필을 다중 선택합니다.
+ledPage.SearchControllerProfiles: 검색 컨트롤러 프로필
+ledPage.WarningLEDPassthroughEnabled: "경고: LED Passthrough 활성화"
+ledPage.LEDPassthroughDescription: LED Passthrough가 활성화되면 수동 LED 설정이 비활성화되어 게임에서 LED를 동적으로 제어할 수 있습니다. 이 기능은 아래에 설정된 모든 수동 구성을 재정의하여 게임이 LED 동작을 지시할 수 있도록 합니다.
+ledPage.DisableLEDPassthrough: LED Passthrough 비활성화
+ledPage.LightBarBrightness: 라이트 바 밝기
+ledPage.LightBarBrightnessDescription: 컨트롤러의 라이트 바가 얼마나 밝아야 하는지.
+ledPage.BatteryLowFlashing: 배터리 부족 깜박임
+ledPage.BatteryLowFlashingDescription: 활성화하면 선택한 라이트 바 모드에 관계없이 컨트롤러의 배터리가 부족할 때 적용됩니다.
+ledPage.BatteryLowFlashingPercentage: 배터리 낮음 깜박임 백분율tage
+ledPage.BatteryLowFlashingPercentageDescription: 활성화하면 컨트롤러의 배터리 비율이 설정량 미만이면 아래에 구성된 색상이 깜박입니다.
+ledPage.IgnoreFlashingWhileCharging: 충전 중 깜박임 무시
+ledPage.IgnoreFlashingWhileChargingDescription: 활성화하면 컨트롤러가 충전 중이거나 완전히 충전된 경우 더 이상 깜박이지 않고 현재 선택된 라이트 바 모드로 다시 시작됩니다.
+ledPage.LightBarFlash: 라이트 바 플래시
+ledPage.LightBarFlashDescription: 활성화하면 DualShock™️ 4, DualSense™️ 또는 DualSense Edge™️ 무선 컨트롤러의 라이트 바가 깜박입니다.
+ledPage.PlayerLEDFlash: 플레이어 LED 플래시
+ledPage.PlayerLEDFlashDescription: 활성화하면 DualSense 또는 DualSense™️ Edge™️ 무선 컨트롤러의 플레이어 LED가 깜박입니다.
+ledPage.MuteButtonLEDFlash: 음소거 버튼 LED 플래시
+ledPage.MuteButtonLEDFlashDescription: 활성화되면 DualSense 또는 DualSense™️ Edge™️ 무선 컨트롤러의 음소거 버튼 LED가 깜박입니다.
+ledPage.BatteryLowFlashingColor: 배터리 낮음 깜박임 색상
+ledPage.BatteryLowFlashingColorDescription: 컨트롤러의 배터리가 부족할 때 경고하기 위해 사용할 색상입니다.
+ledPage.StaticColor: 정적 색상(Static Color)
+ledPage.StaticColorDescription: 변경되지 않는 정적 색
+ledPage.SelectedColor: 선택한 색상
+ledPage.SelectedColorDescription: 정적 색상 효과가 활성화될 때 사용할 색상입니다.
+ledPage.MultiColor: 멀티 컬러
+ledPage.MultiColorDescription: HSL 색상 스펙트럼 또는 사용자 정의 색상 사이를 순환합니다.
+ledPage.CycleSpeed: 싸이클 속도
+ledPage.CycleSpeedDescription: 색상 사이를 순환하는 속도입니다.
+ledPage.AutoReverseColor: 자동 반전 색상
+ledPage.AutoReverseColorDescription: 활성화하면 HSL 색상 스펙트럼이 0에서 360으로 이동한 다음 360이 다시 0으로 이동합니다. 비활성화되면 스펙트럼이 0에서 360으로 이동한 다음 0에서 다시 시작됩니다.
+ledPage.HSLColorSpectrum: HSL 색상 스펙트럼
+ledPage.HSLColorSpectrumDescription: 선택하면 HSL 색상 스펙트럼 사이를 순환합니다.
+ledPage.CustomColors: 사용자 지정 색상
+ledPage.CustomColorsDescription: 선택하면 설정한 추가된 색상 간에 순환됩니다.
+ledPage.SelectedGradient: 선택한 그라디언트
+ledPage.SelectedGradientDescription: 순환할 색상은 최소 2개의 색상이 필요합니다.
+ledPage.ResetToDefaults: 기본값으로 재설정
+ledPage.DeleteSelectedColor: 선택한 색상 삭제(Delete Selected Color)
+ledPage.AddNewGradientColor: 새 그라디언트 색상 추가
+ledPage.Breathing: 호흡
+ledPage.BreathingDescription: 0 밝기에서 위의 지정된 라이트 바 밝기로 이동하는 호흡 효과.
+ledPage.BreathingSpeed: 호흡 속도
+ledPage.BreathingSpeedDescription: 색상이 0 밝기에서 위의 지정된 라이트 바 밝기로 이동하는 속도입니다.
+ledPage.RandomColor: 랜덤 컬러
+ledPage.RandomColorDescription: 밝기가 0이 될 때마다 새로운 색상이 선택됩니다.
+ledPage.Strobing: 섬광
+ledPage.StrobingDescription: 스트로빙 효과는 0 밝기에서 위의 지정된 라이트 바 밝기까지 깜박입니다.
+ledPage.StrobingSpeed: 스트로빙 속도
+ledPage.StrobingSpeedDescription: 색상이 깜박이는 속도입니다.
+ledPage.AnimateWhenCharging: 충전 시 애니메이션
+ledPage.AnimateWhenChargingDescription: 아래에서 선택한 그라데이션을 사용하여 충전 애니메이션을 표시하여 컨트롤러가 충전 중임을 보여줍니다.
+
+ledPage.PlayerIndicator: 플레이어 표시기
+ledPage.PlayerIndicatorDescription: LED에 표시된 플레이어 번호입니다.
+ledPage.BatteryMode: 배터리 모드
+ledPage.Battery: 배터리
+ledPage.BatteryDescription: 지정된 그라데이션 색상을 사용하여 0%에서 100%까지 표시하는 배터리 잔량입니다.
+
+ledPage.NoPlayerIndicator: 플레이어 표시기 없음
+ledPage.PlayerOne: 플레이어 1
+ledPage.PlayerOneIndicator: 플레이어 1 표시기
+ledPage.PlayerTwo: 플레이어 2
+ledPage.PlayerTwoIndicator: 플레이어 2 표시기
+ledPage.PlayerThree: 플레이어 3
+ledPage.PlayerThreeIndicator: 플레이어 3 표시기
+ledPage.PlayerFour: 플레이어 4
+ledPage.PlayerFourIndicator: 플레이어 4 표시기
+ledPage.PlayerFive: 플레이어 5
+ledPage.PlayerFiveIndicator: 플레이어 5 표시기
+
+ledPage.BatteryModeDescription: 체크하면 배터리 잔량이 플레이어 LED 형식으로 표시됩니다.
+ledPage.Battery0To20Percent: 배터리 0% - 20%
+ledPage.Battery20To40Percent: 배터리 20% - 40%
+ledPage.Battery40To60Percent: 배터리 40% - 60%
+ledPage.Battery60To80Percent: 배터리 60% - 80%
+ledPage.Battery80To100Percent: 배터리 80% - 100%
+
+ledPage.MuteIndicator: 음소거 표시기
+ledPage.MuteIndicatorDescription: 음소거 버튼 LED 상태입니다.
+
+ledPage.PlayerMuteBrightness: 플레이어 / 음소거 밝기
+ledPage.PlayerMuteBrightnessDescription: 플레이어 LED와 음소거 버튼 LED 모두에 영향을 미치는 설정할 밝기입니다.
+
+ledPage.DualSenseFeatures: DualSense 기능
+
+ledPage.Off: "OFF"
+ledPage.On: "ON"
+ledPage.Pulse: "맥박"
+ledPage.Dim: 희미한
+ledPage.Medium: 보통
+ledPage.Bright: 밝은
+ledPage.NoControllersDetected: 감지된 컨트롤러 없음
+ledPage.PleasePlugInController: 컨트롤러를 연결하거나 Bluetooth를 통해 연결하여 라이트 바 등을 구성하십시오.
+ledPage.LightBarConfiguration: 라이트 바 구성
+ledPage.LightBarModes: 라이트 바 모드
+
+# ------------------------------------------------------------------------------------------------
+# HapticsRumble Page
+# ------------------------------------------------------------------------------------------------
+
+hapticsPage.RumbleModeCard.Title: 럼블 모드
+hapticsPage.RumbleModeCard.SubTitle: 이 옵션을 선택하면 표준 럼블이 모터로 전송됩니다.
+
+hapticsPage.HapticFeedbackModeCard.Title: 햅틱 피드백 모드
+hapticsPage.HapticFeedbackModeCard.SubTitle: 이 옵션을 선택하면 적용된 햅틱 모드 중 하나가 적용됩니다.
+
+hapticsPage.HapticFeedback.WarningCard.Title: 햅틱 피드백 모드는 DualSense가 아닌 컨트롤러 또는 무선 연결에서 사용할 수 없습니다.
+hapticsPage.HapticFeedback.WarningCard.SubTitle: 햅틱 피드백 모드는 연결된 기기가 DualSense 타입 컨트롤러이고 USB를 통해 연결된 경우에만 액세스할 수 있습니다.
+
+hapticsPage.EnableRumbleCard.Title: 럼블 활성화
+hapticsPage.EnableRumbleCard.SubTitle: 이 기능이 활성화되면 럼블이 컨트롤러로 전송됩니다.
+
+hapticsPage.EnhancedRumbleCard.Title: 향상된 럼블 경험
+hapticsPage.EnhancedRumbleCard.SubTitle: 이 기능을 활성화하면 DualSense 또는 DualSense™️ Edge™️ 무선 컨트롤러용 최신 펌웨어에 도입된 향상된 럼블을 활용하여 클래식 럼블 경험을 향상시킵니다.
+
+hapticsPage.RumbleIntensityCard.Title: 럼블 강도
+hapticsPage.RumbleIntensityCard.SubTitle: 전체 모터 강도의 강도를 선택하십시오.
+
+hapticsPage.MaxRumbleStrengthCard.Title: 최대 럼블 강도
+hapticsPage.MaxRumbleStrengthCard.SubTitle: 럼블은 오른쪽에 지정된 숫자보다 높은 컨트롤러로 전송되지 않습니다.
+hapticsPage.MaxRumbleStrengthCard.SubTitle2: 예 - 200을 설정하면 200을 초과하는 값은 무시되고 컨트롤러에 200만 보냅니다.
+
+hapticsPage.HapticMode.Disabled: 비활성화
+hapticsPage.HapticMode.AudioHaptics: 오디오에서 햅틱으로
+hapticsPage.HapticMode.RumbleHaptics: 햅틱에 럼블
+hapticsPage.HapticMode.ButtonHaptics: 햅틱에 버튼
+hapticsPage.HapticMode.TriggerHaptics: 햅틱에 대한 트리거
+hapticsPage.HapticMode.JoystickHaptics: 조이스틱에서 햅틱으로
+
+hapticsPage.Disabled.Title: 햅틱 피드백 비활성화
+hapticsPage.Disabled.SubTitle: 이 옵션을 선택하면 햅틱 피드백이 적용되지 않으므로 대신 럼블 모드를 사용하는 것이 좋습니다.
+
+hapticsPage.AudioHapticsConfig.Title: 오디오에서 햅틱으로 구성
+hapticsPage.AudioHapticsConfig.SubTitle: 시스템 전체 오디오를 컨트롤러로 전송하고 햅틱으로 변환합니다.
+
+hapticsPage.RumbleHapticsConfig.Title: Rumble To Haptics 구성
+hapticsPage.RumbleHapticsConfig.SubTitle: 에뮬레이션 장치에서 들어오는 럼블 값을 변환하고 원하는 사운드 웨이브가 있는 햅틱으로 변환할 수 있습니다.
+
+hapticsPage.ButtonHapticsConfig.Title: Button To 햅틱 구성
+hapticsPage.ButtonHapticsConfig.SubTitle: Cross, Square, Triangle, D-Pad 등과 같은 버튼 누름에서 햅틱을 느낄 수 있습니다. 원하는 사운드 웨이브로.
+
+hapticsPage.TriggerHapticsConfig.Title: 햅틱 구성에 대한 트리거
+hapticsPage.TriggerHapticsConfig.SubTitle: L2/R2 압력 프레스를 원하는 사운드 웨이브가 있는 햅틱으로 변환할 수 있습니다. 이것은 적응형 트리거 모드가 아닙니다.
+
+hapticsPage.JoystickHapticsConfig.Title: 햅틱 구성에 대한 트리거
+hapticsPage.JoystickHapticsConfig.SubTitle: 왼쪽 및 오른쪽 스틱 움직임을 원하는 사운드 웨이브가 있는 햅틱으로 변환할 수 있습니다. 왼쪽 스틱은 왼쪽 모터를 제어하고 오른쪽 스틱은 오른쪽 모터를 제어합니다.
+
+hapticsPage.RestartButton.Title: 재시작
+
+hapticsPage.RumblePassthrough.Title: 럼블 Passthrough
+hapticsPage.RumblePassthrough.AudioHaptics.SubTitle: 활성화하면 가상 컨트롤러로 전송되는 럼블이 이 물리적 컨트롤러에 적용됩니다. 럼블이 전송되지 않으면 오디오 햅틱이 정상적으로 재개됩니다.
+hapticsPage.RumblePassthrough.ButtonHaptics.SubTitle: 활성화하면 가상 컨트롤러로 전송되는 럼블이 이 물리적 컨트롤러에 적용됩니다. 럼블이 전송되지 않으면 버튼 햅틱이 정상적으로 재개됩니다.
+hapticsPage.RumblePassthrough.TriggerHaptics.SubTitle: 활성화하면 가상 컨트롤러로 전송되는 럼블이 이 물리적 컨트롤러에 적용됩니다. 럼블이 전송되지 않으면 트리거 햅틱이 정상적으로 재개됩니다.
+hapticsPage.RumblePassthrough.JoystickHaptics.SubTitle: 활성화하면 가상 컨트롤러로 전송되는 럼블이 이 물리적 컨트롤러에 적용됩니다. 럼블이 전송되지 않으면 조이스틱 햅틱이 정상적으로 재개됩니다.
+
+hapticsPage.LeftMotorMaxIntensity.Title: 왼쪽 모터 최대 강도
+hapticsPage.LeftMotorMaxIntensity.SubTitle: 왼쪽 모터에 허용되는 최대 강도입니다.
+
+hapticsPage.RightMotorMaxIntensity.Title: 오른쪽 모터 최대 강도
+hapticsPage.RightMotorMaxIntensity.SubTitle: 올바른 모터에 허용되는 최대 강도.
+
+hapticsPage.AudioHaptics.InternalSpeakerVolume.Title: 내부 스피커 볼륨
+hapticsPage.AudioHaptics.InternalSpeakerVolume.SubTitle: 컨트롤러로 전송되는 오디오의 볼륨입니다.
+
+hapticsPage.AudioHaptics.InternalJackVolume.Title: 내부 헤드폰 잭 볼륨
+hapticsPage.AudioHaptics.InternalJackVolume.SubTitle: 연결된 헤드폰 잭으로 전송되는 오디오의 볼륨입니다.
+
+hapticsPage.JoystickHaptics.InnerDeadzone.Title: 조이스틱 내부 데드존
+hapticsPage.JoystickHaptics.InnerDeadzone.SubTitle: 조이스틱을 중앙에서 가장자리로 이동할 때 전송되는 햅틱을 무시할 정도입니다. 두 스틱에 모두 적용됩니다.
+
+hapticsPage.SoundWaveConfig.Title: 사운드 웨이브 구성
+
+hapticsPage.SoundWave.Sine: 사인파
+hapticsPage.SoundWave.Sqaure: 구형파
+hapticsPage.SoundWave.Triangle: 트라이앵글 웨이브
+hapticsPage.SoundWave.WhiteNoise: 백색 잡음
+hapticsPage.SoundWave.PinkNoise: 핑크 노이즈
+hapticsPage.SoundWave.Sweep: 스윕 웨이브
+
+hapticsPage.SoundWave.Gain.Title: 이득
+hapticsPage.SoundWave.Gain.SubTitle: 신호에 적용되는 증폭의 양입니다.
+
+hapticsPage.SoundWave.Frequency.Title: 빈도
+hapticsPage.SoundWave.Frequency.SubTitle: 음압파가 반복되는 초당 횟수입니다. 약 60Hz가 가장 강합니다.
+
+hapticsPage.SoundWave.Sweep.StartEndFreq.Title: 시작 및 종료 주파수
+hapticsPage.SoundWave.Sweep.StartEndFreq.SubTitle: 원하는 주파수의 시작과 끝을 결정합니다.
+hapticsPage.SoundWave.Sweep.StartFreq.Title: 시작 주파수
+hapticsPage.SoundWave.Sweep.EndFreq.Title: 끝 주파수
+
+hapticsPage.SoundWave.Sweep.Duration.Title: 기간
+hapticsPage.SoundWave.Sweep.Duration.Title2: 기간(초)
+hapticsPage.SoundWave.Sweep.Duration.SubTitle: Start Frequency(시작 주파수)에서 End Frequency(종료 주파수)로 이동하는 데 걸리는 시간(초)입니다.
+
+# ------------------------------------------------------------------------------------------------
+# Installed Games Page
+# ------------------------------------------------------------------------------------------------
+
+installedGamesPage.Loading: 게임 라이브러리를 불러오는 중...
+installedGamesPage.GameFound: 게임을 찾았습니다.
+
+installedGamesPage.GamesList.Filter: 필터
+
+installedGamesPage.GamesList.SortBy: 정렬 기준
+installedGamesPage.GamesList.SortBy.Name: 이름
+installedGamesPage.GamesList.SortBy.RecentlyPlayed: 최근 플레이
+installedGamesPage.GamesList.SortBy.Playtime: 노는
+
+installedGamesPage.GamesList.SortBy.Ascending: 오름차순
+installedGamesPage.GamesList.SortBy.Descending: 내림차순
+
+installedGamesPage.GamesList.RescanButton.Tooltip: 라이브러리 다시 검색
+
+installedGamesPage.GamesList.Search.TextBoxPlaceholder: 게임 검색
+installedGamesPage.NA: 해당 없음
+installedGamesPage.ViewSteamPage: Steam 페이지 보기
+installedGamesPage.LaunchProgram: 런칭 프로그램
+installedGamesPage.Category: 범주
+installedGamesPage.Platform: 플랫폼
+installedGamesPage.LastPlayed: 마지막 플레이
+installedGamesPage.TotalPlaytime: 총 플레이 시간
+installedGamesPage.PlaytimeRecent: 최근 플레이 시간(2주)
+installedGamesPage.InstallDirectory: 설치 디렉토리
+installedGamesPage.LibraryPath: 라이브러리 경로
+installedGamesPage.RunCommand: 실행 명령
+installedGamesPage.ExecutablePath: 실행 파일 경로(가장 근접한 일치)
+installedGamesPage.ControllerProfile: 컨트롤러 프로필
+installedGamesPage.ControllerProfileDescription: 이 게임에 사용할 컨트롤러 프로필입니다.
+
+installedGamesPage.SelectedGame.PlayButton.Tooltip: 런칭 프로그램
+installedGamesPage.SelectedGame.LinkButton.Tooltip: Steam 페이지 보기
+installedGamesPage.SelectedGame.Category: 범주
+installedGamesPage.SelectedGame.Platform: 플랫폼
+installedGamesPage.SelectedGame.AppID: 앱 ID
+installedGamesPage.SelectedGame.LastPlayed: 마지막 플레이
+installedGamesPage.SelectedGame.TotalPlaytime: 총 플레이 시간
+installedGamesPage.SelectedGame.PlaytimeRecent: 최근 플레이 시간(2주)
+installedGamesPage.SelectedGame.RunCommand: 실행 명령
+installedGamesPage.SelectedGame.InstallDirectory: 설치 디렉토리
+installedGamesPage.SelectedGame.LibraryPath: 라이브러리 경로
+installedGamesPage.SelectedGame.ExePath: 실행 파일 경로(가장 가까운 일치)
+
+installedGamesPage.Profile1: 프로필 1
+installedGamesPage.Profile2: 프로필 2
+installedGamesPage.Profile3: 프로필 3
+installedGamesPage.RescanLibrary: 라이브러리 다시 검색
+installedGamesPage.NoGamesFound: 게임을 찾을 수 없습니다.
+installedGamesPage.UpdateExecutablePath: 실행 파일 경로 업데이트
+installedGamesPage.ActiveProcesses: 활성 프로세스
+installedGamesPage.ListOfActiveProcesses: 활성 프로세스 목록입니다.
+installedGamesPage.Cancel: 취소
+installedGamesPage.SelectExecutablePath: 실행 파일 경로 선택
+installedGamesPage.ManuallyChooseExecutable: 수동으로 실행 파일 선택
+installedGamesPage.Filter: 필터
+installedGamesPage.Steam: Steam
+installedGamesPage.EpicStore: Epic Store
+installedGamesPage.SortBy: 정렬 기준
+installedGamesPage.Name: 이름
+installedGamesPage.Ascending: 오름차순
+installedGamesPage.Descending: 내림차순
+installedGamesPage.RecentlyPlayed: 최근 플레이
+installedGamesPage.Playtime: 플레이 타임
+installedGamesPage.AddLibrary: 라이브러리 추가
+installedGamesPage.NoGamesFound.Detail: 시스템에 설치된 게임을 찾을 수 없습니다.
+
+
+
+
+# ------------------------------------------------------------------------------------------------
+# HidHide Page
+# ------------------------------------------------------------------------------------------------
+
+hidHidePage.HidHideDriverInfo.Title: HidHide 드라이버
+hidHidePage.HidHideDriverInfo.SubTitle: HidHide를 사용하면 앱이 가상 장치를 에뮬레이트할 때 물리적 컨트롤러를 숨길 수 있습니다. 가상 컨트롤러와 물리적 컨트롤러의 이중 입력을 방지하는 데 사용되며 게임이나 프로그램이 가상 컨트롤러만 볼 수 있도록 합니다.
+
+hidHidePage.ActivateHidHide.Title: HidHide 활성화
+hidHidePage.ActivateHidHide.SubTitle: 활성화되면 HidHide 드라이버는 아래 숨겨진 장치 목록에있는 물리적 장치를 숨깁니다.
+
+hidHidePage.ApplicationList.Title: 응용 프로그램 목록
+hidHidePage.HiddenDevicesList.Title: 숨겨진 장치 목록
+
+hidHidePage.ApplicationPath: 응용 프로그램 경로
+hidHidePage.RefreshApplicationList: 응용 프로그램 목록 새로 고침
+
+hidHidePage.RemoveSelectedApps.Title: 선택한 응용 프로그램 제거
+hidHidePage.RemoveSelectedApps.SubTitle: 응용 프로그램을 제거하면 숨겨진 장치가 해당 응용 프로그램에 표시되지 않습니다.
+hidHidePage.RemoveSelectedApps.Button: 응용 프로그램 제거
+
+hidHidePage.AddApp.Title: 응용 프로그램 추가
+hidHidePage.AddApp.SubTitle: 목록에 응용 프로그램을 추가하면 숨겨진 장치가 해당 응용 프로그램에 표시됩니다.
+hidHidePage.AddApp.TextBox.Placeholder: 실행 파일의 경로를 입력합니다(.bat .exe 등).
+hidHidePage.AddApp.Error.FileDoesntExist: 파일이 존재하지 않습니다.
+hidHidePage.AddApp.Warning.AlreadyAdded: 응용 프로그램이 이미 추가되었습니다.
+
+hidHidePage.InverseCloak.Title: "TODO: 역 응용 프로그램 은폐"
+hidHidePage.InverseCloak.SubTitle: 활성화하면 목록의 응용 프로그램이 숨겨진 장치 목록의 장치에 액세스하지 못하도록 차단됩니다.
+
+hidHidePage.DevicePath: 장치 경로
+hidHidePage.RefreshHiddenDevicesList: 숨겨진 장치 목록 새로 고침
+
+hidHidePage.RemoveSelectedDevices.Title: 선택한 장치 제거
+hidHidePage.RemoveSelectedDevices.SubTitle: 목록에서 장치를 제거하면 다시 추가할 때까지 장치를 숨길 수 없습니다.
+hidHidePage.RemoveSelectedDevices.Button: 장치 제거
+
+hidHidePage.AddDevice.Title: 장치 추가
+hidHidePage.AddDevice.SubTitle: 목록에 장치를 추가하면 왼쪽 목록에 추가되지 않은 응용 프로그램에서 장치가 숨겨집니다.
+hidHidePage.AddDevice.TextBox.Placeholder: 장치 인스턴스 ID 입력
+hidHidePage.AddDevice.Warning.AlreadyAdded: 장치 인스턴스 ID가 이미 추가되었습니다.
+
+
+# ------------------------------------------------------------------------------------------------
+# DSX Logs Page
+# ------------------------------------------------------------------------------------------------
+
+logsPage.Title: DSX 로그
+logsPage.CompressLogFiles.Button: 공유를 위해 로그 파일 압축
+logsPage.OpenLogsDirectory.Button: 로그 디렉토리 열기
+
+logsPage.LogCheckBox.ControllerLogs: 컨트롤러 로그
+logsPage.LogCheckBox.ButtonPresses: 물리적 버튼 누름 로그
+logsPage.LogCheckBox.DebugLogs: 디버그 로그
+
+logsPage.LogsViewTable.Title.Date: 날짜
+logsPage.LogsViewTable.Title.Category: 카테고리
+logsPage.LogsViewTable.Title.Status: 상태
+logsPage.LogsViewTable.Title.Message: 메시지
+
+logsPage.LogsViewTable.Status.Title.Information: 정보
+logsPage.LogsViewTable.Status.Title.Debug: 디버그
+logsPage.LogsViewTable.Status.Title.Warning: 경고
+logsPage.LogsViewTable.Status.Title.Error: 오류
+
+# ------------------------------------------------------------------------------------------------
+# Settings Page
+# ------------------------------------------------------------------------------------------------
+settingsPage.Tabs.Display: 인터페이스
+settingsPage.Tabs.Behavior: 행동
+settingsPage.Tabs.UDP: UDP
+
+settingsPage.DriverInstallation.CompanyName: 회사 이름
+settingsPage.DriverInstallation.FileDescription: 파일 설명
+settingsPage.DriverInstallation.FileSize: 파일 크기
+settingsPage.DriverInstallation.FileVersion: 파일 버전
+settingsPage.DriverInstallation.LatestReleaseDate: 최신 출시일
+settingsPage.DriverInstallation.ProductName: 상품 이름
+settingsPage.DriverInstallation.ProductVersion: 제품 버전
+settingsPage.DriverInstallation.AcceptedLicense: 사용권 계약을 읽었으며 해당 조건에 동의합니다.
+settingsPage.DriverInstallation.FollowDriverSetupInstructions: 화면의 지시에 따라 드라이버 설치를 완료하십시오.
+settingsPage.DriverInstallation.ProceedByClickingNextBelow: 완료되면 아래의 다음을 클릭하여 진행하십시오.
+settingsPage.DriverInstallation.InternetRequiredVPadDriver: VirtualPad Driver by Nefarius를 다운로드하고 설치하려면 인터넷 연결이 필요합니다.
+settingsPage.DriverInstallation.InternetRequiredHidHideDriver: HidHide 드라이버를 다운로드하고 설치하려면 인터넷 연결이 필요합니다.
+settingsPage.DriverInstallation.ProceedByClickingRetry: 인터넷에 연결되면 아래의 재시도를 클릭하여 진행하십시오.
+settingsPage.DriverInstallation.UnexpectedError: 드라이버를 설치하는 동안 예기치 않은 오류가 발생했습니다.
+settingsPage.DriverInstallation.PleaseTryAgain: 다시 시도하십시오.
+settingsPage.DriverInstallation.LicenseStatus: 라이센스 상태
+settingsPage.DriverInstallation.DriverName: 드라이버 이름
+settingsPage.DriverInstallation.DriverVersion: 드라이버 버전
+settingsPage.DriverInstallation.DriverSize: 드라이버 크기
+settingsPage.DriverInstallation.RuntimeAPIVersion: 런타임 API 버전
+
+settingsPage.DriverInstallation.Button.Next: 다음
+settingsPage.DriverInstallation.Button.InstallDriver: 드라이버 설치
+settingsPage.DriverInstallation.Button.Retry: 재시도
+
+settingsPage.DriverInstallation.VPad.LicenseInfo: VirtualPad 드라이버 라이센스 정보
+settingsPage.DriverInstallation.VPad.LicenseIssuer: 라이센스 발급자
+settingsPage.DriverInstallation.VPad.LicenseType: 라이센스 유형
+settingsPage.DriverInstallation.VPad.LicenseExpiresAt: 라이센스 만료 시간
+settingsPage.DriverInstallation.VPad.LicenseCreatedAt: 라이선스 생성 시간
+settingsPage.DriverInstallation.VPad.Installed: Nefarius의 VirtualPad 드라이버 설치
+
+settingsPage.HidHide.Title: 물리 컨트롤러 숨기기
+settingsPage.HidHide.Details: 앱이나 게임이 볼 수 없도록 PC에 연결된 물리적 컨트롤러를 숨기고 DSX에서 만든 가상 컨트롤러와 함께 사용하는 것이 가장 좋습니다.
+settingsPage.HidHide.HidePhysDevices: 물리적 장치 숨기기
+settingsPage.HidHide.HidePhysDevices.Details: 마우스나 키보드와 같은 게임 주변 장치를 앱과 게임으로부터 보호합니다.
+settingsPage.HidHide.WhitelistApps: 화이트리스트 응용 프로그램
+settingsPage.HidHide.WhitelistApps.Details: 클로킹된 기기를 볼 수 있는 앱 또는 게임을 선택합니다.
+settingsPage.HidHide.ProductInfo: HidHide 제품 정보
+settingsPage.HidHide.Installed: HidHide 드라이버 설치
+settingsPage.HidHide.RebootPlease: 드라이버를 방금 설치한 경우 설치 후 드라이버가 적용되도록 PC를 재부팅하십시오.
+
+settingsPage.Tabs.VirtualPadDriver: VirtualPad 드라이버
+settingsPage.Tabs.VirtualPadDriverProductInfo: VirtualPad 드라이버 제품 정보
+settingsPage.VirtualPadDriverDescription: Nefarius Software Solutions e.U.에서 재구성, 개발 및 제작한 Windows에서 가상 게임 패드를 사용하는 차세대 가상 게임 패드
+
+settingsPage.Tabs.HidHideDriver: HidHide 드라이버
+settingsPage.HidHideInfo: HidHide를 사용하면 DSX가 가상 장치를 에뮬레이트할 때 물리적 컨트롤러를 숨길 수 있습니다. 가상 컨트롤러와 물리적 컨트롤러의 이중 입력을 방지하는 데 사용되며 게임이나 프로그램이 가상 컨트롤러만 볼 수 있도록 합니다. Nefarius Software Solutions e.U.에서 개발 및 유지 관리
+settingsPage.Tabs.DangerZone: 위험 지역
+settingsPage.Tabs.DangerZone.Warning: 이 작업은 취소할 수 없으며 앱 설정, 프로필 및 모든 것이 기본 상태로 재설정됩니다.
+settingsPage.Tabs.DangerZone.ResetAppSettings: 앱 설정 재설정
+
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineOne: 폴더 위치 저장
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineTwo: 이 작업은 취소할 수 없습니다!
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.LineThree: 계속하시겠습니까?
+
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Title: 앱 재설정 성공
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Success.Detail: 이제 DSX가 다시 시작됩니다.
+
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Title: 오류
+settingsPage.Tabs.DangerZone.ResetAppSettings.Popup.Error.Detail: 앱 설정을 재설정하지 못했습니다.
+
+settingsPage.EnableDiagnostictracing: 진단 추적 사용
+settingsPage.EnableDiagnostictracing.Details: 이것은 숙련된 개발자의 성능과 같은 특정 항목을 추적하는 데 사용됩니다.
+
+# -------------------------------
+settingsPage.Display.LanguageCard.Title: 언어
+settingsPage.Display.LanguageCard.SubTitle: 응용 프로그램의 언어를 선택합니다.
+settingsPage.Display.LanguageCard.SearchBar.PlaceHolder: 언어 이름으로 검색
+
+settingsPage.Display.LightThemeCard.Title: 밝은 테마
+settingsPage.Display.LightThemeCard.SubTitle: 이 토글을 활성화하여 부정한 잔혹 행위를 저지르십시오.
+
+settingsPage.Display.FullDarkModeCard.Title: 풀 다크 모드
+settingsPage.Display.FullDarkModeCard.SubTitle: 어두운 모드 애호가를 위해 배경을 검은색으로 만듭니다.
+
+settingsPage.Display.AccentColorCard.Title: 응용 프로그램 강조 색상
+settingsPage.Display.AccentColorCard.SubTitle: DSX 전체에서 사용되는 강조 색상을 선택합니다.
+settingsPage.Display.AccentColorCard.Reset.Button: 시스템 기본값으로 재설정
+
+settingsPage.Display.BatteryIconCard.Title: 라이브 배터리 아이콘
+settingsPage.Display.BatteryIconCard.SubTitle: 컨트롤러 선택 탭의 배터리 상태 아이콘에 대해 라이브 배터리 그라데이션 색조를 켜거나 끕니다.
+
+settingsPage.Display.WindowSizeCard.Title: 응용 프로그램 창 크기
+settingsPage.Display.WindowSizeCard.SubTitle: 이 응용 프로그램은 창 크기가 조정될 때 마지막 너비와 높이를 로드합니다. 여기에서 크기를 기본값으로 재설정할 수 있습니다.
+settingsPage.Display.WindowSizeCard.ResetAppSize: 응용 프로그램 크기 재설정
+
+settingsPage.Display.WindowScaleCard.Title: 창 스케일 크기 조정
+settingsPage.Display.WindowScaleCard.SubTitle: 이 값을 수정하여 창 내용의 크기를 적절하게 조정합니다. 최적의 가시성을 위해 저해상도 환경에서 작업하는 경우 수를 줄이는 것이 좋습니다.
+settingsPage.Display.WindowScaleSlider.Title: 창 축척 크기(Window Scale Size)
+
+settingsPage.Display.TaskbarPreferences.Title: 작업 표시줄 기본 설정
+settingsPage.Display.TaskbarPreferences.Description: 작업 표시줄 아이콘을 마우스 오른쪽 단추로 클릭할 때 표시되는 메뉴 항목을 사용자 지정합니다.
+
+settingsPage.Display.TaskbarPreferences.HomePage: 홈페이지
+settingsPage.Display.TaskbarPreferences.ProfilesPage: 프로필 페이지
+settingsPage.Display.TaskbarPreferences.ControllerPage: 컨트롤러 페이지
+settingsPage.Display.TaskbarPreferences.NotificationsPage: Notifications 페이지
+settingsPage.Display.TaskbarPreferences.AdaptiveTriggersPage: 적응형 트리거 페이지
+settingsPage.Display.TaskbarPreferences.ControllerLEDPage: 컨트롤러 LED 페이지
+settingsPage.Display.TaskbarPreferences.HapticsRumblePage: 햅틱 | 럼블 페이지
+settingsPage.Display.TaskbarPreferences.InstalledGamesPage: 설치된 게임 페이지
+settingsPage.Display.TaskbarPreferences.HidHidePage: HidHide 페이지
+settingsPage.Display.TaskbarPreferences.DSXLogsPage: DSX 로그 페이지
+settingsPage.Display.TaskbarPreferences.SettingsPage: 설정 페이지
+
+settingsPage.Display.TaskbarPreferences.ShowConnectedControllers: 연결된 컨트롤러 표시
+
+# -------------------------------
+settingsPage.Behavior.StartUpWithWindowCard.Title: Windows에서 시작
+settingsPage.Behavior.StartUpWithWindowCard.SubTitle: "Windows에서 DSX가 자동으로 시작되도록 설정합니다."
+settingsPage.Behavior.StartUpWithWindowCard.Note: "Steam이 시작 시 자동으로 실행됩니다."
+
+settingsPage.Behavior.Launchv2Automatically.Title: DSX v2 자동 시작
+settingsPage.Behavior.Launchv2Automatically.SubTitle: 사용하도록 설정하면 DSX v2가 시작되고 v3이 종료됩니다.
+settingsPage.Behavior.Launchv2Automatically.Note: DSX 시작 시 ESCAPE(esc) 키를 길게 눌러 v3로 쉽게 돌아갈 수 있습니다. v3에서는 여기에서 이 옵션을 비활성화할 수 있습니다.
+
+settingsPage.Behavior.StartUpMinimizedCard.Title: 초기 창 상태
+settingsPage.Behavior.StartUpMinimizedCard.SubTitle: "시작할 때 DSX가 표시되는 방식(일반, 최소화 또는 최대화)을 선택합니다."
+
+settingsPage.Behavior.StartUpMinimizedCard.State.Normal: 보통
+settingsPage.Behavior.StartUpMinimizedCard.State.Maximized: 최대화
+settingsPage.Behavior.StartUpMinimizedCard.State.Minimized: 최소화
+settingsPage.Behavior.StartUpMinimizedCard.State.MinimizedToTray: 트레이로 최소화
+
+settingsPage.Behavior.KeepAppInTrayCard.Title: 트레이로 최소화
+settingsPage.Behavior.KeepAppInTrayCard.SubTitle: 최소화하면 DSX가 백그라운드에서 계속 실행되며 트레이 아이콘을 통해 액세스할 수 있습니다.
+
+settingsPage.Behavior.DisconnectControllersOnExit.Title: 종료 시 컨트롤러 분리
+settingsPage.Behavior.DisconnectControllersOnExit.SubTitle: 이 기능을 활성화하면 DSX가 종료될 때 모든 Bluetooth 연결 컨트롤러의 연결이 끊어집니다.
+
+settingsPage.Behavior.DiscordRPCard.Title: Discord Rich Presence
+settingsPage.Behavior.DiscordRPCard.SubTitle: Discord가 선택한 페이지, 컨트롤러 세부 정보 및 사용 시간과 같은 자세한 정보를 표시할 수 있도록 합니다.
+settingsPage.Behavior.DiscordRPCard.Note: 변경사항이 Discord에 표시되는 데 몇 초 정도 걸릴 수 있습니다.
+
+settingsPage.Behavior.SteamNowPlayingStatus.Title: Steam 플레이 상태
+settingsPage.Behavior.SteamNowPlayingStatus.SubTitle: 런처를 백그라운드에서 최소화하여 DSX를 Steam에서 '게임 중' 상태로 표시하고 플레이 시간도 추적합니다.
+settingsPage.Behavior.SteamNowPlayingStatus.Note: 적용하려면 DSX를 다시 시작해야 합니다.
+
+# -------------------------------
+settingsPage.Networking.IncomingUDP.Section: 수신 UDP
+settingsPage.Networking.OutgoingUDP.Section: 발신 UDP
+settingsPage.Networking.WindowsFireWall.Section: Windows 방화벽
+
+# Used more than once:
+settingsPage.Networking.ipAddress: IP 주소
+settingsPage.Networking.ipAddress.Description: 기본적으로 IP 주소는 이 PC인 localhost입니다.
+settingsPage.Networking.portNumber: 포트 번호
+settingsPage.Networking.portNumber.Description: 이 PC에서 DSX와 통신하는 데 사용할 포트 번호입니다.
+settingsPage.Networking.ipAddressPort: IP 주소 및 포트 설정.
+settingsPage.Networking.ipAddressPlaceholder: 로컬 호스트 127.0.0.1
+##
+
+settingsPage.Networking.IncomingUDPCard.SubTitle: 활성화하면 모드는 DualSense 컨트롤러와의 통신을 활용하여 적응형 트리거, LED 라이트 바, 플레이어 LED, 음소거 LED를 제어할 수 있습니다.
+settingsPage.Networking.IncomingUDPSettingsCard.Title: 수신 UDP 설정
+
+settingsPage.Networking.OutgoingUDPCard.SubTitle: 활성화되면 DSX는 모션 데이터와 같은 에뮬레이터로 다양한 데이터를 보낼 수 있습니다.
+settingsPage.Networking.OutgoingUDPSettingsCard.Title: 발신 UDP 설정
+
+settingsPage.Networking.FirewallCard.WinFirewall: Windows 방화벽
+settingsPage.Networking.FirewallCard.Title: 방화벽 UDP 확인
+settingsPage.Networking.FirewallCard.SubTitle: 위에서 지정한 UDP 포트가 Windows 방화벽 설정에서 열려 있는지 확인하십시오.
+settingsPage.Networking.FirewallCard.Status: 상태
+settingsPage.Networking.FirewallCard.CheckPortStatus: 포트 상태 확인
+settingsPage.Networking.FirewallCard.Status.IncomingTitle: "수신 UDP 포트"
+settingsPage.Networking.FirewallCard.Status.IncomingDescr: 들어오는 UDP 포트가 Windows 방화벽에 추가되었는지 여부의 상태입니다.
+settingsPage.Networking.FirewallCard.Status.OutgoingTitle: "발신 UDP 포트"
+settingsPage.Networking.FirewallCard.Status.OutgoingDescr: 나가는 UDP 포트가 Windows 방화벽에 추가되었는지 여부의 상태입니다.
+
+settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: 방화벽에 포트 추가
+
+# Make sure the %i is in here as it represents a number. Example: Incoming UDP Port for 6969 is open.
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: '%i에 대한 수신 UDP 포트가 열려 있습니다.'
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: '%i에 대한 발신 UDP 포트가 열려 있습니다.'
+
+settingsPage.Networking.FirewallCard.Status.IncomingFailed: '%i에 대한 들어오는 UDP 포트가 닫혔습니다.'
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed: '%i에 대한 나가는 UDP 포트가 닫혔습니다.'
+
+settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: 들어오는 UDP 포트를 Windows 방화벽에 추가합니다.
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Windows 방화벽에 나가는 UDP 포트를 추가합니다.
+
+# -------------------------------
+settingsPage.Driver.VirtualPadDriverCard.SubTitle: VirtualPad 드라이버를 사용하면 물리적으로 연결된 것처럼 원본을 모방하는 가상 장치를 사용할 수 있습니다.
+settingsPage.Driver.HidHideCard.SubTitle: HidHide를 사용하면 앱이 가상 장치를 에뮬레이트할 때 물리적 컨트롤러를 숨길 수 있습니다. 가상 컨트롤러와 물리적 컨트롤러의 이중 입력을 방지하는 데 사용되며 게임이나 프로그램이 가상 컨트롤러만 볼 수 있도록 합니다.
+settingsPage.Driver.NefariusCard.SubTitle: Nefarius는 VirtualPad 드라이버 및 HidHide 드라이버의 개발자이며 그의 도구가 없었다면 이 앱은 불가능했을 것입니다! 아래 작성자를 지원하십시오.
+settingsPage.Driver.NefariusCard.GetInTouch: 연락하기
+settingsPage.Driver.NefariusCard.ShowSupport: Show your support
+
+# Used more than once:
+settingsPage.Driver.DriverName: 드라이버 이름
+settingsPage.Driver.DriverVersion: 드라이버 버전
+settingsPage.Driver.DriverSize: 드라이버 크기
+settingsPage.Driver.DriverReleaseDate: 최신 출시일
+##
+
+
+# -------------------------------
+
+# ------------------------------------------------------------------------------------------------
+# About Page
+# ------------------------------------------------------------------------------------------------
+
+aboutPage.DSXDevelopers: DSX 개발자
+aboutPage.DSXChangeLog: DSX 변경 로그
+
+aboutPage.NefariusDescription.1: 드라이버 엔지니어
+aboutPage.NefariusDescription.2: 하드웨어 & 호환성
+aboutPage.NefariusDescription.3: 성능 & 안정성
+aboutPage.NefariusDescription.4: 최적화 & DevOps
+aboutPage.NefariusDescription.5: 기술 문서 작성자
+
+aboutPage.PaliverseDescription.1: 설립자 & 핵심 개발자
+aboutPage.PaliverseDescription.2: 하드웨어 & 호환성
+aboutPage.PaliverseDescription.3: 유지 보수 및 성능
+aboutPage.PaliverseDescription.4: 관리 & 업데이트
+aboutPage.PaliverseDescription.5: UI/UX & Testing
+
+aboutPage.RamDescription.1: 코어 & 로직 개발자
+aboutPage.RamDescription.2: 그래픽 디자이너
+aboutPage.RamDescription.3: 성능 & 안정성
+aboutPage.RamDescription.4: 품질 & 커뮤니티
+aboutPage.RamDescription.5: UI/UX 및 Testing
+
+
+aboutPage.DSX.SteamPage.Title: DSX Steam 웹페이지
+aboutPage.DSX.SteamPage.SubTitle: 최신 정보는 Steam의 DSX를 방문하세요.
+aboutPage.DSX.SteamPage.Button: Steam의 DSX
+
+aboutPage.DSX.DiscordServer.Title: DSX 디스코드 서버
+aboutPage.DSX.DiscordServer.SubTitle: DSX Discord 서버에 가입하여 문제에 대한 도움을 받고 버그 또는 결함을 보고하십시오.
+aboutPage.DSX.DiscordServer.Button: 디스코드 서버 가입하기
+
+aboutPage.DSX.LibrariesUsed.Title: DSX에서 사용되는 라이브러리
+aboutPage.DSX.LibrariesUsed.SubTitle: DSX를 구동하는 데 사용되는 공용 라이브러리 목록입니다.
+
+
+# Strings used programmatically
+p.Unavailable: 사용할 수 없는
+p.NotInstalled: 설치되지 않음
+p.Close: 닫다
+p.ViewDriverInfo: 드라이버 정보 보기
+p.ViewFirmwareUpdaterTool: Firmware Updater Tool 보기
+
+# Update notifications etc.
+p.MissingHidHideDriver.Title: HidHide 드라이버 누락
+p.MissingHidHideDriver.Detail: "가상 컨트롤러와 함께 이중 입력을 방지하기 위해 물리적 컨트롤러를 숨기려면 HidHide 드라이버를 설치해야 합니다."
+
+p.MissingVPadDriver.Title: VirtualPad 드라이버 누락
+p.MissingVPadDriver.Detail: "드라이버 누락으로 인해 가상 컨트롤러를 만들 수 없습니다."
+
+p.CantStartVPadDriver.Title: VirtualPad 드라이버를 시작할 수 없습니다.
+p.CantStartVPadDriver.Detail: "가상 컨트롤러를 만들 수 없습니다. VirtualPad 드라이버를 다시 설치하고 재부팅 한 다음 다시 시도하십시오."
+
+p.VPadError.Title: VirtualPad 드라이버 오류
+p.VPadError.Detail: "가상 컨트롤러를 만들 수 없습니다. PC를 재부팅하고 다시 시도하십시오."
+
+p.DriverError.Title: VirtualPad 드라이버 및 HidHide 드라이버 누락
+p.DriverError.Detail: "Xbox 360 컨트롤러 또는 DualShock 4 컨트롤러를 에뮬레이트하려면 VirtualPad 드라이버를 설치해야 합니다. 가상 컨트롤러와 함께 이중 입력을 방지하기 위해 물리적 컨트롤러를 숨기려면 HidHide 드라이버를 설치해야 합니다. 드라이버 정보 보기를 클릭하여 누락된 드라이버를 확인하여 설치합니다."
+
+p.DriverUpdate.Title: VirtualPad 드라이버 또는 HidHide 드라이버 업데이트
+p.DriverUpdate.Detail: "HidHide 드라이버 업데이트 또는 VirtualPad 드라이버 업데이트가 있습니다. 드라이버 정보 보기를 클릭하여 업데이트가 필요한 항목을 확인하십시오."
+
+p.DualSenseUpdate.Title: DualSense 펌웨어 업데이트 사용 가능
+p.DualSenseUpdate.Detail: "DualSense 컨트롤러에 사용할 수 있는 새로운 펌웨어 버전이 있습니다. 현재 버전: 0x00 신규 버전: 0x00 다음과 같은 이유로 항상 최신 버전으로 업데이트해야 합니다. - DualSense 배터리 읽기 버그 수정 - 일반 럼블(오래된 게임용) - 다양한 수정 및 개선 컨트롤러를 업데이트하려면 Sony의 공식 펌웨어 업데이트 도구를 설치하십시오. 참고: 업데이트할 때 프로세스 중에 문제가 발생하지 않도록 DSX가 닫혀 있는지 확인하십시오."
+
+p.UnknownHidHideStatus: HidHide 드라이버 상태를 확인할 수 없습니다.
+p.UnknownHidHideStatus.Detail: "HidHide 드라이버를 다시 설치하고 재부팅하십시오."
+
+# HidHide Card
+p.HidHide.HidHideIsInstalled: HidHide 드라이버가 설치되어 있습니다.
+p.HidHide.HidHideIsNotInstalled: HidHide 드라이버가 설치되지 않았습니다.
+
+# Vpad Card
+p.VPad.VPadIsInstalled: Nefarius의 VirtualPad 드라이버가 설치되었습니다.
+p.VPad.VPadIsNotInstalled: Nefarius의 VirtualPad 드라이버가 설치되지 않았습니다.
+
+p.Controllers.AccessController: Access™ Controller
+p.Controllers.PSVR2SenseL: PS VR 2 Sense™ Controller (L)
+p.Controllers.PSVR2SenseR: PS VR 2 Sense™ Controller (R)
+p.Controllers.DualSense: DualSense™️ Wireless Controller
+p.Controllers.DualSenseEdge: DualSense Edge™️ Wireless Controller
+p.Controllers.DualShockv1: DualShock™️ 4 Wireless Controller [v1]
+p.Controllers.DualShockv2: DualShock™️ 4 Wireless Controller [v2]
+p.Controllers.DualShock4USBAdapter: DualShock™️ 4 USB Wireless Adapter
+
+# DLC Info
+p.ViewDLCOnSteam: Steam에서 DLC 보기
+p.UnlockDualSenseEmulation: DualSense 에뮬레이션 잠금 해제
+p.UnlockDualSenseEmulation.Detail: "현재 DualSense 에뮬레이션에 액세스할 수 없습니다. 이 기능을 즐기려면 DualSense 에뮬레이션 DLC를 구입하는 것이 좋습니다. 귀하의 지원은 VirtualPad 드라이버 개발자에게 도움이 됩니다. Steam에서 보시겠습니까?"
+
+# Macros
+p.MacrosActivation.PlayOnce.Title: 한 번 플레이
+p.MacrosActivation.PlayOnce.Subtitle: 액션은 한 번 재생됩니다.
+p.MacrosActivation.PlayNTimes.Title: N 번 재생
+p.MacrosActivation.PlayNTimes.Subtitle: 이 작업은 설정된 횟수만큼 반복됩니다.
+p.MacrosActivation.RepeatWhilePressed.Title: 누른 상태에서 반복
+p.MacrosActivation.RepeatWhilePressed.Subtitle: 버튼을 길게 누르면 자동으로 동작이 반복됩니다.
+p.MacrosActivation.ToggleAutoRepeat.Title: 자동 반복 토글
+p.MacrosActivation.ToggleAutoRepeat.Subtitle: 한 번 누르면 자동으로 동작 반복이 시작되고 다시 누르면 중지됩니다.
+p.MacrosActivation.ToggleAutoRepeatContinuous.Title: 자동 반복 토글(연속)
+p.MacrosActivation.ToggleAutoRepeatContinuous.Subtitle: 버튼을 한 번 누르면 동작이 계속 재생되고 다시 누르면 중지됩니다.
+
+p.MacrosDelay.Title: 지연
+p.MacrosDelay.Subtitle: 반복 사이의 휴식 시간입니다.
+
+p.MacrosRepeat.Title: 반복 횟수
+p.MacrosRepeat.Subtitle: 반복 횟수
+
+p.MacrosPlayOnKey.Title: 키에서 재생
+p.MacrosPlayOnKey.Subtitle: 단추를 누르거나 놓을 때 이 매크로를 활성화할지 여부를 선택합니다.
+p.KeyDown: 키 누름
+p.KeyUp: 키 업
+p.StartRecording: 기록 시작
+p.StopRecording: 기록 중지
+
+p.DeleteSelectedActionProfile: 선택한 작업 프로필을 삭제하시겠습니까?
+p.DeleteSelectedActionProfiles: 선택한 작업 프로필을 삭제하시겠습니까?
+p.DeleteSelectedDeadzoneProfile: 선택한 데드존 프로필을 삭제하시겠습니까?
+p.DeleteSelectedDeadzoneProfiles: 선택한 데드존 프로필을 삭제하시겠습니까?
+p.DeleteSelectedTouchpadProfile: 선택한 터치패드 프로필을 삭제하시겠습니까?
+p.DeleteSelectedTouchpadProfiles: 선택한 터치패드 프로필을 삭제하시겠습니까?
+p.DeleteSelectedMotionProfile: 선택한 모션 프로필을 삭제하시겠습니까?
+p.DeleteSelectedMotionProfiles: 선택한 모션 프로필을 삭제하시겠습니까?
+p.DeleteProfile: 프로필 삭제
+p.DeleteProfiles: 프로필 삭제
+p.LeftMouseButton.Text: 마우스 왼쪽 버튼
+p.RightMouseButton.Text: 마우스 오른쪽 버튼
+p.MiddleMouseButton.Text: 가운데 마우스 버튼
+p.BackMouseButton.Text: 뒤로 가기 마우스 버튼
+p.ForwardMouseButton.Text: 앞으로 마우스 버튼
+p.ScrollWheelUp: 휠 위로 스크롤
+p.ScrollWheelDown: 휠 아래로 스크롤
+
+p.DeviceStatus: 장치 상태
+p.ActiveActionProfile: 활성 작업 프로필
+p.ActiveAdaptiveTriggersProfile: 활성 적응형 트리거 프로필
+p.ActiveDeadzoneProfile: 활성 데드존 프로필
+p.ActiveHapticsRumbleProfile: 액티브 햅틱/럼블 프로필
+p.ActiveLEDProfile: 액티브 LED 프로필
+p.ActiveMotionProfile: 액티브 모션 프로필
+p.ActiveNotificationsProfile: 활성 알림 프로필
+p.ActiveTouchpadProfile: 액티브 터치패드 프로필
+
+p.Shortcuts.ToggleXboxGameBar: Xbox Game Bar 전환
+p.Shortcuts.SystemScreenshot: 시스템 스크린샷
+p.Shortcuts.IncreaseBrightnessLevel: 밝기 수준 높이기
+p.Shortcuts.DecreaseBrightnessLevel: 밝기 수준 낮추기
+p.Shortcuts.TogglePCMicMute: PC 마이크 음소거 전환
+p.Shortcuts.PreviousTrack: 이전 트랙
+p.Shortcuts.TogglePlayPause: 재생/일시정지 토글
+p.Shortcuts.NextTrack: 다음 트랙
+p.Shortcuts.ToggleVolumeMute: 볼륨 음소거 토글
+p.Shortcuts.IncreaseVolumeLevel: 볼륨 레벨 높이기
+p.Shortcuts.DecreaseVolumeLevel: 볼륨 레벨 낮추기
+
+p.Shortcuts.StartScreen: 시작 화면 표시 또는 숨기기
+p.Shortcuts.QuickSettingsWin11: 빠른 설정 열기(Windows 11)
+p.Shortcuts.QuickSettingsWin10: 관리 센터 열기(Windows 10)
+p.Shortcuts.FocusNotificationArea: 알림 영역에서 포커스 설정
+p.Shortcuts.ChatTeamsWin11: Microsoft Teams에서 채팅 열기(Windows 11)
+p.Shortcuts.CortanaWin10: 듣기 모드에서 Cortana 열기(Windows 10)
+p.Shortcuts.CharmsMenu: 참 메뉴 열기
+p.Shortcuts.ColorFiltersWin11: 색상 필터 켜기(색상 필터 설정에서 먼저 이 바로 가기 활성화)(Windows 11)
+p.Shortcuts.ShowDesktop: 바탕 화면 표시 및 숨기기
+p.Shortcuts.ShowDateAndTime: 바탕 화면에 날짜와 시간 표시 및 숨기기
+p.Shortcuts.FileExplorer: 파일 탐색기 열기
+p.Shortcuts.FeedbackHub: 피드백 허브를 열고 스크린샷을 찍습니다.
+p.Shortcuts.XboxGameBar: 게임이 열려 있을 때 Xbox Game Bar 열기
+p.Shortcuts.TurnHDROnOff: HDR 켜기 또는 끄기
+p.Shortcuts.LaunchVoiceTypingWin11: 음성 입력 시작(Windows 11)
+p.Shortcuts.StartDictationWin10: 받아쓰기 시작(Windows 10)
+p.Shortcuts.OpenSettings: 설정 열기
+p.Shortcuts.OpenCastWin11: 빠른 설정에서 전송 열기(Windows 11)
+p.Shortcuts.OpenConnectWin10: 연결 바로 가기를 엽니다(Windows 10).
+p.Shortcuts.ToggleMicrophoneMute: 통화 음소거를 지원하는 앱에서 마이크 음소거를 전환합니다. Windows 11 버전 22H2부터 사용할 수 있습니다
+p.Shortcuts.LockPCSwitchAccounts: PC 잠금 또는 계정 전환
+p.Shortcuts.MinimizeAllWindows: 모든 창 최소화
+p.Shortcuts.RestoreMinimizedWindows: 바탕 화면에서 최소화된 창 복원
+p.Shortcuts.LockDeviceOrientation: 장치 방향 잠금
+p.Shortcuts.ChoosePresentationDisplayMode: 프레젠테이션 표시 모드 선택
+p.Shortcuts.OpenQuickAssist: 퀵 어시스트 열기
+p.Shortcuts.OpenRunDialogBox: 실행 대화 상자 열기
+p.Shortcuts.RecordVideoGameWindowWin11: 포커스가 있는 게임 창의 비디오 녹화(Xbox Game Bar 사용)(Windows 11)
+p.Shortcuts.OpenSearch: 검색 열기
+p.Shortcuts.TakeScreenshotPartScreen: 화면 일부의 스크린샷 찍기
+p.Shortcuts.CycleThroughAppsTaskbar: 작업 표시줄에서 앱 순환
+p.Shortcuts.OpenAccessibilitySettings: 접근성 설정 열기
+p.Shortcuts.OpenClipboardHistoryWin11: 클립보드 기록 열기(설정에서 켜져 있는 경우)
+p.Shortcuts.OpenClipboardWin10: 클립보드 열기(설정에서 켜져 있는 경우)
+p.Shortcuts.OpenClipboardHistoryBoth: 클립보드 기록 열기(Windows 11) | 클립보드(Windows 10)를 엽니다.
+p.Shortcuts.SetFocusNotificationWin11: 알림에 포커스 설정
+p.Shortcuts.CycleThroughNotificationsWin10: 알림 순환
+p.Shortcuts.SetFocusNotificationBoth: 알림에 포커스 설정(Windows 11) | 알림 순환(Windows 10)
+p.Shortcuts.OpenWidgetsWin11: 위젯 열기
+p.Shortcuts.OpenWidgetsBoth: 위젯 열기(Windows 11)
+p.Shortcuts.OpenQuickLinkMenu: 빠른 링크 메뉴 열기
+p.Shortcuts.SwitchInputMixedReality: Windows Mixed Reality 데스크톱 간 입력 전환
+p.Shortcuts.OpenSnapLayoutsWin11: 스냅 레이아웃 열기(Windows 11) | 앱에서 사용할 수 있는 명령을 전체 화면 모드로 표시(Windows 10)
+p.Shortcuts.OpenEmojiPanel: 이모티콘 패널 열기
+p.Shortcuts.PeekAtDesktop: 일시적으로 바탕 화면 미리 보기
+p.Shortcuts.OpenAboutPCWin11: 설정에서 PC 정보 열기(Windows 11) | 시스템 속성 대화 상자 표시(Windows 10)
+p.Shortcuts.SearchForPCsNetwork: PC 검색(네트워크에 연결된 경우)
+p.Shortcuts.StartAppPinnedTaskbar: 위치 1의 작업 표시줄에 고정된 앱 시작 또는 표시
+p.Shortcuts.StartAppPinnedTaskbar2: 위치 2의 작업 표시줄에 고정된 앱 시작 또는 표시
+p.Shortcuts.StartAppPinnedTaskbar3: 위치 3의 작업 표시줄에 고정된 앱 시작 또는 표시
+p.Shortcuts.StartAppPinnedTaskbar4: 위치 4의 작업 표시줄에 고정된 앱 시작 또는 표시
+p.Shortcuts.StartAppPinnedTaskbar5: 위치 5의 작업 표시줄에 고정된 앱 시작 또는 표시
+p.Shortcuts.StartAppPinnedTaskbar6: 위치 6의 작업 표시줄에 고정된 앱 시작 또는 표시
+p.Shortcuts.StartAppPinnedTaskbar7: 위치 7의 작업 표시줄에 고정된 앱 시작 또는 표시
+p.Shortcuts.StartAppPinnedTaskbar8: 위치 8의 작업 표시줄에 고정된 앱 시작 또는 표시
+p.Shortcuts.StartAppPinnedTaskbar9: 위치 9의 작업 표시줄에 고정된 앱 시작 또는 표시
+p.Shortcuts.StartAppPinnedTaskbar10: 위치 10의 작업 표시줄에 고정된 앱 시작 또는 표시
+p.Shortcuts.OpenTaskView: 작업 보기 열기
+p.Shortcuts.MaximizeWindow: 창 최대화
+p.Shortcuts.SnapWindowTopHalfWin11: 포커스가 있는 창을 화면 위쪽 절반에 맞추기(Windows 11)
+p.Shortcuts.RemoveAppScreen: 화면에서 현재 앱 제거 또는 바탕 화면 창 최소화
+p.Shortcuts.SnapWindowBottomHalfWin11: 포커스가 있는 창을 화면 아래쪽 절반에 맞추기(Windows 11)
+p.Shortcuts.MaximizeLeftSideScreen: 앱 또는 데스크톱 창을 화면 왼쪽으로 최대화
+p.Shortcuts.MaximizeRightSideScreen: 앱 또는 데스크톱 창을 화면 오른쪽으로 최대화
+p.Shortcuts.MinimizeAllExceptActive: 활성 바탕 화면 창을 제외한 모든 창 최소화(두 번째 스트로크에서 모든 창 복원)
+p.Shortcuts.StretchDesktopWindow: 바탕 화면 창을 화면 위쪽과 아래쪽으로 늘립니다.
+p.Shortcuts.RestoreMinimizeActiveDesktopWindowsVertically: 활성 바탕 화면 창을 세로로 복원/최소화하여 너비를 유지합니다.
+p.Shortcuts.MoveAppWindowBetweenMonitorsLeft: 바탕 화면의 앱 또는 창을 한 모니터에서 다른 모니터로(왼쪽으로) 이동합니다
+p.Shortcuts.MoveAppWindowBetweenMonitorsRight: 바탕 화면의 앱 또는 창을 한 모니터에서 다른 모니터로 이동(오른쪽으로)
+p.Shortcuts.CycleBackwardsLanguageKeyboardLayoutWin11: 언어 및 자판 배열을 거꾸로 순환(Windows 11)
+p.Shortcuts.SwitchInputLanguageKeyboardLayout: 입력 언어 및 자판 배열 전환
+p.Shortcuts.ChangeToPreviouslySelectedInput: 이전에 선택한 입력으로 변경
+p.Shortcuts.TurnOnNarrator: 내레이터 켜기
+p.Shortcuts.OpenMagnifierAndZoomIn: 돋보기를 열고 확대합니다.
+p.Shortcuts.ZoomOutInMagnifier: 돋보기에서 축소
+p.Shortcuts.CloseMagnifierWin11: 돋보기 닫기(Windows 11)
+p.Shortcuts.BeginIMEReconversion: IME 재변환 시작
+p.Shortcuts.OpenShoulderTapsWin10: 오픈 숄더 탭(Windows 10)
+p.Shortcuts.WakePCFromBlankOrBlackScreen: 빈 화면 또는 검은색 화면에서 PC 깨우기
+p.Shortcuts.SaveScreenshotOfGameWindowToFile: 포커스가 있는 게임 창의 스크린샷을 파일에 저장(Xbox Game Bar 사용)
+p.Shortcuts.OpenTaskbarSettingsOnTaskbarFocus: 작업 표시줄 설정 열기(작업 표시줄 포커스에서)
+
+
+# Controller Page -> Touchpad Section
+
+ctPage.Touchpad.Mode.Title: 터치패드 모드
+ctPage.Touchpad.Mode.SubTitle: 터치패드를 완전히 활용하려면 Passthrough, 터치패드를 마우스로, 또는 터치패드+ 중에서 선택하세요.
+
+ctPage.TouchpadToMouse.Mode.Passthrough.Title: Passthrough
+ctPage.TouchpadToMouse.Mode.Passthrough.SubTitle: 터치패드 데이터는 DualShock 4 또는 DualSense 에뮬레이션을 통해 전달됩니다.
+
+ctPage.TouchpadToMouse.Mode.Mouse.Title: 터치패드에서 마우스로
+ctPage.TouchpadToMouse.Mode.Mouse.SubTitle: 터치패드는 이 PC의 마우스를 제어합니다.
+
+ctPage.TouchpadToMouse.Mode.Plus.Title: 터치패드+
+ctPage.TouchpadToMouse.Mode.Plus.SubTitle: 터치패드 입력은 다시 매핑 및 기타 다양한 작업에 사용할 수 있습니다.
+
+ctPage.TouchpadToMouse.PressToLeftClick.Title: 눌러서 왼쪽 클릭
+ctPage.TouchpadToMouse.PressToLeftClick.SubTitle: 활성화되면 터치패드를 누르면 왼쪽 마우스 클릭이 발생합니다.
+
+ctPage.TouchpadToMouse.TapToLeftClick.Title: 탭하여 왼쪽 클릭
+ctPage.TouchpadToMouse.TapToLeftClick.SubTitle: 활성화되면 터치패드를 탭하면 왼쪽 마우스 클릭이 발생합니다.
+
+ctPage.TouchpadToMouse.TapToRightClick.Title: 탭하여 오른쪽 클릭
+ctPage.TouchpadToMouse.TapToRightClick.SubTitle: 활성화된 경우 두 손가락으로 터치패드를 탭하면 마우스 오른쪽 버튼이 클릭됩니다.
+
+ctPage.TouchpadToMouse.NormalSensi.Title: 정상 감도 속도
+ctPage.TouchpadToMouse.NormalSensi.SubTitle: 마우스가 이동할 감도 속도입니다.
+
+ctPage.TouchpadToMouse.PreciseSensi.Title: 정확한 감도 속도
+ctPage.TouchpadToMouse.PreciseSensi.SubTitle: 이 버튼을 누르고 있는 동안 마우스는 여기에 설정된 대로 느려지는 정확한 상태로 들어갑니다.
+
+ctPage.TouchpadToMouse.FastSensi.Title: 빠른 감도 속도
+ctPage.TouchpadToMouse.FastSensi.SubTitle: 이 버튼을 누르고 있는 동안 마우스는 여기에 설정된 속도까지 빨라지는 빠른 상태로 들어갑니다.
+
+ctPage.TouchpadToMouse.ScrollSensi.Title: 스크롤 감도 속도
+ctPage.TouchpadToMouse.ScrollSensi.SubTitle: 2 손가락으로 탭한 다음 아무 방향으로나 드래그하면 가운데 마우스 버튼을 누르고 마우스를 움직이는 것처럼 스크롤이 시작됩니다.
+
+ctPage.TouchpadToMouse.ScrollInvert.Title: 스크롤 반전
+ctPage.TouchpadToMouse.ScrollInvert.SubTitle: 활성화하면 스크롤이 반전됩니다.
+
+# --------------------
+
+settingsPage.Display.WindowBackgroundEffect.Title: 창 배경 효과
+settingsPage.Display.WindowBackgroundEffect.SubTitle: 원하는 배경 효과를 선택합니다.
+
+settingsPage.Display.WindowBackgroundEffect.Mode.None.Title: 없음
+settingsPage.Display.WindowBackgroundEffect.Mode.None.Subtitle: 배경 효과가 없습니다.
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Acrylic.Title: 아크릴
+settingsPage.Display.WindowBackgroundEffect.Mode.Acrylic.Subtitle: Windows 아크릴 효과.
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Title: Mica
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Subtitle: Windows 11 Mica effect.
+settingsPage.Display.WindowBackgroundEffect.Mode.Mica.Warning.Title: ⚠️ Windows 11(빌드 22000) 이상에서 사용 가능
+
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Title: 탭
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Subtitle: Windows 11 배경 화면 흐림 효과.
+settingsPage.Display.WindowBackgroundEffect.Mode.Tabbed.Warning.Title: ⚠️ Windows 11 Insider 10(빌드 22523) 이상에서 사용 가능
+
+BatteryPowerState.Discharging: 출력
+BatteryPowerState.Charging: 충전중
+BatteryPowerState.Complete: 완료
+BatteryPowerState.AbnormalVoltage: 비정상 볼륨tage
+BatteryPowerState.AbnormalTemperture: 비정상적인 온도
+BatteryPowerState.ChargingError: 충전 오류
+
+ToastNotifications.BatteryInfo: 배터리 정보
+ToastNotifications.BatteryLevelLow: 🪫⚠️ 배터리 잔량 낮음 ⚠️🪫
+ToastNotifications.DeviceConnected: i️ 연결된 장치
+ToastNotifications.DeviceDisconnected: ⚠️ 장치 연결 끊김
+ToastNotifications.EmulationActivated: 활성화됨
+ToastNotifications.ActiveProfile: 활성
+ToastNotifications.IsActiveProfile: 활성 상태입니다.
+ToastNotifications.Activated: 활성화됨
+
+aboutPage.DSX.Libraries.Title: DSX에서 사용되는 라이브러리
+aboutPage.DSX.Libraries.Subtitle: DSX를 구동하는 데 사용되는 공용 라이브러리 목록입니다.
+
+ctPage.JoystickDeadzone.Left.Mode.Title: 왼쪽 조이스틱 모드
+ctPage.JoystickDeadzone.Right.Mode.Title: 오른쪽 조이스틱 모드
+ctPage.JoystickDeadzone.Mode.SubTitle: Passthrough(Passthrough), 단순 데드존(Simple Deadzone) 또는 고급 데드존(Advanced Deadzone) 중에서 선택하여 보다 정밀하게 조정할 수 있습니다.
+
+ctPage.JoystickDeadzone.Mode.Passthrough.SubTitle: 조이스틱 데이터는 Xbox 360, DualShock 4 또는 DualSense 에뮬레이션을 통해 원활하게 전달됩니다. 조정이나 데드존 수정이 적용되지 않습니다.
+
+ctPage.JoystickDeadzone.Mode.Simple.Title: 단순 데드존
+ctPage.JoystickDeadzone.Mode.Simple.SubTitle: 축 데드존과 방사형 데드존 모드 중에서 선택하면 제어기 응답이 결정됩니다. Axial은 방향별 정밀한 제어를 우선시하여 플랫포머 또는 슈팅 게임에 이상적이며, 방사형은 균일한 응답을 보장하여 레이싱 또는 비행 시뮬레이션에 적합합니다.
+
+ctPage.JoystickDeadzone.Mode.Advanced.Title: 고급 데드존
+ctPage.JoystickDeadzone.Mode.Advanced.SubTitle: 고급 데드존 모드로 조이스틱 경험을 미세 조정하십시오. 감도, 데드존, 범위 설정을 조정하여 자신에게 딱 맞는 제어 체계를 만들 수 있습니다.
+
+ctPage.JoystickDeadzone.Simple.Mode.Title: 데드존 모드
+ctPage.JoystickDeadzone.Simple.Mode.Subtitle: 축 데드존과 방사형 데드존 모드 중에서 선택하면 컨트롤러가 작은 움직임에 반응하는 방식이 결정됩니다. 액시얼 데드존은 개별 방향에서 정밀한 제어를 우선시하며, 플랫포머나 슈팅 게임에 적합합니다. 방사형 데드존은 모든 방향에서 균일한 반응을 보장하여 의도하지 않은 움직임을 줄여 레이싱 또는 비행 시뮬레이션에 이상적입니다.
+
+ctPage.JoystickDeadzone.SimpleMode.Axial.Title: 축
+ctPage.JoystickDeadzone.SimpleMode.Radial.Title: 방사형
+
+ctPage.JoystickDeadzone.Deadzone.Title: 데드존
+ctPage.JoystickDeadzone.Deadzone.SubTitle: 조이스틱의 데드존 값을 나타냅니다. 입력이 무시되는 중심 주변 영역입니다.
+
+ctPage.JoystickDeadzone.Saturation.Title: 채도
+ctPage.JoystickDeadzone.Saturation.SubTitle: 조이스틱의 감도를 제어합니다. 1 미만으로 설정하면 조이스틱의 반응 속도가 빨라지므로 작은 움직임도 게임이나 애플리케이션에 큰 영향을 미칩니다. 1로 설정하면 조이스틱이 정상 감도로 유지됩니다. 채도를 조정하면 움직임이 화면에 미치는 영향을 조정할 수 있습니다.
+
+ctPage.JoystickDeadzone.Range.Title: 레인지
+ctPage.JoystickDeadzone.Range.SubTitle: 스틱이 이동할 수 있는 거리를 조정하여 화면상의 동작에 영향을 주는 조이스틱 움직임의 최대 범위를 결정합니다.
+
+ctPage.JoystickDeadzone.Sensitivity.Title: 민감
+ctPage.JoystickDeadzone.Sensitivity.SubTitle: 감도를 높이면 조이스틱의 반응성이 높아지므로 작은 움직임도 화면에 큰 영향을 미칩니다. 감도를 낮추면 그 반대로 화면에서 동일한 변경을 수행하기 위해 더 큰 조이스틱 움직임이 필요합니다.
+
+homepage.VirtualDevice.DSModeConfig.Title: 듀얼센스 모드 구성
+homepage.VirtualDevice.DSModeConfig.SubTitle: 듀얼센스 에뮬레이션이 활성화되면 아래에서 패스스루 옵션을 조정할 수 있습니다.
+
+app.LaunchV2Button: DSX v2 실행
+
+profiles.ResetProfile: 프로필 초기화
+profiles.RenameProfile: 프로필 이름 변경
+
+ctPage.ActiveMouseMappingsDescription: 활성화된 마우스 매핑 목록입니다.
+
+ctPage.selectedButton: 선택된 버튼
+ctPage.selectedButtons: 선택된 버튼들
+
+ctPage.Input: 입력
+ctPage.Output: 출력
+
+ctPage.Mouse.ScrollUp: '스크롤 휠 위로 (%i 포인트)'
+ctPage.Mouse.ScrollDown: '스크롤 휠 아래로 (%i 포인트)'
+
+ctPage.R2TriggerInputRange: R2 트리거 입력 범위
+
+notificationsPage.SystemNotification.Title: 시스템 알림
+notificationsPage.SystemNotification.SubTitle: DSX가 알림을 보내려면 권한이 필요합니다. 이미 활성화되어 있지 않다면 `알림 설정 열기`를 클릭하여 DSX가 알림을 보낼 수 있도록 허용하세요.
+notificationsPage.SystemNotification.Button.Title: 알림 설정 열기
+
+notificationsPage.LowBattery.Title: 배터리 부족
+notificationsPage.LowBattery.SubTitle: 충전 중이 아닐 때 배터리가 부족할 때 알림을 받습니다.
+
+notificationsPage.LowBattery.Percentage.Title: 배터리 퍼센트
+notificationsPage.LowBattery.Percentage.SubTitle: 지정된 배터리 퍼센트 이하로 떨어지면 언제 이 알림이 트리거될지 선택하세요.
+
+notificationsPage.LowBattery.Repeat.Title: 알림 반복
+notificationsPage.LowBattery.Repeat.SubTitle: 이 알림을 몇 번 반복할지 선택하세요.
+
+notificationsPage.LowBattery.Repeat.1: 1회 반복
+notificationsPage.LowBattery.Repeat.3: 3회 반복
+notificationsPage.LowBattery.Repeat.5: 5회 반복
+notificationsPage.LowBattery.Repeat.10: 10회 반복
+notificationsPage.LowBattery.Repeat.Forever: 계속 반복
+
+notificationsPage.LowBattery.Interval.Title: 알림 간격
+notificationsPage.LowBattery.Interval.SubTitle: 각 반복 간의 시간 간격을 선택하세요.
+
+notificationsPage.LowBattery.Interval.30Seconds: 30초 간격
+notificationsPage.LowBattery.Interval.1: 1분 간격
+notificationsPage.LowBattery.Interval.2: 2분 간격
+notificationsPage.LowBattery.Interval.5: 5분 간격
+notificationsPage.LowBattery.Interval.10: 10분 간격
+
+notificationsPage.ConnectionStatus.Title: 연결 상태
+notificationsPage.ConnectionStatus.SubTitle: 이 장치가 DSX에 연결되거나 연결이 끊어졌을 때, 또는 에뮬레이션 모드가 활성화될 때 알림을 받습니다.
+
+notificationsPage.ConnectionStatus.DeviceConnected.Title: 장치 연결됨
+notificationsPage.ConnectionStatus.DeviceConnected.SubTitle: 이 장치가 DSX에 연결될 때 알림을 받습니다.
+
+notificationsPage.ConnectionStatus.DeviceDisconnected.Title: 장치 연결 끊김
+notificationsPage.ConnectionStatus.DeviceDisconnected.SubTitle: 이 장치가 DSX에서 연결이 끊어질 때 알림을 받습니다.
+
+notificationsPage.ConnectionStatus.VirtualDevice.Title: 가상 장치 상태
+notificationsPage.ConnectionStatus.VirtualDevice.SubTitle: 가상 장치가 활성화될 때 알림을 받습니다.
+
+
+notificationsPage.ProfileSystem.SubTitle: 프로필이 활성화될 때 알림을 받습니다.
+
+colorPicker.InitialColor: 초기 색상
+colorPicker.SelectedColor: 선택된 색상
+
+color.Gradient: 그라데이션
+
+# %i is a number that is auto filled, also keep the translation inside the single quotes.
+installedGamesPage.TotalPlaytime.Day.single: '%i 일'
+installedGamesPage.TotalPlaytime.Day.plural: '%i 일'
+
+installedGamesPage.TotalPlaytime.Hour.single: '%i 시간'
+installedGamesPage.TotalPlaytime.Hour.plural: '%i 시간'
+
+installedGamesPage.TotalPlaytime.Minute.single: '%i 분'
+installedGamesPage.TotalPlaytime.Minute.plural: '%i 분'
+
+setupPage.DSXSetup.Title: DSX 설정
+
+setupPage.DSXSetup.AdaptiveTriggers.SubTitle: 완벽한 느낌을 위한 다양한 적응형 트리거 모드 및 구성.
+
+setupPage.DSXSetup.HapticFeedback.Title: 햅틱 피드백
+setupPage.DSXSetup.HapticFeedback.SubTitle: 오디오를 햅틱으로, 진동을 햅틱으로 등 더 몰입감 있는 진동 경험을 느껴보세요.
+
+setupPage.DSXSetup.MultipleController.Title: 다중 컨트롤러 지원
+setupPage.DSXSetup.MultipleController.SubTitle: PC가 처리할 수 있는 만큼 많은 컨트롤러를 연결하세요.
+
+setupPage.DSXSetup.ProfileSystem.SubTitle: 무제한 프로필을 추가하고 필요에 맞게 구성하세요.
+
+setupPage.DSXSetup.Actions.Title: 액션 시스템
+setupPage.DSXSetup.Actions.SubTitle: 게임패드 버튼 재설정, 바로 가기 할당, 매크로 추가, 키보드 매핑 설정 등을 수행하세요.
+
+setupPage.Finish.FeedbackSupport.Title: 피드백 및 지원
+setupPage.Finish.FeedbackSupport.SubTitle: 귀하의 피드백은 중요합니다. 디스코드 서버에 가입하여 버그를 신고하거나 지원을 받거나 제안을 제공하세요.
+
+app.LetsTakeYourSkills: 당신의 스킬을 한 단계 업그레이드하세요.
+
+virtualPad.SelfInstall.Title: VirtualPad 수동 설치
+virtualPad.SelfInstall.SubTitle: 드라이버를 수동으로 다운로드하여 수동 설치를 수행하세요.
+virtualPad.SelfInstall.SubTitle2: 수동 설치 후, DSX를 다시 시작하고 이 설정을 다시 진행하세요.
+
+virtualPad.SelfInstall.Button.Title: VirtualPad 다운로드
+
+ctPage.Passthrough.Title: Passthrough
+
+ctPage.GeneralSettings.Mute.Title: 마이크 음소거 토글
+ctPage.GeneralSettings.Mute.Subtitle: "DSX가 활성화되면, 장치의 음소거 버튼을 누를 때 PC의 마이크가 켜지거나 꺼집니다. 이는 장치의 마이크뿐만 아니라 선택된 PC 마이크에도 영향을 미칩니다."
+
+ledPage.Mute: 마이크 음소거/음소거 해제
+ctPage.GeneralSettings.Mute.PC: PC 마이크 음소거/음소거 해제
+ctPage.GeneralSettings.Mute.Controller: 컨트롤러 마이크 음소거/음소거 해제 (USB)
+
+hidHidePage.InstallHidHide.Title: HidHide 설치
+
+Default: 기본값
+hapticsPage.AudioHaptics.OutputDevice.Title: 소리 소스
+hapticsPage.AudioHaptics.OutputDevice.SubTitle: 컨트롤러로 전송되는 소리 소스입니다.
+
+driverInstallation.VPad.LicenseStatus.Valid: 유효
+driverInstallation.VPad.LicenseStatus.Expired: 만료됨
