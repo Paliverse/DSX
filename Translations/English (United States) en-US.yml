@@ -1872,3 +1872,88 @@ hapticsPage.AudioHaptics.OutputDevice.SubTitle: The sound source being sent to t
 
 driverInstallation.VPad.LicenseStatus.Valid: Valid
 driverInstallation.VPad.LicenseStatus.Expired: Expired
+
+hapticsPage.AudioHaptics.Latency.Title: Latency (ms)
+hapticsPage.AudioHaptics.Latency.SubTitle: The latency (ms) with which the sound will be sent to the controller.
+
+settingsPage.Networking.OutgoingSecondUDPCard.SubTitle: When enabled, DSX is able to send out Controller Data through OSC.
+settingsPage.Networking.OutgoingSecondUDP.Section: Outgoing UDP for OSC
+
+app.ModificationService.ResetModData.Content: Reset Mod Data
+
+Copy: Copy
+
+settingsPage.Behavior.CloseButtonAction.Title: Close Button Action
+settingsPage.Behavior.CloseButtonAction.SubTitle: Choose what happens when pressing the close button.
+ctPage.Motion.Description_Updated: Utilize the gyroscope and accelerometer to enhance your gaming needs.
+
+ctPage.KeyboardButtons: Keyboard Buttons
+ctPage.KeyboardButtons.Detail: DSX can simulate any of the keyboard buttons added from this list.
+
+settingsPage.Tabs.Networking: Networking
+settingsPage.Networking.FirewallRules: Firewall Rules
+settingsPage.Networking.FirewallRules.SubTitle: When firewall rules are configured for DSX, it enables DSX to receive data for the Mod System and transmit motion data to emulators or OSC data to other systems.
+settingsPage.Networking.FirewallRules.FixFirewallRules: Fix Firewall Rules
+
+settingsPage.DriverInstallation.Button.RestartPC: Restart PC
+settingsPage.DriverInstallation.DownloadingSetup: Downloading setup
+
+setupPage.FinishSetup: Finish Setup
+
+dsx.NavigationButtons.Controller.ToolTip: View connected and offline controllers.
+dsx.NavigationButtons.Profiles.ToolTip: Manage and view profiles.
+dsx.NavigationButtons.Settings.ToolTip: Manage DSX app settings.
+dsx.NavigationButtons.Achievements.ToolTip: View the status of completed and ongoing achievements.
+dsx.NavigationButtons.InstalledGames.ToolTip: View installed Steam games, launch them, and set profiles.
+dsx.NavigationButtons.Troubleshooting.ToolTip: Browse FAQs, tips, and troubleshooting resources.
+dsx.NavigationButtons.Troubleshooting: Troubleshooting
+dsx.NavigationButtons.Achievements: Achievements
+
+profiles.ProfileIcon: Profile Icon
+profiles.ProfilePlace: Search Profiles
+profiles.ProfileApply: Apply Profile
+profiles.ProfileEdit: Edit Profile
+profiles.ProfileUpdate: Update Profile
+profiles.ProfileDelete: Delete Profile
+profiles.ProfileMore: More
+profiles.ProfileDuplicate: Duplicate Profile
+profiles.ProfileShare: Share Profile
+profiles.ProfileReset: Reset Profile
+profiles.ProfileIcon.Text: Choose the desired Icon for this profile.
+profiles.ProfileName.Text: The name for this new profile.
+profiles.ProfileIcon.Description: Profile name cannot be empty or profile already exists with the same name.
+
+profilesPage.ProfileImportManagerDevice.Title: Device Informations
+profilesPage.ProfileImportManagerSettings.Title: Profile Settings
+profilesPage.ProfileImportManagerApplied.Title: Applied Profile
+profilesPage.ProfileImportManager.Title: Profile Import Manager
+profilesPage.ProfileImportManagerDevice.SubTitle: View important device information.
+profilesPage.ProfileImportManager.SubTitle: View important profile information.
+profilesPage.ProfileImport.SubTitle: Import profiles by dragging and dropping files or using the file picker to select one or multiple profiles for DSX. Corrupted files will be added with their file names and default settings..
+
+profilesPage.ManualImport.Title: Manually Import Profiles
+profilesPage.ManualImport.SubTitle: Opens the file picker view to select one or multiple profiles to be imported into DSX.
+profilesPage.DropProfilesHere.Title: Drop Profiles Here
+
+profilesPage.CreateProfile.Title: Create Profile
+profilesPage.CreateProfile.SubTitle: Creates a new Controller Profile with default settings.
+
+ctPage.Sticks.Title: Sticks
+ctPage.Sticks.Description: You can choose different modes of using your sticks.
+ctPage.LeftStick: Left Stick
+ctPage.ConfigureLeftStick: Configure the left stick.
+ctPage.RightStick: Right Stick
+ctPage.ConfigureRightStick: Configure the right stick.
+
+installedGamesPage.GameProfile.Title: Game Profile
+installedGamesPage.GameProfile.Description: The profile to use for this game when launching or detected being open.
+installedGamesPage.GameProfileWarning: It will apply to all connected controllers.
+
+Back : Back
+
+settingsPage.Networking.DebugModData.Title: Live Incoming Data Feed
+settingsPage.Networking.DebugModData.SubTitle: Shows most recent 100 Entries of incoming UDP Data for debugging.Clear Entries
+settingsPage.Networking.Entries: Clear Entries
+
+ctPage.KeyboardKeyCombination.Title: Keyboard Key Combination
+ctPage.KeyboardKeyCombination.SubTitle: Combine modifier keys with up to three individual keyboard buttons to simulate custom input actions.
