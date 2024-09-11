@@ -1872,3 +1872,66 @@ hapticsPage.AudioHaptics.OutputDevice.SubTitle: Джерело звуку над
 
 driverInstallation.VPad.LicenseStatus.Valid: Дійсний
 driverInstallation.VPad.LicenseStatus.Expired: Закінчився термін дії
+
+settingsPage.Networking.OutgoingSecondUDPCard.SubTitle: Якщо ввімкнено, DSX може надсилати дані контролера через OSC.
+settingsPage.Networking.OutgoingSecondUDP.Section: Вихідний UDP для OSC
+
+settingsPage.Tabs.Networking: Налаштування мережі
+settingsPage.Networking.FirewallRules: Правила брандмауера
+settingsPage.Networking.FirewallRules.SubTitle: Коли правила брандмауера налаштовані для DSX, це дозволяє DSX отримувати дані для мод-системи і передавати дані руху в емулятори або дані OSC в інші системи.
+settingsPage.Networking.FirewallRules.FixFirewallRules: Виправити правила брандмауера
+
+dsx.NavigationButtons.Controller.ToolTip: Перегляд підключених і автономних контролерів.
+dsx.NavigationButtons.Profiles.ToolTip: Керування та перегляд профілів.
+dsx.NavigationButtons.Settings.ToolTip: Керуйте налаштуваннями програми DSX.
+dsx.NavigationButtons.Achievements.ToolTip: Перегляньте статус завершених і поточних досягнень.
+dsx.NavigationButtons.InstalledGames.ToolTip: Перегляньте встановлені ігри Steam, запустіть їх і налаштуйте профілі.
+dsx.NavigationButtons.Troubleshooting.ToolTip: Перегляньте поширені запитання, поради та ресурси з усунення несправностей.
+dsx.NavigationButtons.Troubleshooting: Усунення несправностей
+dsx.NavigationButtons.Achievements: Досягнення
+
+profiles.ProfileIcon: Значок профілю
+profiles.ProfilePlace: Пошук профілів
+profiles.ProfileApply: Застосувати профіль
+profiles.ProfileEdit: Редагувати профіль
+profiles.ProfileUpdate: Оновити профіль
+profiles.ProfileDelete: Видалити профіль
+profiles.ProfileMore: Більше
+profiles.ProfileDuplicate: Дубльований профіль
+profiles.ProfileShare: Поділитися профілем
+profiles.ProfileReset: Скинути профіль
+profiles.ProfileIcon.Text: Виберіть потрібну іконку для цього профілю.
+profiles.ProfileName.Text: Ім’я цього нового профілю.
+profiles.ProfileIcon.Description: Ім’я профілю не може бути порожнім або профіль із такою назвою вже існує.
+
+profilesPage.ProfileImportManagerDevice.Title: Інформація про пристрій
+profilesPage.ProfileImportManagerSettings.Title: Налаштування профілю
+profilesPage.ProfileImportManagerApplied.Title: Застосований профіль
+profilesPage.ProfileImportManager.Title: Менеджер імпорту профілів
+profilesPage.ProfileImportManagerDevice.SubTitle: Перегляньте важливу інформацію про пристрій.
+profilesPage.ProfileImportManager.SubTitle: Перегляд важливої ​​інформації профілю.
+profilesPage.ProfileImport.SubTitle: Імпортуйте профілі, перетягуючи файли або використовуючи засіб вибору файлів, щоб вибрати один або кілька профілів для DSX. Пошкоджені файли будуть додані з їх іменами та параметрами за замовчуванням.
+
+profilesPage.ManualImport.Title: Імпорт профілів вручну
+profilesPage.ManualImport.SubTitle: Відкриває вікно вибору файлів для вибору одного або кількох профілів для імпорту в DSX.
+profilesPage.DropProfilesHere.Title: Перетягніть профілі сюди
+
+profilesPage.CreateProfile.Title: Створити профіль
+profilesPage.CreateProfile.SubTitle: Cтворює новий профіль контролера з параметрами за замовчуванням.
+
+ctPage.Sticks.Title: Стіки
+ctPage.Sticks.Description: Ви можете вибрати різні режими використання ваших стіків.
+ctPage.LeftStick: Лівий стік
+ctPage.ConfigureLeftStick: Налаштувати лівий стік.
+ctPage.RightStick: Правий стік
+ctPage.ConfigureRightStick: Налаштувати правий стік.
+
+installedGamesPage.GameProfile.Title: Ігровий профіль
+installedGamesPage.GameProfile.Description: Профіль, який використовуватиметься для цієї гри під час запуску чи виявлення відкритості.
+installedGamesPage.GameProfileWarning: Він застосовуватиметься до всіх підключених контролерів.
+
+Back : Назад
+
+settingsPage.Networking.DebugModData.Title: Живий канал вхідних даних
+settingsPage.Networking.DebugModData.SubTitle: Показує останні 100 записів вхідних даних UDP для налагодження.
+settingsPage.Networking.Entries: Очистити записи
