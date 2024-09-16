@@ -1320,7 +1320,7 @@ settingsPage.Behavior.StartUpWithWindowCard.Note: "Steam також запуск
 
 settingsPage.Behavior.Launchv2Automatically.Title: Автоматичний запуск DSX v2
 settingsPage.Behavior.Launchv2Automatically.SubTitle: Якщо ввімкнено, DSX v2 буде запущено, а v3 вимкнеться.
-settingsPage.Behavior.Launchv2Automatically.Note: "Примітка: аби легко повернутися до v3 - утримуйте клавішу ESCAPE (esc) під час запуску DSX. Ви можете вимкнути цю опцію тут (у v3)."
+settingsPage.Behavior.Launchv2Automatically.Note: Примітка: аби легко повернутися до v3 - утримуйте клавішу ESCAPE (esc) під час запуску DSX. Ви можете вимкнути цю опцію тут (у v3).
 
 settingsPage.Behavior.StartUpMinimizedCard.Title: Початковий розмір вікна
 settingsPage.Behavior.StartUpMinimizedCard.SubTitle: "Виберіть, як DSX відображатиметься під час запуску: у вікні, згорнуто або на весь екран."
@@ -1377,11 +1377,11 @@ settingsPage.Networking.FirewallCard.Status.OutgoingDescr: Статус того
 settingsPage.Networking.FirewallCard.Status.AddPortToFirewall: Додати порт до брандмауера
 
 # Make sure the %i is in here as it represents a number. Example: Incoming UDP Port for 6969 is open.
-settingsPage.Networking.FirewallCard.Status.IncomingSuccess: 'Вхідний порт UDP для %i is відкрито.'
-settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: 'Вихідний порт UDP для %i is відкрито.'
+settingsPage.Networking.FirewallCard.Status.IncomingSuccess: Вхідний порт UDP для %i is відкрито.
+settingsPage.Networking.FirewallCard.Status.OutgoingSuccess: Вихідний порт UDP для %i is відкрито.
 
-settingsPage.Networking.FirewallCard.Status.IncomingFailed: 'Вхідний порт UDP для %i закрито.'
-settingsPage.Networking.FirewallCard.Status.OutgoingFailed: 'Вихідний порт UDP для %i закрито.'
+settingsPage.Networking.FirewallCard.Status.IncomingFailed: Вхідний порт UDP для %i закрито.
+settingsPage.Networking.FirewallCard.Status.OutgoingFailed: Вихідний порт UDP для %i закрито.
 
 settingsPage.Networking.FirewallCard.Status.IncomingFailed.AddButton: Додайте вхідний порт UDP до брандмауера Windows.
 settingsPage.Networking.FirewallCard.Status.OutgoingFailed.AddButton: Додайте вихідний порт UDP до брандмауера Windows.
@@ -1747,7 +1747,7 @@ ctPage.JoystickDeadzone.Range.Title: Діапазон
 ctPage.JoystickDeadzone.Range.SubTitle: Налаштовує відстань, на яку може рухатися джойстик, визначаючи максимальний обсяг руху джойстика, який впливає на дії на екрані.
 
 ctPage.JoystickDeadzone.Sensitivity.Title: Чутливість
-ctPage.JoystickDeadzone.Sensitivity.SubTitle: "Підвищення чутливості робить джойстик більш чуйним, тому навіть невеликі рухи сильно впливають на екран. Зменшення чутливості робить протилежне: потрібні більші рухи джойстика, щоб зробити ті самі зміни на екрані."
+ctPage.JoystickDeadzone.Sensitivity.SubTitle: Підвищення чутливості робить джойстик більш чуйним, тому навіть невеликі рухи сильно впливають на екран. Зменшення чутливості робить протилежне: потрібні більші рухи джойстика, щоб зробити ті самі зміни на екрані.
 
 homepage.VirtualDevice.DSModeConfig.Title: Конфігурація режиму DualSense
 homepage.VirtualDevice.DSModeConfig.SubTitle: Якщо емуляція DualSense активна, ви можете налаштувати параметри передачі нижче.
@@ -1760,14 +1760,14 @@ profiles.RenameProfile: Перейменувати профіль
 ctPage.ActiveMouseMappingsDescription: Ваш список активних розкладок миші.
 
 ctPage.selectedButton: Вибрана кнопка
-## Plural
+# Plural:
 ctPage.selectedButtons: Вибрані кнопки
 
 ctPage.Input: Введення
 ctPage.Output: Виведення
-# %i is a number that is auto filled so think of it like this: - Scroll Wheel Up/Down (2 Points) -
-ctPage.Mouse.ScrollUp: 'Колесо прокрутки вгору (%i балів)'
-ctPage.Mouse.ScrollDown: 'Колесо прокрутки вниз (%i балів)'
+
+ctPage.Mouse.ScrollUp: Колесо прокрутки вгору (%i балів) # %i is a number that is auto filled so think of it like this: - Scroll Wheel Up (2 Points) -
+ctPage.Mouse.ScrollDown: Колесо прокрутки вниз (%i балів) # %i is a number that is auto filled so think of it like this: - Scroll Wheel Down (2 Points) -
 
 ctPage.R2TriggerInputRange: Діапазон введення тригера R2
 
@@ -1873,65 +1873,87 @@ hapticsPage.AudioHaptics.OutputDevice.SubTitle: Джерело звуку над
 driverInstallation.VPad.LicenseStatus.Valid: Дійсний
 driverInstallation.VPad.LicenseStatus.Expired: Закінчився термін дії
 
-settingsPage.Networking.OutgoingSecondUDPCard.SubTitle: Якщо ввімкнено, DSX може надсилати дані контролера через OSC.
+hapticsPage.AudioHaptics.Latency.Title: Затримка (мс)
+hapticsPage.AudioHaptics.Latency.SubTitle: Затримка (мс), з якою звук буде надіслано на контролер.
+
+settingsPage.Networking.OutgoingSecondUDPCard.SubTitle: Коли ввімкнуто, DSX може надсилати дані контролера через OSC.
 settingsPage.Networking.OutgoingSecondUDP.Section: Вихідний UDP для OSC
 
-settingsPage.Tabs.Networking: Налаштування мережі
+app.ModificationService.ResetModData.Content: Скинути дані мода
+
+Copy: Копіювати
+
+settingsPage.Behavior.CloseButtonAction.Title: Дія кнопки «Закрити».
+settingsPage.Behavior.CloseButtonAction.SubTitle: Виберіть, що станеться після натискання кнопки закриття.
+ctPage.Motion.Description_Updated: Використовуйте гіроскоп і акселерометр, щоб покращити свої ігрові потреби.
+
+ctPage.KeyboardButtons: Кнопки клавіатури
+ctPage.KeyboardButtons.Detail: DSX може імітувати будь-які кнопки клавіатури, додані з цього списку.
+
+settingsPage.Tabs.Networking: Мережа
 settingsPage.Networking.FirewallRules: Правила брандмауера
-settingsPage.Networking.FirewallRules.SubTitle: Коли правила брандмауера налаштовані для DSX, це дозволяє DSX отримувати дані для мод-системи і передавати дані руху в емулятори або дані OSC в інші системи.
+settingsPage.Networking.FirewallRules.SubTitle: Коли ці правила налаштовані, це дозволяє DSX отримувати дані для моду і передавати дані руху в емулятори або дані OSC в інші системи.
 settingsPage.Networking.FirewallRules.FixFirewallRules: Виправити правила брандмауера
 
-dsx.NavigationButtons.Controller.ToolTip: Перегляд підключених і автономних контролерів.
-dsx.NavigationButtons.Profiles.ToolTip: Керування та перегляд профілів.
-dsx.NavigationButtons.Settings.ToolTip: Керуйте налаштуваннями програми DSX.
-dsx.NavigationButtons.Achievements.ToolTip: Перегляньте статус завершених і поточних досягнень.
-dsx.NavigationButtons.InstalledGames.ToolTip: Перегляньте встановлені ігри Steam, запустіть їх і налаштуйте профілі.
-dsx.NavigationButtons.Troubleshooting.ToolTip: Перегляньте поширені запитання, поради та ресурси з усунення несправностей.
+settingsPage.DriverInstallation.Button.RestartPC: Перезавантажте ПК
+settingsPage.DriverInstallation.DownloadingSetup: Завантаження налаштувань
+
+setupPage.FinishSetup: Завершити налаштування
+
+dsx.NavigationButtons.Controller.ToolTip: Перегляд підключених і відключених контролерів.
+dsx.NavigationButtons.Profiles.ToolTip: Управління та перегляд профілів.
+dsx.NavigationButtons.Settings.ToolTip: Керуйте налаштуваннями програми.
+dsx.NavigationButtons.Achievements.ToolTip: Перегляньте статус виконаних і поточних досягнень.
+dsx.NavigationButtons.InstalledGames.ToolTip: Переглядайте встановлені ігри Steam, запускайте їх і встановлюйте профілі.
+dsx.NavigationButtons.Troubleshooting.ToolTip: Ознайомтеся з поширеними запитаннями, порадами та ресурсами щодо усунення несправностей.
 dsx.NavigationButtons.Troubleshooting: Усунення несправностей
 dsx.NavigationButtons.Achievements: Досягнення
 
-profiles.ProfileIcon: Значок профілю
+profiles.ProfileIcon: Іконка профілю
 profiles.ProfilePlace: Пошук профілів
 profiles.ProfileApply: Застосувати профіль
 profiles.ProfileEdit: Редагувати профіль
 profiles.ProfileUpdate: Оновити профіль
 profiles.ProfileDelete: Видалити профіль
 profiles.ProfileMore: Більше
-profiles.ProfileDuplicate: Дубльований профіль
+profiles.ProfileDuplicate: Профіль дублікат
 profiles.ProfileShare: Поділитися профілем
 profiles.ProfileReset: Скинути профіль
 profiles.ProfileIcon.Text: Виберіть потрібну іконку для цього профілю.
-profiles.ProfileName.Text: Ім’я цього нового профілю.
-profiles.ProfileIcon.Description: Ім’я профілю не може бути порожнім або профіль із такою назвою вже існує.
+profiles.ProfileName.Text: Назва цього нового профілю.
+profiles.ProfileIcon.Description: Поле не може бути пустим, або профіль із такою назвою вже існує.
 
 profilesPage.ProfileImportManagerDevice.Title: Інформація про пристрій
 profilesPage.ProfileImportManagerSettings.Title: Налаштування профілю
 profilesPage.ProfileImportManagerApplied.Title: Застосований профіль
 profilesPage.ProfileImportManager.Title: Менеджер імпорту профілів
-profilesPage.ProfileImportManagerDevice.SubTitle: Перегляньте важливу інформацію про пристрій.
-profilesPage.ProfileImportManager.SubTitle: Перегляд важливої ​​інформації профілю.
+profilesPage.ProfileImportManagerDevice.SubTitle: Перегляд важливої інформації про пристрій.
+profilesPage.ProfileImportManager.SubTitle: Перегляд важливої інформації про профіль.
 profilesPage.ProfileImport.SubTitle: Імпортуйте профілі, перетягуючи файли або використовуючи засіб вибору файлів, щоб вибрати один або кілька профілів для DSX. Пошкоджені файли будуть додані з їх іменами та параметрами за замовчуванням.
 
 profilesPage.ManualImport.Title: Імпорт профілів вручну
-profilesPage.ManualImport.SubTitle: Відкриває вікно вибору файлів для вибору одного або кількох профілів для імпорту в DSX.
+profilesPage.ManualImport.SubTitle: Вибір одного або кількох профілів для імпорту в DSX.
 profilesPage.DropProfilesHere.Title: Перетягніть профілі сюди
 
 profilesPage.CreateProfile.Title: Створити профіль
-profilesPage.CreateProfile.SubTitle: Cтворює новий профіль контролера з параметрами за замовчуванням.
+profilesPage.CreateProfile.SubTitle: Створює новий профіль контролера з налаштуваннями за умовчанням.
 
 ctPage.Sticks.Title: Стіки
-ctPage.Sticks.Description: Ви можете вибрати різні режими використання ваших стіків.
+ctPage.Sticks.Description: Ви можете вибрати різні режими використання своїх стіків.
 ctPage.LeftStick: Лівий стік
 ctPage.ConfigureLeftStick: Налаштувати лівий стік.
 ctPage.RightStick: Правий стік
 ctPage.ConfigureRightStick: Налаштувати правий стік.
 
-installedGamesPage.GameProfile.Title: Ігровий профіль
-installedGamesPage.GameProfile.Description: Профіль, який використовуватиметься для цієї гри під час запуску чи виявлення відкритості.
-installedGamesPage.GameProfileWarning: Він застосовуватиметься до всіх підключених контролерів.
+installedGamesPage.GameProfile.Title: Профіль гри
+installedGamesPage.GameProfile.Description: Профіль, який використовуватиметься для цієї гри під час запуску чи виявлення того, що вона відкрита.
+installedGamesPage.GameProfileWarning: Буде застосовано до всіх підключених контролерів.
 
 Back : Назад
 
-settingsPage.Networking.DebugModData.Title: Живий канал вхідних даних
+settingsPage.Networking.DebugModData.Title: Стрічка вхідних даних у реальному часі
 settingsPage.Networking.DebugModData.SubTitle: Показує останні 100 записів вхідних даних UDP для налагодження.
 settingsPage.Networking.Entries: Очистити записи
+
+ctPage.KeyboardKeyCombination.Title: Комбінація клавіш клавіатури
+ctPage.KeyboardKeyCombination.SubTitle: Поєднуйте клавіші-модифікатори з трьома окремими кнопками клавіатури, щоб імітувати спеціальні дії введення.
