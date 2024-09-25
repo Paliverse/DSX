@@ -1,35 +1,38 @@
-# Translate DSX
+<h1 align="center">Translate DSX</h1>
+<h3 align="center"></h3>
 
-### Thank You for Your Support!
+<p align="center">
+  <a href="https://localazy.com/p/dsxsteam" alt="langs">
+        <img src="https://connect.localazy.com/status/dsxsteam?&style=for-the-badge&content=langs" /></a>⠀
+  <a href="https://discord.gg/PUThpCFByn">
+        <img src="https://img.shields.io/discord/836790685784211486?logo=discord&label=Discord&style=for-the-badge&color=228B22"
+         alt="chat on Discord"></a>
+</p>
+<p align="center">
+  <a href="https://store.steampowered.com/app/1812620/DSX/"><img src="https://github.com/Paliverse/DualSenseX/raw/main/imgs/AvailableOnSteam.png" width="300" height="auto" align="center"/></a>
+</p>
 
-We deeply appreciate your willingness to contribute to translating DSX. Your efforts help make DSX more accessible to a wider audience.
+> [!IMPORTANT]
+>### Thank You for Your Support!
+>We deeply appreciate your willingness to contribute to translating DSX. Your efforts help make DSX more accessible to a wider audience.
 
-## Getting Started
+> [!WARNING]
+> DSX Translations have moved to Localazy, checkout Getting Started below to find out how to access!
+> 
+> I was able to import the translations that were previously done, so this should make it much easier, and since now translations is paid, it has easier access to suggestions from Machine Translations like:
+>- Amazon Translate
+>- Google Translate
+>- Azure Translate
+>- DeepL translation
+>- Shared Translation suggestions which suggest other projects that have the same string of text and what they used.
+>
+> Please let me know if you have any questions. I appreciate anyone taking their time to help translate DSX to make it more accessible to your communities.
 
-1. Download the [en-US.yml](https://github.com/Paliverse/DSX/blob/main/Translations/en-US.yml) file from the repository.
-2. Rename the file to match your language and country.
-3. Translate the text after the colon for each key.
+> [!TIP]
+>## Getting Started
+>1. Go to <https://localazy.com/p/dsxsteam>
+>2. Select the langauge you want to translate/update
+>3. Translate...
+>4. Submit for review on Localazy
 
-**Updating Existing Translations:** 
 
-Already translated language files are added above to be updated if needed.
-
-## Translating
-For example:
-```yaml
-NoControllerDetected.Title: No Controllers Detected
-```
-In this example, "No Controllers Detected" is what you would translate.
-
-**Note:** Updates to the `en-US.yml` file will be visible [here](https://github.com/Paliverse/DSX/commits/main/Translations/en-US.yml).
-
-**New Translations:** Any new translation keys will be added to the bottom of the `en-US.yml` file to make it easier for new items to be translated. So check regularly for new updates. If you have the Translator role in the discord server, you will be notified of new changes.
-
-## Submitting Your Translation
-
-Once you've completed the translation:
-
-- Reach out to me on [Discord](https://discord.gg/PUThpCFByn) in the `dsx-v3-translation` channel.
-- Alternatively, you can message me directly on Discord @paliverse.
-
-Your translated file will be reviewed and added to DSX to benefit users in your language community.
