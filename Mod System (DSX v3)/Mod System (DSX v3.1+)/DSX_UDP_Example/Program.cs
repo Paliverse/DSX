@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -77,15 +78,74 @@ namespace DSX_UDP_Example
         {
             try
             {
-                Console.WriteLine($"Connecting to Server on Port: {6969}\n");
+                var port = FetchPortNumber();
+                Console.WriteLine($"Connecting to Server on Port: {port}\n");
                 client = new UdpClient();
-                endPoint = new IPEndPoint(Triggers.localhost, Convert.ToInt32(6969));
+                endPoint = new IPEndPoint(Triggers.localhost, port);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
             
+        }
+
+        /// <summary>
+        /// Fetches the UDP port number from a configuration file in the AppData\Local\DSX directory.
+        /// If the file is not found, contains invalid data, or an error occurs, it falls back to a default port number.
+        /// Provides logging for all relevant steps and potential issues.
+        /// </summary>
+        /// <returns>The port number to use for communication (default: 6969 if an error occurs).</returns>
+        static int FetchPortNumber()
+        {
+            // ONLY WORKS WITH DSX v3.1 BETA 1.37 AND ABOVE
+
+            const int defaultPort = 6969;
+            const string appFolderName = "DSX";
+            const string fileName = "DSX_UDP_PortNumber.txt";
+
+            try
+            {
+                Console.WriteLine("Fetching Port Number locally...");
+
+                // Get the Local AppData path for the application
+                string localAppDataPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    appFolderName
+                );
+
+                string portFilePath = Path.Combine(localAppDataPath, fileName);
+
+                // Check if the file exists
+                if (File.Exists(portFilePath))
+                {
+                    Console.WriteLine($"Port file found at: {portFilePath}");
+
+                    // Try to read and parse the port number
+                    string portNumberContent = File.ReadAllText(portFilePath).Trim();
+                    if (int.TryParse(portNumberContent, out int portNumber))
+                    {
+                        Console.WriteLine($"Port Number successfully read: {portNumber}");
+                        return portNumber;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Invalid port number format in file: {portNumberContent}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Port file not found at: {portFilePath}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while fetching the port number: {ex.Message}");
+            }
+
+            // Fallback to default port number
+            Console.WriteLine($"Falling back to default port number: {defaultPort}");
+            return defaultPort;
         }
 
         /// <summary>
