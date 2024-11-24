@@ -9,8 +9,8 @@
 - [Mic LED](#mic-led)
 - [Trigger Threshold](#trigger-threshold)
 - [Adaptive Triggers](#adaptive-triggers)
-  - [Reset To User Settings](#reset-to-user-settings)
-    - DSX v3.0+ Adaptive Trigger Modes
+ - [Reset To User Settings](#reset-to-user-settings)
+    - DSX v3.1+ Adaptive Trigger Modes
       - [OFF](#off)
       - [FEEDBACK](#feedback)
       - [WEAPON](#weapon)
@@ -18,7 +18,7 @@
       - [SLOPE_FEEDBACK](#slope_feedback)
       - [MULTIPLE_POSITION_FEEDBACK](#multiple_position_feedback)
       - [MULTIPLE_POSITION_VIBRATION](#multiple_position_vibration)
-    - DSX v2 Adaptive Trigger Modes (Legacy)
+ - DSX v2 Adaptive Trigger Modes (Legacy)
       - [Normal](#normal)
       - [GameCube](#gamecube)
       - [VerySoft](#verysoft)
