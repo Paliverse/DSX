@@ -1,4 +1,5 @@
 # DSX Mod System
+Mods allow you to send data to DSX via UDP communications to control things like Adaptive Triggers and LEDs connected to DSX.
 
 **DSX v3.1+** supports the Legacy v2 Mod System while a new Mod System is being developed for v3. The upcoming Mod System will include advanced features like APIs and more.
 
