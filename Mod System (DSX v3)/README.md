@@ -19,7 +19,7 @@ Mods allow you to send data to DSX via UDP communications to control things like
      - [SLOPE_FEEDBACK](#slope_feedback)
      - [MULTIPLE_POSITION_FEEDBACK](#multiple_position_feedback)
      - [MULTIPLE_POSITION_VIBRATION](#multiple_position_vibration)
- - DSX v2 Adaptive Trigger Modes (Legacy)
+ - DSX v2 Adaptive Trigger Modes (LEGACY // Avoid Using)
      - [Normal](#normal)
      - [GameCube](#gamecube)
      - [VerySoft](#verysoft)
@@ -259,8 +259,9 @@ GetDataFromDSX();
 ___________________
 ### DSX v2 Adaptive Trigger Modes (Legacy)
 #### Normal
-```cs
+ ```cs
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -276,6 +277,7 @@ ___________________
 #### GameCube
 ```cs
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -291,6 +293,7 @@ ___________________
 #### VerySoft
 ```cs
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -306,6 +309,7 @@ ___________________
 #### Soft
 ```cs
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -321,6 +325,7 @@ ___________________
 #### Hard
 ```cs
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -336,6 +341,7 @@ ___________________
 #### VeryHard
 ```cs
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -351,6 +357,7 @@ ___________________
 #### Hardest
 ```cs
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -366,6 +373,7 @@ ___________________
 #### Rigid
 ```cs
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -382,6 +390,7 @@ ___________________
 ```cs
 // Needs 1 Param in List<int> (Frequency: 0-255)
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -397,6 +406,7 @@ ___________________
 #### Choppy
 ```cs
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -412,6 +422,7 @@ ___________________
 #### Medium
 ```cs
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -427,6 +438,7 @@ ___________________
 #### VibrateTriggerPulse
 ```cs
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -443,6 +455,7 @@ ___________________
 ```cs
 // With CustomTriggerValueMode
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -459,6 +472,7 @@ ___________________
 ```cs
 // Needs 2 Params in List<int> (Start: 0-9) -> (Force: 0-8)
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -475,6 +489,7 @@ ___________________
 ```cs
 // Needs 4 Params in List<int> (Start: 0-8) -> (End: 0-8) -> (Force: 0-8) -> (SnapForce: 0-8)
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -491,6 +506,7 @@ ___________________
 ```cs
 // Needs 5 Params in List<int> (Start: 0-8) -> (End: 0-9) -> (FirstFoot: 0-6) -> (SecondFoot: 0-7) -> (Frequency: 0-255)
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -507,6 +523,7 @@ ___________________
 ```cs
 // Needs 3 Params in List<int> (Start: 2-7) -> (End: 0-8) -> (Force: 0-8)
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -523,6 +540,7 @@ ___________________
 ```cs
 // Needs 3 Params in List<int> (Start: 2-7) -> (End: 0-8) -> (Force: 0-8)
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -539,6 +557,7 @@ ___________________
 ```cs
 // Needs 6 Params in List<int> (Start: 0-8) -> (End: 0-9) -> (StrengthA: 0-7) -> (StrengthB: 0-7) -> (Frequency: 0-255) -> (Period: 0-2)
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
@@ -555,6 +574,7 @@ ___________________
 ```cs
 // Applies Vibration Effect with 10 Hz (Frequency)
 // Usage ==============
+// (LEGACY // Avoid Using)
 
 Packet packet = new Packet();
 int controllerIndex = 0;
