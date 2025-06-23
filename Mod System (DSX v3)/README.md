@@ -5,41 +5,41 @@ Mods allow you to send data to DSX via UDP communications to control things like
 
 ## Quick Access
 
+- [Reset To User Settings](#reset-to-user-settings)
 - [Lightbar LED](#lightbar-led)
 - [Player LED](#player-led)
 - [Mic LED](#mic-led)
 - [Trigger Threshold](#trigger-threshold)
 - [Adaptive Triggers](#adaptive-triggers)
- - [Reset To User Settings](#reset-to-user-settings)
-    - DSX v3.1+ Adaptive Trigger Modes
-      - [OFF](#off)
-      - [FEEDBACK](#feedback)
-      - [WEAPON](#weapon)
-      - [VIBRATION](#vibration)
-      - [SLOPE_FEEDBACK](#slope_feedback)
-      - [MULTIPLE_POSITION_FEEDBACK](#multiple_position_feedback)
-      - [MULTIPLE_POSITION_VIBRATION](#multiple_position_vibration)
+ - DSX v3.1+ Adaptive Trigger Modes
+     - [OFF](#off)
+     - [FEEDBACK](#feedback)
+     - [WEAPON](#weapon)
+     - [VIBRATION](#vibration)
+     - [SLOPE_FEEDBACK](#slope_feedback)
+     - [MULTIPLE_POSITION_FEEDBACK](#multiple_position_feedback)
+     - [MULTIPLE_POSITION_VIBRATION](#multiple_position_vibration)
  - DSX v2 Adaptive Trigger Modes (Legacy)
-      - [Normal](#normal)
-      - [GameCube](#gamecube)
-      - [VerySoft](#verysoft)
-      - [Soft](#soft)
-      - [Hard](#hard)
-      - [VeryHard](#veryhard)
-      - [Hardest](#hardest)
-      - [Rigid](#rigid)
-      - [VibrateTrigger](#vibratetrigger)
-      - [Choppy](#choppy)
-      - [Medium](#medium)
-      - [VibrateTriggerPulse](#vibratetriggerpulse)
-      - [CustomTriggerValue](#customtriggervalue)
-      - [Resistance](#resistance)
-      - [Bow](#bow)
-      - [Galloping](#galloping)
-      - [SemiAutomaticGun](#semiautomaticgun)
-      - [AutomaticGun](#automaticgun)
-      - [Machine](#machine)
-      - [VIBRATE_TRIGGER_10Hz](#vibrate_trigger_10hz)
+     - [Normal](#normal)
+     - [GameCube](#gamecube)
+     - [VerySoft](#verysoft)
+     - [Soft](#soft)
+     - [Hard](#hard)
+     - [VeryHard](#veryhard)
+     - [Hardest](#hardest)
+     - [Rigid](#rigid)
+     - [VibrateTrigger](#vibratetrigger)
+     - [Choppy](#choppy)
+     - [Medium](#medium)
+     - [VibrateTriggerPulse](#vibratetriggerpulse)
+     - [CustomTriggerValue](#customtriggervalue)
+     - [Resistance](#resistance)
+     - [Bow](#bow)
+     - [Galloping](#galloping)
+     - [SemiAutomaticGun](#semiautomaticgun)
+     - [AutomaticGun](#automaticgun)
+     - [Machine](#machine)
+     - [VIBRATE_TRIGGER_10Hz](#vibrate_trigger_10hz)
 
 
 ### Usage:
@@ -56,6 +56,21 @@ packet = AddPlayerLEDToPacket(packet, controllerIndex, PlayerLEDNewRevision.One)
 packet = AddMicLEDToPacket(packet, controllerIndex, MicLEDMode.Pulse);
 packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Left, TriggerMode.GameCube, new List<int>());
 packet = AddAdaptiveTriggerToPacket(packet, controllerIndex, Trigger.Right, TriggerMode.Resistance, new List<int> { 0, 8 });
+
+SendDataToDSX(packet);
+GetDataFromDSX();
+```
+___________________
+#### Reset To User Settings
+```cs
+// When sent to DSX, it will discard any modifications
+// sent to the controller and apply the settings from the profile it's attached to in DSX
+// Usage ==============
+
+Packet packet = new Packet();
+int controllerIndex = 0;
+
+packet = AddResetToPacket(packet, controllerIndex);
 
 SendDataToDSX(packet);
 GetDataFromDSX();
@@ -130,21 +145,7 @@ ___________________
 ### Adaptive Triggers
 
 ___________________
-#### Reset To User Settings
-```cs
-// When sent to DSX, it will discard any modifications
-// sent to the controller and apply the settings from the profile it's attached to in DSX
-// Usage ==============
 
-Packet packet = new Packet();
-int controllerIndex = 0;
-
-packet = AddResetToPacket(packet, controllerIndex);
-
-SendDataToDSX(packet);
-GetDataFromDSX();
-```
-___________________
 ### DSX v3.0+ Adaptive Trigger Modes
 #### OFF
 ```cs
